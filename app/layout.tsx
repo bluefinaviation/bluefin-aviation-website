@@ -1,14 +1,34 @@
-import 'tailwindcss/tailwind.css'
+'use client';
+
+import './tailwind.css';
+
+import { Inter } from '@next/font/google';
+import clsx from 'clsx';
+import { AnimatePresence } from 'framer-motion';
+import { useSelectedLayoutSegment } from 'next/navigation';
+
+import { Footer } from '@/components/navigation/Footer';
+import { Header } from '@/components/navigation/Header';
+
+const inter = Inter();
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  const segment = useSelectedLayoutSegment();
+
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <head />
-      <body className="bg-white text-black">{children}</body>
+      <AnimatePresence initial={false} mode="wait">
+        <body className="bg-white text-black">
+          <Header className={clsx(segment === 'studio' && 'hidden')} />
+          {children}
+          <Footer className={clsx(segment === 'studio' && 'hidden')} />
+        </body>
+      </AnimatePresence>
     </html>
-  )
+  );
 }

@@ -1,9 +1,10 @@
-import PostPage from 'components/PostPage'
 import {
   getAllPostsSlugs,
   getPostAndMoreStories,
   getSettings,
 } from 'lib/sanity.client'
+
+import PostPage from '@/components/PostPage'
 
 export async function generateStaticParams() {
   return await getAllPostsSlugs()

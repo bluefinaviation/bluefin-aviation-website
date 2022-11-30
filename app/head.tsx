@@ -1,7 +1,8 @@
-import BlogMeta from 'components/BlogMeta'
-import MetaDescription from 'components/MetaDescription'
 import * as demo from 'lib/demo.data'
 import { getSettings } from 'lib/sanity.client'
+
+import BlogMeta from '@/components/BlogMeta'
+import MetaDescription from '@/components/MetaDescription'
 
 export default async function PageHead() {
   const {

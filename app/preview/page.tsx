@@ -1,9 +1,10 @@
-import IndexPage from 'components/IndexPage'
-import PreviewIndexPage from 'components/PreviewIndexPage'
-import { PreviewSuspense } from 'components/PreviewSuspense'
 import { getAllPosts, getSettings } from 'lib/sanity.client'
 import { previewData } from 'next/headers'
 import { redirect } from 'next/navigation'
+
+import IndexPage from '@/components/IndexPage'
+import PreviewIndexPage from '@/components/PreviewIndexPage'
+import { PreviewSuspense } from '@/components/PreviewSuspense'
 
 // FIXME: https://github.com/vercel/next.js/issues/43147
 // const PreviewIndexPage = lazy(() => import('components/PreviewIndexPage'))

@@ -1,14 +1,31 @@
-import IndexPage from 'components/IndexPage'
-import { getAllPosts, getSettings } from 'lib/sanity.client'
-
-// FIXME: https://github.com/sanity-io/nextjs-blog-cms-sanity-v3/issues/95
+import { HeroSection } from '@/components/home/HeroSection';
+import { NewsletterSection } from '@/components/home/NewsletterSection';
+import { PartnersSection } from '@/components/home/PartnersSection';
+import { ServicesSection } from '@/components/home/ServicesSection';
+import { TestimonialsSection } from '@/components/home/TestimonialsSection';
+import { PageContainer } from '@/components/shared/PageContainer';
+import { getHomePage } from '@/lib/sanity.client';
 
 export default async function IndexRoute() {
-  // Fetch queries in parallel
-  const [settings, posts] = await Promise.all([getSettings(), getAllPosts()])
-
-  return <IndexPage posts={posts} settings={settings} />
+  const [homePageData] = await Promise.all([getHomePage()]);
+  return (
+    <PageContainer
+      metaTitle="We'll take you there"
+      metaDescription="A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels."
+    >
+      <HeroSection heroSection={homePageData.heroSection} />
+      <ServicesSection
+        servicesSection={homePageData.servicesSection.section}
+        tripService={homePageData.servicesSection.tripService.card}
+        fuelService={homePageData.servicesSection.fuelService.card}
+      />
+      <PartnersSection partnersSection={homePageData.partnersSection} />
+      <NewsletterSection newsletterSection={homePageData.newsletterSection} />
+      <TestimonialsSection
+        testimonialsSection={homePageData.testimonialsSection}
+      />
+    </PageContainer>
+  );
 }
 
-// FIXME: remove the `revalidate` export below once you've followed the instructions in `/pages/api/revalidate.ts`
-export const revalidate = 1
+export const revalidate = 1;
