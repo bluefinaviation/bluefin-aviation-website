@@ -5,7 +5,7 @@ export default async function ContactHead() {
 
   return (
     <>
-      <title>{`Contact | ${title}`}</title>
+      <title>{`Contact - ${title}`}</title>
       <meta
         key="description"
         name="description"

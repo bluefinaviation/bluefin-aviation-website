@@ -5,7 +5,7 @@ export default async function FuelServicesHead() {
 
   return (
     <>
-      <title>{`Fuel Support | ${title}`}</title>
+      <title>{`Fuel Support - ${title}`}</title>
       <meta
         key="description"
         name="description"

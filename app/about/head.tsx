@@ -5,7 +5,7 @@ export default async function AboutHead() {
 
   return (
     <>
-      <title>{`About | ${title}`}</title>
+      <title>{`About - ${title}`}</title>
       <meta
         key="description"
         name="description"

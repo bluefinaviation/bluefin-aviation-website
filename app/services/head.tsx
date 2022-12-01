@@ -5,7 +5,7 @@ export default async function ServicesHead() {
 
   return (
     <>
-      <title>{`Services | ${title}`}</title>
+      <title>{`Services - ${title}`}</title>
       <meta
         key="description"
         name="description"

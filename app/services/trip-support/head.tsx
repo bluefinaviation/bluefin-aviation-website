@@ -5,7 +5,7 @@ export default async function TripServicesHead() {
 
   return (
     <>
-      <title>{`Trip Support | ${title}`}</title>
+      <title>{`Trip Support - ${title}`}</title>
       <meta
         key="description"
         name="description"
