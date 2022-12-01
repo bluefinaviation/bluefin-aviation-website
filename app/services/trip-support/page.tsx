@@ -8,10 +8,7 @@ import { getTripServicePage } from '@/lib/sanity.client';
 export default async function TripSupportRoute() {
   const [tripServicePageData] = await Promise.all([getTripServicePage()]);
   return (
-    <PageContainer
-      metaTitle="Trip Support Services"
-      metaDescription="Bluefin Aviation takes the needs of today’s corporate aircraft owner and addresses the most important factor: your bottom line."
-    >
+    <PageContainer>
       <HeroSection hero={tripServicePageData.heroSection.section} />
 
       <Container>

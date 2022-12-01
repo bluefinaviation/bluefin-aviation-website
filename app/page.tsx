@@ -9,10 +9,7 @@ import { getHomePage } from '@/lib/sanity.client';
 export default async function IndexRoute() {
   const [homePageData] = await Promise.all([getHomePage()]);
   return (
-    <PageContainer
-      metaTitle="We'll take you there"
-      metaDescription="A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels."
-    >
+    <PageContainer>
       <HeroSection heroSection={homePageData.heroSection} />
       <ServicesSection
         servicesSection={homePageData.servicesSection.section}

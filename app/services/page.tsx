@@ -10,10 +10,7 @@ import { getServicesPage } from '@/lib/sanity.client';
 export default async function ServicesRoute() {
   const [servicesPageData] = await Promise.all([getServicesPage()]);
   return (
-    <PageContainer
-      metaTitle="Services"
-      metaDescription="Bluefin Aviation management concept offers top quality services for your aircraft needs and within your budget."
-    >
+    <PageContainer>
       <Container className="py-16 sm:py-24">
         <div className="text-center">
           <SectionHeading>

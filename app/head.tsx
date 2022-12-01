@@ -1,18 +1,22 @@
-import * as demo from 'lib/demo.data';
 import { getSettings } from 'lib/sanity.client';
 
-import BlogMeta from '@/components/BlogMeta';
 import MetaDescription from '@/components/MetaDescription';
+import WebsiteMeta from '@/components/WebsiteMeta';
 
 export default async function PageHead() {
   const { title, description, ogImage } = await getSettings();
-  const ogImageTitle = ogImage?.title || demo.ogImageTitle;
+  const ogImageTitle = ogImage?.title || 'BlueFin Aviation';
 
   return (
     <>
-      <title>{title}</title>
-      <BlogMeta />
-      <MetaDescription value={description} />
+      <title>{`${title} - We'll Take You There`}</title>
+      <WebsiteMeta />
+      <meta
+        key="description"
+        name="description"
+        content="The best solution for your aviation needs with concierge-style trip
+      support and worldwide fuel network."
+      />
       <meta
         property="og:image"
         // Because OG images must have a absolute URL, we use the

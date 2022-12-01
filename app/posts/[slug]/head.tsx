@@ -2,7 +2,7 @@ import * as demo from 'lib/demo.data';
 import { getPostBySlug, getSettings } from 'lib/sanity.client';
 import { urlForImage } from 'lib/sanity.image';
 
-import BlogMeta from '@/components/BlogMeta';
+import WebsiteMeta from '@/components/WebsiteMeta';
 
 export default async function SlugHead({
   params,
@@ -16,7 +16,7 @@ export default async function SlugHead({
   return (
     <>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
-      <BlogMeta />
+      <WebsiteMeta />
       {post.coverImage?.asset?._ref && (
         <meta
           property="og:image"

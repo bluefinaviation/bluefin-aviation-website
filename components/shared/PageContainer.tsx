@@ -1,26 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { NextSeo } from 'next-seo';
 
 import { pageVariants } from '@/utils/framer';
 
 interface IProps {
   children: React.ReactNode;
-  metaTitle: string;
-  metaDescription?: string;
   className?: string;
 }
 
-export const PageContainer = ({
-  children,
-  metaTitle,
-  metaDescription,
-  className,
-}: IProps) => {
+export const PageContainer = ({ children, className }: IProps) => {
   return (
     <>
-      <NextSeo title={metaTitle} description={metaDescription} />
       <motion.main
         initial="hidden"
         animate="enter"

@@ -13,10 +13,7 @@ import { urlForImage } from '@/lib/sanity.image';
 export default async function ContactRoute() {
   const [contactPageData] = await Promise.all([getContactPage()]);
   return (
-    <PageContainer
-      metaTitle="Contact Us"
-      metaDescription="Contact our expert team of aviation professionals at Bluefin Aviation Services for all your aircraft needs."
-    >
+    <PageContainer>
       <h1 className="sr-only">Contact Us</h1>
 
       <Container className="py-8 sm:py-16 lg:py-24">

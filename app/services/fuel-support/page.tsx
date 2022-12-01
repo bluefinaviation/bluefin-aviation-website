@@ -8,10 +8,7 @@ import { getFuelServicePage } from '@/lib/sanity.client';
 export default async function FuelSupportRoute() {
   const [fuelServicePageData] = await Promise.all([getFuelServicePage()]);
   return (
-    <PageContainer
-      metaTitle="Fuel Support Services"
-      metaDescription="Bluefin Aviation provides comprehensive and customized aviation solutions for 600+ FBOs and thousands of other aviation customers worldwide. We offer domestic and international fuel 24/7."
-    >
+    <PageContainer>
       <HeroSection hero={fuelServicePageData.heroSection.section} />
       <Container>
         <div id="features-fuel">
