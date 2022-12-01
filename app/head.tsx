@@ -1,16 +1,12 @@
-import * as demo from 'lib/demo.data'
-import { getSettings } from 'lib/sanity.client'
+import * as demo from 'lib/demo.data';
+import { getSettings } from 'lib/sanity.client';
 
-import BlogMeta from '@/components/BlogMeta'
-import MetaDescription from '@/components/MetaDescription'
+import BlogMeta from '@/components/BlogMeta';
+import MetaDescription from '@/components/MetaDescription';
 
 export default async function PageHead() {
-  const {
-    title = demo.title,
-    description = demo.description,
-    ogImage = {},
-  } = await getSettings()
-  const ogImageTitle = ogImage?.title || demo.ogImageTitle
+  const { title, description, ogImage } = await getSettings();
+  const ogImageTitle = ogImage?.title || demo.ogImageTitle;
 
   return (
     <>
@@ -28,5 +24,5 @@ export default async function PageHead() {
         }/api/og?${new URLSearchParams({ title: ogImageTitle })}`}
       />
     </>
-  )
+  );
 }
