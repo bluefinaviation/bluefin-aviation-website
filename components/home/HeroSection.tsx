@@ -64,7 +64,7 @@ export const HeroSection = ({ heroSection }: IProps) => {
               <BackgroundIllustration className="absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
               <div className="-mx-4 h-[260px] px-9 [mask-image:linear-gradient(to_bottom,white_60%,transparent)] sm:mx-0 sm:h-[520px] lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
                 <Image
-                  src="/images/home-hero.png"
+                  src="/images/home-hero.webp"
                   alt="Private plane."
                   width={1920}
                   height={1080}
