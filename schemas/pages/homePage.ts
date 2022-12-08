@@ -1,5 +1,5 @@
-import { TbHome } from 'react-icons/tb'
-import { defineField, defineType } from 'sanity'
+import { TbHome, TbQuote } from 'react-icons/tb';
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'homePage',
@@ -89,7 +89,7 @@ export default defineType({
     prepare() {
       return {
         title: 'Home Page',
-      }
+      };
     },
   },
-})
+});

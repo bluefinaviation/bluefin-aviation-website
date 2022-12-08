@@ -30,6 +30,13 @@ export default defineType({
       title: 'Image',
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+        },
+      ],
       hidden: ({ parent }) => parent?.hasImage !== true,
     },
   ],

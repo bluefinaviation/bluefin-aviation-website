@@ -64,7 +64,7 @@ export const MapContainer = ({ locations }) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         longitude: center.longitude,
-        zoom: 1,
+        zoom: 1.5,
       }}
       attributionControl={false}
       //   maxZoom={15}
@@ -84,7 +84,7 @@ export const MapContainer = ({ locations }) => {
           {popupInfo && (
             <div>
               <div className={clsx('text-lg font-bold text-blue-900')}>
-                {popupInfo.city} ({popupInfo.country})
+                {popupInfo.city}
               </div>
               <div className="text-base font-medium text-gray-700">
                 {popupInfo.isHq ? 'Headquarters' : 'Office'}

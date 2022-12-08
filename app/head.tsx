@@ -1,8 +1,5 @@
 import { getSettings } from 'lib/sanity.client';
 
-import MetaDescription from '@/components/MetaDescription';
-import WebsiteMeta from '@/components/WebsiteMeta';
-
 export default async function PageHead() {
   const { title, description, ogImage } = await getSettings();
   const ogImageTitle = ogImage?.title || 'BlueFin Aviation';
@@ -10,7 +7,7 @@ export default async function PageHead() {
   return (
     <>
       <title>{`${title} - We'll Take You There`}</title>
-      <WebsiteMeta />
+      {/* <WebsiteMeta /> */}
       <meta
         key="description"
         name="description"

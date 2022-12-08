@@ -14,7 +14,15 @@ export default defineType({
     {
       name: 'country',
       title: 'Country',
-      type: 'string',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+        },
+      ],
     },
     {
       name: 'isHq',
@@ -35,13 +43,11 @@ export default defineType({
   preview: {
     select: {
       title: 'city',
-      subtitle: 'country',
     },
     prepare(selection) {
-      const { title, subtitle } = selection;
+      const { title } = selection;
       return {
         title: title,
-        subtitle: subtitle,
         media: TbLocation,
       };
     },

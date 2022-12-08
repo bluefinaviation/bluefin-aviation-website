@@ -12,14 +12,8 @@ import { Container } from '@/components/shared/Container';
 import { PageSummary } from '@/components/shared/PageSummary';
 import { PageTitle } from '@/components/shared/PageTitle';
 import { VideoModal } from '@/components/shared/VideoModal';
-import plane from '@/images/home/home-hero.png';
-import { IHomePageHero } from '@/types/home';
 
-interface IProps {
-  heroSection: IHomePageHero;
-}
-
-export const HeroSection = ({ heroSection }: IProps) => {
+export const HeroSection = ({ heroSection }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   function closeVideoModal() {
     setIsVideoOpen(false);
@@ -41,18 +35,18 @@ export const HeroSection = ({ heroSection }: IProps) => {
                 <PortableText value={heroSection.section.summary} />
               </PageSummary>
               <div className="mt-12 flex flex-wrap gap-x-3 gap-y-2 lg:gap-y-4 lg:gap-x-6">
-                <Button variant="outline">
+                <Button variant="solid">
                   <a
                     className="flex items-center"
                     href="https://wa.me/+19548812932"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <TbBrandWhatsapp className="h-6 w-6 flex-none text-green-500" />
+                    <TbBrandWhatsapp className="h-6 w-6 flex-none" />
                     <span className="ml-2.5">24/7 Support</span>
                   </a>
                 </Button>
-                <Button variant="solid" onClick={openVideoModal}>
+                <Button variant="outline" onClick={openVideoModal}>
                   <div className="flex items-center justify-center">
                     <PlayCircleIcon className="h-6 w-6 flex-none" />
                     <span className="ml-2.5">Promo Video</span>

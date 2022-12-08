@@ -7,11 +7,9 @@ export default defineType({
   of: [
     {
       name: 'image',
-      type: 'image',
       title: 'Image',
-      options: {
-        hotspot: true,
-      },
+      type: 'image',
+      options: { hotspot: true },
       fields: [
         {
           name: 'alt',

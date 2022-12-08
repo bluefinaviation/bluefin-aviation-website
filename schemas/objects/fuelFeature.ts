@@ -10,6 +10,13 @@ export default defineType({
       title: 'Icon',
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+        },
+      ],
     },
     {
       name: 'continent',

@@ -36,7 +36,6 @@ export const VideoModal = ({ isOpen, closeModal, videoURL }) => {
                 >
                   <TbX className="text-slate-50" />
                 </button>
-
                 <iframe
                   src={videoURL}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

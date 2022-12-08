@@ -1,3 +1,4 @@
+import { TbQuote } from 'react-icons/tb';
 import { defineType } from 'sanity';
 
 export default defineType({
@@ -21,15 +22,14 @@ export default defineType({
           type: 'string',
         },
         {
-          name: 'location',
-          title: 'Location',
+          name: 'role',
+          title: 'Role',
           type: 'string',
         },
         {
-          name: 'avatar',
-          title: 'Avatar',
-          type: 'image',
-          options: { hotspot: true },
+          name: 'location',
+          title: 'Location',
+          type: 'string',
         },
       ],
     },
@@ -38,14 +38,13 @@ export default defineType({
     select: {
       title: 'author.name',
       subtitle: 'author.location',
-      media: 'author.avatar',
     },
     prepare(selection) {
-      const { title, subtitle, media } = selection;
+      const { title, subtitle } = selection;
       return {
         title,
         subtitle,
-        media,
+        media: TbQuote,
       };
     },
   },

@@ -40,8 +40,8 @@ export default async function ContactRoute() {
 
           <div className="col-span-1 w-full sm:w-1/2">
             <FeatureList>
-              {contactPageData.contactSection.contacts.map((contact) => (
-                <FeatureContainer key={contact._key}>
+              {contactPageData.contactSection.contacts.map((contact, idx) => (
+                <FeatureContainer key={idx}>
                   <FeatureLabel>{contact.cta}</FeatureLabel>
                   <dl className="mt-2 break-words text-base text-gray-500 lg:text-lg">
                     <div>
@@ -78,9 +78,24 @@ export default async function ContactRoute() {
               <FeatureList>
                 {contactPageData.locationSection.locations.map((location) => (
                   <FeatureContainer key={location._key}>
-                    <FeatureLabel>
-                      {location.city} ({location.country})
-                    </FeatureLabel>
+                    <div className="flex items-center gap-x-2">
+                      <Image
+                        src={
+                          location.country?.asset?._ref
+                            ? urlForImage(location.country)
+                                .width(96)
+                                .height(96)
+                                .fit('crop')
+                                .url()
+                            : 'https://source.unsplash.com/96x96/?flag'
+                        }
+                        alt={location.country.alt}
+                        width={96}
+                        height={96}
+                        className="h-6 w-6"
+                      />
+                      <FeatureLabel>{location.city}</FeatureLabel>
+                    </div>
                     <dl className="mt-2 text-base text-gray-500 lg:text-lg">
                       <div>
                         <dt className="sr-only">Office Locations</dt>

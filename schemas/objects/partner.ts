@@ -1,10 +1,8 @@
-import { TbPlane } from 'react-icons/tb';
 import { defineType } from 'sanity';
 
 export default defineType({
   name: 'partner',
   title: 'Partner',
-  icon: TbPlane,
   type: 'object',
   fields: [
     {
@@ -17,6 +15,13 @@ export default defineType({
       title: 'Logo',
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+        },
+      ],
     },
   ],
   preview: {

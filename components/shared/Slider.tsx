@@ -5,7 +5,6 @@ import { urlForImage } from 'lib/sanity.image';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
-// // import { PrevButton, NextButton } from '@/components/shared/SliderButtons'
 import { DotButton } from '@/components/shared/SliderButtons';
 
 export const Slider = ({ gallery }) => {
@@ -15,13 +14,9 @@ export const Slider = ({ gallery }) => {
   const slides = Array.from(Array(SLIDE_COUNT).keys());
 
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
-  // //   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
-  // //   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
-  // //   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
-  // //   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
   const scrollTo = useCallback(
     (index) => embla && embla.scrollTo(index),
     [embla]
@@ -30,8 +25,6 @@ export const Slider = ({ gallery }) => {
   const onSelect = useCallback(() => {
     if (!embla) return;
     setSelectedIndex(embla.selectedScrollSnap());
-    // // setPrevBtnEnabled(embla.canScrollPrev())
-    // // setNextBtnEnabled(embla.canScrollNext())
   }, [embla, setSelectedIndex]);
 
   useEffect(() => {

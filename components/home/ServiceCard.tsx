@@ -1,9 +1,8 @@
 import clsx from 'clsx';
+import { urlForImage } from 'lib/sanity.image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-
-import { urlForImage } from 'lib/sanity.image';
 
 interface IProps {
   title: string;
@@ -31,8 +30,9 @@ export const ServiceCard = ({
             ? urlForImage(image).width(1200).height(1600).fit('crop').url()
             : 'https://source.unsplash.com/1080x1080/?plane'
         }
-        alt={image.alt}
-        fill
+        alt={image?.alt ? image.alt : ''}
+        width={1200}
+        height={1600}
         className="h-full bg-gray-800 object-cover object-center"
       />
       <div className="tw-transition absolute inset-0 bg-black opacity-30 group-hover:opacity-0" />

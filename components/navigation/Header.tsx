@@ -87,14 +87,6 @@ export const Header = ({ className }) => {
                                 Contact
                               </MobileNavLink>
                             </div>
-                            {/* <div className="mt-8 flex flex-col gap-4">
-                              <Button href="/faq" variant="outline">
-                                FAQs
-                              </Button>
-                              <Button variant="solid" onClick={openInquiry}>
-                                Inquire Now
-                              </Button>
-                            </div> */}
                           </Popover.Panel>
                         </>
                       )}
@@ -102,13 +94,6 @@ export const Header = ({ className }) => {
                   </>
                 )}
               </Popover>
-
-              {/* <Button href="/faq" variant="outline" className="hidden lg:block">
-                FAQs
-              </Button>
-              <Button onClick={openInquiry} className="hidden lg:block">
-                Inquire Now
-              </Button> */}
             </div>
           </Container>
         </nav>

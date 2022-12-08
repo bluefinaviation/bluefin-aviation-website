@@ -4,8 +4,6 @@ import 'keen-slider/keen-slider.min.css';
 
 import { PortableText } from '@portabletext/react';
 import { useKeenSlider } from 'keen-slider/react';
-import { urlForImage } from 'lib/sanity.image';
-import Image from 'next/image';
 
 import { Container } from '@/components/shared/Container';
 import { SectionHeading } from '@/components/shared/SectionHeading';
@@ -69,26 +67,12 @@ export const TestimonialsSection = ({ testimonialsSection }) => {
               >
                 <p className="text-lg font-semibold lg:text-2xl">{`"${testimonial.quote}"`}</p>
                 <div className="mt-8 flex items-center gap-x-2">
-                  <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-50">
-                    <Image
-                      src={
-                        testimonial?.author?.avatar?.asset?._ref
-                          ? urlForImage(testimonial?.author?.avatar)
-                              .width(192)
-                              .height(192)
-                              .fit('crop')
-                              .url()
-                          : 'https://source.unsplash.com/1080x1080/?plane'
-                      }
-                      alt={testimonial.author.avatar.alt}
-                      fill
-                      className="h-14 w-14 bg-gray-200 object-cover object-center"
-                    />
-                  </div>
                   <p>
                     <span className="font-medium text-gray-700">
                       {testimonial.author.name}
                     </span>
+                    <span> | </span>
+                    <span>{testimonial.author.role}</span>
                     <span> | </span>
                     <span>{testimonial.author.location}</span>
                   </p>

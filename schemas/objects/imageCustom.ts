@@ -4,17 +4,12 @@ export default defineType({
   name: 'imageCustom',
   title: 'Image Custom',
   type: 'image',
-  options: {
-    hotspot: true,
-  },
+  options: { hotspot: true },
   fields: [
     {
       name: 'alt',
-      title: 'Alternative Text',
+      title: 'Alternative text',
       type: 'string',
-      options: {
-        isHighlighted: true,
-      },
     },
   ],
 });
