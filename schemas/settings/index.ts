@@ -6,9 +6,7 @@ export default defineType({
   title: 'Settings',
   type: 'document',
   icon: TbSettings,
-  preview: { select: { title: 'title', subtitle: 'description' } },
-  // Uncomment below to have edits publish automatically as you type
-  // liveEdit: true,
+  liveEdit: true,
   fields: [
     defineField({
       name: 'title',
@@ -28,4 +26,10 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'description',
+    },
+  },
 });

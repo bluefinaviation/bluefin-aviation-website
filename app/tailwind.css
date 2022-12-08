@@ -8,6 +8,9 @@
   html {
     @apply scroll-smooth bg-stone-50 text-stone-900 antialiased;
   }
+  body {
+    @apply scroll-smooth;
+  }
 }
 
 @layer components {

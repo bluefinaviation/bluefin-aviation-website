@@ -21,14 +21,13 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={inter.className}>
-      <head />
-      <AnimatePresence initial={false} mode="wait">
-        <body className="bg-white text-black">
-          <Header className={clsx(segment === 'studio' && 'hidden')} />
+      <body className="bg-white text-black">
+        <Header className={clsx(segment === 'studio' && 'hidden')} />
+        <AnimatePresence initial={false} mode="wait">
           {children}
-          <Footer className={clsx(segment === 'studio' && 'hidden')} />
-        </body>
-      </AnimatePresence>
+        </AnimatePresence>
+        <Footer className={clsx(segment === 'studio' && 'hidden')} />
+      </body>
     </html>
   );
 }

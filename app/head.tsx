@@ -1,29 +1,14 @@
-import { getSettings } from 'lib/sanity.client';
+// // // import { getSettings } from 'lib/sanity.client';
+import { NextSeo } from 'next-seo';
 
 export default async function PageHead() {
-  const { title, description, ogImage } = await getSettings();
-  const ogImageTitle = ogImage?.title || 'BlueFin Aviation';
+  // //   const { title, description } = await getSettings();
 
   return (
-    <>
-      <title>{`${title} - We'll Take You There`}</title>
-      {/* <WebsiteMeta /> */}
-      <meta
-        key="description"
-        name="description"
-        content="The best solution for your aviation needs with concierge-style trip
-      support and worldwide fuel network."
-      />
-      <meta
-        property="og:image"
-        // Because OG images must have a absolute URL, we use the
-        // `VERCEL_URL` environment variable to get the deployment’s URL.
-        // More info:
-        // https://vercel.com/docs/concepts/projects/environment-variables
-        content={`${
-          process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''
-        }/api/og?${new URLSearchParams({ title: ogImageTitle })}`}
-      />
-    </>
+    <NextSeo
+      useAppDir={true}
+      title="BlueFin Aviation | We'll Take You There"
+      description="A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels."
+    />
   );
 }
