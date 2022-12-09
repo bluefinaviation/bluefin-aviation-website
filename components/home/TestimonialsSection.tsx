@@ -26,7 +26,7 @@ export const TestimonialsSection = ({ testimonialsSection }) => {
           if (mouseOver) return;
           timeout = setTimeout(() => {
             slider.next();
-          }, 3000);
+          }, 2000);
         }
         slider.on('created', () => {
           slider.container.addEventListener('mouseover', () => {
@@ -63,7 +63,7 @@ export const TestimonialsSection = ({ testimonialsSection }) => {
             {testimonialsSection.testimonials.map((testimonial) => (
               <div
                 key={testimonial._key}
-                className="keen-slider__slide mt-8 flex flex-col justify-center lg:mt-0"
+                className="keen-slider__slide mt-8 flex cursor-pointer flex-col justify-center lg:mt-0"
               >
                 <p className="text-lg font-semibold lg:text-2xl">{`"${testimonial.quote}"`}</p>
                 <div className="mt-8 flex items-center gap-x-2">
