@@ -17,6 +17,7 @@ export const homePageQuery = groq`
 	},
 	testimonialsSection,
 	partnersSection,
+	contactSection,
 	newsletterSection,
 }`;
 

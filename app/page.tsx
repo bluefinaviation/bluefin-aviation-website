@@ -1,5 +1,5 @@
+import { ContactSection } from '@/components/home/ContactSection';
 import { HeroSection } from '@/components/home/HeroSection';
-import { NewsletterSection } from '@/components/home/NewsletterSection';
 import { PartnersSection } from '@/components/home/PartnersSection';
 import { ServicesSection } from '@/components/home/ServicesSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
@@ -17,7 +17,7 @@ export default async function IndexRoute() {
         fuelService={homePageData.servicesSection.fuelService.card}
       />
       <PartnersSection partnersSection={homePageData.partnersSection} />
-      <NewsletterSection newsletterSection={homePageData.newsletterSection} />
+      <ContactSection contactSection={homePageData.contactSection} />
       <TestimonialsSection
         testimonialsSection={homePageData.testimonialsSection}
       />

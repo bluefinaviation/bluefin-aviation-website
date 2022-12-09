@@ -1,4 +1,4 @@
-import { TbHome, TbQuote } from 'react-icons/tb';
+import { TbHome } from 'react-icons/tb';
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
@@ -69,6 +69,18 @@ export default defineType({
           title: 'Partners',
           type: 'array',
           of: [{ type: 'partner' }],
+        },
+      ],
+    }),
+    defineField({
+      name: 'contactSection',
+      title: 'Contact Section',
+      type: 'object',
+      fields: [
+        {
+          name: 'section',
+          title: 'Section',
+          type: 'section',
         },
       ],
     }),
