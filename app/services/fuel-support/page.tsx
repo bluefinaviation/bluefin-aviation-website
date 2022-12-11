@@ -18,7 +18,7 @@ export default async function FuelSupportRoute() {
         </div>
       </Container>
       {fuelServicePageData.gallerySection.gallery.length !== 0 && (
-        <div className="bg-gray-100 py-8 sm:py-16 lg:py-24">
+        <div className="py-8 sm:py-16 lg:py-24">
           <Container>
             <Slider gallery={fuelServicePageData.gallerySection.gallery} />
           </Container>

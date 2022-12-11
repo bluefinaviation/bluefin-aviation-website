@@ -14,7 +14,7 @@ export default async function TripSupportRoute() {
         featuresSection={tripServicePageData.featuresSection}
       />
 
-      <div className=" py-8 sm:py-16 lg:py-24">
+      <div className="py-8 sm:py-16 lg:py-24">
         <Slider gallery={tripServicePageData.gallerySection.gallery} />
       </div>
     </PageContainer>
