@@ -63,54 +63,52 @@ export default async function ContactRoute() {
         </div>
       </Container>
 
-      <div className="bg-gray-100">
-        <Container className="py-8 sm:py-16 lg:py-24">
-          <SectionHeading>Our Offices</SectionHeading>
-          <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-y-0 sm:gap-x-12">
-            <div className="h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
-              <div className="h-full w-full rounded-lg bg-blue-900 p-3 shadow">
-                <MapContainer
-                  locations={contactPageData.locationSection?.locations}
-                />
-              </div>
-            </div>
-            <div className="w-full sm:w-1/2">
-              <FeatureList>
-                {contactPageData.locationSection.locations.map((location) => (
-                  <FeatureContainer key={location._key}>
-                    <div className="flex items-center gap-x-2">
-                      <Image
-                        src={
-                          location.country?.asset?._ref
-                            ? urlForImage(location.country)
-                                .width(96)
-                                .height(96)
-                                .fit('crop')
-                                .url()
-                            : 'https://source.unsplash.com/96x96/?flag'
-                        }
-                        alt={location.country.alt}
-                        width={96}
-                        height={96}
-                        className="h-6 w-6"
-                      />
-                      <FeatureLabel>{location.city}</FeatureLabel>
-                    </div>
-                    <dl className="mt-2 text-base text-gray-500 lg:text-lg">
-                      <div>
-                        <dt className="sr-only">Office Locations</dt>
-                        <dd className="font-medium">
-                          {location.isHq ? 'Headquarters' : 'Office'}
-                        </dd>
-                      </div>
-                    </dl>
-                  </FeatureContainer>
-                ))}
-              </FeatureList>
+      <Container className="py-8 sm:py-16 lg:py-24">
+        <SectionHeading>Our Offices</SectionHeading>
+        <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-y-0 sm:gap-x-12">
+          <div className="h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
+            <div className="h-full w-full rounded-lg bg-blue-900 p-3 shadow">
+              <MapContainer
+                locations={contactPageData.locationSection?.locations}
+              />
             </div>
           </div>
-        </Container>
-      </div>
+          <div className="w-full sm:w-1/2">
+            <FeatureList>
+              {contactPageData.locationSection.locations.map((location) => (
+                <FeatureContainer key={location._key}>
+                  <div className="flex items-center gap-x-2">
+                    <Image
+                      src={
+                        location.country?.asset?._ref
+                          ? urlForImage(location.country)
+                              .width(96)
+                              .height(96)
+                              .fit('crop')
+                              .url()
+                          : 'https://source.unsplash.com/96x96/?flag'
+                      }
+                      alt={location.country.alt}
+                      width={96}
+                      height={96}
+                      className="h-6 w-6"
+                    />
+                    <FeatureLabel>{location.city}</FeatureLabel>
+                  </div>
+                  <dl className="mt-2 text-base text-gray-500 lg:text-lg">
+                    <div>
+                      <dt className="sr-only">Office Locations</dt>
+                      <dd className="font-medium">
+                        {location.isHq ? 'Headquarters' : 'Office'}
+                      </dd>
+                    </div>
+                  </dl>
+                </FeatureContainer>
+              ))}
+            </FeatureList>
+          </div>
+        </div>
+      </Container>
     </PageContainer>
   );
 }

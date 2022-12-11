@@ -1,6 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { TbX } from 'react-icons/tb';
 
 export const VideoModal = ({ isOpen, closeModal, videoURL }) => {
   return (
@@ -30,17 +29,13 @@ export const VideoModal = ({ isOpen, closeModal, videoURL }) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="rounded-lg-2xl relative flex aspect-video w-full max-w-3xl transform items-center justify-center overflow-hidden bg-white text-left align-middle shadow transition-all">
-                <button
-                  onClick={closeModal}
-                  className="absolute top-2 right-2 rounded-full bg-slate-900 p-1"
-                >
-                  <TbX className="text-slate-50" />
-                </button>
-                <iframe
+                <video
                   src={videoURL}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="h-full w-full"
+                  width="800px"
+                  height="auto"
+                  controls
+                  autoPlay
+                  id="promo-video"
                 />
               </Dialog.Panel>
             </Transition.Child>

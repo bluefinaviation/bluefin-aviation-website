@@ -10,7 +10,7 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import { Footer } from '@/components/navigation/Footer';
 import { Header } from '@/components/navigation/Header';
 
-const inter = Inter();
+const inter = Inter({ display: 'swap', subsets: ['latin'] });
 
 export default function RootLayout({
   children,

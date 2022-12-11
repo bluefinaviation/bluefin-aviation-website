@@ -3,8 +3,6 @@ import { urlForImage } from 'lib/sanity.image';
 import Image from 'next/image';
 
 import { SectionHeading } from '@/components/shared/SectionHeading';
-import { SectionSummary } from '@/components/shared/SectionSummary';
-import { TextBody } from '@/components/shared/TextBody';
 
 export const StorySection = ({ storySection }) => {
   return (
@@ -24,22 +22,18 @@ export const StorySection = ({ storySection }) => {
             alt={storySection.section.image.alt}
             width={1200}
             height={1600}
+            priority
             className="h-96 w-full bg-gray-200 object-cover shadow lg:absolute lg:h-full lg:rounded-br-full "
           />
         </div>
       </div>
-      <div className="relative px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:px-8">
-        <div className="lg:col-start-2 lg:pl-8">
-          <div className="mx-auto max-w-prose text-base lg:ml-auto lg:mr-0 lg:max-w-lg">
-            <h1 className="sr-only">About BlueFin Aviation</h1>
-            <SectionHeading>{storySection.section.heading}</SectionHeading>
-            <SectionSummary>
-              <PortableText value={storySection.section.summary} />
-            </SectionSummary>
+      <div className="relative gap-x-32 px-3 py-6 sm:py-8 sm:px-0 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:py-10">
+        <div className="lg:col-start-2">
+          <h1 className="sr-only">About BlueFin Aviation</h1>
+          <SectionHeading>{storySection.section.heading}</SectionHeading>
 
-            <div className="prose-lg prose-gray">
-              <TextBody content={storySection.bio} />
-            </div>
+          <div className="prose-lg prose-gray max-w-prose">
+            <PortableText value={storySection.bio} />
           </div>
         </div>
       </div>

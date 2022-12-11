@@ -1,5 +1,4 @@
 import { TripFeatureSection } from '@/components/services/TripFeatureSection';
-import { Container } from '@/components/shared/Container';
 import { HeroSection } from '@/components/shared/HeroSection';
 import { PageContainer } from '@/components/shared/PageContainer';
 import { Slider } from '@/components/shared/Slider';
@@ -11,15 +10,11 @@ export default async function TripSupportRoute() {
     <PageContainer>
       <HeroSection hero={tripServicePageData.heroSection.section} />
 
-      <Container>
-        <div id="features-trip">
-          <TripFeatureSection
-            featuresSection={tripServicePageData.featuresSection}
-          />
-        </div>
-      </Container>
+      <TripFeatureSection
+        featuresSection={tripServicePageData.featuresSection}
+      />
 
-      <div className="bg-gray-100 py-8 sm:py-16 lg:py-24">
+      <div className=" py-8 sm:py-16 lg:py-24">
         <Slider gallery={tripServicePageData.gallerySection.gallery} />
       </div>
     </PageContainer>

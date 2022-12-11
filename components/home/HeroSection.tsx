@@ -29,7 +29,6 @@ export const HeroSection = ({ heroSection }) => {
         <Container>
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
             <div className="relative z-10 mx-auto max-w-2xl sm:max-w-none lg:col-span-7 lg:pt-6 xl:col-span-6">
-              <h1 className="sr-only">BlueFin Aviation</h1>
               <PageTitle>{heroSection.section.heading}</PageTitle>
               <PageSummary>
                 <PortableText value={heroSection.section.summary} />

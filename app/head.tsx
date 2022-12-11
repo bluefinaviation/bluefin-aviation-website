@@ -1,9 +1,6 @@
-// // // import { getSettings } from 'lib/sanity.client';
 import { NextSeo } from 'next-seo';
 
 export default async function PageHead() {
-  // //   const { title, description } = await getSettings();
-
   return (
     <>
       <NextSeo

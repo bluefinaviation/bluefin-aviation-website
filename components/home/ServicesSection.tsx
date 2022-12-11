@@ -41,14 +41,14 @@ export const ServicesSection = ({
         tagline={tripService.tagline}
         slug="/services/trip-support"
         image={tripService.image}
-        className="relative col-span-1 min-h-screen sm:min-h-0"
+        className="relative col-span-1"
       />
       <ServiceCard
         title={fuelService.title}
         tagline={fuelService.tagline}
         slug="/services/fuel-support"
         image={fuelService.image}
-        className="relative col-span-1 min-h-screen sm:min-h-0"
+        className="relative col-span-1"
       />
     </section>
   );

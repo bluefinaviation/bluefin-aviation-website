@@ -65,8 +65,8 @@ export const TestimonialsSection = ({ testimonialsSection }) => {
                 key={testimonial._key}
                 className="keen-slider__slide mt-8 flex cursor-pointer flex-col justify-center lg:mt-0"
               >
-                <p className="text-lg font-semibold lg:text-2xl">{`"${testimonial.quote}"`}</p>
-                <div className="mt-8 flex items-center gap-x-2">
+                <p className="text-lg font-semibold lg:text-xl">{`"${testimonial.quote}"`}</p>
+                <div className="mt-4 flex items-center gap-x-2 sm:mt-6 lg:mt-8">
                   <p>
                     <span className="font-medium text-gray-700">
                       {testimonial.author.name}

@@ -7,7 +7,7 @@ import { getAboutPage } from '@/lib/sanity.client';
 export default async function AboutRoute() {
   const [aboutPageData] = await Promise.all([getAboutPage()]);
   return (
-    <PageContainer>
+    <PageContainer className="space-y-12">
       <StorySection storySection={aboutPageData.storySection} />
       <StatsSection statsSection={aboutPageData.statsSection} />
       <TeamSection teamSection={aboutPageData.teamSection} />

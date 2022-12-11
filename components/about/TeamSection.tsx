@@ -7,15 +7,15 @@ import { SectionHeading } from '@/components/shared/SectionHeading';
 
 export const TeamSection = ({ teamSection }) => {
   return (
-    <section className="pb-8 md:pb-16 lg:pb-24">
-      <Container className="grid grid-cols-5 gap-x-12">
-        <div className="col-span-2">
+    <section className="py-8 md:py-16 lg:py-24">
+      <Container className="grid grid-cols-1 gap-12 sm:grid-cols-5">
+        <div className="sm:col-span-2">
           <SectionHeading>{teamSection.section.heading}</SectionHeading>
-          <p className="prose prose-xl prose-gray mt-4 max-w-prose sm:mt-6 lg:mt-8">
+          <div className="prose prose-xl prose-gray mt-4 max-w-prose sm:mt-6 lg:mt-8">
             <PortableText value={teamSection.section.summary} />
-          </p>
+          </div>
         </div>
-        <div className="col-span-3">
+        <div className="sm:col-span-3">
           <Image
             src={
               teamSection?.section?.image?.asset?._ref

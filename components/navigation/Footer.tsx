@@ -1,8 +1,11 @@
 'use client';
-import classNames from 'classnames';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { TbBrandInstagram, TbBrandLinkedin } from 'react-icons/tb';
+import {
+  TbBrandInstagram,
+  TbBrandLinkedin,
+  TbBrandWhatsapp,
+} from 'react-icons/tb';
 
 import { Logo } from '@/components/logos/Logo';
 import { Container } from '@/components/shared/Container';
@@ -39,23 +42,29 @@ const navigation = {
       href: 'https://www.linkedin.com/company/bluefin-aviation-services',
       icon: TbBrandLinkedin,
     },
-  ],
-  policies: [
-    { id: 1, name: 'Cookie Policy', href: '/policies/cookie-policy' },
-    { id: 2, name: 'Privacy Policy', href: '/policies/privacy-policy' },
     {
       id: 3,
-      name: 'Terms & Conditions',
-      href: '/policies/terms-and-conditions',
+      name: 'WhatsApp',
+      href: 'https://wa.me/+19548812932',
+      icon: TbBrandWhatsapp,
     },
   ],
+  //   policies: [
+  //     { id: 1, name: 'Cookie Policy', href: '/policies/cookie-policy' },
+  //     { id: 2, name: 'Privacy Policy', href: '/policies/privacy-policy' },
+  //     {
+  //       id: 3,
+  //       name: 'Terms & Conditions',
+  //       href: '/policies/terms-and-conditions',
+  //     },
+  //   ],
 };
 
 export const Footer = ({ className }) => {
   return (
     <footer className={clsx('bg-gray-900', className)}>
       <Container>
-        <div className="grid grid-cols-1 place-items-center gap-y-12 py-12 text-sm text-gray-300 sm:text-base lg:grid-cols-3 lg:gap-y-0">
+        <div className="grid grid-cols-1 place-items-center gap-y-12 py-24 text-base text-gray-300 sm:text-lg lg:grid-cols-3 lg:gap-y-0">
           <Link
             href="/"
             className="tw-transition group col-span-1 flex items-center opacity-80 hover:opacity-100"
@@ -63,7 +72,7 @@ export const Footer = ({ className }) => {
             <Logo
               darkColor="#f9fafb"
               lightColor="#f9fafb"
-              className="tw-transition w-32"
+              className="tw-transition w-32 lg:w-44"
             />
           </Link>
           <nav className="col-span-1">
@@ -89,7 +98,7 @@ export const Footer = ({ className }) => {
                     rel="noopener noreferrer"
                     className="tw-transition hover:text-gray-50"
                   >
-                    <item.icon className="h-6 w-6" />
+                    <item.icon className="h-6 w-6 lg:h-8 lg:w-8" />
                   </a>
                 </li>
               ))}
@@ -101,7 +110,7 @@ export const Footer = ({ className }) => {
           <p>
             &copy; {COMPANY_NAME} {new Date().getFullYear()}
           </p>
-          <span className="hidden lg:block">|</span>
+          {/* <span className="hidden lg:block">|</span>
           <ul className="flex gap-x-3">
             {navigation.policies.map((policy) => (
               <Link
@@ -112,7 +121,7 @@ export const Footer = ({ className }) => {
                 <li>{policy.name}</li>
               </Link>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </Container>
     </footer>
