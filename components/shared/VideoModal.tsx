@@ -1,4 +1,7 @@
+import 'plyr-react/plyr.css';
+
 import { Dialog, Transition } from '@headlessui/react';
+import Plyr from 'plyr-react';
 import { Fragment } from 'react';
 
 export const VideoModal = ({ isOpen, closeModal, videoURL }) => {
@@ -29,13 +32,15 @@ export const VideoModal = ({ isOpen, closeModal, videoURL }) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="rounded-lg-2xl relative flex aspect-video w-full max-w-3xl transform items-center justify-center overflow-hidden bg-white text-left align-middle shadow transition-all">
-                <video
-                  src={videoURL}
-                  width="800px"
-                  height="auto"
-                  controls
-                  autoPlay
-                  id="promo-video"
+                <Plyr
+                  source={{
+                    type: 'video',
+                    sources: [
+                      {
+                        src: videoURL,
+                      },
+                    ],
+                  }}
                 />
               </Dialog.Panel>
             </Transition.Child>
