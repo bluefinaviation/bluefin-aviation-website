@@ -23,18 +23,6 @@ export const HeroSection = ({ heroSection }) => {
     setIsVideoOpen(true);
   }
 
-  const videoJsOptions = {
-    techOrder: ['html5'],
-    autoplay: false,
-    controls: true,
-    sources: [
-      {
-        src: heroSection.video,
-        type: 'video/mp4',
-      },
-    ],
-  };
-
   return (
     <>
       <div className="overflow-hidden pt-10 pb-20 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-32">
