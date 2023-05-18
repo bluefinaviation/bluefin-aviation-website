@@ -1,8 +1,7 @@
+import { urlForImage } from 'lib/sanity.image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-
-import { urlForImage } from 'lib/sanity.image';
 
 export const ServiceCard = ({ title, tagline, slug, image }) => {
   return (
@@ -11,7 +10,8 @@ export const ServiceCard = ({ title, tagline, slug, image }) => {
         <Image
           src={
             image?.asset?._ref
-              ? urlForImage(image).width(1200).height(1600).fit('crop').url()
+              ? // @ts-expect-error xxx
+                urlForImage(image).width(1200).height(1600).fit('crop').url()
               : 'https://source.unsplash.com/1080x1080/?plane'
           }
           alt={image.alt}

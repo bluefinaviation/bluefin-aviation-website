@@ -1,109 +1,121 @@
 import 'server-only';
 
-import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api';
+import { createClient } from 'next-sanity';
+
+import { apiVersion, dataset, projectId, useCdn } from '@/lib/sanity.api';
 import {
-  type Post,
-  type Settings,
   aboutPageQuery,
   contactPageQuery,
   fuelServicePageQuery,
   homePageQuery,
-  indexQuery,
-  postAndMoreStoriesQuery,
-  postBySlugQuery,
-  postSlugsQuery,
+  homePageTitleQuery,
+  pagesBySlugQuery,
+  projectBySlugQuery,
   servicesPageQuery,
   settingsQuery,
   tripServicePageQuery,
-} from 'lib/sanity.queries';
-import { createClient } from 'next-sanity';
+} from '@/lib/sanity.queries';
+import type {
+  HomePagePayload,
+  PagePayload,
+  ProjectPayload,
+  SettingsPayload,
+} from '@/types/sanity';
 
 /**
  * Checks if it's safe to create a client instance, as `@sanity/client` will throw an error if `projectId` is false
  */
-const client = projectId
-  ? createClient({ projectId, dataset, apiVersion, useCdn })
-  : null;
+const sanityClient = (token?: string | null) => {
+  return projectId
+    ? createClient({ projectId, dataset, apiVersion, useCdn, token: token! })
+    : null;
+};
 
-export async function getHomePage(): Promise<any> {
-  if (client) {
-    return (await client.fetch(homePageQuery)) || {};
-  }
-  return {};
-}
-export async function getServicesPage(): Promise<any> {
-  if (client) {
-    return (await client.fetch(servicesPageQuery)) || {};
-  }
-  return {};
-}
-export async function getFuelServicePage(): Promise<any> {
-  if (client) {
-    return (await client.fetch(fuelServicePageQuery)) || {};
-  }
-  return {};
-}
-export async function getTripServicePage(): Promise<any> {
-  if (client) {
-    return (await client.fetch(tripServicePageQuery)) || {};
-  }
-  return {};
-}
-export async function getAboutPage(): Promise<any> {
-  if (client) {
-    return (await client.fetch(aboutPageQuery)) || {};
-  }
-  return {};
-}
-export async function getContactPage(): Promise<any> {
-  if (client) {
-    return (await client.fetch(contactPageQuery)) || {};
-  }
-  return {};
+export async function getHomePage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<HomePagePayload | undefined> {
+  return await sanityClient(token)?.fetch(homePageQuery);
 }
 
-export async function getSettings(): Promise<Settings> {
-  if (client) {
-    return (await client.fetch(settingsQuery)) || {};
-  }
-  return {};
+export async function getServicesPage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any> {
+  return await sanityClient(token)?.fetch(servicesPageQuery);
 }
 
-export async function getAllPosts(): Promise<Post[]> {
-  if (client) {
-    return (await client.fetch(indexQuery)) || [];
-  }
-  return [];
+export async function getTripServicePage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any> {
+  return await sanityClient(token)?.fetch(tripServicePageQuery);
 }
 
-export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
-  if (client) {
-    const slugs = (await client.fetch<string[]>(postSlugsQuery)) || [];
-    return slugs.map((slug) => ({ slug }));
-  }
-  return [];
+export async function getFuelServicePage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any> {
+  return await sanityClient(token)?.fetch(fuelServicePageQuery);
 }
 
-export async function getPostBySlug(slug: string): Promise<Post> {
-  if (client) {
-    return (await client.fetch(postBySlugQuery, { slug })) || ({} as any);
-  }
-  return {} as any;
+export async function getAboutPage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any | undefined> {
+  return await sanityClient(token)?.fetch(aboutPageQuery);
 }
 
-export async function getPostAndMoreStories(
-  slug: string,
-  token?: string | null
-): Promise<{ post: Post; morePosts: Post[] }> {
-  if (projectId) {
-    const client = createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn,
-      token: token || undefined,
-    });
-    return await client.fetch(postAndMoreStoriesQuery, { slug });
-  }
-  return { post: null, morePosts: [] };
+export async function getContactPage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any | undefined> {
+  return await sanityClient(token)?.fetch(contactPageQuery);
+}
+
+// -------------------------
+// -------------------------
+// -------------------------
+// -------------------------
+
+export async function getHomePageTitle({
+  token,
+}: {
+  token?: string | null;
+}): Promise<string | undefined> {
+  return await sanityClient(token)?.fetch(homePageTitleQuery);
+}
+
+export async function getPageBySlug({
+  slug,
+  token,
+}: {
+  slug: string;
+  token?: string | null;
+}): Promise<PagePayload | undefined> {
+  return await sanityClient(token)?.fetch(pagesBySlugQuery, { slug });
+}
+
+export async function getProjectBySlug({
+  slug,
+  token,
+}: {
+  slug: string;
+  token?: string | null;
+}): Promise<ProjectPayload | undefined> {
+  return await sanityClient(token)?.fetch(projectBySlugQuery, { slug });
+}
+
+export async function getSettings({
+  token,
+}: {
+  token?: string | null;
+}): Promise<SettingsPayload | undefined> {
+  return await sanityClient(token)?.fetch(settingsQuery);
 }

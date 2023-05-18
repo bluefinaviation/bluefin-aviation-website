@@ -1,6 +1,5 @@
-import Image from 'next/image';
-
 import { urlForImage } from 'lib/sanity.image';
+import Image from 'next/image';
 
 export const FuelFeature = ({ feature }) => {
   return (
@@ -12,7 +11,8 @@ export const FuelFeature = ({ feature }) => {
         <Image
           src={
             feature?.icon?.asset?._ref
-              ? urlForImage(feature?.icon)
+              ? // @ts-expect-error xxx
+                urlForImage(feature?.icon)
                   .width(1080)
                   .height(1080)
                   .fit('crop')

@@ -1,4 +1,5 @@
 import { defineArrayMember, defineType } from 'sanity';
+
 export default defineType({
   name: 'portableText',
   title: 'Portable Text',
@@ -12,7 +13,7 @@ export default defineType({
       marks: {
         decorators: [{ title: 'Strong', value: 'strong' }],
         annotations: [
-          defineType({
+          {
             type: 'object',
             name: 'link',
             fields: [
@@ -23,7 +24,7 @@ export default defineType({
                 validation: (rule) => rule.required(),
               },
             ],
-          }),
+          },
         ],
       },
     }),

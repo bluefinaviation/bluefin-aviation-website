@@ -10,6 +10,7 @@ export default defineType({
       name: 'city',
       title: 'City',
       type: 'string',
+      description: 'Location (city) of your business.',
     },
     {
       name: 'country',
@@ -23,16 +24,20 @@ export default defineType({
           type: 'string',
         },
       ],
+      description: 'Location (country) of your business.',
     },
     {
       name: 'isHq',
       title: 'Is HQ?',
       type: 'boolean',
+      description: 'Is this location the headquearters of your business?',
     },
     {
       name: 'address',
       title: 'Address',
       type: 'string',
+      hidden: ({ parent }) => parent?.isHq !== true,
+      description: 'Address of your headquearters.',
     },
     {
       name: 'coordinates',

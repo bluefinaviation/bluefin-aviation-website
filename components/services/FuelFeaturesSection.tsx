@@ -1,9 +1,9 @@
 import { PortableText } from '@portabletext/react';
 
+import { Container } from '@/components/global/Container';
+import { SectionHeading } from '@/components/global/SectionHeading';
+import { SectionSummary } from '@/components/global/SectionSummary';
 import { FuelFeature } from '@/components/services/FuelFeature';
-import { Container } from '@/components/shared/Container';
-import { SectionHeading } from '@/components/shared/SectionHeading';
-import { SectionSummary } from '@/components/shared/SectionSummary';
 
 export const FuelFeaturesSection = ({ featuresSection }) => {
   return (

@@ -78,7 +78,7 @@ export const MapContainer = ({ locations }) => {
           latitude={popupInfo?.coordinates.lat}
           longitude={popupInfo?.coordinates.lng}
           closeButton={false}
-          onClose={() => setPopupInfo(null)}
+          onClose={() => setPopupInfo(null!)}
           offset={[0, 5]}
         >
           {popupInfo && (

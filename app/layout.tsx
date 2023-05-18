@@ -1,33 +1,35 @@
-'use client';
+import '@/styles/globals.css';
 
-import './tailwind.css';
+// import type { PortableTextBlock } from '@portabletext/types';
+import { Inter } from 'next/font/google';
+import { ReactNode } from 'react';
 
-import { Inter } from '@next/font/google';
-import clsx from 'clsx';
-import { AnimatePresence } from 'framer-motion';
-import { useSelectedLayoutSegment } from 'next/navigation';
+// import { Footer } from '@/components/global/Footer';
+// import { Navbar } from '@/components/global/Navbar';
+// import { getSettings } from '@/lib/sanity.client';
+// import { getPreviewToken } from '@/lib/sanity.server.preview';
 
-import { Footer } from '@/components/navigation/Footer';
-import { Header } from '@/components/navigation/Header';
+const inter = Inter({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
 
-const inter = Inter({ display: 'swap', subsets: ['latin'] });
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
-  const segment = useSelectedLayoutSegment();
-
+  // const token = getPreviewToken();
+  // const settings = (await getSettings({ token })) || {
+  //   menuItems: [],
+  //   footer: [],
+  // };
   return (
-    <html lang="en" className={inter.className}>
-      <body className="bg-white text-black">
-        <Header className={clsx(segment === 'studio' && 'hidden')} />
-        <AnimatePresence initial={false} mode="wait">
-          {children}
-        </AnimatePresence>
-        <Footer className={clsx(segment === 'studio' && 'hidden')} />
-      </body>
+    <html lang="en" className={`${inter.variable} `}>
+      {/* <Navbar menuItems={settings.menuItems} /> */}
+      <body>{children}</body>
+      {/* <Footer footer={settings.footer as PortableTextBlock[]} /> */}
     </html>
   );
 }

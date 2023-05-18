@@ -2,14 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/data/*": ["data/*"],
-      "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"],
-      "@/types/*": ["types/*"],
-      "@/images/*": ["images/*"],
-      "@/pages/*": ["pages/*"]
+      "@/*": ["./*"]
     },
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -29,7 +22,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "strictNullChecks": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

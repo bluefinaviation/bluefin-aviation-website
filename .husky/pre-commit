@@ -14,4 +14,4 @@ pnpm lint ||
 
 echo '🎉 No error found: committing this now.... ✨🚀🏄‍♂️🍻'
 
-pnpx lint-staged
+pnpm dlx lint-staged
