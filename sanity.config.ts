@@ -18,6 +18,7 @@ import { previewDocumentNode } from '@/plugins/previewPane';
 import { productionUrl } from '@/plugins/productionUrl';
 import { pageStructure, singletonPlugin } from '@/plugins/settings';
 import page from '@/schemas/documents/page';
+import policy from '@/schemas/documents/policy';
 import project from '@/schemas/documents/project';
 import card from '@/schemas/objects/card';
 import contactItem from '@/schemas/objects/contactItem';
@@ -38,6 +39,8 @@ import about from '@/schemas/singletons/about';
 import contact from '@/schemas/singletons/contact';
 import fuelService from '@/schemas/singletons/fuelService';
 import home from '@/schemas/singletons/home';
+import inquiry from '@/schemas/singletons/inquiry';
+import newsletter from '@/schemas/singletons/newsletter';
 import services from '@/schemas/singletons/services';
 import settings from '@/schemas/singletons/settings';
 import tripService from '@/schemas/singletons/tripService';
@@ -49,11 +52,13 @@ export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   home.name,
   about.name,
   contact.name,
+  newsletter.name,
   page.name,
   project.name,
   services.name,
   fuelService.name,
   tripService.name,
+  inquiry.name,
 ];
 
 export default defineConfig({
@@ -68,13 +73,16 @@ export default defineConfig({
       home,
       about,
       contact,
+      newsletter,
       services,
       fuelService,
       tripService,
       settings,
+      inquiry,
       // Documents
       page,
       project,
+      policy,
       // Objects
       milestone,
       gallery,
@@ -99,8 +107,10 @@ export default defineConfig({
         home,
         about,
         contact,
+        newsletter,
         settings,
         services,
+        inquiry,
         fuelService,
         tripService,
       ]),
@@ -112,10 +122,12 @@ export default defineConfig({
       home.name,
       about.name,
       contact.name,
+      newsletter.name,
       settings.name,
       services.name,
       fuelService.name,
       tripService.name,
+      inquiry.name,
     ]),
     // Add the "Open preview" action
     productionUrl({

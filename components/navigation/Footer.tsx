@@ -1,64 +1,14 @@
+import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
-import {
-  TbBrandInstagram,
-  TbBrandLinkedin,
-  TbBrandWhatsapp,
-} from 'react-icons/tb';
 
+import { NewsletterFooterForm } from '@/components/forms/NewsletterFooterForm';
 import { Logo } from '@/components/logos/Logo';
-import { NewsletterForm } from '@/components/navigation/NewsletterForm';
+import { navigation } from '@/data/navLinks';
+import { getFooter } from '@/lib/sanity.client';
 import { COMPANY_NAME } from '@/utils/constants';
 
-const navigation = {
-  main: [
-    {
-      id: 1,
-      name: 'Services',
-      href: '/services',
-    },
-    {
-      id: 2,
-      name: 'About',
-      href: '/about',
-    },
-    {
-      id: 3,
-      name: 'Contact',
-      href: '/contact',
-    },
-  ],
-  social: [
-    {
-      id: 1,
-      name: 'Instagram',
-      href: 'https://www.instagram.com/bluefin_aviation/?hl=en',
-      icon: TbBrandInstagram,
-    },
-    {
-      id: 2,
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/company/bluefin-aviation-services',
-      icon: TbBrandLinkedin,
-    },
-    {
-      id: 3,
-      name: 'WhatsApp',
-      href: 'https://wa.me/+19548812932',
-      icon: TbBrandWhatsapp,
-    },
-  ],
-  policies: [
-    { id: 1, name: 'Cookie Policy', href: '/policies/cookie-policy' },
-    { id: 2, name: 'Privacy Policy', href: '/policies/privacy-policy' },
-    {
-      id: 3,
-      name: 'Terms & Conditions',
-      href: '/policies/terms-and-conditions',
-    },
-  ],
-};
-
-export const Footer = () => {
+export const Footer = async () => {
+  const data = await getFooter();
   return (
     <footer className="bg-gray-950" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -68,7 +18,7 @@ export const Footer = () => {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <Link
             href="/"
-            className="tw-transition group col-span-1 flex items-center opacity-80 hover:opacity-100"
+            className="tw-transition group col-span-1 flex place-content-center items-center opacity-80 hover:opacity-100 sm:place-content-start"
           >
             <Logo
               darkColor="#f9fafb"
@@ -79,29 +29,34 @@ export const Footer = () => {
 
           <ul className="col-start-3 mt-16 flex items-center justify-between xl:mt-0">
             {navigation.main.map((item) => (
-              <Link
-                href={item.href}
-                key={item.id}
-                className="tw-transition text-base text-gray-50 hover:text-gray-300 sm:text-lg"
-              >
-                <li>{item.name}</li>
-              </Link>
+              <li key={item.id}>
+                <Link
+                  href={item.href}
+                  className="tw-transition text-base text-gray-50 hover:text-gray-300 sm:text-lg"
+                >
+                  {item.name}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-10 lg:mt-12 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-base font-semibold leading-6 text-white sm:text-lg">
-              Subscribe to our newsletter
+              {data?.newsletter.section.heading}
             </h3>
-            <p className="mt-2 text-sm leading-6 text-gray-300 sm:text-base">
-              The latest news, articles, and resources, sent to your inbox
-              weekly.
-            </p>
+            <div className="mt-2 text-sm leading-6 text-gray-300 sm:text-base">
+              <PortableText value={data?.newsletter.section.summary} />
+            </div>
           </div>
-          <NewsletterForm />
+          <NewsletterFooterForm />
         </div>
-        <div className="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
+
+        <div className="mt-8 flex justify-between border-t border-white/10 pt-8 text-xs">
+          <p className="leading-5 text-gray-400 md:order-1 md:mt-0">
+            &copy; {COMPANY_NAME} {new Date().getFullYear()}
+          </p>
+
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
               <a
@@ -116,10 +71,15 @@ export const Footer = () => {
               </a>
             ))}
           </div>
-          <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">
-            &copy; {COMPANY_NAME} {new Date().getFullYear()}
-          </p>
         </div>
+
+        <ul className="mt-8 flex place-content-center gap-x-1 text-xs">
+          {data?.policies?.map((policy) => (
+            <li key={policy.id} className="text-gray-500 hover:text-gray-400">
+              <Link href={`/policies/${policy.slug}`}>{policy.title}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );

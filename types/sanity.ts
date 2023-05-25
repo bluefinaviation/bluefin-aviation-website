@@ -58,6 +58,19 @@ export interface ProjectPayload {
   title?: string;
 }
 
+export interface PolicyPayload {
+  id: string;
+  updatedAt: string;
+  title?: string;
+  slug: string;
+  content: PortableTextBlock[];
+}
+
+export interface FooterPayload {
+  policies: PolicyPayload[];
+  newsletter: any;
+}
+
 export interface SettingsPayload {
   footer?: PortableTextBlock[];
   menuItems?: MenuItem[];

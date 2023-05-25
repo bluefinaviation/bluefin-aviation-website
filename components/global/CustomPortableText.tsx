@@ -1,5 +1,6 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import type { PortableTextBlock } from '@portabletext/types';
+import Link from 'next/link';
 import { Image } from 'sanity';
 
 import { ImageCustom } from '@/components/global/ImageCustom';
@@ -21,13 +22,25 @@ export function CustomPortableText({
     marks: {
       link: ({ children, value }) => {
         return (
-          <a
-            className="underline transition hover:opacity-50"
-            href={value?.href}
-            rel="noreferrer noopener"
-          >
-            {children}
-          </a>
+          <>
+            {!value.href.startsWith('/') ? (
+              <a
+                href={value.href}
+                rel="noreferrer noopener"
+                target="_blank"
+                className="tw-transition text-blue-700 hover:text-blue-900"
+              >
+                {children}
+              </a>
+            ) : (
+              <Link
+                href={value.href}
+                className="tw-transition text-blue-700 hover:text-blue-900"
+              >
+                {children}
+              </Link>
+            )}
+          </>
         );
       },
     },

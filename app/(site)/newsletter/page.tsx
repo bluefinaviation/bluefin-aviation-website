@@ -1,24 +1,24 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { AboutPage } from '@/components/pages/about/AboutPage';
-import { AboutPagePreview } from '@/components/pages/about/AboutPagePreview';
+import { NewsletterPage } from '@/components/pages/newsletter/NewsletterPage';
+import { NewsletterPagePreview } from '@/components/pages/newsletter/NewsletterPagePreview';
 import { PreviewSuspense } from '@/components/preview/PreviewSuspense';
 import { PreviewWrapper } from '@/components/preview/PreviewWrapper';
-import { getAboutPage } from '@/lib/sanity.client';
+import { getNewsletterPage } from '@/lib/sanity.client';
 import { getPreviewToken } from '@/lib/sanity.server.preview';
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'Newsletter',
   description:
-    'The best solution for your aviation needs with concierge-style trip support and worldwide fuel network. Find out more about our story and team.',
+    'The best solution for your aviation needs with concierge-style trip support and worldwide fuel network. Join our newsletter for a monthly dose of aviation news.',
 };
 
-export default async function AboutRoute() {
+export default async function NewsletterRoute() {
   const token = getPreviewToken();
-  const data = (await getAboutPage({ token })) || {
+  const data = (await getNewsletterPage({ token })) || {
     storySection: null,
     statsSection: null,
     teamSection: null,
@@ -35,15 +35,15 @@ export default async function AboutRoute() {
           <PreviewSuspense
             fallback={
               <PreviewWrapper>
-                <AboutPage data={data} />
+                <NewsletterPage data={data} />
               </PreviewWrapper>
             }
           >
-            <AboutPagePreview token={token} />
+            <NewsletterPagePreview token={token} />
           </PreviewSuspense>
         </>
       ) : (
-        <AboutPage data={data} />
+        <NewsletterPage data={data} />
       )}
     </>
   );

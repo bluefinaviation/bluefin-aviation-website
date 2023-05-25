@@ -60,6 +60,43 @@ export const contactPageQuery = groq`
 		locationSection
 }`;
 
+export const newsletterPageQuery = groq`
+	*[_type == "newsletter"][0]{
+		formSection
+}`;
+export const inquiryPageQuery = groq`
+	*[_type == "inquiry"][0]{
+		formSection
+}`;
+
+export const footerQuery = groq`
+{
+  "policies": *[_type == "policy"]{
+    "id": _id,
+    title,
+    "slug": slug.current,
+    content,
+  },
+  "newsletter": *[_type == "home"][0]{
+    "section": newsletterSection.section,
+  }
+}
+`;
+
+export const policyBySlugQuery = groq`
+  *[_type == "policy" && slug.current == $slug][0] {
+    "id": _id,
+    "updatedAt": _updatedAt,
+    title,
+    "slug": slug.current,
+    content,
+  }
+`;
+
+// -----------
+// -----------
+// -----------
+
 export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
 `;

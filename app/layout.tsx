@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
 
+import { Toaster } from '@/components/ui/toaster';
 // import { Footer } from '@/components/global/Footer';
 // import { Navbar } from '@/components/global/Navbar';
 // import { getSettings } from '@/lib/sanity.client';
@@ -28,7 +29,10 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} `}>
       {/* <Navbar menuItems={settings.menuItems} /> */}
-      <body>{children}</body>
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
       {/* <Footer footer={settings.footer as PortableTextBlock[]} /> */}
     </html>
   );

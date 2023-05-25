@@ -2,6 +2,7 @@ import { FeatureContainer } from '@/components/contact/FeatureContainer';
 import { FeatureLabel } from '@/components/contact/FeatureLabel';
 import { FeatureList } from '@/components/contact/FeatureList';
 import { MapContainer } from '@/components/contact/MapContainer';
+import { InquiryForm } from '@/components/forms/InquiryForm';
 import { Container } from '@/components/global/Container';
 import { ImageCustom } from '@/components/global/ImageCustom';
 import { PageContainer } from '@/components/global/PageContainer';

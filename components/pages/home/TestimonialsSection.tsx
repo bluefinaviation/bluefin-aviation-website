@@ -51,7 +51,7 @@ export const TestimonialsSection = ({ testimonialsSection }) => {
       aria-label="What our customers are saying"
       className="bg-gray-100 py-20 sm:py-32"
     >
-      <Container className="grid max-w-screen-2xl grid-cols-1 lg:grid-cols-2 lg:gap-x-24">
+      <Container className="grid max-w-7xl grid-cols-1 lg:grid-cols-2 lg:gap-x-24">
         <div className="col-span-1">
           <SectionHeading>{testimonialsSection.section.heading}</SectionHeading>
           <SectionSummary>

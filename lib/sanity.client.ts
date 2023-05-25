@@ -6,18 +6,24 @@ import { apiVersion, dataset, projectId, useCdn } from '@/lib/sanity.api';
 import {
   aboutPageQuery,
   contactPageQuery,
+  footerQuery,
   fuelServicePageQuery,
   homePageQuery,
   homePageTitleQuery,
+  inquiryPageQuery,
+  newsletterPageQuery,
   pagesBySlugQuery,
+  policyBySlugQuery,
   projectBySlugQuery,
   servicesPageQuery,
   settingsQuery,
   tripServicePageQuery,
 } from '@/lib/sanity.queries';
 import type {
+  FooterPayload,
   HomePagePayload,
   PagePayload,
+  PolicyPayload,
   ProjectPayload,
   SettingsPayload,
 } from '@/types/sanity';
@@ -71,12 +77,42 @@ export async function getAboutPage({
   return await sanityClient(token)?.fetch(aboutPageQuery);
 }
 
+export async function getNewsletterPage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any | undefined> {
+  return await sanityClient(token)?.fetch(newsletterPageQuery);
+}
+
 export async function getContactPage({
   token,
 }: {
   token?: string | null;
 }): Promise<any | undefined> {
   return await sanityClient(token)?.fetch(contactPageQuery);
+}
+
+export async function getInquiryPage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any | undefined> {
+  return await sanityClient(token)?.fetch(inquiryPageQuery);
+}
+
+export async function getFooter(): Promise<FooterPayload | undefined> {
+  return await sanityClient()?.fetch(footerQuery);
+}
+
+export async function getPolicyBySlug({
+  slug,
+  token,
+}: {
+  slug: string;
+  token?: string | null;
+}): Promise<PolicyPayload | undefined> {
+  return await sanityClient(token)?.fetch(policyBySlugQuery, { slug });
 }
 
 // -------------------------

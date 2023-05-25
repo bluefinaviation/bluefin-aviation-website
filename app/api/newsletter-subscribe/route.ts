@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function PUT(request: Request) {
-  const { email } = await request.json();
+  const { firstName, lastName, email, company } = await request.json();
 
   if (!email) {
     return NextResponse.json(
@@ -22,7 +22,10 @@ export async function PUT(request: Request) {
       body: JSON.stringify({
         contacts: [
           {
+            first_name: firstName,
+            last_name: lastName,
             email: email,
+            company: company,
           },
         ],
         list_ids: [API_LIST],
