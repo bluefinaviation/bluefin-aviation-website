@@ -17,7 +17,7 @@ export const contentType = 'image/png';
 export default function Image() {
   return new ImageResponse(
     (
-      <div className="grid h-screen place-content-center place-items-center bg-gradient-to-br from-blue-700 to-cyan-500">
+      <div className="grid h-[630px] w-[1200px] place-content-center place-items-center bg-gradient-to-br from-blue-700 to-cyan-500">
         <div className="flex flex-col items-center gap-y-3 text-center">
           <Avatar className="h-24 w-24 border-2 border-blue-900 bg-white sm:h-32 sm:w-32">
             <AvatarImage
