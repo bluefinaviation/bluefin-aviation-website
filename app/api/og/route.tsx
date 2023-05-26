@@ -4,9 +4,6 @@ import { ImageResponse } from 'next/server';
 
 export const runtime = 'edge';
 const websiteUrl = 'bluefinaviation.com';
-const image = fetch(new URL('./', import.meta.url)).then((res) =>
-  res.arrayBuffer()
-);
 
 const interMedium = fetch(
   new URL('../../public/fonts/Inter-Medium.ttf', import.meta.url)
