@@ -3,74 +3,55 @@ import { ImageResponse } from 'next/server';
 // No need to install it.
 
 export const runtime = 'edge';
+const websiteUrl = 'bluefinaviation.com';
+const image = fetch(new URL('./', import.meta.url)).then((res) =>
+  res.arrayBuffer()
+);
 
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
+const interMedium = fetch(
+  new URL('../../public/fonts/Inter-Medium.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
+const interRegular = fetch(
+  new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
 
-    // ?title=<title>
-    const hasTitle = searchParams.has('title');
-    const title = hasTitle
-      ? searchParams.get('title')?.slice(0, 100)
-      : 'My default title';
-
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            backgroundColor: 'black',
-            backgroundSize: '150px 150px',
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            textAlign: 'center',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            flexWrap: 'nowrap',
-          }}
-        >
+export async function GET() {
+  const interMediumFontData = await interMedium;
+  const interRegularFontData = await interRegular;
+  return new ImageResponse(
+    (
+      <div tw="flex flex-row-reverse h-full bg-neutral-800">
+        <div tw="flex w-1/2 h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            tw="w-full h-full"
+            src={`${websiteUrl}/images/bluefin-logo.png`}
+            alt="Prism"
+          />
           <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              justifyItems: 'center',
-            }}
-          >
-            <img
-              alt="Vercel"
-              height={200}
-              src="/images/bluefin-logo.png"
-              style={{ margin: '0 30px' }}
-              width={232}
-            />
-          </div>
-          <div
-            style={{
-              fontSize: 60,
-              fontStyle: 'normal',
-              letterSpacing: '-0.025em',
-              color: 'white',
-              marginTop: 30,
-              padding: '0 120px',
-              lineHeight: 1.4,
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {title}
-          </div>
+            tw="absolute left-[-80px] top-[-30px] w-[150px] h-[120%] bg-neutral-800"
+            style={{ transform: 'rotate(12deg)' }}
+          />
         </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-      }
-    );
-  } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
-  }
+        <div tw="flex flex-col w-1/2 p-[48px] mt-auto text-white">
+          <h1 tw="text-[52px]">{`Bluefin Aviation`}</h1>
+          <p tw="text-[26px] text-neutral-400">{`We'll take you there`}</p>
+        </div>
+      </div>
+    ),
+    {
+      fonts: [
+        {
+          name: 'Inter',
+          data: interMediumFontData,
+          weight: 500,
+        },
+        {
+          name: 'Inter',
+          data: interRegularFontData,
+          weight: 400,
+        },
+      ],
+    }
+  );
 }
