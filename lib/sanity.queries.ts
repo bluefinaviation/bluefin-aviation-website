@@ -69,6 +69,12 @@ export const inquiryPageQuery = groq`
 		formSection
 }`;
 
+export const linktreePageQuery = groq`
+	*[_type == "linktree"][0]{
+		heroSection,
+    links
+}`;
+
 export const footerQuery = groq`
 {
   "policies": *[_type == "policy"]{

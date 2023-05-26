@@ -36,14 +36,13 @@ export const ContactPage = ({ data }: { data: any }) => {
                   <FeatureLabel>{contact.cta}</FeatureLabel>
                   <dl className="mt-2 break-words text-base text-gray-500 lg:text-lg">
                     <div>
-                      <dt className="sr-only">{contact.channel}</dt>
                       <a
-                        href={contact.link}
+                        href={contact.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="tw-transition font-medium hover:text-blue-700"
                       >
-                        <dd>{contact.info}</dd>
+                        <dd>{contact.label}</dd>
                       </a>
                     </div>
                   </dl>

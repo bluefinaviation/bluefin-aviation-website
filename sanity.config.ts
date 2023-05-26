@@ -1,7 +1,3 @@
-/**
- * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
- */
-
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
@@ -25,6 +21,7 @@ import contactItem from '@/schemas/objects/contactItem';
 import duration from '@/schemas/objects/duration';
 import fuelFeature from '@/schemas/objects/fuelFeature';
 import gallery from '@/schemas/objects/gallery';
+import linktreeLink from '@/schemas/objects/linktreeLink';
 import location from '@/schemas/objects/location';
 import milestone from '@/schemas/objects/milestone';
 import partner from '@/schemas/objects/partner';
@@ -40,6 +37,7 @@ import contact from '@/schemas/singletons/contact';
 import fuelService from '@/schemas/singletons/fuelService';
 import home from '@/schemas/singletons/home';
 import inquiry from '@/schemas/singletons/inquiry';
+import linktree from '@/schemas/singletons/linktree';
 import newsletter from '@/schemas/singletons/newsletter';
 import services from '@/schemas/singletons/services';
 import settings from '@/schemas/singletons/settings';
@@ -59,6 +57,7 @@ export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   fuelService.name,
   tripService.name,
   inquiry.name,
+  linktree.name,
 ];
 
 export default defineConfig({
@@ -67,7 +66,6 @@ export default defineConfig({
   dataset: dataset || '',
   title,
   schema: {
-    // If you want more content types, you can add them to this array
     types: [
       // Singletons
       home,
@@ -79,6 +77,7 @@ export default defineConfig({
       tripService,
       settings,
       inquiry,
+      linktree,
       // Documents
       page,
       project,
@@ -99,6 +98,7 @@ export default defineConfig({
       fuelFeature,
       tripFeature,
       tripSubfeature,
+      linktreeLink,
     ],
   },
   plugins: [
@@ -113,6 +113,7 @@ export default defineConfig({
         inquiry,
         fuelService,
         tripService,
+        linktree,
       ]),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
@@ -128,6 +129,7 @@ export default defineConfig({
       fuelService.name,
       tripService.name,
       inquiry.name,
+      linktree.name,
     ]),
     // Add the "Open preview" action
     productionUrl({

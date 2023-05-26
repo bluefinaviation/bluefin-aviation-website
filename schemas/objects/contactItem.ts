@@ -7,17 +7,13 @@ export default defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'channel',
-      title: 'Channel',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Phone', value: 'phone' },
-          { title: 'WhatsApp', value: 'whatsapp' },
-          { title: 'Email', value: 'email' },
-          { title: 'Address', value: 'address' },
-        ],
-      },
+      name: 'url',
+      title: 'URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
     }),
     defineField({
       name: 'cta',
@@ -25,13 +21,8 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'info',
-      title: 'Info',
-      type: 'string',
-    }),
-    defineField({
-      name: 'link',
-      title: 'Link',
+      name: 'label',
+      title: 'Label',
       type: 'string',
     }),
   ],

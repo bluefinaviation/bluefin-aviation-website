@@ -11,6 +11,7 @@ import {
   homePageQuery,
   homePageTitleQuery,
   inquiryPageQuery,
+  linktreePageQuery,
   newsletterPageQuery,
   pagesBySlugQuery,
   policyBySlugQuery,
@@ -91,6 +92,14 @@ export async function getContactPage({
   token?: string | null;
 }): Promise<any | undefined> {
   return await sanityClient(token)?.fetch(contactPageQuery);
+}
+
+export async function getLinktreePage({
+  token,
+}: {
+  token?: string | null;
+}): Promise<any | undefined> {
+  return await sanityClient(token)?.fetch(linktreePageQuery);
 }
 
 export async function getInquiryPage({
