@@ -1,44 +1,55 @@
 import { ImageResponse } from 'next/server';
+// App router includes @vercel/og.
+// No need to install it.
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-
-// Route segment config
 export const runtime = 'edge';
 
-// Image metadata
-export const alt = 'About Bluefin Aviation';
-export const size = {
-  width: 1200,
-  height: 630,
-};
-export const contentType = 'image/png';
-
-// Image generation
-export default function Image() {
+export async function GET() {
   return new ImageResponse(
     (
-      <div className="grid h-[630px] w-[1200px] place-content-center place-items-center bg-gradient-to-br from-blue-700 to-cyan-500">
-        <div className="flex flex-col items-center gap-y-3 text-center">
-          <Avatar className="h-24 w-24 border-2 border-blue-900 bg-white sm:h-32 sm:w-32">
-            <AvatarImage
-              src="/images/bluefin-logo.png"
-              alt="Bluefin Aviation"
-              className=""
-            />
-            <AvatarFallback>BF</AvatarFallback>
-          </Avatar>
-
-          <h1 className="font-gray-50 text-lg font-bold uppercase text-gray-50 sm:text-2xl">
-            About Bluefin Aviation
-          </h1>
+      // Modified based on https://tailwindui.com/components/marketing/sections/cta-sections
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'white',
+        }}
+      >
+        <div tw="bg-gray-50 flex">
+          <div tw="flex flex-col md:flex-row w-full py-12 px-4 md:items-center justify-between p-8">
+            <h2 tw="flex flex-col text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 text-left">
+              <span>Ready to dive in?</span>
+              <span tw="text-indigo-600">Start your free trial today.</span>
+            </h2>
+            <div tw="mt-8 flex md:mt-0">
+              <div tw="flex rounded-md shadow">
+                <a
+                  href="#"
+                  tw="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white"
+                >
+                  Get started
+                </a>
+              </div>
+              <div tw="ml-3 flex rounded-md shadow">
+                <a
+                  href="#"
+                  tw="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-indigo-600"
+                >
+                  Learn more
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     ),
-    // ImageResponse options
     {
-      // For convenience, we can re-use the exported opengraph-image
-      // size config to also set the ImageReponse's width and height.
-      ...size,
+      width: 1200,
+      height: 630,
     }
   );
 }
