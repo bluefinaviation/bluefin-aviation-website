@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 
+import { Analytics } from '@vercel/analytics/react';
 // import type { PortableTextBlock } from '@portabletext/types';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
@@ -32,6 +33,7 @@ export default async function RootLayout({
       <body>
         <main>{children}</main>
         <Toaster />
+        <Analytics />
       </body>
       {/* <Footer footer={settings.footer as PortableTextBlock[]} /> */}
     </html>

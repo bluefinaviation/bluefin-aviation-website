@@ -73,6 +73,9 @@ dependencies:
   '@tailwindcss/typography':
     specifier: 0.5.9
     version: 0.5.9(tailwindcss@3.3.2)
+  '@vercel/analytics':
+    specifier: ^1.0.1
+    version: 1.0.1
   '@vercel/og':
     specifier: 0.5.6
     version: 0.5.6
@@ -3042,6 +3045,10 @@ packages:
       - '@codemirror/language'
       - '@codemirror/lint'
       - '@codemirror/search'
+    dev: false
+
+  /@vercel/analytics@1.0.1:
+    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
     dev: false
 
   /@vercel/error-utils@1.0.10:
