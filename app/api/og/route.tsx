@@ -6,10 +6,10 @@ export const runtime = 'edge';
 const websiteUrl = 'bluefinaviation.com';
 
 const interMedium = fetch(
-  new URL('../../public/fonts/Inter-Medium.ttf', import.meta.url)
+  new URL('../../../public/fonts/Inter-Medium.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 const interRegular = fetch(
-  new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
+  new URL('../../../public/fonts/Inter-Regular.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export async function GET() {
