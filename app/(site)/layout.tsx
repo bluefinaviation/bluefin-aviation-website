@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     siteName: 'Bluefin Aviation',
     images: [
       {
-        url: 'https://bluefinaviation.com/og.jpg',
-        width: 1920,
-        height: 1080,
+        url: 'https://bluefinaviation.com/images/og.png',
+        width: 1200,
+        height: 630,
       },
     ],
     locale: 'en-US',
@@ -64,10 +64,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // // twitter: {
-  // //   title: 'Bluefin Aviation',
-  // //   card: 'summary_large_image',
-  // // },
+  twitter: {
+    title: 'Bluefin Aviation',
+    card: 'summary_large_image',
+  },
   icons: {
     shortcut: '/favicon.ico',
   },
