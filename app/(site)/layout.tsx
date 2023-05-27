@@ -31,6 +31,7 @@ import { getPreviewToken } from '@/lib/sanity.server.preview';
 // // }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bluefinaviation.com'),
   title: {
     default: 'Bluefin Aviation',
     template: '%s | Bluefin Aviation',
@@ -80,10 +81,6 @@ export const metadata: Metadata = {
   icons: {
     shortcut: '/favicon.ico',
   },
-  // // verification: {
-  // //   google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
-  // //   yandex: '14d2e73487fa6c71',
-  // // },
 };
 
 export default async function IndexRoute({
