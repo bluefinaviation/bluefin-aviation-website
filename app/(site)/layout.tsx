@@ -67,6 +67,15 @@ export const metadata: Metadata = {
   twitter: {
     title: 'Bluefin Aviation',
     card: 'summary_large_image',
+    description:
+      'A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels.',
+    images: [
+      {
+        url: 'https://bluefinaviation.com/images/og.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   icons: {
     shortcut: '/favicon.ico',
