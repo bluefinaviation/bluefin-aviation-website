@@ -5,16 +5,7 @@ import { ImageResponse } from 'next/server';
 export const runtime = 'edge';
 const websiteUrl = 'bluefinaviation.com';
 
-const interMedium = fetch(
-  new URL('../../../public/fonts/Inter-Medium.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-const interRegular = fetch(
-  new URL('../../../public/fonts/Inter-Regular.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
 export async function GET() {
-  const interMediumFontData = await interMedium;
-  const interRegularFontData = await interRegular;
   return new ImageResponse(
     (
       <div tw="flex flex-row-reverse h-full bg-neutral-800">
@@ -35,20 +26,6 @@ export async function GET() {
           <p tw="text-[26px] text-neutral-400">{`We'll take you there`}</p>
         </div>
       </div>
-    ),
-    {
-      fonts: [
-        {
-          name: 'Inter',
-          data: interMediumFontData,
-          weight: 500,
-        },
-        {
-          name: 'Inter',
-          data: interRegularFontData,
-          weight: 400,
-        },
-      ],
-    }
+    )
   );
 }
