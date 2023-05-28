@@ -2,7 +2,6 @@ import { FeatureContainer } from '@/components/contact/FeatureContainer';
 import { FeatureLabel } from '@/components/contact/FeatureLabel';
 import { FeatureList } from '@/components/contact/FeatureList';
 import { MapContainer } from '@/components/contact/MapContainer';
-import { InquiryForm } from '@/components/forms/InquiryForm';
 import { Container } from '@/components/global/Container';
 import { ImageCustom } from '@/components/global/ImageCustom';
 import { PageContainer } from '@/components/global/PageContainer';
@@ -36,16 +35,15 @@ export const ContactPage = ({ data }: { data: any }) => {
                 <FeatureContainer key={idx}>
                   <FeatureLabel>{contact.cta}</FeatureLabel>
                   <dl className="mt-2 break-words text-base text-gray-500 lg:text-lg">
-                    <div>
+                    <dd className="tw-transition font-medium hover:text-blue-700">
                       <a
                         href={contact.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="tw-transition font-medium hover:text-blue-700"
                       >
-                        <dd>{contact.label}</dd>
+                        {contact.label}
                       </a>
-                    </div>
+                    </dd>
                   </dl>
                 </FeatureContainer>
               ))}
@@ -78,12 +76,10 @@ export const ContactPage = ({ data }: { data: any }) => {
                     <FeatureLabel>{location.city}</FeatureLabel>
                   </div>
                   <dl className="mt-2 text-base text-gray-500 lg:text-lg">
-                    <div>
-                      <dt className="sr-only">Office Locations</dt>
-                      <dd className="font-medium">
-                        {location.isHq ? 'Headquarters' : 'Office'}
-                      </dd>
-                    </div>
+                    <dt className="sr-only">Office Locations</dt>
+                    <dd className="font-medium">
+                      {location.isHq ? 'Headquarters' : 'Office'}
+                    </dd>
                   </dl>
                 </FeatureContainer>
               ))}
