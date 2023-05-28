@@ -18,6 +18,7 @@ export const Footer = async () => {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <Link
             href="/"
+            aria-label="Bluefin Aviation Homepage"
             className="tw-transition group col-span-1 flex place-content-center items-center opacity-80 hover:opacity-100 sm:place-content-start"
           >
             <Logo
