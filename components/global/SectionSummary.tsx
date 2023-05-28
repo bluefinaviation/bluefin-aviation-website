@@ -9,7 +9,7 @@ export const SectionSummary = ({ children, className }: IProps) => {
   return (
     <div
       className={clsx(
-        'max-w-2xl text-base text-gray-500 sm:text-lg lg:text-lg',
+        'max-w-2xl text-base text-gray-700 sm:text-lg lg:text-lg',
         className
       )}
     >

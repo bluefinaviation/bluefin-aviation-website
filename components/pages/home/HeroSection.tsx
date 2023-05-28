@@ -49,7 +49,7 @@ export const HeroSection = ({ heroSection }) => {
                   <div className="flex items-center justify-center">
                     <PlayCircleIcon className="h-6 w-6 flex-none" />
                     <span className="ml-2.5">Promo Video</span>
-                  </div>{' '}
+                  </div>
                 </Button>
               </div>
             </div>
