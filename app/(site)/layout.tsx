@@ -3,6 +3,7 @@
 // // import { getSettings } from '@/lib/sanity.client';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import { Provider } from 'react-wrap-balancer';
 
 import { Footer } from '@/components/navigation/Footer';
 import { Navbar } from '@/components/navigation/Navbar';
@@ -95,17 +96,19 @@ export default async function IndexRoute({
   // // };
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <div className="flex-grow">{children}</div>
+    <Provider>
+      <div className="flex min-h-screen flex-col">
+        <Navbar />
+        <div className="flex-grow">{children}</div>
 
-      {/* {token && <PreviewBanner />}
+        {/* {token && <PreviewBanner />}
       <Navbar menuItems={settings.menuItems} />
       <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32">{children}</div>
-      <Footer footer={settings.footer as PortableTextBlock[]} /> */}
-      {/* @ts-expect-error Server Component */}
+    <Footer footer={settings.footer as PortableTextBlock[]} /> */}
+        {/* @ts-expect-error Server Component */}
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Provider>
   );
 }

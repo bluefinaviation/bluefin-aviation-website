@@ -30,11 +30,13 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} `}>
       {/* <Navbar menuItems={settings.menuItems} /> */}
+      {/* <Provider> */}
       <body>
         <main>{children}</main>
         <Toaster />
         <Analytics />
       </body>
+      {/* </Provider> */}
       {/* <Footer footer={settings.footer as PortableTextBlock[]} /> */}
     </html>
   );

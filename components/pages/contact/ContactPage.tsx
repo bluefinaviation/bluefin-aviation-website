@@ -26,6 +26,7 @@ export const ContactPage = ({ data }: { data: any }) => {
               width={1600}
               height={1200}
               className="relative aspect-[5/4] h-full rounded-lg bg-gray-200 object-cover object-center shadow"
+              priority
             />
           </div>
 

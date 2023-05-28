@@ -73,7 +73,7 @@ export const Footer = async () => {
           </div>
         </div>
 
-        <ul className="mt-8 flex place-content-center gap-x-1 text-xs">
+        <ul className="mt-8 flex place-content-center gap-x-3 text-xs">
           {data?.policies?.map((policy) => (
             <li key={policy.id} className="text-gray-500 hover:text-gray-400">
               <Link href={`/policies/${policy.slug}`}>{policy.title}</Link>

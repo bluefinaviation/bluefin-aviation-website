@@ -10,6 +10,7 @@ interface ImageCustomProps {
   height?: number;
   // // size?: string;
   className?: string;
+  priority?: boolean;
 }
 
 export const ImageCustom = ({
@@ -18,6 +19,7 @@ export const ImageCustom = ({
   width = 3500,
   height = 2000,
   className,
+  priority,
 }: ImageCustomProps) => {
   const imageUrl =
     image && urlForImage(image)?.height(height).width(width).fit('crop').url();
@@ -31,6 +33,7 @@ export const ImageCustom = ({
           width={width}
           height={height}
           src={imageUrl}
+          priority={priority}
         />
       )}
     </>
