@@ -26,12 +26,12 @@ const variantStyles = {
     blue: 'relative overflow-hidden bg-blue-600 text-white before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-black/10 active:bg-blue-600 active:text-white/80 before:transition-colors',
     white:
       'bg-white text-blue-900 hover:bg-white/90 active:bg-white/90 active:text-blue-900/70',
-    gray: 'bg-slate-800 text-white hover:bg-slate-900 active:bg-slate-800 active:text-white/80',
+    gray: 'bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-800 active:text-white/80',
   },
   outline: {
-    gray: 'border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80',
+    gray: 'border-slate-300 text-slate-700 hover:border-slate-400 active:bg-slate-100 active:text-slate-700/80',
     white:
-      'text-gray-50 border-gray-50 active:bg-gray-100 active:text-gray-700/80 hover:text-slate-900 hover:bg-gray-50',
+      'text-slate-50 border-slate-50 active:bg-slate-100 active:text-slate-700/80 hover:text-slate-900 hover:bg-slate-50',
   },
 };
 

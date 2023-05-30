@@ -24,7 +24,7 @@ export const ContactPage = ({ data }: { data: any }) => {
               alt={contactSection.section.image.alt ?? 'Plane'}
               width={1600}
               height={1200}
-              className="relative aspect-[5/4] h-full rounded-lg bg-gray-200 object-cover object-center shadow"
+              className="relative aspect-[5/4] h-full rounded-lg bg-slate-200 object-cover object-center shadow"
               priority
             />
           </div>
@@ -34,7 +34,7 @@ export const ContactPage = ({ data }: { data: any }) => {
               {contactSection?.contacts?.map((contact, idx) => (
                 <FeatureContainer key={idx}>
                   <FeatureLabel>{contact.cta}</FeatureLabel>
-                  <dl className="mt-2 break-words text-base text-gray-500 lg:text-lg">
+                  <dl className="mt-2 break-words text-base text-slate-500 lg:text-lg">
                     <dd className="tw-transition font-medium hover:text-blue-700">
                       <a
                         href={contact.url}
@@ -56,7 +56,7 @@ export const ContactPage = ({ data }: { data: any }) => {
         <SectionHeading>Our Offices</SectionHeading>
         <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-12 sm:gap-y-0">
           <div className="h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
-            <div className="h-full w-full rounded-lg bg-blue-900 p-3 shadow">
+            <div className="h-full w-full rounded-lg bg-branding p-3 shadow">
               <MapContainer locations={locationSection?.locations} />
             </div>
           </div>
@@ -75,7 +75,7 @@ export const ContactPage = ({ data }: { data: any }) => {
 
                     <FeatureLabel>{location.city}</FeatureLabel>
                   </div>
-                  <dl className="mt-2 text-base text-gray-500 lg:text-lg">
+                  <dl className="mt-2 text-base text-slate-500 lg:text-lg">
                     <dt className="sr-only">Office Locations</dt>
                     <dd className="font-medium">
                       {location.isHq ? 'Headquarters' : 'Office'}

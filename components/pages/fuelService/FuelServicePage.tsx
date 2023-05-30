@@ -14,7 +14,7 @@ export const FuelServicePage = ({ data }: { data: any }) => {
         </div>
       </Container>
       {data.gallerySection.gallery.length !== 0 && (
-        <div className="py-8 sm:py-16 lg:py-24">
+        <div className="bg-slate-100 py-8 sm:py-16 lg:py-24">
           <Container>
             <Slider gallery={data.gallerySection.gallery} />
           </Container>

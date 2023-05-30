@@ -10,7 +10,7 @@ import { COMPANY_NAME } from '@/utils/constants';
 export const Footer = async () => {
   const data = await getFooter();
   return (
-    <footer className="bg-gray-950" aria-labelledby="footer-heading">
+    <footer className="bg-slate-900" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -22,8 +22,8 @@ export const Footer = async () => {
             className="tw-transition group col-span-1 flex place-content-center items-center opacity-80 hover:opacity-100 sm:place-content-start"
           >
             <Logo
-              darkColor="#f9fafb"
-              lightColor="#f9fafb"
+              darkColor="#e2e8f0"
+              lightColor="#f8fafc"
               className="tw-transition w-32 sm:w-44"
             />
           </Link>
@@ -33,7 +33,7 @@ export const Footer = async () => {
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  className="tw-transition text-base text-gray-50 hover:text-gray-300 sm:text-lg"
+                  className="tw-transition text-base text-slate-50 hover:text-slate-300 sm:text-lg"
                 >
                   {item.name}
                 </Link>
@@ -46,7 +46,7 @@ export const Footer = async () => {
             <h3 className="text-base font-semibold leading-6 text-white sm:text-lg">
               {data?.newsletter.section.heading}
             </h3>
-            <div className="mt-2 text-sm leading-6 text-gray-300 sm:text-base">
+            <div className="mt-2 text-sm leading-6 text-slate-300 sm:text-base">
               <PortableText value={data?.newsletter.section.summary} />
             </div>
           </div>
@@ -54,7 +54,7 @@ export const Footer = async () => {
         </div>
 
         <div className="mt-8 flex justify-between border-t border-white/10 pt-8 text-xs">
-          <p className="leading-5 text-gray-400 md:order-1 md:mt-0">
+          <p className="leading-5 text-slate-400 md:order-1 md:mt-0">
             &copy; {COMPANY_NAME} {new Date().getFullYear()}
           </p>
 
@@ -65,7 +65,7 @@ export const Footer = async () => {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="tw-transition text-gray-400 hover:text-gray-300"
+                className="tw-transition text-slate-400 hover:text-slate-300"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -76,7 +76,7 @@ export const Footer = async () => {
 
         <ul className="mt-8 flex place-content-center gap-x-3 text-xs">
           {data?.policies?.map((policy) => (
-            <li key={policy.id} className="text-gray-400 hover:text-gray-300">
+            <li key={policy.id} className="text-slate-400 hover:text-slate-300">
               <Link href={`/policies/${policy.slug}`}>{policy.title}</Link>
             </li>
           ))}
@@ -239,9 +239,9 @@ export const Footer = async () => {
 
 // // // export const Footer = ({ className }) => {
 // // //   return (
-// // //     // <footer className={clsx('relative bg-gray-900', className)}>
+// // //     // <footer className={clsx('relative bg-slate-900', className)}>
 // // //     //   <Container>
-// // //     //     <div className="grid grid-cols-1 place-items-center gap-y-12 py-24 text-base text-gray-300 sm:text-lg lg:grid-cols-3 lg:gap-y-0">
+// // //     //     <div className="grid grid-cols-1 place-items-center gap-y-12 py-24 text-base text-slate-300 sm:text-lg lg:grid-cols-3 lg:gap-y-0">
 // // //     //       <Link
 // // //     //         href="/"
 // // //     //         className="tw-transition group col-span-1 flex items-center opacity-80 hover:opacity-100"
@@ -258,7 +258,7 @@ export const Footer = async () => {
 // // //     //             <Link
 // // //     //               href={item.href}
 // // //     //               key={item.id}
-// // //     //               className="tw-transition hover:text-gray-50"
+// // //     //               className="tw-transition hover:text-slate-50"
 // // //     //             >
 // // //     //               <li>{item.name}</li>
 // // //     //             </Link>
@@ -273,7 +273,7 @@ export const Footer = async () => {
 // // //     //                 href={item.href}
 // // //     //                 target="_blank"
 // // //     //                 rel="noopener noreferrer"
-// // //     //                 className="tw-transition hover:text-gray-50"
+// // //     //                 className="tw-transition hover:text-slate-50"
 // // //     //               >
 // // //     //                 <item.icon className="h-6 w-6 lg:h-8 lg:w-8" />
 // // //     //               </a>
@@ -283,7 +283,7 @@ export const Footer = async () => {
 // // //     //       </div>
 // // //     //     </div>
 
-// // //     //     <div className="flex flex-col items-center justify-center gap-x-6 gap-y-2 py-3 text-xs text-gray-500 sm:text-sm lg:flex-row">
+// // //     //     <div className="flex flex-col items-center justify-center gap-x-6 gap-y-2 py-3 text-xs text-slate-500 sm:text-sm lg:flex-row">
 // // //     //       <p>
 // // //     //         &copy; {COMPANY_NAME} {new Date().getFullYear()}
 // // //     //       </p>
@@ -293,7 +293,7 @@ export const Footer = async () => {
 // // //     //           <Link
 // // //     //             key={policy.id}
 // // //     //             href={policy.href}
-// // //     //             className="tw-transition hover:text-gray-300"
+// // //     //             className="tw-transition hover:text-slate-300"
 // // //     //           >
 // // //     //             <li>{policy.name}</li>
 // // //     //           </Link>
@@ -302,8 +302,8 @@ export const Footer = async () => {
 // // //     //     </div>
 // // //     //   </Container>
 // // //     // </footer>
-// // //     <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:px-24 xl:py-32">
-// // //       <footer className="bg-gray-900" aria-labelledby="footer-heading">
+// // //     <div className="relative isolate overflow-hidden bg-slate-900 px-6 py-24 shadow-2xl sm:px-24 xl:py-32">
+// // //       <footer className="bg-slate-900" aria-labelledby="footer-heading">
 // // //         <h2 id="footer-heading" className="sr-only">
 // // //           Footer
 // // //         </h2>
@@ -325,7 +325,7 @@ export const Footer = async () => {
 // // //                       <li key={item.name}>
 // // //                         <a
 // // //                           href={item.href}
-// // //                           className="text-sm leading-6 text-gray-300 hover:text-white"
+// // //                           className="text-sm leading-6 text-slate-300 hover:text-white"
 // // //                         >
 // // //                           {item.name}
 // // //                         </a>
@@ -342,7 +342,7 @@ export const Footer = async () => {
 // // //                       <li key={item.name}>
 // // //                         <a
 // // //                           href={item.href}
-// // //                           className="text-sm leading-6 text-gray-300 hover:text-white"
+// // //                           className="text-sm leading-6 text-slate-300 hover:text-white"
 // // //                         >
 // // //                           {item.name}
 // // //                         </a>
@@ -361,7 +361,7 @@ export const Footer = async () => {
 // // //                       <li key={item.name}>
 // // //                         <a
 // // //                           href={item.href}
-// // //                           className="text-sm leading-6 text-gray-300 hover:text-white"
+// // //                           className="text-sm leading-6 text-slate-300 hover:text-white"
 // // //                         >
 // // //                           {item.name}
 // // //                         </a>
@@ -378,7 +378,7 @@ export const Footer = async () => {
 // // //                       <li key={item.name}>
 // // //                         <a
 // // //                           href={item.href}
-// // //                           className="text-sm leading-6 text-gray-300 hover:text-white"
+// // //                           className="text-sm leading-6 text-slate-300 hover:text-white"
 // // //                         >
 // // //                           {item.name}
 // // //                         </a>
@@ -394,7 +394,7 @@ export const Footer = async () => {
 // // //               <h3 className="text-sm font-semibold leading-6 text-white">
 // // //                 Subscribe to our newsletter
 // // //               </h3>
-// // //               <p className="mt-2 text-sm leading-6 text-gray-300">
+// // //               <p className="mt-2 text-sm leading-6 text-slate-300">
 // // //                 The latest news, articles, and resources, sent to your inbox
 // // //                 weekly.
 // // //               </p>
@@ -409,7 +409,7 @@ export const Footer = async () => {
 // // //                 id="email-address"
 // // //                 autoComplete="email"
 // // //                 required
-// // //                 className="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6"
+// // //                 className="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6"
 // // //                 placeholder="Enter your email"
 // // //               />
 // // //               <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
@@ -428,14 +428,14 @@ export const Footer = async () => {
 // // //                 <a
 // // //                   key={item.name}
 // // //                   href={item.href}
-// // //                   className="text-gray-500 hover:text-gray-400"
+// // //                   className="text-slate-500 hover:text-slate-400"
 // // //                 >
 // // //                   <span className="sr-only">{item.name}</span>
 // // //                   <item.icon className="h-6 w-6" aria-hidden="true" />
 // // //                 </a>
 // // //               ))}
 // // //             </div>
-// // //             <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">
+// // //             <p className="mt-8 text-xs leading-5 text-slate-400 md:order-1 md:mt-0">
 // // //               &copy; 2020 Your Company, Inc. All rights reserved.
 // // //             </p>
 // // //           </div>
@@ -444,7 +444,7 @@ export const Footer = async () => {
 // // //       {/* <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
 // // //         Get notified when we’re launching.
 // // //       </h2>
-// // //       <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
+// // //       <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-slate-300">
 // // //         Reprehenderit ad esse et non officia in nulla. Id proident tempor
 // // //         incididunt nostrud nulla et culpa.
 // // //       </p>
@@ -463,7 +463,7 @@ export const Footer = async () => {
 // // //         />
 // // //         <button
 // // //           type="submit"
-// // //           className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+// // //           className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
 // // //         >
 // // //           Notify me
 // // //         </button>

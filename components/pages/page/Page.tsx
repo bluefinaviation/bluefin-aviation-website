@@ -16,7 +16,7 @@
 // //         {/* Body */}
 // //         {body && (
 // //           <CustomPortableText
-// //             paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
+// //             paragraphClasses="font-serif max-w-3xl text-slate-600 text-xl"
 // //             value={body}
 // //           />
 // //         )}

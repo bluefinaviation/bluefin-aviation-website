@@ -16,14 +16,14 @@ export const ServicesSection = ({
     <section
       id="services"
       aria-label="BlueFin aviation services"
-      className="grid grid-cols-1 bg-slate-900 md:grid-cols-2 lg:grid-cols-3"
+      className="grid grid-cols-1 bg-branding md:grid-cols-2 lg:grid-cols-3"
     >
       <div className="col-span-1 flex flex-col justify-between px-5 py-10 sm:p-12 md:col-span-2 lg:col-span-1">
-        <SectionHeading className="text-gray-50">
+        <SectionHeading className="text-slate-50">
           {servicesSection.heading}
         </SectionHeading>
         <div>
-          <SectionSummary className="text-gray-200">
+          <SectionSummary className="text-slate-200">
             <PortableText value={servicesSection.summary} />
           </SectionSummary>
           <Button

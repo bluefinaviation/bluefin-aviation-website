@@ -23,12 +23,12 @@ export const NavLinks = () => {
             href={href}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className="hover:delay-[0ms] relative -mx-3 -my-2 rounded-lg px-3 py-2 text-lg text-gray-700 transition-colors delay-150 hover:text-gray-900"
+            className="hover:delay-[0ms] relative -mx-3 -my-2 rounded-lg px-3 py-2 text-lg text-slate-700 transition-colors delay-150 hover:text-slate-900"
           >
             <AnimatePresence>
               {hoveredIndex === index && (
                 <motion.span
-                  className="absolute inset-0 rounded-lg bg-gray-100"
+                  className="absolute inset-0 rounded-lg bg-slate-100"
                   layoutId="hoverBackground"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { duration: 0.15 } }}

@@ -56,7 +56,7 @@ export const Slider = ({ gallery }) => {
                   alt={mediaByIndex(index).alt}
                   width={1600}
                   height={1200}
-                  className="rounded-lg bg-gray-200 object-cover object-center shadow"
+                  className="rounded-lg bg-slate-200 object-cover object-center shadow"
                 />
               </div>
             ))}

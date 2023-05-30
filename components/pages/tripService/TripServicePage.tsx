@@ -10,7 +10,7 @@ export const TripServicePage = ({ data }: { data: any }) => {
 
       <TripFeatureSection featuresSection={data.featuresSection} />
 
-      <div className="py-8 sm:py-16 lg:py-24">
+      <div className="bg-slate-100 py-8 sm:py-16 lg:py-24">
         <Slider gallery={data.gallerySection.gallery} />
       </div>
     </PageContainer>

@@ -23,7 +23,7 @@
 // //               className={`text-lg hover:text-black md:text-xl ${
 // //                 menuItem?._type === 'home'
 // //                   ? 'font-extrabold text-black'
-// //                   : 'text-gray-600'
+// //                   : 'text-slate-600'
 // //               }`}
 // //               href={href}
 // //             >
@@ -79,7 +79,7 @@ export const Navbar = () => {
                 {({ open }) => (
                   <>
                     <Popover.Button
-                      className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
+                      className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-slate-900 p-2 hover:bg-slate-200/50 hover:stroke-slate-600 active:stroke-slate-900 [&:not(:focus-visible)]:focus:outline-none"
                       aria-label="Toggle site navigation"
                     >
                       {({ open }) =>
@@ -99,7 +99,7 @@ export const Navbar = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-0 bg-gray-300/60 backdrop-blur"
+                            className="fixed inset-0 z-0 bg-slate-300/60 backdrop-blur"
                           />
                           <Popover.Panel
                             static
@@ -111,7 +111,7 @@ export const Navbar = () => {
                               y: -32,
                               transition: { duration: 0.2 },
                             }}
-                            className="rounded-lg-b-2xl absolute inset-x-0 top-0 z-0 origin-top bg-gray-50 px-6 pb-6 pt-32 shadow shadow-gray-900/20"
+                            className="rounded-lg-b-2xl absolute inset-x-0 top-0 z-0 origin-top bg-slate-50 px-6 pb-6 pt-32 shadow shadow-slate-900/20"
                           >
                             <div className="flex flex-col space-y-4">
                               <MobileNavLink href="/services">

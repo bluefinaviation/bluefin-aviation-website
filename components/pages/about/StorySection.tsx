@@ -21,7 +21,7 @@ export const StorySection = ({ storySection }: { storySection: any }) => {
             alt={storySection.section.image.alt}
             width={1200}
             height={1600}
-            className="h-96 w-full bg-gray-200 object-cover shadow lg:absolute lg:h-full lg:rounded-br-full "
+            className="h-96 w-full bg-slate-200 object-cover shadow lg:absolute lg:h-full lg:rounded-br-full "
           />
         </div>
       </div>

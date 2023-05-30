@@ -12,7 +12,7 @@ export const ServicesPage = ({ data }: { data: any }) => {
       <Container className="py-16 sm:py-24">
         <div className="text-center">
           <SectionHeading>{data.heroSection.section.heading}</SectionHeading>
-          <SectionSummary className="mx-auto">
+          <SectionSummary className="mx-auto text-slate-700">
             <PortableText value={data.heroSection.section.summary} />
           </SectionSummary>
         </div>

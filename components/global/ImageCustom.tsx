@@ -28,7 +28,7 @@ export const ImageCustom = ({
     <>
       {imageUrl && (
         <Image
-          className={clsx(className, 'bg-gray-300')}
+          className={clsx(className, 'bg-slate-300')}
           alt={alt}
           width={width}
           height={height}

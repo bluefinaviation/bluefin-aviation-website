@@ -3,15 +3,15 @@ window.__unlighthouse_payload = {
   scanMeta: {
     monitor: {
       status: 'completed',
-      timeRunning: 96,
+      timeRunning: 117,
       doneTargets: 0,
       allTargets: 0,
       donePercStr: '100',
       errorPerc: '0.00',
       timeRemaining: 0,
       pagesPerSecond: '0',
-      cpuUsage: '5.8%',
-      memoryUsage: '47.3%',
+      cpuUsage: '1.6%',
+      memoryUsage: '49.0%',
       workers: 0,
     },
     routes: 0,

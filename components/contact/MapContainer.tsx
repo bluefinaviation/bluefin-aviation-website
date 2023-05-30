@@ -45,7 +45,7 @@ export const MapContainer = ({ locations }) => {
           }}
         >
           <div className="flex cursor-pointer flex-col items-center">
-            <MapPinIcon className="tw-transition h-3 w-3 text-blue-300 hover:text-blue-400 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
+            <MapPinIcon className="tw-transition h-3 w-3 text-slate-100 hover:text-slate-300 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
           </div>
         </Marker>
       )),
@@ -86,7 +86,7 @@ export const MapContainer = ({ locations }) => {
               <div className={clsx('text-lg font-bold text-blue-900')}>
                 {popupInfo.city}
               </div>
-              <div className="text-base font-medium text-gray-700">
+              <div className="text-base font-medium text-slate-700">
                 {popupInfo.isHq ? 'Headquarters' : 'Office'}
               </div>
               {popupInfo.address && (

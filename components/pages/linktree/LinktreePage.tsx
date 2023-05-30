@@ -19,7 +19,7 @@ export const LinktreePage = ({ data }: { data: any }) => {
             <AvatarFallback>BF</AvatarFallback>
           </Avatar>
 
-          <h1 className="font-gray-50 text-lg font-bold uppercase text-gray-50 sm:text-2xl">
+          <h1 className="font-slate-50 text-lg font-bold uppercase text-slate-50 sm:text-2xl">
             Bluefin Aviation Services
           </h1>
         </div>

@@ -10,7 +10,7 @@ export const TripFeatureSection = ({ featuresSection }) => {
     <Container className="grid grid-cols-1 py-8 sm:grid-cols-2 sm:gap-x-8 sm:py-16 lg:gap-x-10 lg:py-24">
       <div className="col-span-1">
         <SectionHeading>{featuresSection.section.heading}</SectionHeading>
-        <SectionSummary>
+        <SectionSummary className="text-slate-700">
           <PortableText value={featuresSection.section.summary} />
         </SectionSummary>
       </div>

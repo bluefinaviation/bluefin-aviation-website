@@ -12,7 +12,7 @@ export const MobileNavLink = ({ children, ...props }: IProps) => {
   return (
     <Popover.Button
       as={Link}
-      className="block text-xl leading-7 tracking-tight text-gray-700"
+      className="block text-xl leading-7 tracking-tight text-slate-700"
       {...props}
     >
       {children}

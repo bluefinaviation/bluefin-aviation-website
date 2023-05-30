@@ -20,7 +20,7 @@ export const TeamSection = ({ teamSection }) => {
             alt={teamSection.section.image.alt}
             width={1600}
             height={1200}
-            className="rounded-lg bg-gray-200 object-cover shadow"
+            className="rounded-lg bg-slate-200 object-cover shadow"
           />
         </div>
       </Container>

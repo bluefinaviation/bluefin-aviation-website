@@ -20,10 +20,10 @@ export const ServiceCard = ({ title, tagline, slug, image }) => {
           className="absolute inset-0 h-full w-full rounded-lg object-cover object-center shadow"
         />
         <div className="tw-transition relative flex w-full flex-col items-start justify-end rounded-lg bg-black bg-opacity-30 p-8 shadow group-hover:bg-opacity-0 sm:p-12">
-          <p className="text-base font-medium text-gray-200 lg:text-lg">
+          <p className="text-base font-medium text-slate-200 lg:text-lg">
             {tagline}
           </p>
-          <div className="flex items-center text-3xl font-semibold text-gray-50 lg:text-4xl">
+          <div className="flex items-center text-3xl font-semibold text-slate-50 lg:text-4xl">
             <h2>{title}</h2>
             <AiOutlineArrowRight className="tw-transition ml-2 group-hover:ml-3" />
           </div>

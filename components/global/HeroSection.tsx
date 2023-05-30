@@ -38,19 +38,19 @@ export const HeroSection = ({ hero }) => {
           }
           alt={hero.image.alt}
           fill
-          className="block h-full w-full bg-gray-200 object-cover object-center shadow lg:hidden"
+          className="block h-full w-full bg-slate-200 object-cover object-center shadow lg:hidden"
         />
         <div className="absolute inset-0 bg-black opacity-50" />
       </div>
       <div aria-hidden="true" className="absolute inset-0 shadow" />
       <Container className="relative flex h-full flex-col justify-end lg:justify-center">
         <HeroTitle>{hero.heading}</HeroTitle>
-        <HeroSummary className="text-gray-100">
+        <HeroSummary className="text-slate-200">
           <PortableText value={hero.summary} />
         </HeroSummary>
         <a
           href={`#${hero._id}`}
-          className="tw-transition mt-8 text-gray-50 hover:text-gray-300"
+          className="tw-transition mt-8 text-slate-50 hover:text-slate-300"
         ></a>
       </Container>
     </div>

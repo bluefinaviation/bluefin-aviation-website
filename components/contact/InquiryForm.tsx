@@ -91,7 +91,7 @@
 // //           <div>
 // //             <label
 // //               htmlFor="first-name"
-// //               className="block text-sm font-medium text-gray-700"
+// //               className="block text-sm font-medium text-slate-700"
 // //             >
 // //               First name
 // //             </label>
@@ -101,14 +101,14 @@
 // //                 name="first-name"
 // //                 id="first-name"
 // //                 autoComplete="given-name"
-// //                 className="block w-full rounded-lg border-gray-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
+// //                 className="block w-full rounded-lg border-slate-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
 // //               />
 // //             </div>
 // //           </div>
 // //           <div>
 // //             <label
 // //               htmlFor="last-name"
-// //               className="block text-sm font-medium text-gray-700"
+// //               className="block text-sm font-medium text-slate-700"
 // //             >
 // //               Last name
 // //             </label>
@@ -118,7 +118,7 @@
 // //                 name="last-name"
 // //                 id="last-name"
 // //                 autoComplete="family-name"
-// //                 className="block w-full rounded-lg border-gray-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
+// //                 className="block w-full rounded-lg border-slate-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
 // //               />
 // //             </div>
 // //           </div>
@@ -126,7 +126,7 @@
 // //           <div className="sm:col-span-2">
 // //             <label
 // //               htmlFor="email"
-// //               className="block text-sm font-medium text-gray-700"
+// //               className="block text-sm font-medium text-slate-700"
 // //             >
 // //               Email
 // //             </label>
@@ -137,14 +137,14 @@
 // //                 type="email"
 // //                 autoComplete="email"
 // //                 placeholder="email@address.com"
-// //                 className="block w-full rounded-lg border-gray-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
+// //                 className="block w-full rounded-lg border-slate-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
 // //               />
 // //             </div>
 // //           </div>
 // //           <div className="sm:col-span-2">
 // //             <label
 // //               htmlFor="phone-number"
-// //               className="block text-sm font-medium text-gray-700"
+// //               className="block text-sm font-medium text-slate-700"
 // //             >
 // //               Phone Number
 // //             </label>
@@ -155,14 +155,14 @@
 // //                 id="phone-number"
 // //                 autoComplete="tel"
 // //                 placeholder="+1 (555) 987-6543"
-// //                 className="block w-full rounded-lg border-gray-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
+// //                 className="block w-full rounded-lg border-slate-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
 // //               />
 // //             </div>
 // //           </div>
 // //           <div className="sm:col-span-2">
 // //             <label
 // //               htmlFor="message"
-// //               className="block text-sm font-medium text-gray-700"
+// //               className="block text-sm font-medium text-slate-700"
 // //             >
 // //               Message
 // //             </label>
@@ -172,7 +172,7 @@
 // //                 name="message"
 // //                 rows={4}
 // //                 defaultValue={''}
-// //                 className="block w-full rounded-lg border-gray-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
+// //                 className="block w-full rounded-lg border-slate-300 shadow focus:border-blue-700 focus:ring-blue-700 sm:text-sm"
 // //               />
 // //             </div>
 // //           </div>
@@ -184,16 +184,16 @@
 // //                   aria-describedby="privacy-agreement"
 // //                   name="privacy"
 // //                   type="checkbox"
-// //                   className="h-4 w-4 rounded-lg border-gray-300 text-blue-700"
+// //                   className="h-4 w-4 rounded-lg border-slate-300 text-blue-700"
 // //                 />
 // //               </div>
 // //               <div className="ml-3">
-// //                 <p className="text-base text-gray-700">
+// //                 <p className="text-base text-slate-700">
 // //                   I have read and accepted the{' '}
 // //                   <Link
 // //                     href="/policies/privacy-policy"
 // //                     onClick={closeInquiry}
-// //                     className="font-medium text-gray-700 underline"
+// //                     className="font-medium text-slate-700 underline"
 // //                   >
 // //                     Privacy Policy.
 // //                   </Link>

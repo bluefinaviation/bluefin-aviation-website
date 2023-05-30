@@ -14,7 +14,7 @@ export function PolicyPage({ data }: { data: PolicyPayload }) {
     <div className="py-8 sm:py-16 lg:py-24">
       <div className="text-center ">
         <SectionHeading>{title}</SectionHeading>
-        <p className="font-medium text-gray-700">
+        <p className="font-medium text-slate-700">
           Last updated on {formattedDate}
         </p>
       </div>

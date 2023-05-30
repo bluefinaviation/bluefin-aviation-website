@@ -8,7 +8,7 @@ export const FeatureLabel = ({ children, className }: IProps) => {
   return (
     <h3
       className={clsx(
-        'text-xl font-semibold leading-6 text-gray-900 lg:text-2xl',
+        'text-xl font-semibold leading-6 text-slate-900 lg:text-2xl',
         className
       )}
     >

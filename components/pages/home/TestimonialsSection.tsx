@@ -49,7 +49,7 @@ export const TestimonialsSection = ({ testimonialsSection }) => {
     <section
       id="testimonials"
       aria-label="What our customers are saying"
-      className="bg-gray-100 py-20 sm:py-32"
+      className="bg-slate-100 py-20 sm:py-32"
     >
       <Container className="grid max-w-7xl grid-cols-1 lg:grid-cols-2 lg:gap-x-24">
         <div className="col-span-1">
@@ -68,7 +68,7 @@ export const TestimonialsSection = ({ testimonialsSection }) => {
                 <p className="text-lg font-semibold lg:text-xl">{`"${testimonial.quote}"`}</p>
                 <div className="mt-4 flex items-center gap-x-2 sm:mt-6 lg:mt-8">
                   <p>
-                    <span className="font-medium text-gray-700">
+                    <span className="font-medium text-slate-700">
                       {testimonial.author.name}
                     </span>
                     <span> | </span>

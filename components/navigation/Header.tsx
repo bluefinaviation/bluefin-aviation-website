@@ -157,7 +157,7 @@ ListItem.displayName = 'ListItem';
 // //       )}
 // //       {/* Description */}
 // //       {description && (
-// //         <div className="mt-4 font-serif text-xl text-gray-600 md:text-2xl">
+// //         <div className="mt-4 font-serif text-xl text-slate-600 md:text-2xl">
 // //           <CustomPortableText value={description} />
 // //         </div>
 // //       )}
