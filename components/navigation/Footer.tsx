@@ -10,7 +10,7 @@ import { COMPANY_NAME } from '@/utils/constants';
 export const Footer = async () => {
   const data = await getFooter();
   return (
-    <footer className="bg-slate-900" aria-labelledby="footer-heading">
+    <footer className="bg-branding" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
