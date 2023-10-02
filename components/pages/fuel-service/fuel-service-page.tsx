@@ -1,10 +1,10 @@
 import { FuelServicePagePayload } from "@/types"
 
-import { HeroSection } from "@/components/global/hero-section"
-import { PageContainer } from "@/components/global/pace-container"
-import { Container } from "@/components/global/section-container"
-import { Slider } from "@/components/global/slider"
 import { FuelFeaturesSection } from "@/components/services/fuel-features-section"
+import { HeroSection } from "@/components/shared/hero-section"
+import { PageContainer } from "@/components/shared/pace-container"
+import { Container } from "@/components/shared/section-container"
+import { Slider } from "@/components/shared/slider"
 
 export interface FuelServicePageProps {
   data: FuelServicePagePayload | null

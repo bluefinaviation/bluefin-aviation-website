@@ -1,10 +1,10 @@
 import { Feature, Section } from "@/types"
 import { PortableText } from "@portabletext/react"
 
-import { Container } from "@/components/global/section-container"
-import { SectionHeading } from "@/components/global/section-heading"
-import { SectionSummary } from "@/components/global/section-summary"
 import { TripFeature } from "@/components/services/trip-feature"
+import { Container } from "@/components/shared/section-container"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { SectionSummary } from "@/components/shared/section-summary"
 
 interface TripFeatureSectionProps {
   featuresSection: {

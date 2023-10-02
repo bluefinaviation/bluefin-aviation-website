@@ -1,10 +1,10 @@
 import { PortableText } from "@portabletext/react"
 
-import { PageContainer } from "@/components/global/pace-container"
-import { Container } from "@/components/global/section-container"
-import { SectionHeading } from "@/components/global/section-heading"
-import { SectionSummary } from "@/components/global/section-summary"
 import { ServiceCard } from "@/components/services/service-card"
+import { PageContainer } from "@/components/shared/pace-container"
+import { Container } from "@/components/shared/section-container"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { SectionSummary } from "@/components/shared/section-summary"
 
 export const ServicesPage = ({ data }: { data: any }) => {
   return (

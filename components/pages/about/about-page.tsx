@@ -1,9 +1,9 @@
 import { AboutPagePayload } from "@/types"
 
-import { PageContainer } from "@/components/global/pace-container"
 import { StatsSection } from "@/components/pages/about/stats-section"
 import { StorySection } from "@/components/pages/about/story-section"
 import { TeamSection } from "@/components/pages/about/team-section"
+import { PageContainer } from "@/components/shared/pace-container"
 
 export interface AboutPageProps {
   data: AboutPagePayload | null

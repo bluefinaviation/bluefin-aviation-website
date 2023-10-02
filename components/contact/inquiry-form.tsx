@@ -8,7 +8,7 @@
 // // import { TbShieldCheck } from 'react-icons/tb'
 // // import * as yup from 'yup'
 
-// // import { Button } from '@/components/global/Button'
+// // import { Button } from '@/components/shared/Button'
 // // import { phoneRegExp } from '@/utils/validators'
 
 // // export const InquiryForm = ({ closeInquiry }) => {

@@ -1,8 +1,8 @@
 import type { ShowcaseProject } from "@/types"
 import type { PortableTextBlock } from "@portabletext/types"
 
-import { CustomPortableText } from "@/components/global/custom-portable-text"
-import { ImageCustom } from "@/components/global/image-custom"
+import { CustomPortableText } from "@/components/shared/custom-portable-text"
+import { ImageCustom } from "@/components/shared/image-custom"
 
 interface ProjectProps {
   project: ShowcaseProject

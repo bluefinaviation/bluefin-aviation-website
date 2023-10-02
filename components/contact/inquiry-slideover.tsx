@@ -2,7 +2,7 @@
 // // import { Fragment } from 'react';
 // // import { TbX } from 'react-icons/tb';
 
-// // // // import { SectionHeading } from '@/components/global/SectionHeading';
+// // // // import { SectionHeading } from '@/components/shared/SectionHeading';
 // // import { InquiryForm } from './InquiryForm';
 
 // // export const InquirySlideOver = ({ closeInquiry, isInquiryOpen }) => {

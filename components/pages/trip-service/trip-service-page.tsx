@@ -1,9 +1,9 @@
 import { TripServicePagePayload } from "@/types"
 
-import { HeroSection } from "@/components/global/hero-section"
-import { PageContainer } from "@/components/global/pace-container"
-import { Slider } from "@/components/global/slider"
 import { TripFeatureSection } from "@/components/services/trip-feature-section"
+import { HeroSection } from "@/components/shared/hero-section"
+import { PageContainer } from "@/components/shared/pace-container"
+import { Slider } from "@/components/shared/slider"
 
 export interface TripServicePageProps {
   data: TripServicePagePayload | null

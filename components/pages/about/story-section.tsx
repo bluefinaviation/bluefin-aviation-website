@@ -2,7 +2,7 @@ import Image from "next/image"
 import { PortableText } from "@portabletext/react"
 
 import { urlForImage } from "@/lib/sanity.image"
-import { SectionHeading } from "@/components/global/section-heading"
+import { SectionHeading } from "@/components/shared/section-heading"
 
 export const StorySection = ({ storySection }: { storySection: any }) => {
   const imageUrl =

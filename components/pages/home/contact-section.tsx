@@ -6,9 +6,9 @@ import { PortableText } from "@portabletext/react"
 
 import { Button } from "@/components/ui/button"
 import { CircleBackground } from "@/components/backgrounds/circle-background"
-import { Container } from "@/components/global/section-container"
-import { SectionHeading } from "@/components/global/section-heading"
-import { SectionSummary } from "@/components/global/section-summary"
+import { Container } from "@/components/shared/section-container"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { SectionSummary } from "@/components/shared/section-summary"
 
 interface ContactSectionProps {
   contactSection: {

@@ -1,6 +1,6 @@
-// // import { CustomPortableText } from '@/components/global/CustomPortableText';
-// // import { Header } from '@/components/global/Header';
-// // import ScrollUp from '@/components/global/ScrollUp';
+// // import { CustomPortableText } from '@/components/shared/CustomPortableText';
+// // import { Header } from '@/components/shared/Header';
+// // import ScrollUp from '@/components/shared/ScrollUp';
 // // import type { PagePayload } from '@/types/sanity';
 
 // // export function Page({ data }: { data: PagePayload }) {
@@ -28,8 +28,8 @@
 // //     </div>
 // //   );
 // // }
-import React from 'react';
+import React from "react"
 
 export const Page = () => {
-  return <div>Page</div>;
-};
+  return <div>Page</div>
+}

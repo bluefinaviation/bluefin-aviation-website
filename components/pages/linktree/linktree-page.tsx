@@ -2,9 +2,9 @@ import { socials } from "@/data/socials"
 import { LinktreePagePayload } from "@/types"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { PageContainer } from "@/components/global/pace-container"
 import { LinktreeItem } from "@/components/pages/linktree/linktree-item"
 import { LinktreeSocial } from "@/components/pages/linktree/linktree-social"
+import { PageContainer } from "@/components/shared/pace-container"
 
 export interface LinktreePageProps {
   data: LinktreePagePayload | null

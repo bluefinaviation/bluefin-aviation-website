@@ -3,7 +3,7 @@ import { PortableText, PortableTextComponents } from "@portabletext/react"
 import type { PortableTextBlock } from "@portabletext/types"
 import { Image } from "sanity"
 
-import { ImageCustom } from "@/components/global/image-custom"
+import { ImageCustom } from "@/components/shared/image-custom"
 
 export function CustomPortableText({
   paragraphClasses,

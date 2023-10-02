@@ -35,7 +35,7 @@ export default async function AboutRoute() {
   )
 }
 // // import { toPlainText } from '@portabletext/react'
-// // import { SiteMeta } from 'components/global/SiteMeta'
+// // import { SiteMeta } from 'components/shared/SiteMeta'
 // // import { getHomePageTitle, getProjectBySlug } from 'lib/sanity.client'
 // // import { getPreviewToken } from 'lib/sanity.server.preview'
 

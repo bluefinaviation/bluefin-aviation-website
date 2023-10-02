@@ -2,12 +2,12 @@ import Link from "next/link"
 
 import type { HomePagePayload } from "types"
 import { resolveHref } from "@/lib/sanity.links"
-import { PageContainer } from "@/components/global/pace-container"
 import { ContactSection } from "@/components/pages/home/contact-section"
 import { HeroSection } from "@/components/pages/home/hero-section"
 import { PartnersSection } from "@/components/pages/home/partners-section"
 import { ServicesSection } from "@/components/pages/home/services-section"
 import { TestimonialsSection } from "@/components/pages/home/testimonials-section"
+import { PageContainer } from "@/components/shared/pace-container"
 
 export interface HomePageProps {
   data: HomePagePayload | null

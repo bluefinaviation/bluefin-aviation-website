@@ -4,10 +4,10 @@ import { FeatureContainer } from "@/components/contact/feature-container"
 import { FeatureLabel } from "@/components/contact/feature-label"
 import { FeatureList } from "@/components/contact/feature-list"
 import { MapContainer } from "@/components/contact/map-container"
-import { ImageCustom } from "@/components/global/image-custom"
-import { PageContainer } from "@/components/global/pace-container"
-import { Container } from "@/components/global/section-container"
-import { SectionHeading } from "@/components/global/section-heading"
+import { ImageCustom } from "@/components/shared/image-custom"
+import { PageContainer } from "@/components/shared/pace-container"
+import { Container } from "@/components/shared/section-container"
+import { SectionHeading } from "@/components/shared/section-heading"
 
 export interface ContactPageProps {
   data: ContactPagePayload | null

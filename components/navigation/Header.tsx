@@ -135,7 +135,7 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
-// // import { CustomPortableText } from '@/components/global/CustomPortableText';
+// // import { CustomPortableText } from '@/components/shared/CustomPortableText';
 
 // // interface HeaderProps {
 // //   centered?: boolean;

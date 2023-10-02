@@ -3,9 +3,9 @@ import { Section } from "@/types"
 import { PortableText } from "@portabletext/react"
 import { urlForImage } from "lib/sanity.image"
 
-import { Container } from "@/components/global/section-container"
 import { HeroSummary } from "@/components/service/hero-summary"
 import { HeroTitle } from "@/components/service/hero-title"
+import { Container } from "@/components/shared/section-container"
 
 export const HeroSection = ({ hero }: { hero: Section }) => {
   return (

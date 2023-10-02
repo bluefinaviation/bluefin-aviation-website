@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react"
 import { urlForImage } from "lib/sanity.image"
 import { Image as SanityImage } from "sanity"
 
-import { DotButton } from "@/components/global/slider-buttons"
+import { DotButton } from "@/components/shared/slider-buttons"
 
 export const Slider = ({ gallery }: { gallery: SanityImage[] }) => {
   const media = gallery.map((slide) => slide)

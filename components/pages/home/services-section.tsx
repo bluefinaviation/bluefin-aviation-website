@@ -5,9 +5,9 @@ import { Card, Section } from "@/types"
 import { PortableText } from "@portabletext/react"
 
 import { Button } from "@/components/ui/button"
-import { SectionHeading } from "@/components/global/section-heading"
-import { SectionSummary } from "@/components/global/section-summary"
 import { ServiceCard } from "@/components/pages/home/service-card"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { SectionSummary } from "@/components/shared/section-summary"
 
 interface ServicesSectionProps {
   servicesSection: Section

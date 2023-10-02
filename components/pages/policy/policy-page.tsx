@@ -2,8 +2,8 @@ import type { PolicyPagePayload } from "@/types"
 import type { PortableTextBlock } from "@portabletext/types"
 import { format } from "date-fns"
 
-import { CustomPortableText } from "@/components/global/custom-portable-text"
-import { SectionHeading } from "@/components/global/section-heading"
+import { CustomPortableText } from "@/components/shared/custom-portable-text"
+import { SectionHeading } from "@/components/shared/section-heading"
 
 export interface PolicyPageProps {
   data: PolicyPagePayload | null

@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react"
 
 import { urlForImage } from "@/lib/sanity.image"
 import { InquiryForm } from "@/components/forms/inquiry-form"
-import { SectionHeading } from "@/components/global/section-heading"
+import { SectionHeading } from "@/components/shared/section-heading"
 
 export interface InquiryPageProps {
   data: InquiryPagePayload | null

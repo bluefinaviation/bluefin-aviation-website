@@ -1,9 +1,9 @@
 // // import Link from 'next/link';
 
-// // import { CustomPortableText } from '@/components/global/CustomPortableText';
-// // import { Header } from '@/components/global/Header';
-// // import ImageBox from '@/components/global/ImageCustom';
-// // import ScrollUp from '@/components/global/ScrollUp';
+// // import { CustomPortableText } from '@/components/shared/CustomPortableText';
+// // import { Header } from '@/components/shared/Header';
+// // import ImageBox from '@/components/shared/ImageCustom';
+// // import ScrollUp from '@/components/shared/ScrollUp';
 // // import type { ProjectPayload } from '@/types/sanity';
 
 // // export function ProjectPage({ data }: { data: ProjectPayload }) {
@@ -99,7 +99,7 @@
 // // }
 
 const ProjectPage = () => {
-  return <div>ProjectPage</div>;
-};
+  return <div>ProjectPage</div>
+}
 
-export default ProjectPage;
+export default ProjectPage
