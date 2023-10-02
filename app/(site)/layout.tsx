@@ -6,8 +6,8 @@ import dynamic from "next/dynamic"
 import { draftMode } from "next/headers"
 
 import { token } from "@/lib/sanity.fetch"
-import { Footer } from "@/components/navigation/footer"
-import { Navbar } from "@/components/navigation/navbar"
+import { Footer } from "@/components/nav/footer"
+import { Navbar } from "@/components/nav/navbar"
 import { PreviewBanner } from "@/components/preview/preview-banner"
 
 export const metadata: Metadata = {

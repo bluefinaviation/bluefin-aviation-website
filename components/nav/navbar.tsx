@@ -6,8 +6,8 @@ import { Bars3Icon, ChevronUpIcon } from "@heroicons/react/24/outline"
 import { AnimatePresence, motion } from "framer-motion"
 
 import { Logo } from "@/components/logos/logo"
-import { MobileNavLink } from "@/components/navigation/mobile-nav-link"
-import { NavLinks } from "@/components/navigation/nav-links"
+import { MobileNavLink } from "@/components/nav/mobile-nav-link"
+import { NavLinks } from "@/components/nav/nav-links"
 import { Container } from "@/components/shared/section-container"
 
 export const Navbar = () => {

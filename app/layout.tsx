@@ -4,7 +4,7 @@ import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 
 import { Toaster } from "@/components/ui/toaster"
-import { Footer } from "@/components/navigation/footer"
+import { Footer } from "@/components/nav/footer"
 
 // import { Navbar } from '@/components/shared/Navbar';
 // import { getSettings } from '@/lib/sanity.client';
