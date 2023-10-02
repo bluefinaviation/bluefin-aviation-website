@@ -1,39 +1,40 @@
-'use client';
+"use client"
 
-import useEmblaCarousel from 'embla-carousel-react';
-import { urlForImage } from 'lib/sanity.image';
-import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react"
+import Image from "next/image"
+import useEmblaCarousel from "embla-carousel-react"
+import { urlForImage } from "lib/sanity.image"
+import { Image as SanityImage } from "sanity"
 
-import { DotButton } from '@/components/global/SliderButtons';
+import { DotButton } from "@/components/global/slider-buttons"
 
-export const Slider = ({ gallery }) => {
-  const media = gallery.map((slide) => slide);
-  const mediaByIndex = (index) => media[index % media.length];
-  const SLIDE_COUNT = media.length;
-  const slides = Array.from(Array(SLIDE_COUNT).keys());
+export const Slider = ({ gallery }: { gallery: SanityImage[] }) => {
+  const media = gallery.map((slide) => slide)
+  const mediaByIndex = (index: number) => media[index % media.length]
+  const SLIDE_COUNT = media.length
+  const slides = Array.from(Array(SLIDE_COUNT).keys())
 
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState([]);
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState([])
 
   const scrollTo = useCallback(
-    (index) => embla && embla.scrollTo(index),
+    (index: number) => embla && embla.scrollTo(index),
     [embla]
-  );
+  )
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap());
-  }, [embla, setSelectedIndex]);
+    if (!embla) return
+    setSelectedIndex(embla.selectedScrollSnap())
+  }, [embla, setSelectedIndex])
 
   useEffect(() => {
-    if (!embla) return;
-    onSelect();
+    if (!embla) return
+    onSelect()
     // @ts-expect-error xxx
-    setScrollSnaps(embla.scrollSnapList());
-    embla.on('select', onSelect);
-  }, [embla, setScrollSnaps, onSelect]);
+    setScrollSnaps(embla.scrollSnapList())
+    embla.on("select", onSelect)
+  }, [embla, setScrollSnaps, onSelect])
 
   return (
     <div className="mx-auto max-w-5xl px-3">
@@ -49,11 +50,11 @@ export const Slider = ({ gallery }) => {
                         urlForImage(mediaByIndex(index))
                           .width(1600)
                           .height(1200)
-                          .fit('crop')
+                          .fit("crop")
                           .url()
-                      : 'https://source.unsplash.com/1080x1080/?plane'
+                      : "https://source.unsplash.com/1080x1080/?plane"
                   }
-                  alt={mediaByIndex(index).alt}
+                  alt={mediaByIndex(index).alt as string}
                   width={1600}
                   height={1200}
                   className="rounded-lg bg-slate-200 object-cover object-center shadow"
@@ -74,5 +75,5 @@ export const Slider = ({ gallery }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}

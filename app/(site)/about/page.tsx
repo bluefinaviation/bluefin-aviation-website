@@ -1,52 +1,38 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import type { Metadata } from "next"
+import { draftMode } from "next/headers"
+import { LiveQuery } from "next-sanity/preview/live-query"
 
-import { AboutPage } from '@/components/pages/about/AboutPage';
-import { AboutPagePreview } from '@/components/pages/about/AboutPagePreview';
-import { PreviewSuspense } from '@/components/preview/PreviewSuspense';
-import { PreviewWrapper } from '@/components/preview/PreviewWrapper';
-import { getAboutPage } from '@/lib/sanity.client';
-import { getPreviewToken } from '@/lib/sanity.server.preview';
+import { getAboutPage } from "@/lib/sanity.fetch"
+import { aboutPageQuery } from "@/lib/sanity.queries"
+import { AboutPage } from "@/components/pages/about/about-page"
+import { AboutPagePreview } from "@/components/pages/about/about-page-preview"
 
-export const revalidate = 60;
+export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: "About",
   description:
-    'The best solution for your aviation needs with concierge-style trip support and worldwide fuel network. Find out more about our story and team.',
-};
+    "The best solution for your aviation needs with concierge-style trip support and worldwide fuel network. Find out more about our story and team.",
+}
 
 export default async function AboutRoute() {
-  const token = getPreviewToken();
-  const data = (await getAboutPage({ token })) || {
-    storySection: null,
-    statsSection: null,
-    teamSection: null,
-  };
-
-  if (!data && !token) {
-    notFound();
-  }
+  const data = await getAboutPage()
+  // // const data = (await getAboutPage()) || {
+  // //   storySection: null,
+  // //   statsSection: null,
+  // //   teamSection: null,
+  // // }
 
   return (
-    <>
-      {token ? (
-        <>
-          <PreviewSuspense
-            fallback={
-              <PreviewWrapper>
-                <AboutPage data={data} />
-              </PreviewWrapper>
-            }
-          >
-            <AboutPagePreview token={token} />
-          </PreviewSuspense>
-        </>
-      ) : (
-        <AboutPage data={data} />
-      )}
-    </>
-  );
+    <LiveQuery
+      enabled={draftMode().isEnabled}
+      query={aboutPageQuery}
+      initialData={data}
+      as={AboutPagePreview}
+    >
+      <AboutPage data={data} />
+    </LiveQuery>
+  )
 }
 // // import { toPlainText } from '@portabletext/react'
 // // import { SiteMeta } from 'components/global/SiteMeta'

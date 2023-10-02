@@ -1,7 +1,7 @@
-import { loadEnvConfig } from '@next/env'
-import { defineCliConfig } from 'sanity/cli'
+import { loadEnvConfig } from "@next/env"
+import { defineCliConfig } from "sanity/cli"
 
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV !== "production"
 loadEnvConfig(__dirname, dev, { info: () => null, error: console.error })
 
 // @TODO report top-level await bug

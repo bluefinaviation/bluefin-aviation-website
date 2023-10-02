@@ -1,4 +1,5 @@
-'use client';
+"use client"
+
 // // import { resolveHref } from 'lib/sanity.links';
 // // import Link from 'next/link';
 
@@ -34,20 +35,19 @@
 // //     </div>
 // //   );
 // // }
+import { useState } from "react"
+import Link from "next/link"
+import { navLinks } from "@/data/nav-links"
+import { Popover } from "@headlessui/react"
+import { Bars3Icon, ChevronUpIcon } from "@heroicons/react/24/outline"
+import clsx from "clsx"
+import { AnimatePresence, motion } from "framer-motion"
 
-import { Popover } from '@headlessui/react';
-import { Bars3Icon, ChevronUpIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
-import { useState } from 'react';
-
-import { InquirySlideOver } from '@/components/contact/InquirySlideOver';
-import { Container } from '@/components/global/Container';
-import { Logo } from '@/components/logos/Logo';
-import { MobileNavLink } from '@/components/navigation/MobileNavLink';
-import { NavLinks } from '@/components/navigation/NavLinks';
-import { navLinks } from '@/data/navLinks';
+import { InquirySlideOver } from "@/components/contact/inquiry-slideover"
+import { Container } from "@/components/global/container"
+import { Logo } from "@/components/logos/logo"
+import { MobileNavLink } from "@/components/navigation/mobile-nav-link"
+import { NavLinks } from "@/components/navigation/nav-links"
 
 export const Navbar = () => {
   // const [isInquiryOpen, setIsInquiryOpen] = useState(false);
@@ -138,5 +138,5 @@ export const Navbar = () => {
         /> */}
       </header>
     </>
-  );
-};
+  )
+}

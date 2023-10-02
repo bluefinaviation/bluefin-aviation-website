@@ -1,52 +1,33 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import type { Metadata } from "next"
+import { draftMode } from "next/headers"
+import { LiveQuery } from "next-sanity/preview/live-query"
 
-import { NewsletterPage } from '@/components/pages/newsletter/NewsletterPage';
-import { NewsletterPagePreview } from '@/components/pages/newsletter/NewsletterPagePreview';
-import { PreviewSuspense } from '@/components/preview/PreviewSuspense';
-import { PreviewWrapper } from '@/components/preview/PreviewWrapper';
-import { getNewsletterPage } from '@/lib/sanity.client';
-import { getPreviewToken } from '@/lib/sanity.server.preview';
+import { getNewsletterPage } from "@/lib/sanity.fetch"
+import { newsletterPageQuery } from "@/lib/sanity.queries"
+import { NewsletterPage } from "@/components/pages/newsletter/newsletter-page"
+import { NewsletterPagePreview } from "@/components/pages/newsletter/newsletter-page-preview"
 
-export const revalidate = 60;
+export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'Newsletter',
+  title: "Newsletter",
   description:
-    'The best solution for your aviation needs with concierge-style trip support and worldwide fuel network. Join our newsletter for a monthly dose of aviation news.',
-};
+    "The best solution for your aviation needs with concierge-style trip support and worldwide fuel network. Join our newsletter for a monthly dose of aviation news.",
+}
 
 export default async function NewsletterRoute() {
-  const token = getPreviewToken();
-  const data = (await getNewsletterPage({ token })) || {
-    storySection: null,
-    statsSection: null,
-    teamSection: null,
-  };
-
-  if (!data && !token) {
-    notFound();
-  }
+  const data = await getNewsletterPage()
 
   return (
-    <>
-      {token ? (
-        <>
-          <PreviewSuspense
-            fallback={
-              <PreviewWrapper>
-                <NewsletterPage data={data} />
-              </PreviewWrapper>
-            }
-          >
-            <NewsletterPagePreview token={token} />
-          </PreviewSuspense>
-        </>
-      ) : (
-        <NewsletterPage data={data} />
-      )}
-    </>
-  );
+    <LiveQuery
+      enabled={draftMode().isEnabled}
+      query={newsletterPageQuery}
+      initialData={data}
+      as={NewsletterPagePreview}
+    >
+      <NewsletterPage data={data} />
+    </LiveQuery>
+  )
 }
 // // import { toPlainText } from '@portabletext/react'
 // // import { SiteMeta } from 'components/global/SiteMeta'

@@ -1,40 +1,30 @@
-import { notFound } from 'next/navigation';
+import { draftMode } from "next/headers"
+import { LiveQuery } from "next-sanity/preview/live-query"
 
-import { PolicyPage } from '@/components/pages/policy/PolicyPage';
-import { PolicyPreview } from '@/components/pages/policy/PolicyPreview';
-import { PreviewSuspense } from '@/components/preview/PreviewSuspense';
-import { PreviewWrapper } from '@/components/preview/PreviewWrapper';
-import { getPolicyBySlug } from '@/lib/sanity.client';
-import { getPreviewToken } from '@/lib/sanity.server.preview';
+import { getPolicyBySlug } from "@/lib/sanity.fetch"
+import { policyBySlugQuery } from "@/lib/sanity.queries"
+import { PolicyPage } from "@/components/pages/policy/policy-page"
+import { PolicyPagePreview } from "@/components/pages/policy/policy-page-preview"
+
+export const revalidate = 60
 
 export default async function PolicySlugRoute({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string }
 }) {
-  const token = getPreviewToken();
-  const data = await getPolicyBySlug({ slug: params.slug });
-  if (!data && !token) {
-    notFound();
-  }
+  const data = await getPolicyBySlug({ slug: params.slug })
 
   return (
-    <>
-      {token ? (
-        <PreviewSuspense
-          fallback={
-            <PreviewWrapper>
-              <PolicyPage data={data!} />
-            </PreviewWrapper>
-          }
-        >
-          <PolicyPreview token={token} slug={params.slug} />
-        </PreviewSuspense>
-      ) : (
-        <PolicyPage data={data!} />
-      )}
-    </>
-  );
+    <LiveQuery
+      enabled={draftMode().isEnabled}
+      query={policyBySlugQuery}
+      initialData={data}
+      as={PolicyPagePreview}
+    >
+      <PolicyPage data={data!} />
+    </LiveQuery>
+  )
 }
 
 // // import { Page } from 'components/pages/page/Page'

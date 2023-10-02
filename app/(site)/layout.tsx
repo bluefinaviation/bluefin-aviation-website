@@ -1,59 +1,38 @@
-// // import type { PortableTextBlock } from '@portabletext/types';
-// // import { PreviewBanner } from 'components/preview/PreviewBanner';
-// // import { getSettings } from '@/lib/sanity.client';
-import type { Metadata } from 'next';
-import { ReactNode } from 'react';
-import { Provider } from 'react-wrap-balancer';
+import "@/app/globals.css"
 
-import { Footer } from '@/components/navigation/Footer';
-import { Navbar } from '@/components/navigation/Navbar';
-import { getPreviewToken } from '@/lib/sanity.server.preview';
+import { ReactNode, Suspense } from "react"
+import type { Metadata } from "next"
+import dynamic from "next/dynamic"
+import { draftMode } from "next/headers"
 
-// // import { toPlainText } from '@portabletext/react'
-// // import { SiteMeta } from 'components/global/SiteMeta'
-// // import { getHomePage, getSettings } from 'lib/sanity.client'
-// // import { getPreviewToken } from 'lib/sanity.server.preview'
-
-// // export default async function HomePageHead() {
-// //   const token = getPreviewToken()
-
-// //   const [settings, page] = await Promise.all([
-// //     getSettings({ token }),
-// //     getHomePage({ token }),
-// //   ])
-
-// //   return (
-// //     <SiteMeta
-// //       description={page?.overview ? toPlainText(page.overview) : ''}
-// //       image={settings?.ogImage}
-// //       title={page?.title}
-// //     />
-// //   )
-// // }
+import { token } from "@/lib/sanity.fetch"
+import { Footer } from "@/components/navigation/footer"
+import { Navbar } from "@/components/navigation/navbar"
+import { PreviewBanner } from "@/components/preview/preview-banner"
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bluefinaviation.com'),
+  metadataBase: new URL("https://bluefinaviation.com"),
   title: {
-    default: 'Bluefin Aviation',
-    template: '%s | Bluefin Aviation',
+    default: "Bluefin Aviation",
+    template: "%s | Bluefin Aviation",
   },
   description:
-    'A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels.',
+    "A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels.",
   openGraph: {
-    title: 'Bluefin Aviation',
+    title: "Bluefin Aviation",
     description:
-      'A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels.',
-    url: 'https://bluefinaviation.com',
-    siteName: 'Bluefin Aviation',
+      "A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels.",
+    url: "https://bluefinaviation.com",
+    siteName: "Bluefin Aviation",
     images: [
       {
-        url: 'https://bluefinaviation.com/images/og.png',
+        url: "https://bluefinaviation.com/images/og.png",
         width: 1200,
         height: 630,
       },
     ],
-    locale: 'en-US',
-    type: 'website',
+    locale: "en-US",
+    type: "website",
   },
   robots: {
     index: true,
@@ -61,54 +40,58 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   twitter: {
-    title: 'Bluefin Aviation',
-    card: 'summary_large_image',
+    title: "Bluefin Aviation",
+    card: "summary_large_image",
     description:
-      'A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels.',
+      "A total concierge-style battery of services awaits you at Bluefin Aviation. Bluefin Aviation offers top quality services for aircraft needs at all levels.",
     images: [
       {
-        url: 'https://bluefinaviation.com/images/og.png',
+        url: "https://bluefinaviation.com/images/og.png",
         width: 1200,
         height: 630,
       },
     ],
   },
   icons: {
-    shortcut: '/favicon.ico',
+    shortcut: "/favicon.ico",
   },
-};
+}
+
+const PreviewProvider = dynamic(
+  () => import("@/components/preview/preview-provider")
+)
 
 export default async function IndexRoute({
   children,
 }: {
-  children: ReactNode;
+  children: ReactNode
 }) {
-  const token = getPreviewToken();
-  // // const settings = (await getSettings({ token })) || {
-  // //   menuItems: [],
-  // //   footer: [],
-  // // };
+  const isDraftMode = draftMode().isEnabled
 
-  return (
-    <Provider>
-      <div className="flex min-h-screen flex-col">
+  const layout = (
+    <div className="flex min-h-screen flex-col bg-white text-black">
+      {isDraftMode && <PreviewBanner />}
+      <Suspense>
         <Navbar />
-        <div className="flex-grow">{children}</div>
-
-        {/* {token && <PreviewBanner />}
-      <Navbar menuItems={settings.menuItems} />
-      <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32">{children}</div>
-    <Footer footer={settings.footer as PortableTextBlock[]} /> */}
-        {/* @ts-expect-error Server Component */}
-
-        <Footer />
+      </Suspense>
+      <div>
+        <Suspense>{children}</Suspense>
       </div>
-    </Provider>
-  );
+      <Suspense>
+        <Footer />
+      </Suspense>
+    </div>
+  )
+
+  if (isDraftMode) {
+    return <PreviewProvider token={token!}>{layout}</PreviewProvider>
+  }
+
+  return layout
 }

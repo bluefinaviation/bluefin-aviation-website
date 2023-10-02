@@ -1,47 +1,30 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import type { Metadata } from "next"
+import { draftMode } from "next/headers"
+import { LiveQuery } from "next-sanity/preview/live-query"
 
-import { InquiryPage } from '@/components/pages/inquiry/InquiryPage';
-import { InquiryPagePreview } from '@/components/pages/inquiry/InquiryPagePreview';
-import { PreviewSuspense } from '@/components/preview/PreviewSuspense';
-import { PreviewWrapper } from '@/components/preview/PreviewWrapper';
-import { getInquiryPage } from '@/lib/sanity.client';
-import { getPreviewToken } from '@/lib/sanity.server.preview';
+import { getInquiryPage } from "@/lib/sanity.fetch"
+import { inquiryPageQuery } from "@/lib/sanity.queries"
+import { InquiryPage } from "@/components/pages/inquiry/inquiry-page"
+import { InquiryPagePreview } from "@/components/pages/inquiry/inquiry-page-preview"
 
-export const revalidate = 60;
+export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'Inquiry',
-  description: 'Fill our inquiry form and our team will reach out in no time.',
-};
+  title: "Inquiry",
+  description: "Fill our inquiry form and our team will reach out in no time.",
+}
 
 export default async function InquiryRoute() {
-  const token = getPreviewToken();
-  const data = (await getInquiryPage({ token })) || {
-    formSection: null,
-  };
-
-  if (!data && !token) {
-    notFound();
-  }
+  const data = await getInquiryPage()
 
   return (
-    <>
-      {token ? (
-        <>
-          <PreviewSuspense
-            fallback={
-              <PreviewWrapper>
-                <InquiryPage data={data} />
-              </PreviewWrapper>
-            }
-          >
-            <InquiryPagePreview token={token} />
-          </PreviewSuspense>
-        </>
-      ) : (
-        <InquiryPage data={data} />
-      )}
-    </>
-  );
+    <LiveQuery
+      enabled={draftMode().isEnabled}
+      query={inquiryPageQuery}
+      initialData={data}
+      as={InquiryPagePreview}
+    >
+      <InquiryPage data={data} />
+    </LiveQuery>
+  )
 }

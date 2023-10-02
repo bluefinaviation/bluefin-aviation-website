@@ -1,45 +1,52 @@
-import { notFound } from 'next/navigation';
+import { Metadata } from "next"
+import { draftMode } from "next/headers"
+import { toPlainText } from "@portabletext/react"
+import { LiveQuery } from "next-sanity/preview/live-query"
 
-import { HomePage } from '@/components/pages/home/HomePage';
-import { HomePagePreview } from '@/components/pages/home/HomePagePreview';
-import { PreviewSuspense } from '@/components/preview/PreviewSuspense';
-import { PreviewWrapper } from '@/components/preview/PreviewWrapper';
-import { getHomePage } from '@/lib/sanity.client';
-import { getPreviewToken } from '@/lib/sanity.server.preview';
+import { getHomePage } from "@/lib/sanity.fetch"
+import { homePageQuery } from "@/lib/sanity.queries"
+import { defineMetadata } from "@/lib/utils.metadata"
+import { HomePage } from "@/components/pages/home/home-page"
+import { HomePagePreview } from "@/components/pages/home/home-page-preview"
 
-export const revalidate = 60;
+// // export const runtime = "edge"
+
+// // export async function generateMetadata(): Promise<Metadata> {
+// //   const [settings, page] = await Promise.all([getSettings(), getHomePage()])
+
+// //   return defineMetadata({
+// //     description: page?.overview ? toPlainText(page.overview) : "",
+// //     image: settings?.ogImage,
+// //     title: page?.title,
+// //   })
+// // }
 
 export default async function HomeRoute() {
-  const token = getPreviewToken();
-  const data = (await getHomePage({ token })) || {
-    heroSection: {},
-    servicesSection: {},
-    partnersSection: {},
-    contactSection: {},
-    testimonialsSection: {},
-  };
+  const data = await getHomePage()
 
-  if (!data && !token) {
-    notFound();
-  }
+  // // if (!data && !draftMode().isEnabled) {
+  // //   return (
+  // //     <div className="text-center">
+  // //       You don&rsquo;t have a homepage document yet,{" "}
+  // //       <Link
+  // //         href="/studio/desk/home%7C%2Cview%3Dpreview"
+  // //         className="underline"
+  // //       >
+  // //         create one now
+  // //       </Link>
+  // //       !
+  // //     </div>
+  // //   )
+  // // }
 
   return (
-    <>
-      {token ? (
-        <>
-          <PreviewSuspense
-            fallback={
-              <PreviewWrapper>
-                <HomePage data={data} />
-              </PreviewWrapper>
-            }
-          >
-            <HomePagePreview token={token} />
-          </PreviewSuspense>
-        </>
-      ) : (
-        <HomePage data={data} />
-      )}
-    </>
-  );
+    <LiveQuery
+      enabled={draftMode().isEnabled}
+      query={homePageQuery}
+      initialData={data}
+      as={HomePagePreview}
+    >
+      <HomePage data={data} />
+    </LiveQuery>
+  )
 }

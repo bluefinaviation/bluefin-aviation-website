@@ -2,22 +2,22 @@
  * This plugin contains all the logic for setting up the singletons
  */
 
-import { apiVersion, previewSecretId } from 'lib/sanity.api'
-import { type DocumentDefinition } from 'sanity'
-import { type StructureResolver } from 'sanity/desk'
-
-import { PREVIEWABLE_DOCUMENT_TYPES } from '../sanity.config'
-import { PreviewPane } from './previewPane/PreviewPane'
+import { iframeOptions, PREVIEWABLE_DOCUMENT_TYPES } from "@/sanity.config"
+import { type DocumentDefinition } from "sanity"
+import { Iframe } from "sanity-plugin-iframe-pane"
+import { type StructureResolver } from "sanity/desk"
 
 export const singletonPlugin = (types: string[]) => {
   return {
-    name: 'singletonPlugin',
+    name: "singletonPlugin",
     document: {
       // Hide 'Singletons (such as Home)' from new document options
       // https://user-images.githubusercontent.com/81981/195728798-e0c6cf7e-d442-4e58-af3a-8cd99d7fcc28.png
+      //@ts-expect-error
       newDocumentOptions: (prev, { creationContext }) => {
-        if (creationContext.type === 'global') {
+        if (creationContext.type === "global") {
           return prev.filter(
+            //@ts-expect-error
             (templateItem) => !types.includes(templateItem.templateId)
           )
         }
@@ -25,9 +25,11 @@ export const singletonPlugin = (types: string[]) => {
         return prev
       },
       // Removes the "duplicate" action on the Singletons (such as Home)
+      //@ts-expect-error
       actions: (prev, { schemaType }) => {
         if (types.includes(schemaType)) {
-          return prev.filter(({ action }) => action !== 'duplicate')
+          //@ts-expect-error
+          return prev.filter(({ action }) => action !== "duplicate")
         }
 
         return prev
@@ -54,21 +56,15 @@ export const pageStructure = (
             .schemaType(typeDef.name)
             .documentId(typeDef.name)
             .views([
-              // @todo: consider DRYing with `plugins/previewPane/index.tsx`
               // Default form view
               S.view.form(),
               // Preview
-              ...(PREVIEWABLE_DOCUMENT_TYPES.includes(typeDef.name)
+              ...(PREVIEWABLE_DOCUMENT_TYPES.includes(typeDef.name as any)
                 ? [
                     S.view
-                      .component((props) => (
-                        <PreviewPane
-                          previewSecretId={previewSecretId}
-                          apiVersion={apiVersion}
-                          {...props}
-                        />
-                      ))
-                      .title('Preview'),
+                      .component(Iframe)
+                      .options(iframeOptions)
+                      .title("Preview"),
                   ]
                 : []),
             ])
@@ -82,7 +78,7 @@ export const pageStructure = (
     )
 
     return S.list()
-      .title('Content')
+      .title("Content")
       .items([...singletonItems, S.divider(), ...defaultListItems])
   }
 }

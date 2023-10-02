@@ -1,20 +1,28 @@
-import { PortableText } from '@portabletext/react';
-import Link from 'next/link';
+import Link from "next/link"
+import { navigation } from "@/data/nav-links"
+import { FooterPayload } from "@/types"
+import { PortableText } from "@portabletext/react"
 
-import { NewsletterFooterForm } from '@/components/forms/NewsletterFooterForm';
-import { Logo } from '@/components/logos/Logo';
-import { navigation } from '@/data/navLinks';
-import { getFooter } from '@/lib/sanity.client';
-import { COMPANY_NAME } from '@/utils/constants';
+import { COMPANY_NAME } from "@/lib/constants"
+import { getFooter } from "@/lib/sanity.fetch"
+import { NewsletterFooterForm } from "@/components/forms/newsletter-footer-form"
+import { Logo } from "@/components/logos/logo"
+
+export interface FooterProps {
+  data: FooterPayload | null
+}
 
 export const Footer = async () => {
-  const data = await getFooter();
+  const data = await getFooter()
+
+  const { newsletter = null, policies = null } = data ?? {}
+
   return (
-    <footer className="bg-branding" aria-labelledby="footer-heading">
+    <footer className="bg-slate-900" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-8 sm:pt-12 lg:px-8 lg:pt-16">
+      <div className="mx-auto max-w-7xl px-6 py-8 sm:pt-12 lg:px-8 lg:pt-16">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <Link
             href="/"
@@ -44,10 +52,10 @@ export const Footer = async () => {
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-10 lg:mt-12 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-base font-semibold leading-6 text-white sm:text-lg">
-              {data?.newsletter.section.heading}
+              {newsletter?.section.heading}
             </h3>
             <div className="mt-2 text-sm leading-6 text-slate-300 sm:text-base">
-              <PortableText value={data?.newsletter.section.summary} />
+              <PortableText value={newsletter?.section.summary!} />
             </div>
           </div>
           <NewsletterFooterForm />
@@ -75,7 +83,7 @@ export const Footer = async () => {
         </div>
 
         <ul className="mt-8 flex place-content-center gap-x-3 text-xs">
-          {data?.policies?.map((policy) => (
+          {policies?.map((policy) => (
             <li key={policy.id} className="text-slate-400 hover:text-slate-300">
               <Link href={`/policies/${policy.slug}`}>{policy.title}</Link>
             </li>
@@ -83,8 +91,8 @@ export const Footer = async () => {
         </ul>
       </div>
     </footer>
-  );
-};
+  )
+}
 // // // 'use client';
 // // // import clsx from 'clsx';
 // // // import Link from 'next/link';
