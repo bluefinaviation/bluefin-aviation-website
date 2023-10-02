@@ -32,7 +32,7 @@ export const ServiceCard = ({
           height={1600}
           className="absolute inset-0 h-full w-full rounded-lg object-cover object-center shadow"
         />
-        <div className="tw-transition relative flex w-full flex-col items-start justify-end rounded-lg bg-black bg-opacity-30 p-8 shadow group-hover:bg-opacity-0 sm:p-12">
+        <div className="tw-transition relative flex w-full flex-col items-start justify-end rounded-lg bg-black/30 p-8 shadow group-hover:bg-black sm:p-12">
           <p className="text-base font-medium text-slate-200 lg:text-lg">
             {tagline}
           </p>

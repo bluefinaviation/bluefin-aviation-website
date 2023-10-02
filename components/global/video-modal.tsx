@@ -22,7 +22,7 @@ export const VideoModal = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-black/25" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -36,7 +36,7 @@ export const VideoModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="rounded-lg-2xl relative flex aspect-video w-full max-w-3xl transform items-center justify-center overflow-hidden bg-white text-left align-middle shadow transition-all">
+              <Dialog.Panel className="rounded-lg-2xl relative flex aspect-video w-full max-w-3xl items-center justify-center overflow-hidden bg-white text-left align-middle shadow transition-all">
                 <video autoPlay loop controls className="w-[800px]">
                   <source src={videoURL} />
                 </video>
