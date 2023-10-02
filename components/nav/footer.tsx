@@ -5,8 +5,8 @@ import { PortableText } from "@portabletext/react"
 
 import { COMPANY_NAME } from "@/lib/constants"
 import { getFooter } from "@/lib/sanity.fetch"
+import { Logo } from "@/components/branding/logo"
 import { NewsletterFooterForm } from "@/components/forms/newsletter-footer-form"
-import { Logo } from "@/components/logos/logo"
 
 export interface FooterProps {
   data: FooterPayload | null
