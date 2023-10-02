@@ -6,7 +6,7 @@ import { Section, Testimonial } from "@/types"
 import { PortableText } from "@portabletext/react"
 import { useKeenSlider } from "keen-slider/react"
 
-import { Container } from "@/components/global/container"
+import { Container } from "@/components/global/section-container"
 import { SectionHeading } from "@/components/global/section-heading"
 import { SectionSummary } from "@/components/global/section-summary"
 

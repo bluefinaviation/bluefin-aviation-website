@@ -1,7 +1,7 @@
 import { FuelFeature as FuelFeatureType, Section } from "@/types"
 import { PortableText } from "@portabletext/react"
 
-import { Container } from "@/components/global/container"
+import { Container } from "@/components/global/section-container"
 import { SectionHeading } from "@/components/global/section-heading"
 import { SectionSummary } from "@/components/global/section-summary"
 import { FuelFeature } from "@/components/services/fuel-feature"

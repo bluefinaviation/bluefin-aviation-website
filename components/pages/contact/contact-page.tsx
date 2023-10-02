@@ -4,9 +4,9 @@ import { FeatureContainer } from "@/components/contact/feature-container"
 import { FeatureLabel } from "@/components/contact/feature-label"
 import { FeatureList } from "@/components/contact/feature-list"
 import { MapContainer } from "@/components/contact/map-container"
-import { Container } from "@/components/global/container"
 import { ImageCustom } from "@/components/global/image-custom"
 import { PageContainer } from "@/components/global/pace-container"
+import { Container } from "@/components/global/section-container"
 import { SectionHeading } from "@/components/global/section-heading"
 
 export interface ContactPageProps {

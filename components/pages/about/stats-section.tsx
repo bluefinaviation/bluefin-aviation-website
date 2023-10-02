@@ -1,4 +1,4 @@
-import { Container } from "@/components/global/container"
+import { Container } from "@/components/global/section-container"
 import { StatsCard } from "@/components/pages/about/stats-card"
 import { StatsList } from "@/components/pages/about/stats-list"
 

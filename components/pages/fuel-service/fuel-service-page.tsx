@@ -1,8 +1,8 @@
 import { FuelServicePagePayload } from "@/types"
 
-import { Container } from "@/components/global/container"
 import { HeroSection } from "@/components/global/hero-section"
 import { PageContainer } from "@/components/global/pace-container"
+import { Container } from "@/components/global/section-container"
 import { Slider } from "@/components/global/slider"
 import { FuelFeaturesSection } from "@/components/services/fuel-features-section"
 

@@ -1,7 +1,7 @@
 import { PortableText } from "@portabletext/react"
 
-import { Container } from "@/components/global/container"
 import { PageContainer } from "@/components/global/pace-container"
+import { Container } from "@/components/global/section-container"
 import { SectionHeading } from "@/components/global/section-heading"
 import { SectionSummary } from "@/components/global/section-summary"
 import { ServiceCard } from "@/components/services/service-card"

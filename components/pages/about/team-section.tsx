@@ -1,8 +1,8 @@
 import { Section } from "@/types"
 import { PortableText } from "@portabletext/react"
 
-import { Container } from "@/components/global/container"
 import { ImageCustom } from "@/components/global/image-custom"
+import { Container } from "@/components/global/section-container"
 import { SectionHeading } from "@/components/global/section-heading"
 
 interface TeamSectionProps {

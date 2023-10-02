@@ -9,9 +9,9 @@ import { TbBrandWhatsapp } from "react-icons/tb"
 
 import { Button } from "@/components/ui/button"
 import { BackgroundIllustration } from "@/components/backgrounds/background-illustration"
-import { Container } from "@/components/global/container"
 import { PageSummary } from "@/components/global/page-summary"
 import { PageTitle } from "@/components/global/page-title"
+import { Container } from "@/components/global/section-container"
 import { VideoModal } from "@/components/global/video-modal"
 
 interface HeroSectionProps {
