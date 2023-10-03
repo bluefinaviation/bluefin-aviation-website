@@ -37,7 +37,7 @@ export const ContactSection = ({ contactSection }: any) => {
 
         <div>
           <Button variant="outline-light-foreground" className="mt-5">
-            <Link href="/contact">Get in Touch</Link>
+            <Link href="/inquiry">Get in Touch</Link>
           </Button>
         </div>
       </Container>
