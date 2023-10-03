@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
-import { notFound } from "next/navigation"
 
 import { getServicesPage } from "@/lib/sanity.fetch"
 import { ServicesPage } from "@/components/pages/services/services-page"
 
 // // export const runtime = "edge"
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: "Services",

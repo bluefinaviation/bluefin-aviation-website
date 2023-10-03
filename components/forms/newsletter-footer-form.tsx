@@ -85,6 +85,7 @@ export const NewsletterFooterForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
+        id="newsletter-footer"
         className="relative mt-6 flex flex-col sm:max-w-md lg:mt-0"
       >
         <div className="flex gap-x-3">
