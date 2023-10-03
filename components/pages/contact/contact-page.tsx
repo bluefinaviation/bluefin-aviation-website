@@ -27,12 +27,12 @@ export const ContactPage = ({ data }: ContactPageProps) => {
           <div className="relative col-span-1 h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
             <ImageCustom
               image={contactSection?.section.image}
-              // @ts-expect-error
-              alt={contactSection?.section?.image?.alt ?? "Plane"}
-              width={1600}
-              height={1200}
-              className="relative aspect-[5/4] h-full rounded-lg bg-slate-200 object-cover object-center shadow"
+              alt={(contactSection?.section?.image?.alt as string) ?? "Plane"}
+              width={1920}
+              height={1280}
               priority
+              sizes="(min-width: 1360px) 604px, (min-width: 640px) 45.71vw, calc(100vw - 24px)"
+              className="relative h-full rounded-lg bg-slate-200 object-cover object-center shadow"
             />
           </div>
 

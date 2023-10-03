@@ -14,7 +14,7 @@ export const HeroSection = ({ hero }: { hero: Section }) => {
         <Image
           src={
             hero?.image?.asset?._ref
-              ? // @ts-expect-error xxx
+              ? // @ts-expect-error
                 urlForImage(hero.image)
                   .width(1920)
                   .height(1080)
@@ -23,13 +23,15 @@ export const HeroSection = ({ hero }: { hero: Section }) => {
               : "https://source.unsplash.com/1080x1080/?plane"
           }
           alt={hero?.image?.alt as string}
-          fill
+          width={1920}
+          height={1080}
+          priority
           className="hidden h-full w-full object-cover object-center shadow lg:block"
         />
         <Image
           src={
             hero?.image?.asset?._ref
-              ? // @ts-expect-error xxx
+              ? // @ts-expect-error
                 urlForImage(hero.image)
                   .width(1440)
                   .height(1920)
@@ -38,7 +40,9 @@ export const HeroSection = ({ hero }: { hero: Section }) => {
               : "https://source.unsplash.com/1080x1080/?plane"
           }
           alt={hero?.image?.alt as string}
-          fill
+          width={1920}
+          height={1080}
+          priority
           className="block h-full w-full bg-slate-200 object-cover object-center shadow lg:hidden"
         />
         <div className="absolute inset-0 bg-black opacity-50" />

@@ -23,13 +23,14 @@ export const ServiceCard = ({
         <Image
           src={
             image?.asset?._ref
-              ? // @ts-expect-error xxx
+              ? // @ts-expect-error
                 urlForImage(image).width(1200).height(1600).fit("crop").url()
               : "https://source.unsplash.com/1080x1080/?plane"
           }
           alt={image.alt as string}
           width={1200}
           height={1600}
+          sizes="(min-width: 1380px) 604px, (min-width: 1040px) calc(37.5vw + 94px), calc(100vw - 24px)"
           className="absolute inset-0 h-full w-full rounded-lg object-cover object-center shadow"
         />
         <div className="tw-transition relative flex w-full flex-col items-start justify-end rounded-lg bg-black/30 p-8 shadow group-hover:bg-black sm:p-12">
