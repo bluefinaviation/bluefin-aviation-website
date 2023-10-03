@@ -30,10 +30,11 @@ export const ServiceCard = ({
           alt={image.alt as string}
           width={1200}
           height={1600}
+          priority
           sizes="(min-width: 1380px) 604px, (min-width: 1040px) calc(37.5vw + 94px), calc(100vw - 24px)"
           className="absolute inset-0 h-full w-full rounded-lg object-cover object-center shadow"
         />
-        <div className="tw-transition relative flex w-full flex-col items-start justify-end rounded-lg bg-black/30 p-8 shadow group-hover:bg-black sm:p-12">
+        <div className="tw-transition relative flex w-full flex-col items-start justify-end rounded-lg bg-black/30 p-8 shadow group-hover:bg-transparent sm:p-12">
           <p className="text-base font-medium text-slate-200 lg:text-lg">
             {tagline}
           </p>
