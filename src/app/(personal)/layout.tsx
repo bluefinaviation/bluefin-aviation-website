@@ -1,6 +1,7 @@
 import '@/app/globals.css'
 
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata, Viewport } from 'next'
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
@@ -77,7 +78,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#000',
+  themeColor: '#000'
 }
 
 export default async function RootLayout({
@@ -88,6 +89,7 @@ export default async function RootLayout({
   return (
     <>
       <Analytics />
+      <SpeedInsights />
       <Toaster />
 
       <Suspense>
