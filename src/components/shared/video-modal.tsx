@@ -40,7 +40,11 @@ export const VideoModal = ({
               leaveTo='opacity-0 scale-95'
             >
               <Dialog.Panel className='rounded-lg-2xl relative flex aspect-video w-full max-w-3xl items-center justify-center overflow-hidden bg-white text-left align-middle shadow transition-all'>
-                <NextVideo src={promoVideo} accentColor='#1d63ab' />
+                <NextVideo
+                  src={promoVideo}
+                  accentColor='#1d63ab'
+                  poster='/images/video-poster.webp'
+                />
                 {/* <video autoPlay loop controls className='w-[800px]'>
                   <source src={videoURL} />
                 </video> */}
