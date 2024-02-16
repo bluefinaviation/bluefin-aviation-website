@@ -43,7 +43,7 @@ export const VideoModal = ({
                 <NextVideo
                   src={promoVideo}
                   accentColor='#1d63ab'
-                  poster='/images/video-poster.webp'
+                  poster='/images/og.png'
                 />
                 {/* <video autoPlay loop controls className='w-[800px]'>
                   <source src={videoURL} />
