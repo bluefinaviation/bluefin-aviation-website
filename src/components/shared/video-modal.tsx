@@ -1,14 +1,17 @@
 import { Dialog, Transition } from '@headlessui/react'
+import NextVideo from 'next-video'
 import { Fragment } from 'react'
+
+import promoVideo from '/videos/promo-video.mp4'
 
 export const VideoModal = ({
   isOpen,
-  closeModal,
-  videoURL
+  closeModal
+  // // videoURL
 }: {
   isOpen: boolean
   closeModal: () => void
-  videoURL: string
+  // // videoURL: string
 }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -37,9 +40,10 @@ export const VideoModal = ({
               leaveTo='opacity-0 scale-95'
             >
               <Dialog.Panel className='rounded-lg-2xl relative flex aspect-video w-full max-w-3xl items-center justify-center overflow-hidden bg-white text-left align-middle shadow transition-all'>
-                <video autoPlay loop controls className='w-[800px]'>
+                <NextVideo src={promoVideo} accentColor='#0f172a' />
+                {/* <video autoPlay loop controls className='w-[800px]'>
                   <source src={videoURL} />
-                </video>
+                </video> */}
               </Dialog.Panel>
             </Transition.Child>
           </div>

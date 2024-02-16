@@ -85,11 +85,11 @@ export const HeroSection = ({
       <VideoModal
         isOpen={isVideoOpen}
         closeModal={closeVideoModal}
-        videoURL={
-          heroSection.video
-            ? heroSection.video
-            : 'https://www.youtube.com/embed/WQ7Wdend1xw'
-        }
+        // // videoURL={
+        // //   heroSection.video
+        // //     ? heroSection.video
+        // //     : 'https://www.youtube.com/embed/WQ7Wdend1xw'
+        // // }
       />
     </>
   )
