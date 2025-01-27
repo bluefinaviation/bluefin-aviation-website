@@ -1,16 +1,20 @@
 import { visionTool } from '@sanity/vision'
-import { defineConfig } from 'sanity'
-import { presentationTool } from 'sanity/presentation'
+import { defineConfig, PluginOptions } from 'sanity'
+import {
+  defineDocuments,
+  defineLocations,
+  type DocumentLocation,
+  presentationTool
+} from 'sanity/presentation'
 import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { media } from 'sanity-plugin-media'
 
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
-import { locate } from '@/sanity/plugins/locate'
+import { assistWithPresets } from '@/sanity/plugins/assist'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
-// // import page from "@/sanity/schemas/documents/page"
+
 import policy from '@/sanity/schemas/documents/policy'
-// // import project from "@/sanity/schemas/documents/project"
+import settings from '@/sanity/schemas/singletons/settings'
 import card from '@/sanity/schemas/objects/card'
 import contactItem from '@/sanity/schemas/objects/contactItem'
 import duration from '@/sanity/schemas/objects/duration'
@@ -34,16 +38,19 @@ import inquiry from '@/sanity/schemas/singletons/inquiry'
 import linktree from '@/sanity/schemas/singletons/linktree'
 import newsletter from '@/sanity/schemas/singletons/newsletter'
 import services from '@/sanity/schemas/singletons/services'
-// // import settings from "@/sanity/schemas/singletons/settings"
 import tripService from '@/sanity/schemas/singletons/tripService'
 
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Bluefin Aviation'
+import { resolveHref } from '@/sanity/lib/utils'
+
+const homeLocation = {
+  title: 'Home',
+  href: '/'
+} satisfies DocumentLocation
 
 export default defineConfig({
   basePath: studioUrl,
-  projectId: projectId || '',
-  dataset: dataset || '',
-  title,
+  projectId,
+  dataset,
   schema: {
     types: [
       // Singletons
@@ -54,12 +61,9 @@ export default defineConfig({
       services,
       fuelService,
       tripService,
-      // // settings,
       inquiry,
       linktree,
       // Documents
-      // // page,
-      // // project,
       policy,
       // Objects
       milestone,
@@ -80,6 +84,39 @@ export default defineConfig({
     ]
   },
   plugins: [
+    presentationTool({
+      resolve: {
+        // // mainDocuments: defineDocuments([
+        // //   {
+        // //     route: '/posts/:slug',
+        // //     filter: `_type == "post" && slug.current == $slug`
+        // //   }
+        // // ]),
+        // // locations: {
+        // //   settings: defineLocations({
+        // //     locations: [homeLocation],
+        // //     message: 'This document is used on all pages',
+        // //     tone: 'caution'
+        // //   }),
+        // //   post: defineLocations({
+        // //     select: {
+        // //       title: 'title',
+        // //       slug: 'slug.current'
+        // //     },
+        // //     resolve: doc => ({
+        // //       locations: [
+        // //         {
+        // //           title: doc?.title || 'Untitled',
+        // //           href: resolveHref('post', doc?.slug)!
+        // //         },
+        // //         homeLocation
+        // //       ]
+        // //     })
+        // //   })
+        // // }
+      },
+      previewUrl: { previewMode: { enable: '/api/draft-mode/enable' } }
+    }),
     structureTool({
       structure: pageStructure([
         home,
@@ -90,30 +127,31 @@ export default defineConfig({
         inquiry,
         fuelService,
         tripService,
-        linktree
+        linktree,
+        settings
       ])
     }),
-    presentationTool({
-      locate,
-      previewUrl: {
-        draftMode: {
-          enable: '/api/draft'
-        }
-      }
-    }),
-    singletonPlugin([
-      home.name,
-      about.name,
-      contact.name,
-      newsletter.name,
-      services.name,
-      inquiry.name,
-      fuelService.name,
-      tripService.name,
-      linktree.name
-    ]),
+    // Configures the global "new document" button, and document actions, to suit the Settings document singleton
+    // // singletonPlugin([
+    // //   home.name,
+    // //   about.name,
+    // //   contact.name,
+    // //   newsletter.name,
+    // //   services.name,
+    // //   inquiry.name,
+    // //   fuelService.name,
+    // //   tripService.name,
+    // //   linktree.name,
+    // //   settings.name
+    // // ]),
+    // Add an image asset source for Unsplash
     unsplashImageAsset(),
-    media(),
-    visionTool({ defaultApiVersion: apiVersion })
-  ]
+    // Sets up AI Assist with preset prompts
+    // https://www.sanity.io/docs/ai-assist
+    // // assistWithPresets(),
+    // Vision lets you query your content with GROQ in the studio
+    // https://www.sanity.io/docs/the-vision-plugin
+    process.env.NODE_ENV === 'development' &&
+      visionTool({ defaultApiVersion: apiVersion })
+  ].filter(Boolean) as PluginOptions[]
 })

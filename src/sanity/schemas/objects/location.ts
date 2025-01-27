@@ -1,18 +1,18 @@
-import { TbLocation } from 'react-icons/tb';
-import { defineType } from 'sanity';
+import { TbLocation } from 'react-icons/tb'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'location',
   title: 'Location',
   type: 'object',
   fields: [
-    {
+    defineField({
       name: 'city',
       title: 'City',
       type: 'string',
-      description: 'Location (city) of your business.',
-    },
-    {
+      description: 'Location (city) of your business.'
+    }),
+    defineField({
       name: 'country',
       title: 'Country',
       type: 'image',
@@ -21,40 +21,40 @@ export default defineType({
         {
           name: 'alt',
           title: 'Alternative text',
-          type: 'string',
-        },
+          type: 'string'
+        }
       ],
-      description: 'Location (country) of your business.',
-    },
-    {
+      description: 'Location (country) of your business.'
+    }),
+    defineField({
       name: 'isHq',
       title: 'Is HQ?',
       type: 'boolean',
-      description: 'Is this location the headquearters of your business?',
-    },
-    {
+      description: 'Is this location the headquearters of your business?'
+    }),
+    defineField({
       name: 'address',
       title: 'Address',
       type: 'string',
       hidden: ({ parent }) => parent?.isHq !== true,
-      description: 'Address of your headquearters.',
-    },
-    {
+      description: 'Address of your headquearters.'
+    }),
+    defineField({
       name: 'coordinates',
       title: 'Coordinates',
-      type: 'geopoint',
-    },
+      type: 'geopoint'
+    })
   ],
   preview: {
     select: {
-      title: 'city',
+      title: 'city'
     },
     prepare(selection) {
-      const { title } = selection;
+      const { title } = selection
       return {
         title: title,
-        media: TbLocation,
-      };
-    },
-  },
-});
+        media: TbLocation
+      }
+    }
+  }
+})

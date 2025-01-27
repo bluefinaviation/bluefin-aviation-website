@@ -1,30 +1,28 @@
-import { Link } from 'lucide-react';
-import { defineType } from 'sanity';
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'linktreeLink',
   title: 'Linktree Link',
   type: 'object',
-  icon: Link,
   fields: [
-    {
+    defineField({
       name: 'label',
       title: 'Label',
-      type: 'string',
-    },
-    {
+      type: 'string'
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
-      type: 'text',
-    },
-    {
+      type: 'text'
+    }),
+    defineField({
       name: 'linkUrl',
       title: 'Link URL',
       type: 'url',
-      validation: (Rule) =>
+      validation: Rule =>
         Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
-        }),
-    },
-  ],
-});
+          scheme: ['http', 'https', 'mailto', 'tel']
+        })
+    })
+  ]
+})

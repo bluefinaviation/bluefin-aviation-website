@@ -1,5 +1,5 @@
-import { RiProfileLine } from 'react-icons/ri';
-import { defineField, defineType } from 'sanity';
+import { RiProfileLine } from 'react-icons/ri'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'about',
@@ -12,50 +12,50 @@ export default defineType({
       title: 'Story Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'bio',
           title: 'Bio',
           type: 'array',
-          of: [{ type: 'block' }],
-        },
-      ],
+          of: [{ type: 'block' }]
+        })
+      ]
     }),
     defineField({
       name: 'statsSection',
       title: 'Stats Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'stats',
           title: 'Stats',
           type: 'array',
-          of: [{ type: 'stat' }],
-        },
-      ],
+          of: [{ type: 'stat' }]
+        })
+      ]
     }),
     defineField({
       name: 'teamSection',
       title: 'Team Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
-    }),
+          type: 'section'
+        })
+      ]
+    })
   ],
   preview: {
     prepare() {
       return {
-        title: 'About Page',
-      };
-    },
-  },
-});
+        title: 'About Page'
+      }
+    }
+  }
+})

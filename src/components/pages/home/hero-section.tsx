@@ -82,7 +82,7 @@ export const HeroSection = ({
           </div>
         </Container>
       </div>
-      <VideoModal
+      {/* <VideoModal
         isOpen={isVideoOpen}
         closeModal={closeVideoModal}
         // // videoURL={
@@ -90,7 +90,7 @@ export const HeroSection = ({
         // //     ? heroSection.video
         // //     : 'https://www.youtube.com/embed/WQ7Wdend1xw'
         // // }
-      />
+      /> */}
     </>
   )
 }

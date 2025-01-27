@@ -1,11 +1,11 @@
-import { defineType } from 'sanity';
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'gallery',
   title: 'Gallery',
   type: 'array',
   of: [
-    {
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
@@ -14,12 +14,12 @@ export default defineType({
         {
           name: 'alt',
           title: 'Alternative text',
-          type: 'string',
-        },
-      ],
-    },
+          type: 'string'
+        }
+      ]
+    })
   ],
   options: {
-    layout: 'grid',
-  },
-});
+    layout: 'grid'
+  }
+})

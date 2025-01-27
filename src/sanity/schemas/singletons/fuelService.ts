@@ -1,5 +1,5 @@
-import { TbGasStation } from 'react-icons/tb';
-import { defineField, defineType } from 'sanity';
+import { TbGasStation } from 'react-icons/tb'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'fuelService',
@@ -10,61 +10,61 @@ export default defineType({
     defineField({
       name: 'card',
       title: 'Card',
-      type: 'card',
+      type: 'card'
     }),
     defineField({
       name: 'heroSection',
       title: 'Hero Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
+          type: 'section'
+        })
+      ]
     }),
     defineField({
       name: 'featuresSection',
       title: 'Features Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'features',
           title: 'Features',
           type: 'array',
-          of: [{ type: 'fuelFeature' }],
-        },
-      ],
+          of: [{ type: 'fuelFeature' }]
+        })
+      ]
     }),
     defineField({
       name: 'gallerySection',
       title: 'Gallery Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'gallery',
           title: 'Gallery',
-          type: 'gallery',
-        },
-      ],
-    }),
+          type: 'gallery'
+        })
+      ]
+    })
   ],
   preview: {
     prepare() {
       return {
-        title: 'Fuel Service Page',
-      };
-    },
-  },
-});
+        title: 'Fuel Service Page'
+      }
+    }
+  }
+})

@@ -1,10 +1,8 @@
-import { Clipboard } from 'lucide-react';
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'newsletter',
   title: 'Newsletter',
-  icon: Clipboard,
   type: 'document',
   fields: [
     defineField({
@@ -12,19 +10,19 @@ export default defineType({
       title: 'Form Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
-    }),
+          type: 'section'
+        })
+      ]
+    })
   ],
   preview: {
     prepare() {
       return {
-        title: 'Newsletter Page',
-      };
-    },
-  },
-});
+        title: 'Newsletter Page'
+      }
+    }
+  }
+})

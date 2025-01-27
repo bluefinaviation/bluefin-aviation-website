@@ -1,5 +1,5 @@
-import { RiHome2Line } from 'react-icons/ri';
-import { defineField, defineType } from 'sanity';
+import { RiHome2Line } from 'react-icons/ri'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'home',
@@ -12,99 +12,99 @@ export default defineType({
       title: 'Hero Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'video',
           title: 'Video',
-          type: 'file',
-        },
-      ],
+          type: 'file'
+        })
+      ]
     }),
     defineField({
       name: 'servicesSection',
       title: 'Services Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
+          type: 'section'
+        })
+      ]
     }),
     defineField({
       name: 'testimonialsSection',
       title: 'Testimonials Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'testimonials',
           title: 'Testimonials',
           type: 'array',
-          of: [{ type: 'testimonial' }],
-        },
-      ],
+          of: [{ type: 'testimonial' }]
+        })
+      ]
     }),
     defineField({
       name: 'partnersSection',
       title: 'Partners Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'partners',
           title: 'Partners',
           type: 'array',
-          of: [{ type: 'partner' }],
-        },
-      ],
+          of: [{ type: 'partner' }]
+        })
+      ]
     }),
     defineField({
       name: 'contactSection',
       title: 'Contact Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
+          type: 'section'
+        })
+      ]
     }),
     defineField({
       name: 'newsletterSection',
       title: 'Newsletter Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
-    }),
+          type: 'section'
+        })
+      ]
+    })
   ],
   preview: {
     prepare() {
       return {
-        title: 'Home Page',
-      };
-    },
-  },
-});
+        title: 'Home Page'
+      }
+    }
+  }
+})
 // // import { HomeIcon } from '@sanity/icons'
 // // import { defineArrayMember, defineField, defineType } from 'sanity'
 

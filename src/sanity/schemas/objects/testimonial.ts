@@ -1,17 +1,17 @@
-import { TbQuote } from 'react-icons/tb';
-import { defineType } from 'sanity';
+import { TbQuote } from 'react-icons/tb'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'testimonial',
   title: 'Testimonial',
   type: 'object',
   fields: [
-    {
+    defineField({
       name: 'quote',
       title: 'Quote',
-      type: 'text',
-    },
-    {
+      type: 'text'
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'object',
@@ -19,33 +19,33 @@ export default defineType({
         {
           name: 'name',
           title: 'Name',
-          type: 'string',
+          type: 'string'
         },
         {
           name: 'role',
           title: 'Role',
-          type: 'string',
+          type: 'string'
         },
         {
           name: 'location',
           title: 'Location',
-          type: 'string',
-        },
-      ],
-    },
+          type: 'string'
+        }
+      ]
+    })
   ],
   preview: {
     select: {
       title: 'author.name',
-      subtitle: 'author.location',
+      subtitle: 'author.location'
     },
     prepare(selection) {
-      const { title, subtitle } = selection;
+      const { title, subtitle } = selection
       return {
         title,
         subtitle,
-        media: TbQuote,
-      };
-    },
-  },
-});
+        media: TbQuote
+      }
+    }
+  }
+})

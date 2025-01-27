@@ -3,15 +3,6 @@ import type { Image } from 'sanity'
 
 import { FuelFeature } from '@/components/services/fuel-feature'
 
-export interface ShowcaseProject {
-  _type: string
-  coverImage?: Image
-  overview?: PortableTextBlock[]
-  slug?: string
-  tags?: string[]
-  title?: string
-}
-
 // types
 
 export interface Section {

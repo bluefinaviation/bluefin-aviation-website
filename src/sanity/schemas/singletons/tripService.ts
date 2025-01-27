@@ -1,5 +1,5 @@
-import { TbPlane } from 'react-icons/tb';
-import { defineField, defineType } from 'sanity';
+import { TbPlane } from 'react-icons/tb'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'tripService',
@@ -10,61 +10,61 @@ export default defineType({
     defineField({
       name: 'card',
       title: 'Card',
-      type: 'card',
+      type: 'card'
     }),
     defineField({
       name: 'heroSection',
       title: 'Hero Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
+          type: 'section'
+        })
+      ]
     }),
     defineField({
       name: 'featuresSection',
       title: 'Features Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'features',
           title: 'Features',
           type: 'array',
-          of: [{ type: 'tripFeature' }],
-        },
-      ],
+          of: [{ type: 'tripFeature' }]
+        })
+      ]
     }),
     defineField({
       name: 'gallerySection',
       title: 'Gallery Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-        {
+          type: 'section'
+        }),
+        defineField({
           name: 'gallery',
           title: 'Gallery',
-          type: 'gallery',
-        },
-      ],
-    }),
+          type: 'gallery'
+        })
+      ]
+    })
   ],
   preview: {
     prepare() {
       return {
-        title: 'Trip Service Page',
-      };
-    },
-  },
-});
+        title: 'Trip Service Page'
+      }
+    }
+  }
+})

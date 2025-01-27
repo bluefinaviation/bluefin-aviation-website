@@ -8,9 +8,7 @@ import getCenter from 'geolib/es/getCenter'
 import { useMemo, useState } from 'react'
 import Map, { Marker, Popup } from 'react-map-gl'
 
-import { Location } from '@/types'
-
-export const MapContainer = ({ locations }: { locations: Location[] }) => {
+export const MapContainer = ({ locations }) => {
   const [popupInfo, setPopupInfo] = useState<Location | undefined>()
 
   const coordinates = locations.map(stage => ({

@@ -1,18 +1,16 @@
-import { DocumentIcon } from '@sanity/icons';
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'policy',
   title: 'Policy',
   type: 'document',
-  icon: DocumentIcon,
   fields: [
     defineField({
       name: 'title',
       description: 'This field is the title of your project.',
       title: 'Title',
       type: 'string',
-      validation: (rule) => rule.required(),
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'slug',
@@ -21,15 +19,15 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
-        isUnique: (value, context) => context.defaultIsUnique(value, context),
+        isUnique: (value, context) => context.defaultIsUnique(value, context)
       },
-      validation: (rule) => rule.required(),
+      validation: rule => rule.required()
     }),
     {
       name: 'content',
       title: 'Content',
       type: 'portableText',
-      description: 'Policy content.',
-    },
-  ],
-});
+      description: 'Policy content.'
+    }
+  ]
+})

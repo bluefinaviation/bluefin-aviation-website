@@ -12,19 +12,19 @@ export default defineType({
       title: 'Hero Section',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'section',
           title: 'Section',
-          type: 'section',
-        },
-      ],
-    }),
+          type: 'section'
+        })
+      ]
+    })
   ],
   preview: {
     prepare() {
       return {
-        title: 'Services Page',
+        title: 'Services Page'
       }
-    },
-  },
+    }
+  }
 })

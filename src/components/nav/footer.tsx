@@ -1,21 +1,25 @@
-import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
+import { PortableText } from '@portabletext/react'
 
 import { Logo } from '@/components/branding/logo'
 import { NewsletterFooterForm } from '@/components/forms/newsletter-footer-form'
+
 import { navigation } from '@/data/nav-links'
 import { COMPANY_NAME } from '@/lib/constants'
-import { loadFooter } from '@/sanity/loader/loadQuery'
 import { FooterPayload } from '@/types'
+import { sanityFetch } from '@/sanity/lib/fetch'
+import { footerQuery } from '@/sanity/lib/queries'
 
 export interface FooterProps {
   data: FooterPayload | null
 }
 
 export const Footer = async () => {
-  const initial = await loadFooter()
+  const footerData = await sanityFetch({
+    query: footerQuery
+  })
 
-  const { newsletter = null, policies = null } = initial.data ?? {}
+  if (!footerData) return null
 
   return (
     <footer className='bg-slate-900' aria-labelledby='footer-heading'>
@@ -52,10 +56,10 @@ export const Footer = async () => {
         <div className='mt-16 border-t border-white/10 pt-8 sm:mt-10 lg:mt-12 lg:flex lg:items-center lg:justify-between'>
           <div>
             <h3 className='text-base font-semibold leading-6 text-white sm:text-lg'>
-              {newsletter?.section.heading}
+              {footerData.newsletter.section.heading}
             </h3>
             <div className='mt-2 text-sm leading-6 text-slate-300 sm:text-base'>
-              <PortableText value={newsletter?.section.summary!} />
+              <PortableText value={footerData.newsletter.section.summary!} />
             </div>
           </div>
           <NewsletterFooterForm />
@@ -83,7 +87,7 @@ export const Footer = async () => {
         </div>
 
         <ul className='mt-8 flex place-content-center gap-x-3 text-xs'>
-          {policies?.map(policy => (
+          {footerData.policies.map(policy => (
             <li key={policy.id} className='text-slate-400 hover:text-slate-300'>
               <Link href={`/policies/${policy.slug}`}>{policy.title}</Link>
             </li>
