@@ -1,29 +1,32 @@
-import type { NextConfig } from 'next'
+import { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
+const config: NextConfig = {
   images: {
     remotePatterns: [
       { hostname: 'cdn.sanity.io' },
-      { hostname: 'source.unsplash.com' }
-    ]
+      { hostname: 'source.unsplash.com' },
+    ],
   },
   typescript: {
-    ignoreBuildErrors: process.env.VERCEL_ENV === 'production'
+    // Set this to false if you want production builds to abort if there's type errors
+    ignoreBuildErrors: process.env.VERCEL_ENV === 'production',
   },
   eslint: {
-    ignoreDuringBuilds: process.env.VERCEL_ENV === 'production'
+    /// Set this to false if you want production builds to abort if there's lint errors
+    ignoreDuringBuilds: process.env.VERCEL_ENV === 'production',
   },
   logging: {
     fetches: {
-      fullUrl: true
-    }
+      fullUrl: true,
+    },
   },
   env: {
-    SC_DISABLE_SPEEDY: 'false'
+    // Matches the behavior of `sanity dev` which sets styled-components to use the fastest way of inserting CSS rules in both dev and production. It's default behavior is to disable it in dev mode.
+    SC_DISABLE_SPEEDY: 'false',
   },
   experimental: {
-    taint: true
-  }
+    taint: true,
+  },
 }
 
-export default nextConfig
+export default config
