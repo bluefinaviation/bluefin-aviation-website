@@ -1,7 +1,5 @@
 "use client";
 
-import "mapbox-gl/dist/mapbox-gl.css";
-
 import { useMemo, useState } from "react";
 import Map, { Marker, Popup } from "react-map-gl/mapbox";
 import { MapPin } from "@phosphor-icons/react";
