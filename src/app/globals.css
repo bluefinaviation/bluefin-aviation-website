@@ -186,8 +186,77 @@
   .animate-accordion-up {
     animation: accordion-up 0.2s ease-out;
   }
+  .animate-fade-in {
+    animation: fade-in 0.5s linear forwards;
+  }
+  .animate-marquee {
+    animation: marquee var(--marquee-duration) linear infinite;
+  }
+  .animate-spin-slow {
+    animation: spin 4s linear infinite;
+  }
+  .animate-spin-slower {
+    animation: spin 6s linear infinite;
+  }
+  .animate-spin-reverse {
+    animation: spin-reverse 1s linear infinite;
+  }
+  .animate-spin-reverse-slow {
+    animation: spin-reverse 4s linear infinite;
+  }
+  .animate-spin-reverse-slower {
+    animation: spin-reverse 6s linear infinite;
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
   .tw-transition {
     @apply transition-all duration-300 ease-in-out;
+  }
+
+  .animated-underline {
+    background-image: linear-gradient(#111827, #111827),
+      linear-gradient(to right, #7dd3fc, #38bdf8);
+    background-size:
+      100% 2px,
+      0 2px;
+    background-position:
+      100% 100%,
+      0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+  }
+  .animated-underline:hover,
+  .animated-underline:focus {
+    background-size:
+      0 2px,
+      100% 2px;
+  }
+
+  .animated-underline-light {
+    background-image: linear-gradient(#ffff, #ffff),
+      linear-gradient(to right, #7dd3fc, #38bdf8);
+    background-size:
+      100% 2px,
+      0 2px;
+    background-position:
+      100% 100%,
+      0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+  }
+  .animated-underline-light:hover,
+  .animated-underline-light:focus {
+    background-size:
+      0 2px,
+      100% 2px;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
   }
 }
 
@@ -206,6 +275,42 @@
   }
   to {
     height: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee {
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
   }
 }
 

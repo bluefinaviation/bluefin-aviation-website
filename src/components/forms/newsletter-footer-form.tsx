@@ -95,12 +95,7 @@ export const NewsletterFooterForm = () => {
             )}
           />
 
-          <Button
-            type="submit"
-            variant="outline"
-            disabled={submitting}
-            className="text-background"
-          >
+          <Button type="submit" variant="secondary" disabled={submitting}>
             {submitting ? (
               <p className="flex items-center gap-x-3">
                 <span>Subscribing</span>
