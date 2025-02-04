@@ -39,6 +39,27 @@ export type SanityImageDimensions = {
   aspectRatio?: number;
 };
 
+export type EmptyLeg = {
+  _id: string;
+  _type: "emptyLeg";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  from?: Destination;
+  to?: Destination;
+  departureTime?: string;
+  arrivalTime?: string;
+  originalPrice?: number;
+  discountedPrice?: number;
+};
+
+export type Destination = {
+  _type: "destination";
+  city?: string;
+  countryCode?: string;
+  airportCode?: string;
+};
+
 export type Plane = {
   _id: string;
   _type: "plane";
@@ -584,7 +605,7 @@ export type Section = {
   };
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Plane | PlaneCategory | PlaneManufacturer | LinktreeLink | TripSubfeature | TripFeature | FuelFeature | Testimonial | Partner | Location | Geopoint | ContactItem | Stat | PortableText | Gallery | Policy | Slug | Linktree | Inquiry | TripService | FuelService | Card | Services | Newsletter | Contact | About | Home | SanityFileAsset | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Section;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | EmptyLeg | Destination | Plane | PlaneCategory | PlaneManufacturer | LinktreeLink | TripSubfeature | TripFeature | FuelFeature | Testimonial | Partner | Location | Geopoint | ContactItem | Stat | PortableText | Gallery | Policy | Slug | Linktree | Inquiry | TripService | FuelService | Card | Services | Newsletter | Contact | About | Home | SanityFileAsset | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Section;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
@@ -803,6 +824,14 @@ export type NEWSLETTER_PAGE_QUERYResult = {
     section?: Section;
   } | null;
 } | null;
+// Variable: EMPTY_LEGS_QUERY
+// Query: *[_type == "emptyLeg"] {		from,		to,		departureTime,		arrivalTime,	}
+export type EMPTY_LEGS_QUERYResult = Array<{
+  from: Destination | null;
+  to: Destination | null;
+  departureTime: string | null;
+  arrivalTime: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -822,5 +851,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"planeManufacturer\"]{\n    _id,\n    name\n  }\n": ALL_PLANE_MANUFACTURERS_QUERYResult;
     "\n\t*[_type == \"inquiry\"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n": INQUIRY_PAGE_QUERYResult;
     "\n\t*[_type == \"newsletter\"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n": NEWSLETTER_PAGE_QUERYResult;
+    "\n\t*[_type == \"emptyLeg\"] {\n\t\tfrom,\n\t\tto,\n\t\tdepartureTime,\n\t\tarrivalTime,\n\t}\n": EMPTY_LEGS_QUERYResult;
   }
 }

@@ -131,3 +131,12 @@ export const NEWSLETTER_PAGE_QUERY = defineQuery(`
 		formSection
 	}
 `);
+
+export const EMPTY_LEGS_QUERY = defineQuery(`
+	*[_type == "emptyLeg"] {
+		from,
+		to,
+		departureTime,
+		arrivalTime,
+	}
+`);

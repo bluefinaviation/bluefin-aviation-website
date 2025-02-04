@@ -1,13 +1,14 @@
+import Image from "next/image";
 import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import { PortableText } from "@portabletext/react";
 import { TypedObject } from "@portabletext/types";
-import Image from "next/image";
 
 import { BackgroundIllustration } from "@/components/backgrounds/background-illustration";
 import { PageSummary } from "@/components/shared/page-summary";
 import { PageTitle } from "@/components/shared/page-title";
 import { Container } from "@/components/shared/section-container";
 import { Button } from "@/components/ui/button";
+
 import { Section } from "@/sanity/types";
 
 interface HeroSectionProps {

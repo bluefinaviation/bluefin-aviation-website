@@ -10,6 +10,7 @@ import localFont from "next/font/local";
 import { Footer } from "@/components/nav/footer";
 import { Navbar } from "@/components/nav/navbar";
 import { Toaster } from "@/components/ui/sonner";
+import { cn } from "@/lib/utils";
 
 const apercu = localFont({
   variable: "--font-apercu",
@@ -232,17 +233,20 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${apercu.variable} ${apercuCondensed.variable} ${apercuMono.variable}`}
+      className={cn(
+        apercu.variable,
+        apercuCondensed.variable,
+        apercuMono.variable
+      )}
     >
-      <body>
+      <body className="min-h-screen flex flex-col">
         <Analytics />
         <SpeedInsights />
         <Toaster />
         <Navbar />
 
-        <div className="flex-1 grow">{children}</div>
+        <main className="flex-1 flex flex-col">{children}</main>
         <SanityLive />
-
         <Footer />
       </body>
     </html>

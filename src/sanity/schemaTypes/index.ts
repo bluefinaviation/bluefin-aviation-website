@@ -14,11 +14,13 @@ import testimonial from "@/sanity/schemas/objects/testimonial";
 import tripFeature from "@/sanity/schemas/objects/tripFeature";
 import tripSubfeature from "@/sanity/schemas/objects/tripSubfeature";
 import contactItem from "@/sanity/schemas/objects/contactItem";
+import destination from "@/sanity/schemas/objects/destination";
 // Documents
 import plane from "@/sanity/schemas/documents/plane";
 import planeCategory from "@/sanity/schemas/documents/planeCategory";
 import policy from "@/sanity/schemas/documents/policy";
 import planeManufacturer from "@/sanity/schemas/documents/planeManufacturer";
+import emptyLeg from "@/sanity/schemas/documents/emptyLeg";
 // Singletons
 import about from "@/sanity/schemas/singletons/about";
 import contact from "@/sanity/schemas/singletons/contact";
@@ -58,5 +60,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     plane,
     planeCategory,
     planeManufacturer,
+    emptyLeg,
+    destination,
   ],
 };

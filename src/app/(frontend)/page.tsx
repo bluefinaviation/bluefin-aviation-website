@@ -59,7 +59,6 @@ export default async function HomePage() {
   return (
     <PageContainer>
       <HeroSection heroSection={homePageData.heroSection} />
-      <PartnersSection partnersSection={homePageData.partnersSection} />
       <ServicesSection
         servicesSection={homePageData.servicesSection.section}
         tripService={homePageData.servicesSection.tripService.card}
@@ -70,6 +69,7 @@ export default async function HomePage() {
         testimonialsSection={homePageData.testimonialsSection}
       />
       <ContactSection contactSection={homePageData.contactSection} />
+      <PartnersSection partnersSection={homePageData.partnersSection} />
     </PageContainer>
   );
 }
