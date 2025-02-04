@@ -1,6 +1,6 @@
 # Bluefin Aviation Website
 
-A modern, responsive website for Bluefin Aviation built with Next.js, Tailwind CSS and Sanity CMS, showcasing aviation services and trip support solutions.
+A modern, responsive website for Bluefin Aviation built with Next.js, Tailwind CSS and Sanity CMS, showcasing the company's aviation services and trip support solutions.
 
 ## 🚀 Features
 
