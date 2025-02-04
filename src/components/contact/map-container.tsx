@@ -1,9 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import Map, { Marker, Popup } from "react-map-gl/mapbox";
+import "mapbox-gl/dist/mapbox-gl.css";
+
 import { MapPin } from "@phosphor-icons/react";
 import getCenter from "geolib/es/getCenter";
+import { useMemo, useState } from "react";
+import Map, { Marker, Popup } from "react-map-gl/mapbox";
 
 import { Location } from "@/types";
 import { cn } from "@/lib/utils";
@@ -53,8 +55,6 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
         zoom: 1.5,
       }}
       attributionControl={false}
-      //   maxZoom={15}
-      //   minZoom={5}
     >
       {pins}
 
@@ -64,7 +64,7 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
           latitude={popupInfo?.coordinates.lat}
           longitude={popupInfo?.coordinates.lng}
           closeButton={false}
-          onClose={() => setPopupInfo(undefined)}
+          onClose={() => setPopupInfo(null!)}
           offset={[0, 5]}
         >
           {popupInfo && (
