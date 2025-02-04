@@ -65,7 +65,7 @@ export const HeroSection = ({ heroSection }: HeroSectionProps) => {
                   alt="Private plane."
                   width={1920}
                   height={1080}
-                  className="object-cover object-center"
+                  className="object-cover object-center animate-float"
                   priority
                 />
               </div>
