@@ -1,61 +1,61 @@
-import { RiProfileLine } from 'react-icons/ri'
-import { defineField, defineType } from 'sanity'
+import { User } from "@phosphor-icons/react/dist/ssr";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'about',
-  title: 'About',
-  type: 'document',
-  icon: RiProfileLine,
+  name: "about",
+  title: "About Page",
+  type: "document",
+  icon: User,
   fields: [
     defineField({
-      name: 'storySection',
-      title: 'Story Section',
-      type: 'object',
+      name: "storySection",
+      title: "Story Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'bio',
-          title: 'Bio',
-          type: 'array',
-          of: [{ type: 'block' }]
-        })
-      ]
+          name: "bio",
+          title: "Bio",
+          type: "array",
+          of: [{ type: "block" }],
+        }),
+      ],
     }),
     defineField({
-      name: 'statsSection',
-      title: 'Stats Section',
-      type: 'object',
+      name: "statsSection",
+      title: "Stats Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'stats',
-          title: 'Stats',
-          type: 'array',
-          of: [{ type: 'stat' }]
-        })
-      ]
+          name: "stats",
+          title: "Stats",
+          type: "array",
+          of: [{ type: "stat" }],
+        }),
+      ],
     }),
     defineField({
-      name: 'teamSection',
-      title: 'Team Section',
-      type: 'object',
+      name: "teamSection",
+      title: "Team Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
-        })
-      ]
-    })
+          name: "section",
+          title: "Section",
+          type: "section",
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {
       return {
-        title: 'About Page'
-      }
-    }
-  }
-})
+        title: "About Page",
+      };
+    },
+  },
+});

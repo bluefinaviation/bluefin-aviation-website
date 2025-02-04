@@ -1,40 +1,40 @@
-import { RiContactsBook2Line } from 'react-icons/ri';
-import { defineField, defineType } from 'sanity';
+import { AddressBook } from "@phosphor-icons/react/dist/ssr";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'contactItem',
-  title: 'Contact Item',
-  type: 'object',
+  name: "contactItem",
+  title: "Contact Item",
+  type: "object",
   fields: [
     defineField({
-      name: 'url',
-      title: 'URL',
-      type: 'url',
+      name: "url",
+      title: "URL",
+      type: "url",
       validation: (Rule) =>
         Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+          scheme: ["http", "https", "mailto", "tel"],
         }),
     }),
     defineField({
-      name: 'cta',
-      title: 'CTA',
-      type: 'string',
+      name: "cta",
+      title: "CTA",
+      type: "string",
     }),
     defineField({
-      name: 'label',
-      title: 'Label',
-      type: 'string',
+      name: "label",
+      title: "Label",
+      type: "string",
     }),
   ],
   preview: {
     select: {
-      title: 'cta',
+      title: "cta",
     },
     prepare(selection) {
       const { title } = selection;
       return {
         title: title,
-        media: RiContactsBook2Line,
+        media: AddressBook,
       };
     },
   },

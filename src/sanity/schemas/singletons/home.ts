@@ -1,110 +1,122 @@
-import { RiHome2Line } from 'react-icons/ri'
-import { defineField, defineType } from 'sanity'
+import { House } from "@phosphor-icons/react/dist/ssr";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'home',
-  title: 'Home',
-  icon: RiHome2Line,
-  type: 'document',
+  name: "home",
+  title: "Home Page",
+  icon: House,
+  type: "document",
   fields: [
     defineField({
-      name: 'heroSection',
-      title: 'Hero Section',
-      type: 'object',
+      name: "heroSection",
+      title: "Hero Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'video',
-          title: 'Video',
-          type: 'file'
-        })
-      ]
+          name: "video",
+          title: "Video",
+          type: "file",
+        }),
+      ],
     }),
     defineField({
-      name: 'servicesSection',
-      title: 'Services Section',
-      type: 'object',
+      name: "servicesSection",
+      title: "Services Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
-        })
-      ]
+          name: "section",
+          title: "Section",
+          type: "section",
+        }),
+      ],
     }),
     defineField({
-      name: 'testimonialsSection',
-      title: 'Testimonials Section',
-      type: 'object',
+      name: "brokerSection",
+      title: "Broker Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
+          name: "section",
+          title: "Section",
+          type: "section",
+        }),
+      ],
+    }),
+    defineField({
+      name: "testimonialsSection",
+      title: "Testimonials Section",
+      type: "object",
+      fields: [
+        defineField({
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'testimonials',
-          title: 'Testimonials',
-          type: 'array',
-          of: [{ type: 'testimonial' }]
-        })
-      ]
+          name: "testimonials",
+          title: "Testimonials",
+          type: "array",
+          of: [{ type: "testimonial" }],
+        }),
+      ],
     }),
     defineField({
-      name: 'partnersSection',
-      title: 'Partners Section',
-      type: 'object',
+      name: "partnersSection",
+      title: "Partners Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'partners',
-          title: 'Partners',
-          type: 'array',
-          of: [{ type: 'partner' }]
-        })
-      ]
+          name: "partners",
+          title: "Partners",
+          type: "array",
+          of: [{ type: "partner" }],
+        }),
+      ],
     }),
     defineField({
-      name: 'contactSection',
-      title: 'Contact Section',
-      type: 'object',
+      name: "contactSection",
+      title: "Contact Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
-        })
-      ]
+          name: "section",
+          title: "Section",
+          type: "section",
+        }),
+      ],
     }),
     defineField({
-      name: 'newsletterSection',
-      title: 'Newsletter Section',
-      type: 'object',
+      name: "newsletterSection",
+      title: "Newsletter Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
-        })
-      ]
-    })
+          name: "section",
+          title: "Section",
+          type: "section",
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {
       return {
-        title: 'Home Page'
-      }
-    }
-  }
-})
+        title: "Home Page",
+      };
+    },
+  },
+});
 // // import { HomeIcon } from '@sanity/icons'
 // // import { defineArrayMember, defineField, defineType } from 'sanity'
 

@@ -1,32 +1,32 @@
-import { TbPin } from 'react-icons/tb'
-import { defineField, defineType } from 'sanity'
+import { MapPinSimple } from "@phosphor-icons/react/dist/ssr";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'tripFeature',
-  title: 'Trip Feature',
-  type: 'object',
+  name: "tripFeature",
+  title: "Trip Feature",
+  type: "object",
   fields: [
     defineField({
-      name: 'feature',
-      title: 'Feature',
-      type: 'string'
+      name: "feature",
+      title: "Feature",
+      type: "string",
     }),
     defineField({
-      name: 'subfeatures',
-      title: 'Subfeatures',
-      type: 'array',
-      of: [{ type: 'tripSubfeature' }]
-    })
+      name: "subfeatures",
+      title: "Subfeatures",
+      type: "array",
+      of: [{ type: "tripSubfeature" }],
+    }),
   ],
   preview: {
     select: {
-      title: 'feature'
+      title: "feature",
     },
     prepare({ title }) {
       return {
         title: title,
-        media: TbPin
-      }
-    }
-  }
-})
+        media: MapPinSimple,
+      };
+    },
+  },
+});

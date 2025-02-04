@@ -1,30 +1,30 @@
-import { TbHeartHandshake } from 'react-icons/tb'
-import { defineField, defineType } from 'sanity'
+import { HandHeart } from "@phosphor-icons/react/dist/ssr";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'services',
-  title: 'Services',
-  icon: TbHeartHandshake,
-  type: 'document',
+  name: "services",
+  title: "Services Page",
+  icon: HandHeart,
+  type: "document",
   fields: [
     defineField({
-      name: 'heroSection',
-      title: 'Hero Section',
-      type: 'object',
+      name: "heroSection",
+      title: "Hero Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
-        })
-      ]
-    })
+          name: "section",
+          title: "Section",
+          type: "section",
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {
       return {
-        title: 'Services Page'
-      }
-    }
-  }
-})
+        title: "Services Page",
+      };
+    },
+  },
+});

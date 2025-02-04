@@ -1,45 +1,45 @@
-import { RiContactsLine } from 'react-icons/ri';
-import { defineField, defineType } from 'sanity';
+import { User } from "@phosphor-icons/react/dist/ssr";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'contact',
-  title: 'Contact',
-  icon: RiContactsLine,
-  type: 'document',
+  name: "contact",
+  title: "Contact Page",
+  icon: User,
+  type: "document",
   fields: [
     defineField({
-      name: 'contactSection',
-      title: 'Contact Section',
-      type: 'object',
+      name: "contactSection",
+      title: "Contact Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section',
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'contacts',
-          title: 'Contacts',
-          type: 'array',
-          of: [{ type: 'contactItem' }],
+          name: "contacts",
+          title: "Contacts",
+          type: "array",
+          of: [{ type: "contactItem" }],
         }),
       ],
     }),
     defineField({
-      name: 'locationSection',
-      title: 'Location Section',
-      type: 'object',
+      name: "locationSection",
+      title: "Location Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section',
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'locations',
-          title: 'Locations',
-          type: 'array',
-          of: [{ type: 'location' }],
+          name: "locations",
+          title: "Locations",
+          type: "array",
+          of: [{ type: "location" }],
         }),
       ],
     }),
@@ -47,7 +47,7 @@ export default defineType({
   preview: {
     prepare() {
       return {
-        title: 'Contact Page',
+        title: "Contact Page",
       };
     },
   },

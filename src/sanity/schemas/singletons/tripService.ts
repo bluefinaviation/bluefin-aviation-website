@@ -1,70 +1,70 @@
-import { TbPlane } from 'react-icons/tb'
-import { defineField, defineType } from 'sanity'
+import { Airplane } from "@phosphor-icons/react/dist/ssr";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'tripService',
-  title: 'Trip Service',
-  icon: TbPlane,
-  type: 'document',
+  name: "tripService",
+  title: "Trip Service Page",
+  icon: Airplane,
+  type: "document",
   fields: [
     defineField({
-      name: 'card',
-      title: 'Card',
-      type: 'card'
+      name: "card",
+      title: "Card",
+      type: "card",
     }),
     defineField({
-      name: 'heroSection',
-      title: 'Hero Section',
-      type: 'object',
+      name: "heroSection",
+      title: "Hero Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
-        })
-      ]
+          name: "section",
+          title: "Section",
+          type: "section",
+        }),
+      ],
     }),
     defineField({
-      name: 'featuresSection',
-      title: 'Features Section',
-      type: 'object',
+      name: "featuresSection",
+      title: "Features Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'features',
-          title: 'Features',
-          type: 'array',
-          of: [{ type: 'tripFeature' }]
-        })
-      ]
+          name: "features",
+          title: "Features",
+          type: "array",
+          of: [{ type: "tripFeature" }],
+        }),
+      ],
     }),
     defineField({
-      name: 'gallerySection',
-      title: 'Gallery Section',
-      type: 'object',
+      name: "gallerySection",
+      title: "Gallery Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'section',
-          title: 'Section',
-          type: 'section'
+          name: "section",
+          title: "Section",
+          type: "section",
         }),
         defineField({
-          name: 'gallery',
-          title: 'Gallery',
-          type: 'gallery'
-        })
-      ]
-    })
+          name: "gallery",
+          title: "Gallery",
+          type: "gallery",
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {
       return {
-        title: 'Trip Service Page'
-      }
-    }
-  }
-})
+        title: "Trip Service Page",
+      };
+    },
+  },
+});

@@ -1,32 +1,32 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'card',
-  title: 'Card',
-  type: 'object',
+  name: "card",
+  title: "Card",
+  type: "object",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string'
+      name: "title",
+      title: "Title",
+      type: "string",
     }),
     defineField({
-      name: 'tagline',
-      title: 'Tagline',
-      type: 'string'
+      name: "tagline",
+      title: "Tagline",
+      type: "string",
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+      name: "image",
+      title: "Image",
+      type: "image",
       options: { hotspot: true },
       fields: [
         {
-          name: 'alt',
-          title: 'Alternative text',
-          type: 'string'
-        }
-      ]
-    })
-  ]
-})
+          name: "alt",
+          title: "Alternative text",
+          type: "string",
+        },
+      ],
+    }),
+  ],
+});
