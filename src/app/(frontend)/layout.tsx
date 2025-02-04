@@ -2,14 +2,15 @@ import "@/app/globals.css";
 
 import { ReactNode } from "react";
 import { Metadata } from "next";
+import localFont from "next/font/local";
 import { SanityLive } from "@/sanity/lib/live";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import localFont from "next/font/local";
 
 import { Footer } from "@/components/nav/footer";
 import { Navbar } from "@/components/nav/navbar";
 import { Toaster } from "@/components/ui/sonner";
+
 import { cn } from "@/lib/utils";
 
 const apercu = localFont({
