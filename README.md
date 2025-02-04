@@ -23,7 +23,7 @@ A modern, responsive website for Bluefin Aviation built with Next.js, Tailwind C
 
 ## 👥 Contact
 
-For any queries or support, please contact:
+For any queries please contact the developer at:
 
 - Email: [hello@laam.dev]
 - Website: [https://laam.dev]
