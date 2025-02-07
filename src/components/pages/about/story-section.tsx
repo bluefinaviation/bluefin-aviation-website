@@ -31,7 +31,7 @@ export const StorySection = ({ storySection }: StorySectionProps) => {
         <div className="lg:absolute lg:inset-y-0 lg:w-1/2">
           <Image
             src={imageUrl}
-            alt={storySection.section.image?.alt || ""}
+            alt={storySection.section.image?.alt || "Bluefin Aviation story."}
             width={1200}
             height={1600}
             priority

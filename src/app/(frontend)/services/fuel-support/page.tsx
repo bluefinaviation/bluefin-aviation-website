@@ -6,28 +6,19 @@ import { PageContainer } from "@/components/shared/pace-container";
 import { Container } from "@/components/shared/section-container";
 import { Slider } from "@/components/shared/slider";
 
-import { client } from "@/sanity/lib/client";
 import { FUEL_SERVICE_PAGE_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Fuel Support",
 };
 
 export default async function FuelServicePage() {
-  const fuelServiceData = await client.fetch(
-    FUEL_SERVICE_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  const { data: fuelServiceData } = await sanityFetch({
+    query: FUEL_SERVICE_PAGE_QUERY,
+  });
 
-  if (
-    !fuelServiceData ||
-    !fuelServiceData.heroSection?.section ||
-    !fuelServiceData.featuresSection?.section ||
-    !fuelServiceData.featuresSection?.features ||
-    !fuelServiceData.gallerySection?.gallery
-  )
-    return null;
+  if (!fuelServiceData) return null;
 
   return (
     <PageContainer>

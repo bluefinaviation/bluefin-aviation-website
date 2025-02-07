@@ -1,71 +1,78 @@
-// // import { PlaneCard } from "@/components/brokerage/plane-card";
+import { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/shared/section-container";
-// // import { SectionHeading } from "@/components/shared/section-heading";
-// // import {
-// //   Select,
-// //   SelectContent,
-// //   SelectItem,
-// //   SelectTrigger,
-// //   SelectValue,
-// // } from "@/components/ui/select";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { PlaneFilters } from "@/components/brokerage/plane-filters";
+import { FleetGrid } from "@/components/brokerage/fleet-grid";
+import { sanityFetch } from "@/sanity/lib/live";
+import { FILTERED_PLANES_QUERY } from "@/sanity/lib/queries";
 
-import { client } from "@/sanity/lib/client";
-import {
-  // // ALL_PLANE_MANUFACTURERS_QUERY,
-  ALL_PLANE_CATEGORIES_QUERY,
-  // // FLEET_PAGE_QUERY,
-} from "@/sanity/lib/queries";
-// // import { Plane } from "@/sanity/types";
+interface PageProps {
+  searchParams: {
+    category?: string;
+    manufacturer?: string;
+  };
+}
 
-export default async function BrokerageFleetPage() {
-  // // const brokerageFleetData = await client.fetch(FLEET_PAGE_QUERY, {}, options);
-  const allPlaneCategories = await client.fetch(
-    ALL_PLANE_CATEGORIES_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
-  // // const allPlaneManufacturers = await client.fetch(
-  // //   ALL_PLANE_MANUFACTURERS_QUERY,
-  // //   {},
-  // //   options
-  // // );
+export const metadata: Metadata = {
+  title: "Private Jet Fleet",
+  description:
+    "Discover our diverse range of private jets, from light to heavy aircraft, each offering unique capabilities to match your specific travel requirements.",
+};
 
-  console.log(allPlaneCategories);
+export default async function BrokerageFleetPage({ searchParams }: PageProps) {
+  const { category, manufacturer } = searchParams;
+
+  const params = {
+    category: !category || category === "all" ? null : category,
+    manufacturer: !manufacturer || manufacturer === "all" ? null : manufacturer,
+  };
+
+  const { data: planes } = await sanityFetch({
+    query: FILTERED_PLANES_QUERY,
+    params,
+  });
 
   return (
     <div className="pb-20">
-      <Container>
-        <h1>Our Fleet</h1>
-        {/* <SectionHeading>Our Fleet</SectionHeading>
-        <div className="w-fit flex items-center gap-x-4">
-          <Select>
-            <SelectTrigger>
-              <SelectValue placeholder="Filter by category" />
-            </SelectTrigger>
-            <SelectContent>
-              {allPlaneCategories.map((category) => (
-                <SelectItem key={category._id} value={category.name}>
-                  {category.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select>
-            <SelectTrigger>
-              <SelectValue placeholder="Filter by manufacturer" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="private">Private</SelectItem>
-              <SelectItem value="commercial">Commercial</SelectItem>
-            </SelectContent>
-          </Select>
-        </div> */}
-        {/* <div className="grid mt-8 grid-cols-3 gap-8">
-          {brokerageFleetData.map((plane: Plane) => (
-            <PlaneCard key={plane._id} plane={plane} />
-          ))}
-        </div> */}
+      <section className="relative py-20 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/fleet-cover.webp"
+            alt="Private Jet Fleet"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <Container className="relative z-10">
+          <div className="max-w-3xl">
+            <SectionHeading className="text-4xl font-serif sm:text-5xl !text-left text-white">
+              Our Private Jet Fleet
+            </SectionHeading>
+            <p className="mt-6 text-lg leading-8 text-slate-200">
+              Discover our diverse range of private jets, from light to heavy
+              aircraft, each offering unique capabilities to match your specific
+              travel requirements.
+            </p>
+          </div>
+        </Container>
+
+        <div className="absolute inset-0 bg-slate-900/55" />
+      </section>
+
+      <Container className="mt-16">
+        <div className="flex items-center gap-12">
+          <p className="text-slate-700 font-serif text-3xl font-medium">
+            Filter by
+          </p>
+          <PlaneFilters />
+        </div>
+
+        <hr className="my-8 h-0.5 bg-blue-700" />
+
+        <FleetGrid planes={planes} />
       </Container>
     </div>
   );

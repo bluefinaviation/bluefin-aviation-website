@@ -5,13 +5,14 @@ import { LinktreeSocial } from "@/components/pages/linktree/linktree-social";
 import { PageContainer } from "@/components/shared/pace-container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { client } from "@/sanity/lib/client";
-import { LINKTREE_PAGE_QUERY } from "@/sanity/lib/queries";
 import { socials } from "@/data/socials";
+import { LINKTREE_PAGE_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
 interface LinktreeLink {
   _key: string;
   _type: "linktreeLink";
+
   label?: string;
   description?: string;
   linkUrl?: string;
@@ -22,11 +23,9 @@ export const metadata: Metadata = {
 };
 
 export default async function LinktreeRoute() {
-  const linktreePageData = await client.fetch(
-    LINKTREE_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  const { data: linktreePageData } = await sanityFetch({
+    query: LINKTREE_PAGE_QUERY,
+  });
 
   if (!linktreePageData) return null;
 

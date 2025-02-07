@@ -35,28 +35,28 @@ export const BrokerSection = ({ brokerSection }: BrokerSectionProps) => {
             href="/brokerage-fleet?category=light-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
-            <LightJetIcon className="size-16 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />
+            <LightJetIcon className="size-16 group-hover:stroke-branding group-hover:fill-branding group-hover:-translate-y-2 transition-all duration-300 ease-in-out stroke-slate-300 fill-slate-300" />
             <h3 className="text-xs font-mono uppercase">Light Jets</h3>
           </Link>
           <Link
             href="/brokerage-fleet?category=midsize-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
-            <MidsizeJetIcon className="size-20 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />
+            <MidsizeJetIcon className="size-20 group-hover:stroke-branding group-hover:fill-branding group-hover:-translate-y-2 transition-all duration-300 ease-in-out stroke-slate-300 fill-slate-300" />
             <h3 className="text-xs font-mono uppercase">Midsize Jets</h3>
           </Link>
           <Link
             href="/brokerage-fleet?category=super-midsize-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
-            <SuperMidsizeJetIcon className="size-24 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />
+            <SuperMidsizeJetIcon className="size-24 group-hover:stroke-branding group-hover:fill-branding group-hover:-translate-y-2 transition-all duration-300 ease-in-out stroke-slate-300 fill-slate-300" />
             <h3 className="text-xs font-mono uppercase">Super Midsize Jets</h3>
           </Link>
           <Link
             href="/brokerage-fleet?category=heavy-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
-            <HeavyJetIcon className="size-32 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />
+            <HeavyJetIcon className="size-32 group-hover:stroke-branding group-hover:fill-branding group-hover:-translate-y-2 transition-all duration-300 ease-in-out stroke-slate-300 fill-slate-300" />
             <h3 className="text-xs font-mono uppercase">Heavy Jets</h3>
           </Link>
         </div>

@@ -9,19 +9,17 @@ import { Container } from "@/components/shared/section-container";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { MapContainer } from "@/components/contact/map-container";
 
-import { client } from "@/sanity/lib/client";
 import { CONTACT_PAGE_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Contact Us",
 };
 
 export default async function ContactPage() {
-  const contactPageData = await client.fetch(
-    CONTACT_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  const { data: contactPageData } = await sanityFetch({
+    query: CONTACT_PAGE_QUERY,
+  });
 
   if (!contactPageData) return null;
 

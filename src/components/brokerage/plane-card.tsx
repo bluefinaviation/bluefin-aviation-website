@@ -1,20 +1,23 @@
+import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { Plane } from "@/sanity/types";
 import { Gauge, Path, Users } from "@phosphor-icons/react/dist/ssr";
 
-import { Plane } from "@/sanity/types";
-
-type PlaneCardData = Omit<Plane, "manufacturer"> & {
+type QueryPlane = Omit<Plane, "manufacturer"> & {
   manufacturer: string;
 };
 
 interface PlaneCardProps {
-  plane: PlaneCardData;
+  plane: QueryPlane;
 }
 
 export const PlaneCard = ({ plane }: PlaneCardProps) => {
   return (
-    <div className="flex shadow-lg bg-slate-50 hover:bg-white flex-col hover:scale-105 tw-transition group items-center border border-gray-200 rounded-lg overflow-hidden relative">
+    <Link
+      href={`/brokerage-fleet/${plane.slug}`}
+      className="flex shadow-lg bg-slate-50 hover:bg-white flex-col hover:-translate-y-2 tw-transition group items-center border border-gray-200 rounded-lg overflow-hidden relative"
+    >
       <div className="relative w-full aspect-[3/2] bg-slate-100">
         <Image
           src={
@@ -63,6 +66,6 @@ export const PlaneCard = ({ plane }: PlaneCardProps) => {
 
       {/* Blue hover bar */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-    </div>
+    </Link>
   );
 };

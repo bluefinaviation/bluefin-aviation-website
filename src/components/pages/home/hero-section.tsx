@@ -9,16 +9,15 @@ import { PageTitle } from "@/components/shared/page-title";
 import { Container } from "@/components/shared/section-container";
 import { Button } from "@/components/ui/button";
 
-import { Section } from "@/sanity/types";
+import { HOME_PAGE_QUERYResult } from "@/sanity/types";
 
-interface HeroSectionProps {
-  heroSection: {
-    section: Section;
-    video: string;
-  };
-}
+type HeroSectionProps = {
+  heroSection: NonNullable<NonNullable<HOME_PAGE_QUERYResult>["heroSection"]>;
+};
 
 export const HeroSection = ({ heroSection }: HeroSectionProps) => {
+  if (!heroSection.section) return null;
+
   return (
     <>
       <div className="grid h-screen items-center justify-center overflow-hidden">

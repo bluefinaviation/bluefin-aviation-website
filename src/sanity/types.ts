@@ -39,6 +39,15 @@ export type SanityImageDimensions = {
   aspectRatio?: number;
 };
 
+export type SiteSettings = {
+  _id: string;
+  _type: "siteSettings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  siteName?: string;
+};
+
 export type EmptyLeg = {
   _id: string;
   _type: "emptyLeg";
@@ -49,14 +58,21 @@ export type EmptyLeg = {
   to?: Destination;
   departureTime?: string;
   arrivalTime?: string;
-  originalPrice?: number;
-  discountedPrice?: number;
+  plane?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "plane";
+  };
+  price?: number;
 };
 
 export type Destination = {
   _type: "destination";
   city?: string;
+  country?: string;
   countryCode?: string;
+  airportName?: string;
   airportCode?: string;
 };
 
@@ -73,6 +89,7 @@ export type Plane = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "planeManufacturer";
   };
+  slug?: Slug;
   category?: {
     _ref: string;
     _type: "reference";
@@ -104,6 +121,7 @@ export type PlaneCategory = {
   _updatedAt: string;
   _rev: string;
   name?: string;
+  slug?: Slug;
   image?: {
     asset?: {
       _ref: string;
@@ -125,6 +143,7 @@ export type PlaneManufacturer = {
   _updatedAt: string;
   _rev: string;
   name?: string;
+  slug?: Slug;
   logo?: {
     asset?: {
       _ref: string;
@@ -605,7 +624,7 @@ export type Section = {
   };
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | EmptyLeg | Destination | Plane | PlaneCategory | PlaneManufacturer | LinktreeLink | TripSubfeature | TripFeature | FuelFeature | Testimonial | Partner | Location | Geopoint | ContactItem | Stat | PortableText | Gallery | Policy | Slug | Linktree | Inquiry | TripService | FuelService | Card | Services | Newsletter | Contact | About | Home | SanityFileAsset | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Section;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SiteSettings | EmptyLeg | Destination | Plane | PlaneCategory | PlaneManufacturer | LinktreeLink | TripSubfeature | TripFeature | FuelFeature | Testimonial | Partner | Location | Geopoint | ContactItem | Stat | PortableText | Gallery | Policy | Slug | Linktree | Inquiry | TripService | FuelService | Card | Services | Newsletter | Contact | About | Home | SanityFileAsset | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Section;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
@@ -646,10 +665,12 @@ export type HOME_PAGE_QUERYResult = {
     section?: Section;
   } | null;
 } | null;
-// Variable: FLEET_PAGE_QUERY
-// Query: *[_type == "plane"]{		model,		"manufacturer": manufacturer->name,		"category": category->name,		code,		capacity,		speed,		range,		image	}
-export type FLEET_PAGE_QUERYResult = Array<{
+// Variable: ALL_PLANES_QUERY
+// Query: *[_type == "plane" && defined(slug.current)] | order(model asc) {		_id,		model,		"slug": slug.current,		"manufacturer": manufacturer->name,		"category": category->name,		code,		capacity,		speed,		range,		image	}
+export type ALL_PLANES_QUERYResult = Array<{
+  _id: string;
   model: string | null;
+  slug: string | null;
   manufacturer: string | null;
   category: string | null;
   code: string | null;
@@ -669,6 +690,27 @@ export type FLEET_PAGE_QUERYResult = Array<{
     _type: "image";
   } | null;
 }>;
+// Variable: PLANE_QUERY
+// Query: *[_type == "plane" && slug.current == $slug][0] {		model,		code,		capacity,		speed,		range,		image	}
+export type PLANE_QUERYResult = {
+  model: string | null;
+  code: string | null;
+  capacity: number | null;
+  speed: number | null;
+  range: number | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+} | null;
 // Variable: ABOUT_PAGE_QUERY
 // Query: *[_type == "about"][0]{		storySection,		teamSection,		statsSection}
 export type ABOUT_PAGE_QUERYResult = {
@@ -796,18 +838,6 @@ export type FOOTER_QUERYResult = {
     section: Section | null;
   } | null;
 };
-// Variable: ALL_PLANE_CATEGORIES_QUERY
-// Query: *[_type == "planeCategory"]{    _id,    name  }
-export type ALL_PLANE_CATEGORIES_QUERYResult = Array<{
-  _id: string;
-  name: string | null;
-}>;
-// Variable: ALL_PLANE_MANUFACTURERS_QUERY
-// Query: *[_type == "planeManufacturer"]{    _id,    name  }
-export type ALL_PLANE_MANUFACTURERS_QUERYResult = Array<{
-  _id: string;
-  name: string | null;
-}>;
 // Variable: INQUIRY_PAGE_QUERY
 // Query: *[_type == "inquiry"][0]{		heroSection,		formSection	}
 export type INQUIRY_PAGE_QUERYResult = {
@@ -825,12 +855,60 @@ export type NEWSLETTER_PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: EMPTY_LEGS_QUERY
-// Query: *[_type == "emptyLeg"] {		from,		to,		departureTime,		arrivalTime,	}
+// Query: *[_type == "emptyLeg"] {		from,		to,		departureTime,		arrivalTime,		plane,		seatsAvailable,		originalPrice,		discountedPrice	}
 export type EMPTY_LEGS_QUERYResult = Array<{
   from: Destination | null;
   to: Destination | null;
   departureTime: string | null;
   arrivalTime: string | null;
+  plane: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "plane";
+  } | null;
+  seatsAvailable: null;
+  originalPrice: null;
+  discountedPrice: null;
+}>;
+// Variable: ALL_PLANE_CATEGORIES_QUERY
+// Query: *[_type == "planeCategory"]{    _id,    name,    "slug": slug.current  }
+export type ALL_PLANE_CATEGORIES_QUERYResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+}>;
+// Variable: ALL_PLANE_MANUFACTURERS_QUERY
+// Query: *[_type == "planeManufacturer"]{    _id,    name,    "slug": slug.current  }
+export type ALL_PLANE_MANUFACTURERS_QUERYResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+}>;
+// Variable: FILTERED_PLANES_QUERY
+// Query: *[_type == "plane" && defined(slug.current)    && (($category == null) || category->slug.current == $category)    && (($manufacturer == null) || manufacturer->slug.current == $manufacturer)  ] | order(model asc) {    _id,    model,    "slug": slug.current,    "manufacturer": manufacturer->name,    "category": category->name,    code,    capacity,    speed,    range,    image  }
+export type FILTERED_PLANES_QUERYResult = Array<{
+  _id: string;
+  model: string | null;
+  slug: string | null;
+  manufacturer: string | null;
+  category: string | null;
+  code: string | null;
+  capacity: number | null;
+  speed: number | null;
+  range: number | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
 }>;
 
 // Query TypeMap
@@ -838,7 +916,8 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n  *[_type == \"home\"][0]{\n    heroSection{\n\t\tsection,\n\t\t\"video\": video.asset->url\n\t},\n\tservicesSection{\n\t\tsection,\n\t\t\"tripService\": *[_type == \"tripService\"][0]{\n\t\t\tcard\n\t\t},\n\t\t\"fuelService\": *[_type == \"fuelService\"][0]{\n\t\t\tcard\n\t\t},\n\t},\n\tbrokerSection,\n\ttestimonialsSection,\n\tpartnersSection,\n\tcontactSection,\n\tnewsletterSection,\n}": HOME_PAGE_QUERYResult;
-    "\n\t*[_type == \"plane\"]{\n\t\tmodel,\n\t\t\"manufacturer\": manufacturer->name,\n\t\t\"category\": category->name,\n\t\tcode,\n\t\tcapacity,\n\t\tspeed,\n\t\trange,\n\t\timage\n\t}\n": FLEET_PAGE_QUERYResult;
+    "\n\t*[_type == \"plane\" && defined(slug.current)] | order(model asc) {\n\t\t_id,\n\t\tmodel,\n\t\t\"slug\": slug.current,\n\t\t\"manufacturer\": manufacturer->name,\n\t\t\"category\": category->name,\n\t\tcode,\n\t\tcapacity,\n\t\tspeed,\n\t\trange,\n\t\timage\n\t}\n": ALL_PLANES_QUERYResult;
+    "\n\t*[_type == \"plane\" && slug.current == $slug][0] {\n\t\tmodel,\n\t\tcode,\n\t\tcapacity,\n\t\tspeed,\n\t\trange,\n\t\timage\n\t}\n": PLANE_QUERYResult;
     "\n\t*[_type == \"about\"][0]{\n\t\tstorySection,\n\t\tteamSection,\n\t\tstatsSection\n}": ABOUT_PAGE_QUERYResult;
     "\n\t*[_type == \"contact\"][0]{\n\t\tcontactSection,\n\t\tlocationSection\n}": CONTACT_PAGE_QUERYResult;
     "\n  *[_type == \"policy\" && slug.current == $slug][0] {\n    \"id\": _id,\n    \"updatedAt\": _updatedAt,\n    title,\n    \"slug\": slug.current,\n    content,\n  }\n": POLICY_BY_SLUG_QUERYResult;
@@ -847,10 +926,11 @@ declare module "@sanity/client" {
     "\n\t*[_type == \"services\"][0]{\n\t\ttitle,\n\t\theroSection,\n\t\t\"tripService\": *[_type == \"tripService\"][0]{\n\t\t\tcard\n\t\t},\n\t\t\"fuelService\": *[_type == \"fuelService\"][0]{\n\t\t\tcard\n\t\t},\n\t}": SERVICES_PAGE_QUERYResult;
     "\n\t*[_type == \"tripService\"][0]{\n\t\theroSection,\n\t\tfeaturesSection,\n\t\tgallerySection,\n\t}": TRIP_SERVICE_PAGE_QUERYResult;
     "\n\t{\n\t\t\"policies\": *[_type == \"policy\"]{\n\t\t\t\"id\": _id, \n\t\t\ttitle,\n\t\t\t\"slug\": slug.current,\n\t\t\tcontent,\n\t\t},\n\t\t\"newsletter\": *[_type == \"home\"][0]{\n\t\t\t\"section\": newsletterSection.section,\n\t\t}\n\t}\n\t": FOOTER_QUERYResult;
-    "\n  *[_type == \"planeCategory\"]{\n    _id,\n    name\n  }\n": ALL_PLANE_CATEGORIES_QUERYResult;
-    "\n  *[_type == \"planeManufacturer\"]{\n    _id,\n    name\n  }\n": ALL_PLANE_MANUFACTURERS_QUERYResult;
     "\n\t*[_type == \"inquiry\"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n": INQUIRY_PAGE_QUERYResult;
     "\n\t*[_type == \"newsletter\"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n": NEWSLETTER_PAGE_QUERYResult;
-    "\n\t*[_type == \"emptyLeg\"] {\n\t\tfrom,\n\t\tto,\n\t\tdepartureTime,\n\t\tarrivalTime,\n\t}\n": EMPTY_LEGS_QUERYResult;
+    "\n\t*[_type == \"emptyLeg\"] {\n\t\tfrom,\n\t\tto,\n\t\tdepartureTime,\n\t\tarrivalTime,\n\t\tplane,\n\t\tseatsAvailable,\n\t\toriginalPrice,\n\t\tdiscountedPrice\n\t}\n": EMPTY_LEGS_QUERYResult;
+    "\n  *[_type == \"planeCategory\"]{\n    _id,\n    name,\n    \"slug\": slug.current\n  }\n": ALL_PLANE_CATEGORIES_QUERYResult;
+    "\n  *[_type == \"planeManufacturer\"]{\n    _id,\n    name,\n    \"slug\": slug.current\n  }\n": ALL_PLANE_MANUFACTURERS_QUERYResult;
+    "\n  *[_type == \"plane\" && defined(slug.current)\n    && (($category == null) || category->slug.current == $category)\n    && (($manufacturer == null) || manufacturer->slug.current == $manufacturer)\n  ] | order(model asc) {\n    _id,\n    model,\n    \"slug\": slug.current,\n    \"manufacturer\": manufacturer->name,\n    \"category\": category->name,\n    code,\n    capacity,\n    speed,\n    range,\n    image\n  }\n": FILTERED_PLANES_QUERYResult;
   }
 }

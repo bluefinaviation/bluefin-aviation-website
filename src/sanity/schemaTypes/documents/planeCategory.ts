@@ -1,11 +1,11 @@
 import { defineField, defineType } from "sanity";
-import { AirplaneInFlight } from "@phosphor-icons/react/dist/ssr";
+import { AirplaneTilt } from "@phosphor-icons/react/dist/ssr";
 
 export default defineType({
-  name: "planeManufacturer",
-  title: "Plane Manufacturers",
+  name: "planeCategory",
+  title: "Plane Categories",
   type: "document",
-  icon: AirplaneInFlight,
+  icon: AirplaneTilt,
   fields: [
     defineField({
       name: "name",
@@ -13,8 +13,14 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "logo",
-      title: "Logo",
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "name" },
+    }),
+    defineField({
+      name: "image",
+      title: "Image",
       type: "image",
       options: { hotspot: true },
       fields: [
@@ -29,7 +35,7 @@ export default defineType({
   preview: {
     select: {
       title: "name",
-      media: "logo",
+      media: "image",
     },
   },
 });

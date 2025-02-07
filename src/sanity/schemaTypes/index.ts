@@ -1,36 +1,37 @@
 import { type SchemaTypeDefinition } from "sanity";
 
 // Objects
-import card from "@/sanity/schemas/objects/card";
-import fuelFeature from "@/sanity/schemas/objects/fuelFeature";
-import gallery from "@/sanity/schemas/objects/gallery";
-import linktreeLink from "@/sanity/schemas/objects/linktreeLink";
-import location from "@/sanity/schemas/objects/location";
-import partner from "@/sanity/schemas/objects/partner";
-import portableText from "@/sanity/schemas/objects/portableText";
-import section from "@/sanity/schemas/objects/section";
-import stat from "@/sanity/schemas/objects/stat";
-import testimonial from "@/sanity/schemas/objects/testimonial";
-import tripFeature from "@/sanity/schemas/objects/tripFeature";
-import tripSubfeature from "@/sanity/schemas/objects/tripSubfeature";
-import contactItem from "@/sanity/schemas/objects/contactItem";
-import destination from "@/sanity/schemas/objects/destination";
+import card from "@/sanity/schemaTypes/objects/card";
+import fuelFeature from "@/sanity/schemaTypes/objects/fuelFeature";
+import gallery from "@/sanity/schemaTypes/objects/gallery";
+import linktreeLink from "@/sanity/schemaTypes/objects/linktreeLink";
+import location from "@/sanity/schemaTypes/objects/location";
+import partner from "@/sanity/schemaTypes/objects/partner";
+import portableText from "@/sanity/schemaTypes/objects/portableText";
+import section from "@/sanity/schemaTypes/objects/section";
+import stat from "@/sanity/schemaTypes/objects/stat";
+import testimonial from "@/sanity/schemaTypes/objects/testimonial";
+import tripFeature from "@/sanity/schemaTypes/objects/tripFeature";
+import tripSubfeature from "@/sanity/schemaTypes/objects/tripSubfeature";
+import contactItem from "@/sanity/schemaTypes/objects/contactItem";
+import destination from "@/sanity/schemaTypes/objects/destination";
 // Documents
-import plane from "@/sanity/schemas/documents/plane";
-import planeCategory from "@/sanity/schemas/documents/planeCategory";
-import policy from "@/sanity/schemas/documents/policy";
-import planeManufacturer from "@/sanity/schemas/documents/planeManufacturer";
-import emptyLeg from "@/sanity/schemas/documents/emptyLeg";
+import plane from "@/sanity/schemaTypes/documents/plane";
+import planeCategory from "@/sanity/schemaTypes/documents/planeCategory";
+import policy from "@/sanity/schemaTypes/documents/policy";
+import planeManufacturer from "@/sanity/schemaTypes/documents/planeManufacturer";
+import emptyLeg from "@/sanity/schemaTypes/documents/emptyLeg";
 // Singletons
-import about from "@/sanity/schemas/singletons/about";
-import contact from "@/sanity/schemas/singletons/contact";
-import fuelService from "@/sanity/schemas/singletons/fuelService";
-import home from "@/sanity/schemas/singletons/home";
-import inquiry from "@/sanity/schemas/singletons/inquiry";
-import linktree from "@/sanity/schemas/singletons/linktree";
-import newsletter from "@/sanity/schemas/singletons/newsletter";
-import services from "@/sanity/schemas/singletons/services";
-import tripService from "@/sanity/schemas/singletons/tripService";
+import about from "@/sanity/schemaTypes/singletons/about";
+import contact from "@/sanity/schemaTypes/singletons/contact";
+import fuelService from "@/sanity/schemaTypes/singletons/fuelService";
+import home from "@/sanity/schemaTypes/singletons/home";
+import inquiry from "@/sanity/schemaTypes/singletons/inquiry";
+import linktree from "@/sanity/schemaTypes/singletons/linktree";
+import newsletter from "@/sanity/schemaTypes/singletons/newsletter";
+import services from "@/sanity/schemaTypes/singletons/services";
+import siteSettings from "@/sanity/schemaTypes/singletons/siteSettings";
+import tripService from "@/sanity/schemaTypes/singletons/tripService";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -62,5 +63,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     planeManufacturer,
     emptyLeg,
     destination,
+    siteSettings,
   ],
 };

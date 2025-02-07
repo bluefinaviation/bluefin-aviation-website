@@ -7,14 +7,12 @@ import { NewsletterFooterForm } from "@/components/forms/newsletter-footer-form"
 import { navigation } from "@/data/nav-links";
 import { COMPANY_NAME } from "@/lib/constants";
 import { FOOTER_QUERY } from "@/sanity/lib/queries";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const Footer = async () => {
-  const footerData = await client.fetch(
-    FOOTER_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  const { data: footerData } = await sanityFetch({
+    query: FOOTER_QUERY,
+  });
 
   if (!footerData) return null;
 
