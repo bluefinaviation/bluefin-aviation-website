@@ -1,91 +1,133 @@
 "use client";
 
-// // import { Popover } from "@headlessui/react";
+import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
+import { List, X } from "@phosphor-icons/react";
 
 import { Logo } from "@/components/branding/logo";
 import { NavLinks } from "@/components/nav/nav-links";
 import { Container } from "@/components/shared/section-container";
 
+import { cn } from "@/lib/utils";
+
+const modalVariants = {
+  hidden: {
+    y: "-100vh",
+  },
+  visible: {
+    y: 0,
+    transition: {
+      type: "tween",
+      duration: 0.3,
+    },
+  },
+  exit: {
+    y: "-100vh",
+    transition: {
+      type: "tween",
+      duration: 0.3,
+      delay: 0.3,
+    },
+  },
+};
+
+const linkVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: (custom: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.3 + custom * 0.1,
+      duration: 0.3,
+    },
+  }),
+  exit: { opacity: 0, x: -20 },
+};
+
+const navLinks = [
+  { href: "/services", label: "Services" },
+  { href: "/brokerage-fleet", label: "Fleet" },
+  { href: "/empty-legs", label: "Empty Legs" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export const Navbar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <header>
       <nav>
-        <Container className="relative z-50 flex h-16 items-center justify-between sm:h-20 lg:h-24">
-          <div className="relative z-10 flex w-full items-center justify-between gap-16">
+        <Container className="relative z-10 flex h-16 items-center justify-between sm:h-20 lg:h-24">
+          <div className="relative flex w-full items-center justify-between gap-16">
             <Link href="/" aria-label="Home">
               <Logo
-                darkColor="#00184f"
-                lightColor="#1d63ab"
-                className="h-14 w-auto sm:h-14 lg:h-20"
+                className="h-8 w-auto sm:h-10 lg:h-12"
+                darkColor="#0f172a"
+                lightColor="#64748b"
               />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
               <NavLinks />
             </div>
-          </div>
-          <div className="flex items-center gap-6">
-            {/* <Popover className="lg:hidden">
-              {({ open }) => (
-                <>
-                  <Popover.Button
-                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-slate-900 p-2 hover:bg-slate-200/50 hover:stroke-slate-600 active:stroke-slate-900 not-focus-visible:focus:outline-hidden"
-                    aria-label="Toggle site navigation"
-                  >
-                    {({ open }) =>
-                      open ? (
-                        <CaretUp className="size-6" />
-                      ) : (
-                        <ChartBar className="size-6" />
-                      )
-                    }
-                  </Popover.Button>
-                  <AnimatePresence initial={false}>
-                    {open && (
-                      <>
-                        <Popover.Overlay
-                          static
-                          as={motion.div}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="fixed inset-0 z-0 bg-slate-300/60 backdrop-blur-sm"
-                        />
-                        <Popover.Panel
-                          static
-                          as={motion.div}
-                          initial={{ opacity: 0, y: -32 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{
-                            opacity: 0,
-                            y: -32,
-                            transition: { duration: 0.2 },
-                          }}
-                          className="rounded-lg-b-2xl absolute inset-x-0 top-0 z-0 origin-top bg-slate-50 px-6 pb-6 pt-32 shadow-sm shadow-slate-900/20"
-                        >
-                          <div className="flex flex-col space-y-4">
-                            <MobileNavLink href="/services">
-                              Services
-                            </MobileNavLink>
-                            <MobileNavLink href="/about">About</MobileNavLink>
-                            <MobileNavLink href="/contact">
-                              Contact
-                            </MobileNavLink>
-                          </div>
-                        </Popover.Panel>
-                      </>
-                    )}
-                  </AnimatePresence>
-                </>
-              )}
-            </Popover> */}
+            <List
+              onClick={() => toggleModal()}
+              className="block size-7 sm:hidden"
+            />
           </div>
         </Container>
+        <AnimatePresence>
+          {showModal && (
+            <motion.div
+              className={cn("fixed inset-0 z-50 h-screen bg-slate-950 px-5")}
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <div className="flex h-16 w-full items-center justify-between">
+                <Link href="/" aria-label="Home">
+                  <Logo
+                    className="h-8 w-auto sm:h-10"
+                    darkColor="#fff"
+                    lightColor="#e2e8f0"
+                  />
+                </Link>
+                <X
+                  className="size-5 cursor-pointer text-white"
+                  onClick={() => toggleModal()}
+                />
+              </div>
+
+              <div className="mt-16 flex flex-col gap-8">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.href}
+                    custom={index}
+                    variants={linkVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    <Link
+                      href={link.href}
+                      className="text-2xl font-medium text-white hover:text-slate-200"
+                      onClick={() => toggleModal()}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
-      {/* <InquirySlideOver
-          closeInquiry={closeInquiry}
-          isInquiryOpen={isInquiryOpen}
-        /> */}
     </header>
   );
 };
