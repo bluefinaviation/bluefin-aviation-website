@@ -1,144 +1,242 @@
-'use client'
+"use client";
 
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  CheckIcon,
-  ChevronRightIcon,
-  DotFilledIcon,
-  HamburgerMenuIcon
-} from '@radix-ui/react-icons'
-import { useState } from 'react'
+  List,
+  Video,
+  X,
+  GraduationCap,
+  Database,
+  Chalkboard,
+  Pencil,
+  SealPercent,
+  WindowsLogo,
+  MagnifyingGlass,
+  Lightbulb,
+  UsersThree,
+  ReadCvLogo,
+  Calendar,
+  SealQuestion,
+  Asterisk,
+  Info,
+} from "@phosphor-icons/react";
 
-export const DropdownMenuDemo = () => {
-  const [bookmarksChecked, setBookmarksChecked] = useState(true)
-  const [urlsChecked, setUrlsChecked] = useState(false)
-  const [person, setPerson] = useState('pedro')
+import { Button, buttonVariants } from "@/components/ui/button";
+
+import { cn } from "@/lib/utils";
+
+const navLinks = [
+  {
+    title: "Consultancy",
+    links: [
+      {
+        label: "Consultancy",
+        href: "/data-consultancy-services",
+        icon: <Asterisk weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Technologies",
+        href: "/technology-services",
+        icon: <Info weight="fill" className="text-accent size-5" />,
+      },
+    ],
+  },
+  {
+    title: "Training",
+    links: [
+      {
+        label: "Courses",
+        href: "/",
+        icon: <GraduationCap weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Bespoke Training",
+        href: "/",
+        icon: <Database weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Virtual Training",
+        href: "/",
+        icon: <Video weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Blended Training & Consultancy",
+        href: "/blended-learning-consultancy-services-bi-solutions",
+        icon: <Chalkboard weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Microsoft Data Platform Certifications",
+        href: "/",
+        icon: <WindowsLogo weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Offers",
+        href: "/",
+        icon: <SealPercent weight="fill" className="text-accent size-5" />,
+      },
+    ],
+  },
+  {
+    title: "Insights",
+    links: [
+      {
+        label: "Blog",
+        href: "/blog",
+        icon: <Pencil weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Case Studies",
+        href: "/case-studies",
+        icon: <MagnifyingGlass weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Top Tips",
+        href: "/top-tips",
+        icon: <Lightbulb weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Events",
+        href: "/",
+        icon: <Calendar weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "FAQ",
+        href: "/faq",
+        icon: <SealQuestion weight="fill" className="text-accent size-5" />,
+      },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      {
+        label: "About Us",
+        href: "/",
+        icon: <GraduationCap weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Team",
+        href: "/",
+        icon: <UsersThree weight="fill" className="text-accent size-5" />,
+      },
+      {
+        label: "Careers",
+        href: "/",
+        icon: <ReadCvLogo weight="fill" className="text-accent size-5" />,
+      },
+    ],
+  },
+];
+
+const modalVariants = {
+  hidden: {
+    y: "-100vh",
+  },
+  visible: {
+    y: 0,
+    transition: {
+      type: "tween",
+      duration: 0.3,
+    },
+  },
+  exit: {
+    y: "-100vh",
+    transition: {
+      type: "tween",
+      duration: 0.3,
+      delay: 0.3,
+    },
+  },
+};
+
+const linkItemVariants = {
+  hidden: { opacity: 0, y: "50%" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: "50%",
+    transition: {
+      duration: 0.1,
+      ease: "easeOut",
+    },
+  },
+};
+
+const navLinksVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+  exit: {
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const MotionLink = motion.create(Link);
+
+export const MobileMenu = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>
-        <button
-          className='text-violet11 shadow-blackA7 hover:bg-violet3 inline-flex size-[35px] items-center justify-center rounded-full bg-white shadow-[0_2px_10px] outline-hidden focus:shadow-[0_0_0_2px] focus:shadow-black'
-          aria-label='Customise options'
-        >
-          <HamburgerMenuIcon />
-        </button>
-      </DropdownMenu.Trigger>
+    <div className="sticky top-0 z-50 flex h-16 items-center justify-between border-b bg-white px-5 shadow-xs sm:hidden">
+      <Link href="/">
+        <div className="relative aspect-video w-20">
+          <Image
+            src="/images/logos/ptr-logo.png"
+            alt="PTR logo"
+            fill
+            className="object-contain object-center"
+          />
+        </div>
+      </Link>
 
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className='data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade min-w-[220px] rounded-md bg-white p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform]'
-          sideOffset={5}
-        >
-          <DropdownMenu.Item className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'>
-            New Tab{' '}
-            <div className='text-mauve11 group-data-disabled:text-mauve8 ml-auto pl-[20px] group-data-highlighted:text-white'>
-              ⌘+T
-            </div>
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'>
-            New Window{' '}
-            <div className='text-mauve11 group-data-disabled:text-mauve8 ml-auto pl-[20px] group-data-highlighted:text-white'>
-              ⌘+N
-            </div>
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'
-            disabled
+      <List onClick={() => toggleModal()} className="block size-7 sm:hidden" />
+
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            className={cn("fixed inset-0 h-screen bg-slate-950 px-5")}
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            New Private Window{' '}
-            <div className='text-mauve11 group-data-disabled:text-mauve8 ml-auto pl-[20px] group-data-highlighted:text-white'>
-              ⇧+⌘+N
+            <div className="flex h-16 w-full items-center justify-between">
+              <div></div>
+              <X
+                className="size-5 cursor-pointer text-white"
+                onClick={() => toggleModal()}
+              />
             </div>
-          </DropdownMenu.Item>
-          <DropdownMenu.Sub>
-            <DropdownMenu.SubTrigger className='text-violet11 data-[state=open]:bg-violet4 data-[state=open]:text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 data-highlighted:data-[state=open]:bg-violet9 data-highlighted:data-[state=open]:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'>
-              More Tools
-              <div className='text-mauve11 group-data-disabled:text-mauve8 ml-auto pl-[20px] group-data-highlighted:text-white'>
-                <ChevronRightIcon />
-              </div>
-            </DropdownMenu.SubTrigger>
-            <DropdownMenu.Portal>
-              <DropdownMenu.SubContent
-                className='data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade min-w-[220px] rounded-md bg-white p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform]'
-                sideOffset={2}
-                alignOffset={-5}
-              >
-                <DropdownMenu.Item className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'>
-                  Save Page As…{' '}
-                  <div className='text-mauve11 group-data-disabled:text-mauve8 ml-auto pl-[20px] group-data-highlighted:text-white'>
-                    ⌘+S
-                  </div>
-                </DropdownMenu.Item>
-                <DropdownMenu.Item className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'>
-                  Create Shortcut…
-                </DropdownMenu.Item>
-                <DropdownMenu.Item className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'>
-                  Name Window…
-                </DropdownMenu.Item>
-                <DropdownMenu.Separator className='bg-violet6 m-[5px] h-[1px]' />
-                <DropdownMenu.Item className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'>
-                  Developer Tools
-                </DropdownMenu.Item>
-              </DropdownMenu.SubContent>
-            </DropdownMenu.Portal>
-          </DropdownMenu.Sub>
 
-          <DropdownMenu.Separator className='bg-violet6 m-[5px] h-[1px]' />
-
-          <DropdownMenu.CheckboxItem
-            className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'
-            checked={bookmarksChecked}
-            onCheckedChange={setBookmarksChecked}
-          >
-            <DropdownMenu.ItemIndicator className='absolute left-0 inline-flex w-[25px] items-center justify-center'>
-              <CheckIcon />
-            </DropdownMenu.ItemIndicator>
-            Show Bookmarks{' '}
-            <div className='text-mauve11 group-data-disabled:text-mauve8 ml-auto pl-[20px] group-data-highlighted:text-white'>
-              ⌘+B
+            <div className="mt-10 flex items-center justify-center">
+              <Link href="/contact" className={buttonVariants()}>
+                Contact Us
+              </Link>
             </div>
-          </DropdownMenu.CheckboxItem>
-          <DropdownMenu.CheckboxItem
-            className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'
-            checked={urlsChecked}
-            onCheckedChange={setUrlsChecked}
-          >
-            <DropdownMenu.ItemIndicator className='absolute left-0 inline-flex w-[25px] items-center justify-center'>
-              <CheckIcon />
-            </DropdownMenu.ItemIndicator>
-            Show Full URLs
-          </DropdownMenu.CheckboxItem>
-
-          <DropdownMenu.Separator className='bg-violet6 m-[5px] h-[1px]' />
-
-          <DropdownMenu.Label className='text-mauve11 pl-[25px] text-xs leading-[25px]'>
-            People
-          </DropdownMenu.Label>
-          <DropdownMenu.RadioGroup value={person} onValueChange={setPerson}>
-            <DropdownMenu.RadioItem
-              className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'
-              value='pedro'
-            >
-              <DropdownMenu.ItemIndicator className='absolute left-0 inline-flex w-[25px] items-center justify-center'>
-                <DotFilledIcon />
-              </DropdownMenu.ItemIndicator>
-              Pedro Duarte
-            </DropdownMenu.RadioItem>
-            <DropdownMenu.RadioItem
-              className='text-violet11 data-disabled:text-mauve8 data-highlighted:bg-violet9 data-highlighted:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-hidden data-disabled:pointer-events-none'
-              value='colm'
-            >
-              <DropdownMenu.ItemIndicator className='absolute left-0 inline-flex w-[25px] items-center justify-center'>
-                <DotFilledIcon />
-              </DropdownMenu.ItemIndicator>
-              Colm Tuite
-            </DropdownMenu.RadioItem>
-          </DropdownMenu.RadioGroup>
-
-          <DropdownMenu.Arrow className='fill-white' />
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
-  )
-}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
