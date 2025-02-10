@@ -22,21 +22,6 @@ export const HOME_PAGE_QUERY = defineQuery(`
 	newsletterSection,
 }`);
 
-export const ALL_PLANES_QUERY = defineQuery(`
-	*[_type == "plane" && defined(slug.current)] | order(model asc) {
-		_id,
-		model,
-		"slug": slug.current,
-		"manufacturer": manufacturer->name,
-		"category": category->name,
-		code,
-		capacity,
-		speed,
-		range,
-		image
-	}
-`);
-
 export const PLANE_QUERY = defineQuery(`
 	*[_type == "plane" && slug.current == $slug][0] {
 		model,
@@ -133,6 +118,7 @@ export const NEWSLETTER_PAGE_QUERY = defineQuery(`
 
 export const EMPTY_LEGS_QUERY = defineQuery(`
 	*[_type == "emptyLeg"] {
+		_id,
 		from,
 		to,
 		departureTime,
