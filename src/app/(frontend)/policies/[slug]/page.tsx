@@ -5,8 +5,8 @@ import type { PortableTextBlock } from "@portabletext/types";
 import { CustomPortableText } from "@/components/shared/custom-portable-text";
 import { SectionHeading } from "@/components/shared/section-heading";
 
+import { client } from "@/sanity/lib/client";
 import { POLICY_BY_SLUG_QUERY } from "@/sanity/lib/queries";
-import { sanityFetch } from "@/sanity/lib/live";
 
 interface PolicyPageProps {
   params: Promise<{
@@ -19,10 +19,17 @@ export const metadata: Metadata = {
 };
 
 export default async function PolicyPage({ params }: PolicyPageProps) {
-  const { data: policyPageData } = await sanityFetch({
-    query: POLICY_BY_SLUG_QUERY,
-    params: await params,
-  });
+  const { slug } = await params;
+
+  const policyPageData = await client.fetch(
+    POLICY_BY_SLUG_QUERY,
+    {
+      params: {
+        slug: slug,
+      },
+    },
+    { next: { revalidate: 60 } }
+  );
 
   if (!policyPageData) return null;
 

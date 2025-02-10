@@ -22,9 +22,11 @@ export const HOME_PAGE_QUERY = defineQuery(`
 	newsletterSection,
 }`);
 
-export const PLANE_QUERY = defineQuery(`
-	*[_type == "plane" && slug.current == $slug][0] {
+export const FLEET_PAGE_QUERY = defineQuery(`
+	*[_type == "plane"]{
 		model,
+		"manufacturer": manufacturer->name,
+		"category": category->name,
 		code,
 		capacity,
 		speed,
@@ -102,6 +104,20 @@ export const FOOTER_QUERY = defineQuery(`
 	}
 	`);
 
+export const ALL_PLANE_CATEGORIES_QUERY = defineQuery(`
+  *[_type == "planeCategory"]{
+    _id,
+    name
+  }
+`);
+
+export const ALL_PLANE_MANUFACTURERS_QUERY = defineQuery(`
+  *[_type == "planeManufacturer"]{
+    _id,
+    name
+  }
+`);
+
 export const INQUIRY_PAGE_QUERY = defineQuery(`
 	*[_type == "inquiry"][0]{
 		heroSection,
@@ -118,48 +134,9 @@ export const NEWSLETTER_PAGE_QUERY = defineQuery(`
 
 export const EMPTY_LEGS_QUERY = defineQuery(`
 	*[_type == "emptyLeg"] {
-		_id,
 		from,
 		to,
 		departureTime,
 		arrivalTime,
-		plane,
-		seatsAvailable,
-		originalPrice,
-		discountedPrice
 	}
-`);
-
-export const ALL_PLANE_CATEGORIES_QUERY = defineQuery(`
-  *[_type == "planeCategory"]{
-    _id,
-    name,
-    "slug": slug.current
-  }
-`);
-
-export const ALL_PLANE_MANUFACTURERS_QUERY = defineQuery(`
-  *[_type == "planeManufacturer"]{
-    _id,
-    name,
-    "slug": slug.current
-  }
-`);
-
-export const FILTERED_PLANES_QUERY = defineQuery(`
-  *[_type == "plane" && defined(slug.current)
-    && (($category == null) || category->slug.current == $category)
-    && (($manufacturer == null) || manufacturer->slug.current == $manufacturer)
-  ] | order(model asc) {
-    _id,
-    model,
-    "slug": slug.current,
-    "manufacturer": manufacturer->name,
-    "category": category->name,
-    code,
-    capacity,
-    speed,
-    range,
-    image
-  }
 `);

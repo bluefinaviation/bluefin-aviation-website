@@ -32,15 +32,16 @@ export default defineType({
       description: "Arrival time",
     }),
     defineField({
-      name: "plane",
-      title: "Plane",
-      type: "reference",
-      to: [{ type: "plane" }],
+      name: "originalPrice",
+      title: "Original Price",
+      type: "number",
+      description: "Original price",
     }),
     defineField({
-      name: "price",
-      title: "Price",
+      name: "discountedPrice",
+      title: "Discounted Price",
       type: "number",
+      description: "Discounted price",
     }),
   ],
   preview: {

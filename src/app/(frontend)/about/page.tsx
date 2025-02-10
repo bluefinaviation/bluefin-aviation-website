@@ -6,13 +6,15 @@ import type { PortableTextBlock } from "@portabletext/types";
 import type { Section } from "@/sanity/types";
 import type { Stat } from "@/components/pages/about/stats-section";
 
+import { client } from "@/sanity/lib/client";
 import { ABOUT_PAGE_QUERY } from "@/sanity/lib/queries";
-import { sanityFetch } from "@/sanity/lib/live";
 
 export default async function AboutPage() {
-  const { data: aboutPageData } = await sanityFetch({
-    query: ABOUT_PAGE_QUERY,
-  });
+  const aboutPageData = await client.fetch(
+    ABOUT_PAGE_QUERY,
+    {},
+    { next: { revalidate: 60 } }
+  );
 
   if (!aboutPageData) return null;
 

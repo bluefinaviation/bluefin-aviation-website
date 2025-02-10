@@ -1,26 +1,25 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 import { TripFeatureSection } from "@/components/services/trip-feature-section";
 import { HeroSection } from "@/components/shared/hero-section";
 import { PageContainer } from "@/components/shared/pace-container";
 import { Slider } from "@/components/shared/slider";
 
+import { client } from "@/sanity/lib/client";
 import { TRIP_SERVICE_PAGE_QUERY } from "@/sanity/lib/queries";
-import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Trip Support",
 };
 
 export default async function TripServicePage() {
-  const { data: tripServiceData } = await sanityFetch({
-    query: TRIP_SERVICE_PAGE_QUERY,
-  });
+  const tripServiceData = await client.fetch(
+    TRIP_SERVICE_PAGE_QUERY,
+    {},
+    { next: { revalidate: 60 } }
+  );
 
-  if (!tripServiceData) {
-    notFound();
-  }
+  if (!tripServiceData) return null;
 
   return (
     <PageContainer>

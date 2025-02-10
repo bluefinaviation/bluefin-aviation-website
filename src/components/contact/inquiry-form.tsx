@@ -230,5 +230,5 @@
 // // }
 
 export const InquiryForm = () => {
-  return <div>InquiryForm</div>;
-};
+  return <div>InquiryForm</div>
+}

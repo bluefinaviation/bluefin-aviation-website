@@ -6,16 +6,17 @@ import { PageContainer } from "@/components/shared/pace-container";
 import { Container } from "@/components/shared/section-container";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { SectionSummary } from "@/components/shared/section-summary";
-
+import { client } from "@/sanity/lib/client";
 import { SERVICES_PAGE_QUERY } from "@/sanity/lib/queries";
-import { sanityFetch } from "@/sanity/lib/live";
 
 export default async function ServicesPage() {
-  const { data: servicesPageData } = await sanityFetch({
-    query: SERVICES_PAGE_QUERY,
-  });
+  const servicesPageData = await client.fetch(
+    SERVICES_PAGE_QUERY,
+    {},
+    { next: { revalidate: 60 } }
+  );
 
-  if (!servicesPageData) return null;
+  if (!servicesPageData || !servicesPageData.heroSection?.section) return null;
 
   return (
     <PageContainer>

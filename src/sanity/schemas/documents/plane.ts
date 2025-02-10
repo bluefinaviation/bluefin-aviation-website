@@ -19,12 +19,6 @@ export default defineType({
       to: [{ type: "planeManufacturer" }],
     }),
     defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "model" },
-    }),
-    defineField({
       name: "category",
       title: "Category",
       type: "reference",
