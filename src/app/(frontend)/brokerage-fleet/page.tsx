@@ -1,24 +1,27 @@
-// // import { PlaneCard } from "@/components/brokerage/plane-card";
+import { PlaneCard } from "@/components/brokerage/plane-card";
 import { Container } from "@/components/shared/section-container";
-// // import { SectionHeading } from "@/components/shared/section-heading";
-// // import {
-// //   Select,
-// //   SelectContent,
-// //   SelectItem,
-// //   SelectTrigger,
-// //   SelectValue,
-// // } from "@/components/ui/select";
+import { SectionHeading } from "@/components/shared/section-heading";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 import { client } from "@/sanity/lib/client";
 import {
-  // // ALL_PLANE_MANUFACTURERS_QUERY,
   ALL_PLANE_CATEGORIES_QUERY,
-  // // FLEET_PAGE_QUERY,
+  FLEET_PAGE_QUERY,
 } from "@/sanity/lib/queries";
-// // import { Plane } from "@/sanity/types";
+import { Plane } from "@/sanity/types";
 
 export default async function BrokerageFleetPage() {
-  // // const brokerageFleetData = await client.fetch(FLEET_PAGE_QUERY, {}, options);
+  const fleetData = await client.fetch(
+    FLEET_PAGE_QUERY,
+    {},
+    { next: { revalidate: 60 } }
+  );
   const allPlaneCategories = await client.fetch(
     ALL_PLANE_CATEGORIES_QUERY,
     {},
@@ -35,8 +38,7 @@ export default async function BrokerageFleetPage() {
   return (
     <div className="pb-20">
       <Container>
-        <h1>Our Fleet</h1>
-        {/* <SectionHeading>Our Fleet</SectionHeading>
+        <SectionHeading>Our Fleet</SectionHeading>
         <div className="w-fit flex items-center gap-x-4">
           <Select>
             <SelectTrigger>
@@ -60,12 +62,12 @@ export default async function BrokerageFleetPage() {
               <SelectItem value="commercial">Commercial</SelectItem>
             </SelectContent>
           </Select>
-        </div> */}
-        {/* <div className="grid mt-8 grid-cols-3 gap-8">
-          {brokerageFleetData.map((plane: Plane) => (
+        </div>
+        <div className="grid mt-8 grid-cols-3 gap-8">
+          {fleetData.map((plane: Plane) => (
             <PlaneCard key={plane._id} plane={plane} />
           ))}
-        </div> */}
+        </div>
       </Container>
     </div>
   );
