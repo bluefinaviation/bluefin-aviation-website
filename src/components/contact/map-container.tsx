@@ -2,10 +2,10 @@
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { useMemo, useState } from "react";
 import { MapPin } from "@phosphor-icons/react";
-import Map, { Marker, Popup } from "react-map-gl/mapbox";
 import getCenter from "geolib/es/getCenter";
+import { useMemo, useState } from "react";
+import Map, { Marker, Popup } from "react-map-gl/mapbox";
 
 import { Location } from "@/types";
 import { cn } from "@/lib/utils";
