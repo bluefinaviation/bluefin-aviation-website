@@ -29,6 +29,11 @@ export const navigation = {
     },
     {
       id: 3,
+      name: "Brokerage",
+      href: "/brokerage",
+    },
+    {
+      id: 4,
       name: "Contact",
       href: "/contact",
     },

@@ -1,174 +1,18 @@
 import "@/app/globals.css";
 
-import { ReactNode } from "react";
 import { Metadata } from "next";
-import localFont from "next/font/local";
-import { SanityLive } from "@/sanity/lib/live";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
+import { DisableDraftMode } from "@/components/draft/disable-draft-mode";
 import { Footer } from "@/components/nav/footer";
 import { Navbar } from "@/components/nav/navbar";
 import { Toaster } from "@/components/ui/sonner";
 
-import { cn } from "@/lib/utils";
-
-const apercu = localFont({
-  variable: "--font-apercu",
-  display: "swap",
-  fallback: ["system-ui", "sans-serif"],
-  preload: true,
-  src: [
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-thin-pro.woff2",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-thin-italic-pro.woff2",
-      weight: "100",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-extralight-pro.woff2",
-      weight: "200",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-extralight-italic-pro.woff2",
-      weight: "200",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-light-pro.woff2",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-light-italic-pro.woff2",
-      weight: "300",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-regular-pro.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-italic-pro.woff2",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-medium-pro.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-medium-italic-pro.woff2",
-      weight: "500",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-bold-pro.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-bold-italic-pro.woff2",
-      weight: "700",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-black-pro.woff2",
-      weight: "900",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/regular/apercu-black-italic-pro.woff2",
-      weight: "900",
-      style: "italic",
-    },
-  ],
-});
-
-const apercuCondensed = localFont({
-  variable: "--font-apercu-condensed",
-  display: "swap",
-  fallback: ["system-ui", "sans-serif"],
-  preload: true,
-  src: [
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-light-pro.woff2",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-light-italic-pro.woff2",
-      weight: "300",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-regular-pro.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-italic-pro.woff2",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-medium-pro.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-medium-italic-pro.woff2",
-      weight: "500",
-      style: "italic",
-    },
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-bold-pro.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/condensed/apercu-condensed-bold-italic-pro.woff2",
-      weight: "700",
-      style: "italic",
-    },
-  ],
-});
-
-const apercuMono = localFont({
-  variable: "--font-apercu-mono",
-  display: "swap",
-  fallback: ["monospace"],
-  preload: true,
-  src: [
-    {
-      path: "../../../public/fonts/apercu/mono/apercu-mono-light-pro.woff2",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/mono/apercu-mono-regular-pro.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/mono/apercu-mono-medium-pro.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/apercu/mono/apercu-mono-bold-pro.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-});
+import { SanityLive } from "@/sanity/lib/live";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bluefinaviation.com"),
@@ -225,31 +69,91 @@ export const metadata: Metadata = {
   },
 };
 
+// // export async function generateMetadata(): Promise<Metadata> {
+// //   const { data: gpDetails } = await sanityFetch({
+// //     query: GP_DETAILS_QUERY,
+// //   });
+
+// //   return {
+// //     title: {
+// //       template: `${gpDetails?.seo?.title || "2026 F1 Spanish Grand Prix"} | %s`,
+// //       default: `${gpDetails?.seo?.title || "IFEMA Madrid Circuit"} | 2026 F1 Spanish Grand Prix`,
+// //     },
+// //     openGraph: {
+// //       title: `${gpDetails?.seo?.title || "2026 F1 Spanish Grand Prix"}`,
+// //       description:
+// //         gpDetails?.seo?.description ||
+// //         "After more than 4 decades of absence, the Formula 1 is back in Madrid. From 2026 to 2035, the capital will be the home of the Spanish Grand Prix.",
+// //       url: "https://madrid-f1-gp.vercel.app/",
+// //       siteName: "2026 F1 GP Madrid",
+// //       images: [
+// //         {
+// //           url: "https://madrid-f1-gp.vercel.app/images/og.png",
+
+// //           width: 1200,
+// //           height: 630,
+// //         },
+// //       ],
+// //       locale: "en-GB",
+// //       type: "website",
+// //     },
+// //     description:
+// //       gpDetails?.seo?.description ||
+// //       "After more than 4 decades of absence, the Formula 1 is back in Madrid. From 2026 to 2035, the capital will be the home of the Spanish Grand Prix.",
+// //     robots: {
+// //       index: true,
+// //       follow: true,
+// //       googleBot: {
+// //         index: true,
+// //         follow: true,
+// //         "max-video-preview": -1,
+// //         "max-image-preview": "large",
+// //         "max-snippet": -1,
+// //       },
+// //     },
+// //     twitter: {
+// //       title: `${gpDetails?.seo?.title || "2026 F1 Spanish Grand Prix"}`,
+// //       site: "https://madrid-f1-gp.vercel.app/",
+// //       card: "summary_large_image",
+// //       description: `${gpDetails?.seo?.description || "After more than 4 decades of absence, the Formula 1 is back in Madrid. From 2026 to 2035, the capital will be the home of the Spanish Grand Prix."}`,
+// //       images: [
+// //         {
+// //           url: "https://madrid-f1-gp.vercel.app/images/og.png",
+// //           alt: "2026 F1 GP Madrid",
+// //           width: 1200,
+// //           height: 630,
+// //         },
+// //       ],
+// //     },
+// //     icons: {
+// //       icon: "/favicon.ico",
+// //       shortcut: "/favicon.ico",
+// //       apple: "/favicon/apple-icon.png",
+// //     },
+// //   };
+// // }
+
 export default async function RootLayout({
   children,
-}: {
-  children: ReactNode;
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(
-        apercu.variable,
-        apercuCondensed.variable,
-        apercuMono.variable
-      )}
-    >
-      <body className="min-h-screen flex flex-col">
-        <Analytics />
-        <SpeedInsights />
-        <Toaster />
-        <Navbar />
+    <section className="">
+      <Navbar />
+      {children}
+      <Footer />
 
-        <main className="flex-1 flex flex-col">{children}</main>
-        <SanityLive />
-        <Footer />
-      </body>
-    </html>
+      <Toaster />
+      <Analytics />
+      <SpeedInsights />
+      <SanityLive />
+      {(await draftMode()).isEnabled && (
+        <>
+          <DisableDraftMode />
+          <VisualEditing />
+        </>
+      )}
+    </section>
   );
 }

@@ -10,6 +10,7 @@ import { NavLinks } from "@/components/nav/nav-links";
 import { Container } from "@/components/shared/section-container";
 
 import { cn } from "@/lib/utils";
+import { NAV_LINKS } from "@/lib/constants";
 
 const modalVariants = {
   hidden: {
@@ -44,14 +45,6 @@ const linkVariants = {
   }),
   exit: { opacity: 0, x: -20 },
 };
-
-const navLinks = [
-  { href: "/services", label: "Services" },
-  { href: "/brokerage-fleet", label: "Fleet" },
-  { href: "/empty-legs", label: "Empty Legs" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
 
 export const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -105,7 +98,7 @@ export const Navbar = () => {
               </div>
 
               <div className="mt-16 flex flex-col gap-8">
-                {navLinks.map((link, index) => (
+                {NAV_LINKS.map((link, index) => (
                   <motion.div
                     key={link.href}
                     custom={index}

@@ -1,66 +1,66 @@
 import { type SchemaTypeDefinition } from "sanity";
 
 // Objects
-import card from "@/sanity/schemas/objects/card";
-import fuelFeature from "@/sanity/schemas/objects/fuelFeature";
-import gallery from "@/sanity/schemas/objects/gallery";
-import linktreeLink from "@/sanity/schemas/objects/linktreeLink";
-import location from "@/sanity/schemas/objects/location";
-import partner from "@/sanity/schemas/objects/partner";
-import portableText from "@/sanity/schemas/objects/portableText";
-import section from "@/sanity/schemas/objects/section";
-import stat from "@/sanity/schemas/objects/stat";
-import testimonial from "@/sanity/schemas/objects/testimonial";
-import tripFeature from "@/sanity/schemas/objects/tripFeature";
-import tripSubfeature from "@/sanity/schemas/objects/tripSubfeature";
-import contactItem from "@/sanity/schemas/objects/contactItem";
-import destination from "@/sanity/schemas/objects/destination";
+import { cardType } from "@/sanity/schemaTypes/objects/cardType";
+import { fuelFeatureType } from "@/sanity/schemaTypes/objects/fuelFeatureType";
+import { galleryType } from "@/sanity/schemaTypes/objects/galleryType";
+import { linktreeLinkType } from "@/sanity/schemaTypes/objects/linktreeLinkType";
+import { locationType } from "@/sanity/schemaTypes/objects/locationType";
+import { partnerType } from "@/sanity/schemaTypes/objects/partnerType";
+import { portableTextType } from "@/sanity/schemaTypes/objects/portableTextType";
+import { sectionType } from "@/sanity/schemaTypes/objects/sectionType";
+import { statType } from "@/sanity/schemaTypes/objects/statType";
+import { testimonialType } from "@/sanity/schemaTypes/objects/testimonialType";
+import { tripFeatureType } from "@/sanity/schemaTypes/objects/tripFeatureType";
+import { tripSubfeatureType } from "@/sanity/schemaTypes/objects/tripSubfeatureType";
+import { contactItemType } from "@/sanity/schemaTypes/objects/contactItemType";
+import { destinationType } from "@/sanity/schemaTypes/objects/destinationType";
 // Documents
-import plane from "@/sanity/schemas/documents/plane";
-import planeCategory from "@/sanity/schemas/documents/planeCategory";
-import policy from "@/sanity/schemas/documents/policy";
-import planeManufacturer from "@/sanity/schemas/documents/planeManufacturer";
-import emptyLeg from "@/sanity/schemas/documents/emptyLeg";
+import { planeType } from "@/sanity/schemaTypes/documents/planeType";
+import { planeCategoryType } from "@/sanity/schemaTypes/documents/planeCategoryType";
+import { policyType } from "@/sanity/schemaTypes/documents/policyType";
+import { planeManufacturerType } from "@/sanity/schemaTypes/documents/planeManufacturerType";
+import { emptyLegType } from "@/sanity/schemaTypes/documents/emptyLegType";
 // Singletons
-import about from "@/sanity/schemas/singletons/about";
-import contact from "@/sanity/schemas/singletons/contact";
-import fuelService from "@/sanity/schemas/singletons/fuelService";
-import home from "@/sanity/schemas/singletons/home";
-import inquiry from "@/sanity/schemas/singletons/inquiry";
-import linktree from "@/sanity/schemas/singletons/linktree";
-import newsletter from "@/sanity/schemas/singletons/newsletter";
-import services from "@/sanity/schemas/singletons/services";
-import tripService from "@/sanity/schemas/singletons/tripService";
+import { aboutPageType } from "@/sanity/schemaTypes/singletons/aboutPageType";
+import { contactPageType } from "@/sanity/schemaTypes/singletons/contactPageType";
+import { fuelServicePageType } from "@/sanity/schemaTypes/singletons/fuelServicePageType";
+import { homePageType } from "@/sanity/schemaTypes/singletons/homePageType";
+import { inquiryPageType } from "@/sanity/schemaTypes/singletons/inquiryPageType";
+import { linktreePageType } from "@/sanity/schemaTypes/singletons/linktreePageType";
+import { newsletterPageType } from "@/sanity/schemaTypes/singletons/newsletterPageType";
+import { servicesPageType } from "@/sanity/schemaTypes/singletons/servicesPageType";
+import { tripServicePageType } from "@/sanity/schemaTypes/singletons/tripServicePageType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-    home,
-    about,
-    contact,
-    newsletter,
-    services,
-    fuelService,
-    tripService,
-    inquiry,
-    linktree,
-    policy,
-    gallery,
-    portableText,
-    section,
-    stat,
-    contactItem,
-    location,
-    partner,
-    testimonial,
-    card,
-    fuelFeature,
-    tripFeature,
-    tripSubfeature,
-    linktreeLink,
-    plane,
-    planeCategory,
-    planeManufacturer,
-    emptyLeg,
-    destination,
+    homePageType,
+    aboutPageType,
+    contactPageType,
+    newsletterPageType,
+    servicesPageType,
+    fuelServicePageType,
+    tripServicePageType,
+    inquiryPageType,
+    linktreePageType,
+    policyType,
+    galleryType,
+    portableTextType,
+    sectionType,
+    statType,
+    contactItemType,
+    locationType,
+    partnerType,
+    testimonialType,
+    cardType,
+    fuelFeatureType,
+    tripFeatureType,
+    tripSubfeatureType,
+    linktreeLinkType,
+    planeType,
+    planeCategoryType,
+    planeManufacturerType,
+    emptyLegType,
+    destinationType,
   ],
 };

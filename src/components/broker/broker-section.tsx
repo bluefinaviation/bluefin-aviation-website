@@ -32,28 +32,28 @@ export const BrokerSection = ({ brokerSection }: BrokerSectionProps) => {
         </div>
         <div className="sm:items-end justify-center grid grid-cols-2 place-items-end py-10 sm:flex sm:flex-wrap gap-16 sm:gap-32">
           <Link
-            href="/brokerage-fleet?category=light-jets"
+            href="/charter-broker?category=light-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
             <LightJetIcon className="size-16 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />
             <h3 className="text-xs font-mono uppercase">Light Jets</h3>
           </Link>
           <Link
-            href="/brokerage-fleet?category=midsize-jets"
+            href="/charter-broker?category=midsize-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
             <MidsizeJetIcon className="size-20 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />
             <h3 className="text-xs font-mono uppercase">Midsize Jets</h3>
           </Link>
           <Link
-            href="/brokerage-fleet?category=super-midsize-jets"
+            href="/charter-broker?category=super-midsize-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
             <SuperMidsizeJetIcon className="size-24 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />
             <h3 className="text-xs font-mono uppercase">Super Midsize Jets</h3>
           </Link>
           <Link
-            href="/brokerage-fleet?category=heavy-jets"
+            href="/charter-broker?category=heavy-jets"
             className="flex flex-col items-center group gap-y-4 w-full sm:w-auto"
           >
             <HeavyJetIcon className="size-32 group-hover:stroke-branding group-hover:fill-branding transition-all duration-300 stroke-slate-300 fill-slate-300" />

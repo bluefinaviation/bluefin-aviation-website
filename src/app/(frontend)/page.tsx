@@ -4,7 +4,7 @@ import { PartnersSection } from "@/components/pages/home/partners-section";
 import { ServicesSection } from "@/components/pages/home/services-section";
 import { TestimonialsSection } from "@/components/pages/home/testimonials-section";
 import { PageContainer } from "@/components/shared/pace-container";
-// // import { BrokerSection } from "@/components/broker/broker-section";
+import { BrokerSection } from "@/components/broker/broker-section";
 
 import { client } from "@/sanity/lib/client";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
@@ -15,6 +15,7 @@ import {
   Testimonial,
   ContactItem,
 } from "@/sanity/types";
+import { sanityFetch } from "@/sanity/lib/live";
 
 interface HomePageData {
   heroSection: {
@@ -48,11 +49,10 @@ interface HomePageData {
 }
 
 export default async function HomePage() {
-  const homePageData = await client.fetch<HomePageData>(
-    HOME_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  // // const homePageData = await sanityFetch<HomePageData>({
+  const { data: homePageData } = await sanityFetch({
+    query: HOME_PAGE_QUERY,
+  });
 
   if (!homePageData) return null;
 
@@ -64,7 +64,7 @@ export default async function HomePage() {
         tripService={homePageData.servicesSection.tripService.card}
         fuelService={homePageData.servicesSection.fuelService.card}
       />
-      {/* <BrokerSection brokerSection={homePageData.brokerSection} /> */}
+      <BrokerSection brokerSection={homePageData.brokerSection} />
       <TestimonialsSection
         testimonialsSection={homePageData.testimonialsSection}
       />
