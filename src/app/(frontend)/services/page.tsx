@@ -54,16 +54,17 @@ export default async function ServicesPage() {
               offering all solutions under the same roof.{" "}
             </p>
           </div>
-          <ServiceCard
+          {/* <ServiceCard
             image="/images/charter-brokerage.webp"
             title="Charter Brokerage"
             slug="/charter-brokerage"
             imageClassName="object-cover object-[5%_90%]"
             isSquare={true}
-          />
+          /> */}
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-16 grid grid-cols-2 gap-8">
+          {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
           {servicesData?.map((service, index) => (
             <ServiceCard
               key={service._id}

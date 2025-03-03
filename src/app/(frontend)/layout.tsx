@@ -142,7 +142,7 @@ export default async function RootLayout({
     <section className="">
       <Navbar />
       {children}
-      <ContactForm />
+      {/* <ContactForm /> */}
       <Footer />
 
       <Toaster />

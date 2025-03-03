@@ -105,24 +105,20 @@ export default async function ContactPage() {
             </FeatureList>
           </div>
 
-          <div className="h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
-            <div className="bg-primary size-full p-3 shadow-sm">
-              <MapContainer
-                locations={(contact.locationSection?.locations ?? [])
-                  .filter((location) => location.coordinates)
-                  .map((location) => ({
-                    _key: location._key,
-                    city: location.city ?? "",
-                    isHq: location.isHq ?? false,
-                    address: location.address,
-                    coordinates: {
-                      lat: location.coordinates?.lat ?? 0,
-                      lng: location.coordinates?.lng ?? 0,
-                    },
-                  }))}
-              />
-            </div>
-          </div>
+          <MapContainer
+            locations={(contact.locationSection?.locations ?? [])
+              .filter((location) => location.coordinates)
+              .map((location) => ({
+                _key: location._key,
+                city: location.city ?? "",
+                isHq: location.isHq ?? false,
+                address: location.address,
+                coordinates: {
+                  lat: location.coordinates?.lat ?? 0,
+                  lng: location.coordinates?.lng ?? 0,
+                },
+              }))}
+          />
         </div>
       </Container>
     </div>

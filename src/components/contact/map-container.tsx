@@ -37,7 +37,7 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
           <MapPin
             size={32}
             weight="fill"
-            className={cn("text-primary", location.isHq && "text-secondary")}
+            className={cn("text-white", location.isHq && "text-accent")}
           />
         </Marker>
       )),
@@ -45,15 +45,15 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
   );
 
   return (
-    <div className="h-[500px] w-full">
+    <div className="w-full">
       <Map
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         initialViewState={{
           latitude: center.latitude,
           longitude: center.longitude,
-          zoom: 3,
+          zoom: 2,
         }}
-        mapStyle="mapbox://styles/mapbox/light-v11"
+        mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE_URL}
       >
         {pins}
 

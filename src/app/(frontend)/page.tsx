@@ -1,4 +1,4 @@
-import { BrokerSection } from "@/components/broker/broker-section";
+// import { BrokerSection } from "@/components/broker/broker-section";
 import { HeroSection } from "@/components/home/hero-section";
 import { ServicesSection } from "@/components/home/services-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
@@ -9,7 +9,7 @@ export default async function HomePage() {
     <PageContainer>
       <HeroSection />
       <ServicesSection />
-      <BrokerSection />
+      {/* <BrokerSection /> */}
       <TestimonialsSection />
 
       {/* <ContactSection contactSection={homePageData.contactSection} />
