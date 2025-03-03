@@ -182,9 +182,9 @@ export const SERVICE_QUERY =
       ...,
       faqs[]-> {
         _id,
-        answer,
         question,
-        // // "text": pt::text(body)
+				answer,
+        "text": pt::text(answer)
       }
     }
   }

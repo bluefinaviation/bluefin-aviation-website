@@ -1280,7 +1280,7 @@ export type FAQ_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: SERVICE_QUERY
-// Query: *[_type == "service" && slug.current == $slug][0]{  ...,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  content[]{    ...,    _type == "faqs" => {      ...,      faqs[]-> {        _id,        answer,        question,        // // "text": pt::text(body)      }    }  }}
+// Query: *[_type == "service" && slug.current == $slug][0]{  ...,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  content[]{    ...,    _type == "faqs" => {      ...,      faqs[]-> {        _id,        question,				answer,        "text": pt::text(answer)      }    }  }}
 export type SERVICE_QUERYResult = {
   _id: string;
   _type: "service";
@@ -1307,6 +1307,7 @@ export type SERVICE_QUERYResult = {
     title?: string;
     faqs: Array<{
       _id: string;
+      question: string | null;
       answer: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -1337,7 +1338,7 @@ export type SERVICE_QUERYResult = {
         _type: "image";
         _key: string;
       }> | null;
-      question: string | null;
+      text: string;
     }> | null;
   } | {
     _key: string;
@@ -1455,7 +1456,7 @@ declare module "@sanity/client" {
     "\n\t*[_type == \"newsletter\"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n": NEWSLETTER_PAGE_QUERYResult;
     "\n\t*[_type == \"emptyLeg\" && departureTime > now()] | order(departureTime asc) {\n\t\t_id,\n\t\torigin,\n\t\tdepartureTime,\n\t\tdestination,\n\t\tarrivalTime,\n\t\tprice,\n\t\tplane->{\n\t\t\t...,\n\t\t\t\"manufacturer\": manufacturer->{\n\t\t\t\t_id,\n\t\t\t\tname,\n\t\t\t\t\"slug\": slug.current\n\t\t\t}\n\t\t}\n\t}\n": EMPTY_LEGS_QUERYResult;
     "\n\t*[_type == \"faq\"] {\n\t\t_id,\n\t\tquestion,\n\t\tanswer,\n\t}\n": FAQ_QUERYResult;
-    "*[_type == \"service\" && slug.current == $slug][0]{\n  ...,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n  content[]{\n    ...,\n    _type == \"faqs\" => {\n      ...,\n      faqs[]-> {\n        _id,\n        answer,\n        question,\n        // // \"text\": pt::text(body)\n      }\n    }\n  }\n}": SERVICE_QUERYResult;
+    "*[_type == \"service\" && slug.current == $slug][0]{\n  ...,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n  content[]{\n    ...,\n    _type == \"faqs\" => {\n      ...,\n      faqs[]-> {\n        _id,\n        question,\n\t\t\t\tanswer,\n        \"text\": pt::text(answer)\n      }\n    }\n  }\n}": SERVICE_QUERYResult;
     "\n\t*[_type == \"companyDetails\"][0]{\n\t\tname, \n\t\tstats,\n\t\ttimeline\n\t}\n": ABOUT_QUERYResult;
   }
 }

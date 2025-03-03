@@ -1,4 +1,4 @@
-// // import { PortableText } from "next-sanity";
+import { PortableText } from "next-sanity";
 import { FAQPage, WithContext } from "schema-dts";
 
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -24,13 +24,15 @@ const generateFaqData = (faqs: FAQsProps["faqs"]): WithContext<FAQPage> => ({
     name: faq.question!,
     acceptedAnswer: {
       "@type": "Answer",
-      text: faq.answer!,
+      text: faq.text!,
     },
   })),
 });
 
 export const FAQs = ({ title, faqs }: FAQsProps) => {
+  console.log(JSON.stringify(faqs, null, 2));
   const faqData = generateFaqData(faqs);
+
   return (
     <section className="bg-zinc-100 sm:py-32 py-20">
       <div className="max-w-7xl mx-auto flex flex-col gap-8">
@@ -45,8 +47,8 @@ export const FAQs = ({ title, faqs }: FAQsProps) => {
               {faqs.map((faq, idx) => (
                 <AccordionItem key={idx} value={faq._id}>
                   <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>
-                    <p>{faq.answer}</p>
+                  <AccordionContent className="prose max-w-2xl">
+                    {faq.answer ? <PortableText value={faq.answer} /> : null}
                   </AccordionContent>
                 </AccordionItem>
               ))}

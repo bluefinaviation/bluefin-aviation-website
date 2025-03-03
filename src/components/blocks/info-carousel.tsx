@@ -58,11 +58,11 @@ export const InfoCarousel = ({ title, text, items }: InfoCarouselProps) => {
                     />
                   )}
                   <div className="absolute inset-0 bg-black/50" />
-                  <h3 className="text-4xl font-bold uppercase font-serif absolute top-1/2 left-1/2 transform -tranzinc-x-1/2 -tranzinc-y-1/2 text-white">
+                  <h3 className="text-4xl font-bold uppercase font-serif absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
                     {item.title}
                   </h3>
                 </div>
-                <div className="prose list-disc marker:text-blue-700 bg-zinc-100 rounded-br-[12rem]">
+                <div className="prose list-disc prose-lg text-white marker:text-white bg-primary rounded-br-[12rem]">
                   {item.text && <PortableText value={item.text} />}
                 </div>
               </div>
