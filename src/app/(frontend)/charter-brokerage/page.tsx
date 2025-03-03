@@ -14,6 +14,7 @@ import {
   FLEET_QUERYResult,
   ALL_PLANE_FILTERS_QUERYResult,
 } from "@/sanity/types";
+import { SectionSummary } from "@/components/shared/section-summary";
 
 export const metadata: Metadata = {
   title: "Charter Brokerage",
@@ -48,7 +49,7 @@ export default async function CharterBrokeragePage({
 }: CharterBrokeragePageProps) {
   const { category, manufacturer, tab = "fleet" } = await searchParams;
 
-  const { data: fleetData } = await sanityFetch({
+  const { data: planes } = await sanityFetch({
     query: FLEET_QUERY,
     params: {
       category: category || null,
@@ -58,33 +59,6 @@ export default async function CharterBrokeragePage({
 
   const { data: allPlaneFilters } = await sanityFetch({
     query: ALL_PLANE_FILTERS_QUERY,
-  });
-
-  // Transform the fleetData to match the expected format for PlanesGrid
-  const formattedFleetData = fleetData.map((plane: FLEET_QUERYResult[0]) => {
-    // Create a plane object with the required fields that matches PlaneCardData type
-    return {
-      _id: plane._id,
-      _type: "plane" as const, // Use const assertion to ensure it's exactly "plane"
-      _createdAt: "",
-      _updatedAt: "",
-      _rev: "",
-      model: plane.model || "",
-      code: plane.code || "",
-      capacity: plane.capacity || 0,
-      speed: plane.speed || 0,
-      range: plane.range || 0,
-      image: plane.image || undefined,
-      // Convert category to match the expected reference format with literal "reference" type
-      category: plane.category
-        ? {
-            _ref: plane.category._id,
-            _type: "reference" as const, // Use const assertion to ensure it's exactly "reference"
-          }
-        : undefined,
-      // Convert manufacturer object to string (manufacturer name)
-      manufacturer: plane.manufacturer?.name || "",
-    };
   });
 
   const hasFilters = Boolean(category || manufacturer);
@@ -106,8 +80,12 @@ export default async function CharterBrokeragePage({
         {tab === "fleet" ? (
           <>
             <SectionHeading>Our Fleet</SectionHeading>
+            <SectionSummary className="mt-4">
+              We offer a wide range of private jets to suit your needs, from
+              small, compact aircraft to large, luxurious planes.
+            </SectionSummary>
             <PlaneFilters allPlaneFilters={adaptedPlaneFilters} />
-            <PlanesGrid planes={formattedFleetData} hasFilters={hasFilters} />
+            <PlanesGrid planes={planes} hasFilters={hasFilters} />
           </>
         ) : (
           <EmptyLegs />

@@ -36,15 +36,19 @@ interface FormValues {
   message: string;
 }
 
-type ExpandedPlane = Omit<Plane, "manufacturer"> & {
+type PlaneWithExpandedRefs = Omit<Plane, "manufacturer"> & {
   manufacturer: {
     _id: string;
-    slug: string;
     name: string;
+    slug: string;
   };
 };
 
-export const RequestPlaneQuoteForm = ({ plane }: { plane: ExpandedPlane }) => {
+export const RequestPlaneQuoteForm = ({
+  plane,
+}: {
+  plane: PlaneWithExpandedRefs;
+}) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<FormValues>({
     name: "",

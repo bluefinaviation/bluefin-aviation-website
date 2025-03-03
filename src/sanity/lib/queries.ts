@@ -37,15 +37,11 @@ export const FLEET_QUERY = defineQuery(`
 		_id,
 		model,
 		"manufacturer": manufacturer->{
-			_id,
-			"slug": slug.current,
-			name
+				_id,
+				name,
+				"slug": slug.current
 		},
-		"category": category->{
-			_id,
-			"slug": slug.current,
-			name
-		},
+		category->,
 		code,
 		capacity,
 		speed,

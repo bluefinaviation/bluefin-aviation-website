@@ -6,16 +6,21 @@ import { buttonVariants } from "@/components/ui/button";
 import { urlFor } from "@/sanity/lib/image";
 import { Plane } from "@/sanity/types";
 
-type PlaneCardData = Omit<Plane, "manufacturer" | "category"> & {
-  manufacturer: string;
-  category?: {
-    name: string;
+type PlaneWithExpandedRefs = Omit<Plane, "manufacturer" | "category"> & {
+  manufacturer: {
     _id: string;
+    name: string;
+    slug: string;
+  };
+  category?: {
+    _id: string;
+    name: string;
+    slug: string;
   };
 };
 
 interface PlaneCardProps {
-  plane: PlaneCardData;
+  plane: PlaneWithExpandedRefs;
 }
 
 export const PlaneCard = ({ plane }: PlaneCardProps) => {
@@ -36,7 +41,7 @@ export const PlaneCard = ({ plane }: PlaneCardProps) => {
         <div
           className={buttonVariants({
             className:
-              "absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity tw-transition",
+              "absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity tw-transition",
             variant: "default",
           })}
         >
@@ -47,9 +52,9 @@ export const PlaneCard = ({ plane }: PlaneCardProps) => {
       {/* Content container */}
       <div className="relative w-full h-[140px]">
         {/* Text container with transition */}
-        <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-all duration-300 group-hover:tranzinc-y-[-20px]">
+        <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-all duration-300 group-hover:-translate-y-5">
           <h4 className="text-xs font-mono font-medium tracking-wide uppercase text-zinc-500">
-            {plane.manufacturer} • {plane.category?.name || ""}
+            {plane.manufacturer.name} • {plane.category?.name || ""}
           </h4>
           <h3 className="text-2xl mt-1 font-serif font-medium">
             {plane.model}

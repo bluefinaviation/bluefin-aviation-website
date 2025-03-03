@@ -2,7 +2,7 @@ export const COMPANY_NAME = "Bluefin Aviation";
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
-  // { label: "Charter Brokerage", href: "/charter-brokerage" },
+  { label: "Charter Brokerage", href: "/charter-brokerage" },
   { label: "About", href: "/about" },
 ];
 

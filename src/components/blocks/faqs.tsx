@@ -30,7 +30,6 @@ const generateFaqData = (faqs: FAQsProps["faqs"]): WithContext<FAQPage> => ({
 });
 
 export const FAQs = ({ title, faqs }: FAQsProps) => {
-  console.log(JSON.stringify(faqs, null, 2));
   const faqData = generateFaqData(faqs);
 
   return (
