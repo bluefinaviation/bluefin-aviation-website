@@ -3,7 +3,6 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { presentationTool } from "sanity/presentation";
-import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { visionTool } from "@sanity/vision";
 
 import { apiVersion, dataset, projectId } from "@/sanity/env";
@@ -28,7 +27,6 @@ export default defineConfig({
         },
       },
     }),
-    unsplashImageAsset(),
     // // assistWithPresets(),
   ],
   document: {

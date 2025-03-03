@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { BackgroundIllustration } from "@/components/backgrounds/background-illustration";
 import { PageSummary } from "@/components/shared/page-summary";
@@ -18,18 +19,16 @@ export const HeroSection = () => {
                 {`A total concierge-style battery of services awaits you at Bluefin Aviation. We offer our clients top quality services for aircraft needs at all levels.`}
               </PageSummary>
               <div className="mt-12 flex flex-wrap gap-x-3 gap-y-2 lg:gap-x-6 lg:gap-y-4">
-                <a
-                  href="https://wa.me/+19548812932"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/services"
                   className={buttonVariants({
                     variant: "default",
                     size: "lg",
                   })}
                 >
                   Our Services
-                </a>
-                <a
+                </Link>
+                <Link
                   href="https://wa.me/+19548812932"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -39,7 +38,7 @@ export const HeroSection = () => {
                   })}
                 >
                   24/7 Support
-                </a>
+                </Link>
               </div>
             </div>
             <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">

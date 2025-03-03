@@ -11,12 +11,16 @@ export const faqType = defineType({
       name: "question",
       title: "Question",
       type: "string",
-      icon: Question,
     }),
     defineField({
       name: "answer",
       title: "Answer",
-      type: "text",
+      type: "blockContent",
+    }),
+    defineField({
+      name: "order",
+      title: "Order",
+      type: "number",
     }),
   ],
 });

@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predev": "pnpm run typegen",
-    "prebuild": "pnpm run typegen",
+    "predev": "bun run typegen",
+    "prebuild": "bun run typegen",
     "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {

@@ -45,7 +45,7 @@ export default async function ServicesPage() {
             <SectionHeading>
               A total concierge-style battery of aviation services
             </SectionHeading>
-            <p className="prose">
+            <p className="prose mt-4">
               The world is constantly changing and never fails to present new
               challenges and opportunities in the way clients consume products
               and services. The private aviation sector is no exception to this
