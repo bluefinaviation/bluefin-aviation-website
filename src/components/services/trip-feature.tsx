@@ -39,7 +39,7 @@ export const TripFeature = ({ feature }: TripFeatureProps) => {
             <CardTitle>{feature.feature}</CardTitle>
             <CaretCircleDoubleDown
               weight="fill"
-              className="size-6 text-branding"
+              className="size-6 text-primary"
             />
           </Card>
         </DialogTrigger>
@@ -73,7 +73,7 @@ export const TripFeature = ({ feature }: TripFeatureProps) => {
           <CardTitle>{feature.feature}</CardTitle>
           <CaretCircleDoubleDown
             weight="fill"
-            className="size-6 text-branding"
+            className="size-6 text-primary"
           />
         </Card>
       </DrawerTrigger>

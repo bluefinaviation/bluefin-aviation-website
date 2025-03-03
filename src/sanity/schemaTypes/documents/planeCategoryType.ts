@@ -13,6 +13,18 @@ export const planeCategoryType = defineType({
       type: "string",
     }),
     defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "name" },
+    }),
+    defineField({
+      name: "order",
+      title: "Order",
+      type: "number",
+      description: "Used to sort the categories in the filter dropdown.",
+    }),
+    defineField({
       name: "image",
       title: "Image",
       type: "image",

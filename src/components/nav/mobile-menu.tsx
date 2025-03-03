@@ -215,7 +215,7 @@ export const MobileMenu = () => {
       <AnimatePresence>
         {showModal && (
           <motion.div
-            className={cn("fixed inset-0 h-screen bg-slate-950 px-5")}
+            className={cn("fixed inset-0 h-screen bg-zinc-950 px-5")}
             variants={modalVariants}
             initial="hidden"
             animate="visible"

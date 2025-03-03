@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { LinktreeItem } from "@/components/pages/linktree/linktree-item";
-import { LinktreeSocial } from "@/components/pages/linktree/linktree-social";
+import { LinktreeItem } from "@/components/linktree/linktree-item";
+import { LinktreeSocial } from "@/components/linktree/linktree-social";
 import { PageContainer } from "@/components/shared/pace-container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -43,7 +43,7 @@ export default async function LinktreeRoute() {
             <AvatarFallback>BF</AvatarFallback>
           </Avatar>
 
-          <h1 className="font-slate-50 text-lg font-bold uppercase text-slate-50 sm:text-2xl">
+          <h1 className="font-zinc-50 text-lg font-bold uppercase text-zinc-50 sm:text-2xl">
             Bluefin Aviation Services
           </h1>
         </div>

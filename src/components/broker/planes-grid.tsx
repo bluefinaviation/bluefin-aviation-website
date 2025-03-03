@@ -3,16 +3,15 @@
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 
-import { PlaneCard } from "@/components/brokerage/plane-card";
+import { PlaneSheet } from "@/components/shared/plane-sheet";
 import { Button } from "@/components/ui/button";
 
 import { Plane } from "@/sanity/types";
-
 type PlaneCardData = Omit<Plane, "manufacturer"> & {
   manufacturer: string;
 };
 
-const MotionPlaneCard = motion(PlaneCard);
+const MotionPlaneSheet = motion(PlaneSheet);
 
 interface EmptyStateProps {
   hasFilters: boolean;
@@ -33,7 +32,7 @@ const EmptyState = ({ hasFilters }: EmptyStateProps) => {
           : "There are no planes available at the moment."}
       </p>
       {hasFilters && (
-        <Link href="/charter-broker">
+        <Link href="/charter-brokerage">
           <Button variant="outline">Clear Filters</Button>
         </Link>
       )}
@@ -59,7 +58,7 @@ export const PlanesGrid = ({ planes, hasFilters }: PlanesGridProps) => {
         >
           <AnimatePresence mode="popLayout">
             {planes.map((plane, index: number) => (
-              <MotionPlaneCard
+              <MotionPlaneSheet
                 key={plane._id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{

@@ -1,54 +1,90 @@
-import { StatsSection } from "@/components/pages/about/stats-section";
-import { StorySection } from "@/components/pages/about/story-section";
-import { TeamSection } from "@/components/pages/about/team-section";
-import { PageContainer } from "@/components/shared/pace-container";
-import type { PortableTextBlock } from "@portabletext/types";
-import type { Section } from "@/sanity/types";
-import type { Stat } from "@/components/pages/about/stats-section";
+import Image from "next/image";
 
-import { client } from "@/sanity/lib/client";
-import { ABOUT_PAGE_QUERY } from "@/sanity/lib/queries";
+import { PageHero } from "@/components/shared/page-hero";
+import { Container } from "@/components/shared/section-container";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { Timeline } from "@/components/shared/timeline";
+
+import { ABOUT_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
+import { CompanyDetails } from "@/sanity/types";
 
 export default async function AboutPage() {
-  const aboutPageData = await client.fetch(
-    ABOUT_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
-
-  if (!aboutPageData) return null;
+  const { data: companyDetails } = await sanityFetch<CompanyDetails>({
+    query: ABOUT_QUERY,
+  });
 
   return (
-    <PageContainer className="space-y-12">
-      {aboutPageData.storySection?.section &&
-        aboutPageData.storySection.bio && (
-          <StorySection
-            storySection={
-              aboutPageData.storySection as {
-                section: Section;
-                bio: PortableTextBlock[];
-              }
-            }
-          />
-        )}
-      {aboutPageData.statsSection?.stats && (
-        <StatsSection
-          statsSection={{
-            stats: aboutPageData.statsSection.stats.filter(
-              (stat) =>
-                typeof stat._key === "string" &&
-                typeof stat.value === "string" &&
-                typeof stat._type === "string" &&
-                typeof stat.label === "string"
-            ) as Stat[],
-          }}
-        />
-      )}
-      {aboutPageData.teamSection?.section && (
-        <TeamSection
-          teamSection={{ section: aboutPageData.teamSection.section }}
-        />
-      )}
-    </PageContainer>
+    <div>
+      <PageHero
+        heading="About Us"
+        summary="We are a team of experienced professionals who are dedicated to providing the best possible service to our clients."
+        image="/images/empty-legs.webp"
+        imageAlt="About Us"
+      />
+
+      <Container className="py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <SectionHeading>Our Story</SectionHeading>
+            <div className="prose">
+              <p>
+                {`Bluefin Aviation addresses the needs of today's corporate aircraft owners and offers smart, convenient, and economical solutions to aircraft management. We offer top-quality services for aircraft needs at all levels: low fuel prices, flight planning, and handling services are at the core of our safe and professional approach. The cost-effective handling of our client's daily aircraft operations is our top priority.`}
+              </p>
+              <p>{`Our operations span worldwide, providing services all year round at offices in the United States serving the Americas, and in Spain and Italy serving the rest of the world. All offices manage fuel supply, trip support, handling, and flight planning services. We are constantly communicating among team members to better assist our clients through different time zones.`}</p>
+              <p>{`Our dedicated professionals strive to provide superior services while sharing the same goals and dedication as aircraft operators' own employees. Our top priority is to carefully guard our clients' interests, provide high-class service, and enhance the bottom line. Our commitment is 24/7/365 to make sure operations are always on time and in the most efficient manner. Our team is composed of a group of airline and corporate aviation professionals with vast experience in the industry.`}</p>
+            </div>
+          </div>
+          <div className="relative h-full w-full">
+            {/* <div className="relative aspect-[3/4]"> */}
+
+            <Image
+              src="/images/about-hero.webp"
+              alt="About Us"
+              fill
+              className="object-cover object-center rounded-br-[12rem]"
+            />
+          </div>
+        </div>
+      </Container>
+
+      <div className="bg-primary py-16">
+        <Container>
+          <div className="grid grid-cols-1 divide-y divide-white sm:divide-y-0 sm:divide-x sm:grid-cols-4 gap-8">
+            {companyDetails?.stats.map((stat) => (
+              <div key={stat._key} className="text-center">
+                <h3 className="text-white text-5xl sm:text-7xl font-bold">
+                  <span>{stat.value}</span>
+                  <span className="text-5xl ml-2.5">{stat.unit}</span>
+                </h3>
+                <p className="font-mono uppercase text-zinc-300 text-sm">
+                  {stat.title}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      <Container className="py-16 sm:py-24">
+        <SectionHeading className="mx-auto w-full text-center">
+          Our Timeline
+        </SectionHeading>
+        <Timeline events={companyDetails.timeline} />
+      </Container>
+
+      {/* <Container className="py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <SectionHeading>The BlueFin Team</SectionHeading>
+            <div className="prose">
+              <p>
+                {`Our team consists of aviation professionals with lots of expertise in the services that we offer. With more than 10 years of professional experience in the aviation industry, our team members put our customer’s needs first.`}
+              </p>
+            </div>
+          </div>
+        </div>
+      </Container> */}
+    </div>
   );
 }

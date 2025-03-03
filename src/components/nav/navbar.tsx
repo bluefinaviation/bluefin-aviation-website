@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 
 import { Logo } from "@/components/branding/logo";
 import { NavLinks } from "@/components/nav/nav-links";
-import { Container } from "@/components/shared/section-container";
+import { LogoMark } from "@/components/branding/logo-mark";
 
 import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/lib/constants";
@@ -48,36 +48,49 @@ const linkVariants = {
 
 export const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
   return (
-    <header>
-      <nav>
-        <Container className="relative z-10 flex h-16 items-center justify-between sm:h-20 lg:h-24">
-          <div className="relative flex w-full items-center justify-between gap-16">
-            <Link href="/" aria-label="Home">
-              <Logo
-                className="h-8 w-auto sm:h-10 lg:h-12"
-                darkColor="#0f172a"
-                lightColor="#64748b"
-              />
-            </Link>
-            <div className="hidden lg:flex lg:gap-10">
-              <NavLinks />
-            </div>
-            <List
-              onClick={() => toggleModal()}
-              className="block size-7 sm:hidden"
-            />
-          </div>
-        </Container>
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
+        isScrolled ? "bg-white shadow-sm" : "bg-transparent"
+      )}
+    >
+      <nav className="relative flex items-center justify-between">
+        <Link href="/" aria-label="Home">
+          <LogoMark
+            className="h-8 w-auto sm:h-16 pl-8"
+            darkColor={isScrolled ? "#0f172a" : "#ffffff"}
+            lightColor={isScrolled ? "#64748b" : "#e2e8f0"}
+          />
+        </Link>
+        <NavLinks />
+        <List
+          onClick={() => toggleModal()}
+          className={cn(
+            "block size-7 sm:hidden",
+            isScrolled ? "text-zinc-900" : "text-white"
+          )}
+        />
+
         <AnimatePresence>
           {showModal && (
             <motion.div
-              className={cn("fixed inset-0 z-50 h-screen bg-slate-950 px-5")}
+              className={cn("fixed inset-0 z-50 h-screen bg-zinc-950 px-5")}
               variants={modalVariants}
               initial="hidden"
               animate="visible"
@@ -109,7 +122,7 @@ export const Navbar = () => {
                   >
                     <Link
                       href={link.href}
-                      className="text-2xl font-medium text-white hover:text-slate-200"
+                      className="text-2xl font-medium text-white hover:text-zinc-200"
                       onClick={() => toggleModal()}
                     >
                       {link.label}

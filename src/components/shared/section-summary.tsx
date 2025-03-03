@@ -12,7 +12,7 @@ export const SectionSummary = ({
   className,
 }: SectionSummaryProps) => {
   return (
-    <div className={cn("max-w-2xl text-base sm:text-lg lg:text-lg", className)}>
+    <div className={cn("max-w-lg text-base sm:text-lg", className)}>
       {children}
     </div>
   );

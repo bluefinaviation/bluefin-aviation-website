@@ -36,19 +36,19 @@ export const HeroSection = ({ hero }: { hero?: Section }) => {
           width={1920}
           height={1080}
           priority
-          className="block size-full bg-slate-200 object-cover object-center shadow-sm lg:hidden"
+          className="block size-full bg-zinc-200 object-cover object-center shadow-sm lg:hidden"
         />
         <div className="absolute inset-0 bg-black opacity-50" />
       </div>
       <div aria-hidden="true" className="absolute inset-0 shadow-sm" />
       <Container className="relative flex h-full flex-col justify-end lg:justify-center">
         <HeroTitle>{hero.heading}</HeroTitle>
-        <HeroSummary className="text-slate-200">
+        <HeroSummary className="text-zinc-200">
           <PortableText value={hero.summary ?? []} />
         </HeroSummary>
         {/* <a
           href={`#${hero._id}`}
-          className="tw-transition mt-8 text-slate-50 hover:text-slate-300"
+          className="tw-transition mt-8 text-zinc-50 hover:text-zinc-300"
         ></a> */}
       </Container>
     </div>

@@ -17,7 +17,7 @@ export const SectionHeading = ({
     <h2
       id={id}
       className={cn(
-        "mb-6 max-w-prose font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl",
+        "max-w-2xl font-serif text-3xl font-medium sm:text-5xl",
         className
       )}
     >

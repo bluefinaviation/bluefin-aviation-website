@@ -6,17 +6,17 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
   { schemaType }
 ) => {
   switch (schemaType) {
-    case `artist`:
+    case `planeManufacturer`:
       return S.document().views([
         S.view.form(),
         S.view
           .component(DocumentsPane)
           .options({
-            query: `*[_type == "event" && references($id)]`,
+            query: `*[_type == "plane" && references($id)]`,
             params: { id: `_id` },
             options: { perspective: "previewDrafts" },
           })
-          .title("Events"),
+          .title("Planes"),
       ]);
     default:
       return S.document().views([S.view.form()]);

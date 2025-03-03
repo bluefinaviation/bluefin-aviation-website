@@ -5,21 +5,17 @@ import { Logo } from "@/components/branding/logo";
 import { NewsletterFooterForm } from "@/components/forms/newsletter-footer-form";
 
 import { navigation } from "@/data/nav-links";
-import { COMPANY_NAME } from "@/lib/constants";
+import { COMPANY_NAME, NAV_LINKS } from "@/lib/constants";
 import { FOOTER_QUERY } from "@/sanity/lib/queries";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const Footer = async () => {
-  const footerData = await client.fetch(
-    FOOTER_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
-
-  if (!footerData) return null;
+  const { data: footer } = await sanityFetch<FooterData>({
+    query: FOOTER_QUERY,
+  });
 
   return (
-    <footer className="bg-slate-900" aria-labelledby="footer-heading">
+    <footer className="bg-zinc-950" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -38,13 +34,13 @@ export const Footer = async () => {
           </Link>
 
           <ul className="col-start-3 mt-16 flex items-center justify-between xl:mt-0">
-            {navigation.main.map((item) => (
-              <li key={item.id}>
+            {NAV_LINKS.map((item) => (
+              <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="tw-transition text-base text-slate-50 hover:text-slate-300 sm:text-lg"
+                  className="tw-transition text-base text-zinc-50 hover:text-zinc-300 sm:text-lg"
                 >
-                  {item.name}
+                  {item.label}
                 </Link>
               </li>
             ))}
@@ -53,20 +49,18 @@ export const Footer = async () => {
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-10 lg:mt-12 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-base font-semibold leading-6 text-white sm:text-lg">
-              {footerData.newsletter?.section?.heading ??
+              {footer.newsletter?.section?.heading ??
                 "Subscribe to our newsletter"}
             </h3>
-            <div className="mt-2 text-sm leading-6 text-slate-300 sm:text-base">
-              <PortableText
-                value={footerData.newsletter?.section?.summary ?? []}
-              />
+            <div className="mt-2 text-sm leading-6 text-zinc-300 sm:text-base">
+              <PortableText value={footer.newsletter?.section?.summary ?? []} />
             </div>
           </div>
           <NewsletterFooterForm />
         </div>
 
         <div className="mt-8 flex justify-between border-t border-white/10 pt-8 text-xs">
-          <p className="leading-5 text-slate-400 md:order-1 md:mt-0">
+          <p className="leading-5 text-zinc-400 md:order-1 md:mt-0">
             &copy; {COMPANY_NAME} {new Date().getFullYear()}
           </p>
 
@@ -77,18 +71,22 @@ export const Footer = async () => {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="tw-transition text-slate-400 hover:text-slate-300"
+                className="tw-transition text-zinc-400 hover:text-zinc-300"
               >
                 <span className="sr-only">{item.name}</span>
-                <item.icon className="size-6" aria-hidden="true" />
+                <item.icon
+                  weight="fill"
+                  className="size-6"
+                  aria-hidden="true"
+                />
               </a>
             ))}
           </div>
         </div>
 
         <ul className="mt-8 flex place-content-center gap-x-3 text-xs">
-          {footerData.policies.map((policy) => (
-            <li key={policy.id} className="text-slate-400 hover:text-slate-300">
+          {footer.policies.map((policy) => (
+            <li key={policy.id} className="text-zinc-400 hover:text-zinc-300">
               <Link href={`/policies/${policy.slug}`}>{policy.title}</Link>
             </li>
           ))}

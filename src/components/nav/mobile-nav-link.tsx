@@ -6,7 +6,7 @@ export const MobileNavLink = () => {
     <div>xxx</div>
     // // <Popover.Button
     // //   as={Link}
-    // //   className="block text-xl leading-7 tracking-tight text-slate-700"
+    // //   className="block text-xl leading-7 tracking-tight text-zinc-700"
     // //   {...props}
     // // >
     // //   {children}

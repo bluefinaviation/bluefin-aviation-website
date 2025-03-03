@@ -1,53 +1,46 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "motion/react";
 
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-export const NavLinks = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+interface NavLinksProps {
+  className?: string;
+}
+
+export function NavLinks({ className }: NavLinksProps) {
   const pathname = usePathname();
 
   return (
-    <>
-      {NAV_LINKS.map((link, index) => {
-        return (
-          <Link
-            key={link.label}
-            href={link.href}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            className="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-lg text-slate-700 transition-colors delay-150 hover:text-slate-900 hover:delay-0"
-          >
-            <AnimatePresence>
-              {hoveredIndex === index && (
-                <motion.span
-                  className="absolute inset-0 rounded-lg bg-slate-100"
-                  layoutId="hoverBackground"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                  exit={{
-                    opacity: 0,
-                    transition: { duration: 0.15, delay: 0.2 },
-                  }}
-                />
-              )}
-            </AnimatePresence>
-            <span
+    <div className="flex items-center">
+      <div className="flex gap-16 p-8 bg-primary">
+        {NAV_LINKS.map((link) => {
+          return (
+            <Link
+              key={link.label}
+              href={link.href}
               className={cn(
-                pathname == link.href ? "text-blue-700" : "",
-                "relative z-10"
+                "relative text-lg transition-all duration-300 pb-8 -mb-8",
+                "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-transparent after:transition-all after:duration-300",
+                pathname === link.href
+                  ? "after:bg-white text-white"
+                  : "text-white/80 hover:text-white hover:after:bg-white",
+                className
               )}
             >
               {link.label}
-            </span>
-          </Link>
-        );
-      })}
-    </>
+            </Link>
+          );
+        })}
+      </div>
+      <Link
+        href="/contact"
+        className="p-8 h-full text-lg bg-secondary tw-transition text-white hover:bg-accent/90"
+      >
+        Contact
+      </Link>
+    </div>
   );
-};
+}

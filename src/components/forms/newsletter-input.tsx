@@ -27,6 +27,7 @@ export const NewsletterInput = ({
       />
       <Button
         type="submit"
+        variant="outline"
         disabled={isSubmitting || !!error}
         className="text-primary-background bg-primary-foreground hover:bg-primary-foreground/90"
       >

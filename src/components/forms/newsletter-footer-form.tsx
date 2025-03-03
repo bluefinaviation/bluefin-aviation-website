@@ -1,112 +1,154 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useActionState, useEffect, useState, useRef } from "react";
 import { CircleNotch } from "@phosphor-icons/react";
-import { useState } from "react";
 import { toast } from "sonner";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/react-fook-form/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-const formSchema = z.object({
-  email: z
-    .string()
-    .min(1, {
-      message: "Email is required.",
-    })
-    .email({ message: "Invalid email address." }),
-});
+import { subscribeToNewsletterAction } from "@/lib/actions";
+import { NewsletterSchema } from "@/lib/schemas";
 
-type FormValues = z.infer<typeof formSchema>;
+interface ValidationErrors {
+  email: string;
+}
 
-const defaultValues: Partial<FormValues> = {
-  email: "",
-};
+interface FormValues {
+  email: string;
+}
 
 export const NewsletterFooterForm = () => {
-  const [submitting, setSubmitting] = useState(false);
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues,
+  const formRef = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState<FormValues>({
+    email: "",
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    if (submitting) {
-      return false;
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({
+    email: "",
+  });
+
+  const [state, dispatch, isPending] = useActionState(
+    subscribeToNewsletterAction,
+    {
+      success: "",
+      error: undefined,
     }
-    setSubmitting(true);
+  );
 
-    const res = await fetch("/api/newsletter-subscribe", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: values.email,
-      }),
-    });
+  useEffect(() => {
+    if (state.error) {
+      toast.error(state.error);
+    }
+  }, [state.error]);
 
-    const data = await res.json();
-
-    if (data.error) {
-      toast.error(data.error);
-    } else {
-      toast.message("Thanks for subscribing!", {
+  useEffect(() => {
+    if (state.success) {
+      toast.success(state.success, {
         description: "A welcome email will arrive in your inbox soon.",
       });
+      formRef.current?.reset();
+      setFormData({
+        email: "",
+      });
+      setValidationErrors({
+        email: "",
+      });
+    }
+  }, [state.success]);
+
+  function validate(event: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    validateField(name, value);
+  }
+
+  function validateField(name: string, value: string) {
+    const data = {
+      ...formData,
+      [name]: value,
+    };
+
+    const result = NewsletterSchema.safeParse(data);
+    if (result.success) {
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    } else {
+      const error = result.error.errors.find((err) => err.path[0] === name);
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: error?.message ?? "",
+      }));
+    }
+  }
+
+  function formAction(formData: globalThis.FormData) {
+    const data = Object.fromEntries(formData.entries());
+    const result = NewsletterSchema.safeParse(data);
+
+    if (!result.success) {
+      const newErrors: ValidationErrors = {
+        email: "",
+      };
+
+      result.error.errors.forEach((error) => {
+        const field = error.path[0] as keyof ValidationErrors;
+        newErrors[field] = error.message;
+      });
+
+      setValidationErrors(newErrors);
+      return;
     }
 
-    setSubmitting(false);
-    form.resetField("email");
-
-    return data;
-  };
+    dispatch(formData);
+  }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        id="newsletter-footer"
-        className="relative mt-6 flex flex-col sm:max-w-md lg:mt-0"
-      >
-        <div className="flex gap-x-3">
-          <FormField
-            control={form.control}
+    <form
+      ref={formRef}
+      action={formAction}
+      id="newsletter-footer"
+      className="relative mt-6 flex flex-col sm:max-w-md lg:mt-0"
+    >
+      <div className="flex gap-x-3">
+        <div className="relative">
+          <Label htmlFor="email" className="sr-only">
+            Email
+          </Label>
+          <Input
+            id="email"
             name="email"
-            render={({ field }) => (
-              <FormItem className="relative">
-                <FormControl>
-                  <Input
-                    placeholder="Enter your email..."
-                    {...field}
-                    className="text-background"
-                  />
-                </FormControl>
-                <FormMessage className="absolute -bottom-7" />
-              </FormItem>
-            )}
+            type="email"
+            placeholder="Enter your email..."
+            value={formData.email}
+            onChange={validate}
+            className="text-background"
           />
-
-          <Button type="submit" variant="secondary" disabled={submitting}>
-            {submitting ? (
-              <p className="flex items-center gap-x-3">
-                <span>Subscribing</span>
-                <CircleNotch className="mr-2 size-4 animate-spin" />
-              </p>
-            ) : (
-              <p>Subscribe</p>
-            )}
-          </Button>
+          {validationErrors?.email && (
+            <p className="text-xs text-red-500 absolute -bottom-7">
+              {validationErrors.email}
+            </p>
+          )}
         </div>
-      </form>
-    </Form>
+
+        <Button type="submit" variant="outline" disabled={isPending}>
+          {isPending ? (
+            <p className="flex items-center gap-x-3">
+              <span>Subscribing</span>
+              <CircleNotch className="mr-2 size-4 animate-spin" />
+            </p>
+          ) : (
+            <p>Subscribe</p>
+          )}
+        </Button>
+      </div>
+    </form>
   );
 };

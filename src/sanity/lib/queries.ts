@@ -1,5 +1,12 @@
 import { defineQuery } from "next-sanity";
 
+export const TESTIMONIALS_QUERY = defineQuery(`
+  *[_type == "testimonial"] {
+    ...,
+    "image": image.asset->url
+  }
+`);
+
 export const HOME_PAGE_QUERY = defineQuery(`
   *[_type == "home"][0]{
     heroSection{
@@ -29,8 +36,16 @@ export const FLEET_QUERY = defineQuery(`
 	]{
 		_id,
 		model,
-		"manufacturer": manufacturer->slug.current,
-		"category": category->slug.current,
+		"manufacturer": manufacturer->{
+			_id,
+			"slug": slug.current,
+			name
+		},
+		"category": category->{
+			_id,
+			"slug": slug.current,
+			name
+		},
 		code,
 		capacity,
 		speed,
@@ -38,13 +53,6 @@ export const FLEET_QUERY = defineQuery(`
 		image
 	}
 `);
-
-export const ABOUT_PAGE_QUERY = defineQuery(`
-	*[_type == "about"][0]{
-		storySection,
-		teamSection,
-		statsSection
-}`);
 
 export const CONTACT_PAGE_QUERY = defineQuery(`
 	*[_type == "contact"][0]{
@@ -75,16 +83,13 @@ export const LINKTREE_PAGE_QUERY = defineQuery(`
     links
 }`);
 
-export const SERVICES_PAGE_QUERY = defineQuery(`
-	*[_type == "services"][0]{
-		title,
-		heroSection,
-		"tripService": *[_type == "tripService"][0]{
-			card
-		},
-		"fuelService": *[_type == "fuelService"][0]{
-			card
-		},
+export const SERVICES_QUERY = defineQuery(`
+	*[_type == "service"]{
+		_id,
+		name,
+		image,
+		"slug": slug.current,
+		content,
 	}`);
 
 export const TRIP_SERVICE_PAGE_QUERY = defineQuery(`
@@ -109,12 +114,12 @@ export const FOOTER_QUERY = defineQuery(`
 	`);
 
 export const ALL_PLANE_FILTERS_QUERY = defineQuery(`{
-  "categories": *[_type == "planeCategory"]{
+  "categories": *[_type == "planeCategory"] | order(order asc) {
     _id,
     name,
     "slug": slug.current
   },
-  "manufacturers": *[_type == "planeManufacturer"]{
+  "manufacturers": *[_type == "planeManufacturer"] | order(name asc) {
     _id,
     name,
     "slug": slug.current
@@ -136,10 +141,59 @@ export const NEWSLETTER_PAGE_QUERY = defineQuery(`
 `);
 
 export const EMPTY_LEGS_QUERY = defineQuery(`
-	*[_type == "emptyLeg"] {
-		from,
-		to,
+	*[_type == "emptyLeg" && departureTime > now()] | order(departureTime asc) {
+		_id,
+		origin,
 		departureTime,
+		destination,
 		arrivalTime,
+		price,
+		plane->{
+			...,
+			"manufacturer": manufacturer->{
+				_id,
+				name,
+				"slug": slug.current
+			}
+		}
+	}
+`);
+
+export const FAQ_QUERY = defineQuery(`
+	*[_type == "faq"] {
+		_id,
+		question,
+		answer,
+	}
+`);
+
+export const SERVICE_QUERY =
+  defineQuery(`*[_type == "service" && slug.current == $slug][0]{
+  ...,
+  "seo": {
+    "title": coalesce(seo.title, title, ""),
+    "description": coalesce(seo.description,  ""),
+    "image": seo.image,
+    "noIndex": seo.noIndex == true
+  },
+  content[]{
+    ...,
+    _type == "faqs" => {
+      ...,
+      faqs[]-> {
+        _id,
+        answer,
+        question,
+        // // "text": pt::text(body)
+      }
+    }
+  }
+}`);
+
+export const ABOUT_QUERY = defineQuery(`
+	*[_type == "companyDetails"][0]{
+		name, 
+		stats,
+		timeline
 	}
 `);

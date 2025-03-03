@@ -1,23 +1,17 @@
 import { defineField, defineType } from "sanity";
-import { SealPercent } from "@phosphor-icons/react/dist/ssr";
+import { AirplaneInFlight } from "@phosphor-icons/react/dist/ssr";
 
 export const emptyLegType = defineType({
   name: "emptyLeg",
   title: "Empty Legs",
   type: "document",
-  icon: SealPercent,
+  icon: AirplaneInFlight,
   fields: [
     defineField({
-      name: "from",
-      title: "From",
-      type: "destination",
-      description: "From",
-    }),
-    defineField({
-      name: "to",
-      title: "To",
-      type: "destination",
-      description: "To",
+      name: "origin",
+      title: "Origin",
+      type: "flight",
+      description: "Origin of the empty leg",
     }),
     defineField({
       name: "departureTime",
@@ -26,34 +20,43 @@ export const emptyLegType = defineType({
       description: "Departure time",
     }),
     defineField({
+      name: "destination",
+      title: "Destination",
+      type: "flight",
+      description: "Destination of the empty leg",
+    }),
+    defineField({
       name: "arrivalTime",
       title: "Arrival Time",
       type: "datetime",
       description: "Arrival time",
     }),
     defineField({
-      name: "originalPrice",
-      title: "Original Price",
+      name: "price",
+      title: "Price",
       type: "number",
-      description: "Original price",
+      description: "Price for the full plane",
     }),
     defineField({
-      name: "discountedPrice",
-      title: "Discounted Price",
-      type: "number",
-      description: "Discounted price",
+      name: "plane",
+      title: "Plane",
+      type: "reference",
+      to: [{ type: "plane" }],
+      description: "Plane used for the empty leg",
     }),
   ],
   preview: {
     select: {
-      title: "from.city",
-      subtitle: "to.city",
+      origin: "origin.city",
+      destination: "destination.city",
+      price: "price",
+      departureTime: "departureTime",
     },
     prepare: (selection) => {
-      const { title, subtitle } = selection;
+      const { origin, destination, price, departureTime } = selection;
       return {
-        title: title,
-        subtitle: subtitle,
+        title: `${origin} - ${destination}`,
+        subtitle: `$${price}`,
       };
     },
   },

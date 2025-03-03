@@ -21,10 +21,10 @@ export const FuelFeature = ({ feature }: FuelFeatureProps) => {
           fill
         />
       </div>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900 sm:mt-2 md:text-lg lg:mt-4 lg:text-2xl">
+      <h3 className="mt-1 text-lg font-semibold text-zinc-900 sm:mt-2 md:text-lg lg:mt-4 lg:text-2xl">
         {feature.continent}
       </h3>
-      <p className="mt-0.5 flex items-baseline gap-x-1 text-slate-700 sm:mt-1 lg:mt-2">
+      <p className="mt-0.5 flex items-baseline gap-x-1 text-zinc-700 sm:mt-1 lg:mt-2">
         <span className="text-base font-medium sm:text-lg lg:text-xl">
           {feature.airports}
         </span>

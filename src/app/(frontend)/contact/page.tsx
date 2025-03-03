@@ -8,6 +8,7 @@ import { PageContainer } from "@/components/shared/pace-container";
 import { Container } from "@/components/shared/section-container";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { MapContainer } from "@/components/contact/map-container";
+import { PageHero } from "@/components/shared/page-hero";
 
 import { client } from "@/sanity/lib/client";
 import { CONTACT_PAGE_QUERY } from "@/sanity/lib/queries";
@@ -26,12 +27,17 @@ export default async function ContactPage() {
   if (!contactPageData) return null;
 
   return (
-    <PageContainer>
-      <h1 className="sr-only">Contact Us</h1>
+    <div>
+      <PageHero
+        heading="Contact Us"
+        summary="We're here to help you with your aviation and charter needs. Our team of experts are here to assist you 24/7."
+        image="/images/contact-hero.webp"
+        imageAlt=""
+      />
 
       <Container className="py-8 sm:py-16 lg:py-24">
         <SectionHeading>Get in Touch</SectionHeading>
-        <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-12 sm:gap-y-0">
+        <div className="flex mt-8 flex-col gap-y-6 sm:flex-row sm:gap-x-12 sm:gap-y-0">
           <div className="relative col-span-1 h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
             <ImageCustom
               image={contactPageData.contactSection?.section?.image}
@@ -43,7 +49,7 @@ export default async function ContactPage() {
               height={1280}
               priority
               sizes="(min-width: 1360px) 604px, (min-width: 640px) 45.71vw, calc(100vw - 24px)"
-              className="relative h-full rounded-lg bg-slate-200 object-cover object-center shadow-sm"
+              className="relative h-full bg-zinc-200 object-cover object-center shadow-sm"
             />
           </div>
 
@@ -52,7 +58,7 @@ export default async function ContactPage() {
               {contactPageData.contactSection?.contacts?.map((contact, idx) => (
                 <FeatureContainer key={idx}>
                   <FeatureLabel>{contact.cta}</FeatureLabel>
-                  <dl className="mt-2 break-words text-base text-slate-500 lg:text-lg">
+                  <dl className="mt-2 break-words text-base text-zinc-500 lg:text-lg">
                     <dd className="tw-transition font-medium hover:text-blue-700">
                       <a
                         href={contact.url}
@@ -72,25 +78,7 @@ export default async function ContactPage() {
 
       <Container className="py-8 sm:py-16 lg:py-24">
         <SectionHeading>Our Offices</SectionHeading>
-        <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-12 sm:gap-y-0">
-          <div className="h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
-            <div className="bg-branding size-full rounded-lg p-3 shadow-sm">
-              <MapContainer
-                locations={(contactPageData.locationSection?.locations ?? [])
-                  .filter((location) => location.coordinates)
-                  .map((location) => ({
-                    _key: location._key,
-                    city: location.city ?? "",
-                    isHq: location.isHq ?? false,
-                    address: location.address,
-                    coordinates: {
-                      lat: location.coordinates?.lat ?? 0,
-                      lng: location.coordinates?.lng ?? 0,
-                    },
-                  }))}
-              />
-            </div>
-          </div>
+        <div className="flex mt-8 flex-col gap-y-6 sm:flex-row sm:gap-x-12 sm:gap-y-0">
           <div className="w-full sm:w-1/2">
             <FeatureList>
               {contactPageData.locationSection?.locations?.map((location) => (
@@ -109,7 +97,7 @@ export default async function ContactPage() {
 
                     <FeatureLabel>{location.city}</FeatureLabel>
                   </div>
-                  <dl className="mt-2 text-base text-slate-500 lg:text-lg">
+                  <dl className="mt-2 text-base text-zinc-500 lg:text-lg">
                     <dt className="sr-only">Office Locations</dt>
                     <dd className="font-medium">
                       {location.isHq ? "Headquarters" : "Office"}
@@ -119,8 +107,27 @@ export default async function ContactPage() {
               ))}
             </FeatureList>
           </div>
+
+          <div className="h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
+            <div className="bg-primary size-full p-3 shadow-sm">
+              <MapContainer
+                locations={(contactPageData.locationSection?.locations ?? [])
+                  .filter((location) => location.coordinates)
+                  .map((location) => ({
+                    _key: location._key,
+                    city: location.city ?? "",
+                    isHq: location.isHq ?? false,
+                    address: location.address,
+                    coordinates: {
+                      lat: location.coordinates?.lat ?? 0,
+                      lng: location.coordinates?.lng ?? 0,
+                    },
+                  }))}
+              />
+            </div>
+          </div>
         </div>
       </Container>
-    </PageContainer>
+    </div>
   );
 }

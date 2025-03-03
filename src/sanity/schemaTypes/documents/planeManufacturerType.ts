@@ -1,16 +1,22 @@
 import { defineField, defineType } from "sanity";
-import { AirplaneInFlight } from "@phosphor-icons/react/dist/ssr";
+import { Factory } from "@phosphor-icons/react/dist/ssr";
 
 export const planeManufacturerType = defineType({
   name: "planeManufacturer",
   title: "Plane Manufacturers",
   type: "document",
-  icon: AirplaneInFlight,
+  icon: Factory,
   fields: [
     defineField({
       name: "name",
       title: "Name",
       type: "string",
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "name" },
     }),
     defineField({
       name: "logo",

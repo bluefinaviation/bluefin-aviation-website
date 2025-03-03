@@ -1,9 +1,9 @@
 import { defineField, defineType } from "sanity";
 import { HandHeart } from "@phosphor-icons/react/dist/ssr";
 
-export const servicesPageType = defineType({
-  name: "services",
-  title: "Services Page",
+export const serviceType = defineType({
+  name: "service",
+  title: "Services",
   icon: HandHeart,
   type: "document",
   fields: [

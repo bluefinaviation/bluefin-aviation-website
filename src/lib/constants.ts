@@ -1,9 +1,10 @@
 export const COMPANY_NAME = "Bluefin Aviation";
 
 export const NAV_LINKS = [
-  { label: "Support Services", href: "/services" },
-  { label: "Charter Broker", href: "/charter-broker" },
-  { label: "Empty Legs", href: "/empty-legs" },
+  { label: "Services", href: "/services" },
+  { label: "Charter Brokerage", href: "/charter-brokerage" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
+
+export const MAIL_FROM = "operations@bluefinaviation.com";
+export const MAIL_TO = "operations@bluefinaviation.com";
