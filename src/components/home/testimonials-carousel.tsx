@@ -34,7 +34,7 @@ export const TestimonialsCarousel = ({
           >
             <p className="text-xl text-primary font-medium">{`${testimonial.quote}`}</p>
             {testimonial.author && (
-              <p className="mt-2 flex items-center text-zinc-700 gap-x-2 font-mono text-sm uppercase">
+              <p className="mt-4 flex items-center text-zinc-600 gap-x-2 font-mono text-sm uppercase">
                 <span className="font-medium">{testimonial.author.name}</span>
                 <span> | </span>
                 <span>{testimonial.author.role}</span>

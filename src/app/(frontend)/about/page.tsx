@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 
 import { PageHero } from "@/components/shared/page-hero";
@@ -7,6 +8,12 @@ import { Timeline } from "@/components/shared/timeline";
 
 import { ABOUT_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "We are a team of experienced professionals who are dedicated to providing the best possible service to our clients.",
+};
 
 export default async function AboutPage() {
   const { data: companyDetails } = await sanityFetch<typeof ABOUT_QUERY>({
