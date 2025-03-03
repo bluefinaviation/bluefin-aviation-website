@@ -10,7 +10,25 @@ import { buttonVariants } from "@/components/ui/button";
 export const HeroSection = () => {
   return (
     <>
-      <div className="grid h-[720px] items-center justify-center overflow-hidden">
+      <div className="grid sm:h-screen sm:py-0 py-24 items-center justify-center overflow-hidden relative">
+        <Image
+          src="/images/clouds.webp"
+          alt="Clouds in the sky."
+          width={1920}
+          height={1080}
+          priority
+          quality={100}
+          className="object-center object-cover opacity-50 absolute -right-72 hidden sm:block"
+        />
+        <Image
+          src="/images/home-hero-plane.webp"
+          alt="Private plane."
+          width={1920}
+          height={1080}
+          priority
+          quality={100}
+          className="object-center w-[68rem] object-cover -right-72 absolute animate-float hidden sm:block"
+        />
         <Container>
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
             <div className="relative z-10 mx-auto mt-6 max-w-2xl sm:mt-0 sm:max-w-none lg:col-span-7 lg:pt-6 xl:col-span-6">
@@ -41,19 +59,7 @@ export const HeroSection = () => {
                 </Link>
               </div>
             </div>
-            <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
-              <BackgroundIllustration className="absolute left-1/2 top-4 size-[1026px] -tranzinc-x-1/3 stroke-zinc-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-tranzinc-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
-              <div className="-mx-4 h-[260px] px-9 [mask-image:linear-gradient(to_bottom,white_60%,transparent)] sm:mx-0 sm:h-[520px] lg:absolute lg:-inset-x-10 lg:-bottom-20 lg:-top-10 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
-                <Image
-                  src="/images/home-hero.webp"
-                  alt="Private plane."
-                  width={1920}
-                  height={1080}
-                  className="object-cover object-center animate-float"
-                  priority
-                />
-              </div>
-            </div>
+            {/* <BackgroundIllustration className="absolute left-1/2 top-4 size-[1026px] -tranzinc-x-1/3 stroke-zinc-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-tranzinc-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" /> */}
           </div>
         </Container>
       </div>

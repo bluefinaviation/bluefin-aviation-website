@@ -14,7 +14,7 @@ export function NavLinks({ className }: NavLinksProps) {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center">
+    <div className="sm:flex items-center hidden">
       <div className="flex gap-16 p-8 bg-primary">
         {NAV_LINKS.map((link) => {
           return (

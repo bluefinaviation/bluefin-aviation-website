@@ -69,27 +69,27 @@ export const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
+        "fixed top-0 p-4 left-0 right-0 z-50 transition-colors duration-300",
         isScrolled ? "bg-white shadow-sm" : "bg-transparent"
       )}
     >
       <nav className="relative flex items-center justify-between">
         <Link href="/" aria-label="Home">
           <LogoMark
-            className="h-8 w-auto sm:h-16 pl-8"
+            className="h-8 w-auto sm:h-16"
             darkColor={isHomePage || isScrolled ? "#0f172a" : "#ffffff"}
             lightColor={isHomePage || isScrolled ? "#64748b" : "#e2e8f0"}
           />
         </Link>
+
         <NavLinks />
         <List
           onClick={() => toggleModal()}
           className={cn(
             "block size-7 sm:hidden",
-            isScrolled ? "text-zinc-900" : "text-white"
+            isScrolled ? "text-zinc-900" : "text-black"
           )}
         />
-
         <AnimatePresence>
           {showModal && (
             <motion.div
@@ -101,7 +101,7 @@ export const Navbar = () => {
             >
               <div className="flex h-16 w-full items-center justify-between">
                 <Link href="/" aria-label="Home">
-                  <Logo
+                  <LogoMark
                     className="h-8 w-auto sm:h-10"
                     darkColor="#fff"
                     lightColor="#e2e8f0"
