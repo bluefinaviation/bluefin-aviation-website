@@ -41,7 +41,7 @@ export default async function LinktreeRoute() {
             <AvatarFallback>BF</AvatarFallback>
           </Avatar>
 
-          <h1 className="font-zinc-50 text-lg font-bold uppercase text-zinc-50 sm:text-2xl">
+          <h1 className="font-slate-50 text-lg font-bold uppercase text-slate-50 sm:text-2xl">
             Bluefin Aviation Services
           </h1>
         </div>

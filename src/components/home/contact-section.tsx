@@ -27,10 +27,10 @@ export const ContactSection = ({ contactSection }: ContactSectionProps) => {
       </div>
       <Container className="relative z-50 flex flex-col items-center justify-center gap-8 text-center">
         <div>
-          <SectionHeading className="text-zinc-50">
+          <SectionHeading className="text-slate-50">
             {contactSection.section.heading}
           </SectionHeading>
-          <SectionSummary className="text-zinc-200">
+          <SectionSummary className="text-slate-200">
             <PortableText
               value={contactSection.section.summary as TypedObject[]}
             />

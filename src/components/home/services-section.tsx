@@ -25,9 +25,9 @@ export const ServicesSection = async () => {
       className="bg-primary grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
     >
       <div className="col-span-1 flex flex-col justify-between px-5 py-10 sm:p-12 md:col-span-2 lg:col-span-1">
-        <SectionHeading className="text-zinc-50">Our Services</SectionHeading>
+        <SectionHeading className="text-slate-50">Our Services</SectionHeading>
         <div>
-          <SectionSummary className="text-zinc-300">
+          <SectionSummary className="text-slate-300">
             {`One stop shop for your corporate aviation and aircraft needs.`}
           </SectionSummary>
           <Button variant="outline" className="mt-5">

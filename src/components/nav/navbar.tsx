@@ -86,13 +86,13 @@ export const Navbar = () => {
           onClick={() => toggleModal()}
           className={cn(
             "block size-7 sm:hidden",
-            isScrolled ? "text-zinc-900" : "text-black"
+            isScrolled ? "text-slate-900" : "text-black"
           )}
         />
         <AnimatePresence>
           {showModal && (
             <motion.div
-              className={cn("fixed inset-0 z-50 h-screen bg-zinc-950 px-5")}
+              className={cn("fixed inset-0 z-50 h-screen bg-slate-950 px-5")}
               variants={modalVariants}
               initial="hidden"
               animate="visible"
@@ -124,7 +124,7 @@ export const Navbar = () => {
                   >
                     <Link
                       href={link.href}
-                      className="text-2xl font-medium text-white hover:text-zinc-200"
+                      className="text-2xl font-medium text-white hover:text-slate-200"
                       onClick={() => toggleModal()}
                     >
                       {link.label}

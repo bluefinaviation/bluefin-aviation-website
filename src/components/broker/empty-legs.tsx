@@ -102,7 +102,7 @@ export const EmptyLegs = async () => {
         return (
           <div
             key={emptyLeg._id}
-            className="flex justify-between bg-zinc-100 p-16 mb-4 rounded-br-[12rem]"
+            className="flex justify-between bg-slate-100 p-16 mb-4 rounded-br-[12rem]"
           >
             <div className="flex gap-x-8">
               <div className="flex flex-col gap-y-2">

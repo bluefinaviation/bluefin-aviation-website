@@ -14,7 +14,7 @@ export function NavLinks({ className }: NavLinksProps) {
   const pathname = usePathname();
 
   return (
-    <div className="sm:flex items-center hidden">
+    <div className="sm:flex items-center hidden font-medium">
       <div className="flex gap-16 p-8 bg-primary">
         {NAV_LINKS.map((link) => {
           return (
@@ -37,7 +37,7 @@ export function NavLinks({ className }: NavLinksProps) {
       </div>
       <Link
         href="/contact"
-        className="p-8 h-full text-lg bg-secondary tw-transition text-white hover:bg-accent/90"
+        className="p-8 h-full text-lg bg-accent tw-transition hover:bg-white hover:text-accent text-white"
       >
         Contact
       </Link>

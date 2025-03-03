@@ -1,13 +1,48 @@
-import { Fragment } from "react";
+"use client";
+import { useRef, Fragment } from "react";
+import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
-import { TimelineEvent } from "@/sanity/types";
+import { TimelineEvent as TimelineEventType } from "@/sanity/types";
+
+function TimelineEvent({
+  event,
+  index,
+  isLeft,
+}: {
+  event: TimelineEventType;
+  index: number;
+  isLeft: boolean;
+}) {
+  const ref = useRef(null);
+
+  const content = (
+    <div className={cn(isLeft ? "pr-24" : "pl-24")}>
+      <div className="mb-4">
+        <span className="text-4xl font-bold">{event.year}</span>
+      </div>
+      <p className="leading-relaxed">{event.description}</p>
+    </div>
+  );
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+    >
+      {content}
+    </motion.div>
+  );
+}
 
 export function Timeline({
   events,
   className,
 }: {
-  events: TimelineEvent[];
+  events: TimelineEventType[];
   className?: string;
 }) {
   return (
@@ -36,12 +71,7 @@ export function Timeline({
               {index % 2 === 0 ? (
                 <>
                   {/* Left event */}
-                  <div className="pr-24">
-                    <div className="mb-4">
-                      <span className="text-4xl font-bold">{event.year}</span>
-                    </div>
-                    <p className="leading-relaxed">{event.description}</p>
-                  </div>
+                  <TimelineEvent event={event} index={index} isLeft={true} />
                   {/* Empty right */}
                   <div />
                 </>
@@ -50,12 +80,7 @@ export function Timeline({
                   {/* Empty left */}
                   <div />
                   {/* Right event */}
-                  <div className="pl-24">
-                    <div className="mb-4">
-                      <span className="text-4xl font-bold">{event.year}</span>
-                    </div>
-                    <p className="leading-relaxed">{event.description}</p>
-                  </div>
+                  <TimelineEvent event={event} index={index} isLeft={false} />
                 </>
               )}
             </Fragment>

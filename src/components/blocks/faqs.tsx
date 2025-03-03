@@ -33,7 +33,7 @@ export const FAQs = ({ title, faqs }: FAQsProps) => {
   const faqData = generateFaqData(faqs);
 
   return (
-    <section className="bg-zinc-100 sm:py-32 py-20">
+    <section className="bg-slate-100 sm:py-32 py-20">
       <div className="max-w-7xl mx-auto flex flex-col gap-8">
         <script
           type="application/ld+json"

@@ -10,7 +10,7 @@ export const FeatureLabel = ({ children, className }: FeatureLabelProps) => {
   return (
     <h3
       className={cn(
-        "text-xl font-semibold leading-6 text-zinc-900 lg:text-2xl",
+        "text-xl font-semibold leading-6 text-slate-900 lg:text-2xl",
         className
       )}
     >

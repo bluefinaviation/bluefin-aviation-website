@@ -46,7 +46,7 @@ export const ServiceCard = ({
         width={1200}
         height={1600}
         className={cn(
-          "h-full bg-zinc-800 object-cover object-center",
+          "h-full bg-slate-800 object-cover object-center",
           imageClassName
         )}
       />
@@ -57,7 +57,7 @@ export const ServiceCard = ({
         )}
       />
       <div className="absolute bottom-5 left-5 z-10 sm:bottom-10 sm:left-10">
-        <p className="text-xs text-zinc-300 font-mono tracking-wide uppercase">
+        <p className="text-xs text-slate-300 font-mono tracking-wide uppercase">
           {tagline}
         </p>
         <div className="flex items-end">

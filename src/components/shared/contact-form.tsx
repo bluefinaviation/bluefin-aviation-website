@@ -181,17 +181,15 @@ export const ContactForm = () => {
   }
 
   return (
-    <div className="bg-secondary py-16 sm:py-24">
-      <SectionHeading className="text-white text-center mx-auto">
+    <div className="bg-white py-16 sm:py-24">
+      <SectionHeading className="text-center mx-auto">
         Contact Us
       </SectionHeading>
       <Container className="mt-8">
         <form ref={formRef} action={formAction}>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div>
-              <Label htmlFor="firstName" className="text-zinc-300">
-                First Name
-              </Label>
+              <Label htmlFor="firstName">First Name</Label>
               <Input
                 id="firstName"
                 name="firstName"
@@ -207,9 +205,7 @@ export const ContactForm = () => {
               )}
             </div>
             <div>
-              <Label htmlFor="lastName" className="text-zinc-300">
-                Last Name
-              </Label>
+              <Label htmlFor="lastName">Last Name</Label>
               <Input
                 id="lastName"
                 name="lastName"
@@ -225,9 +221,7 @@ export const ContactForm = () => {
               )}
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="email" className="text-zinc-300">
-                Email
-              </Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 name="email"
@@ -242,9 +236,7 @@ export const ContactForm = () => {
               )}
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="phone" className="text-zinc-300">
-                Phone
-              </Label>
+              <Label htmlFor="phone">Phone</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -259,9 +251,7 @@ export const ContactForm = () => {
               )}
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="passengers" className="text-zinc-300">
-                Passengers
-              </Label>
+              <Label htmlFor="passengers">Passengers</Label>
               <Input
                 id="passengers"
                 name="passengers"
@@ -279,11 +269,9 @@ export const ContactForm = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="topic" className="text-zinc-300">
-                Topic
-              </Label>
+              <Label htmlFor="topic">Topic</Label>
               <Select value={formData.topic} onValueChange={handleTopicChange}>
-                <SelectTrigger className="text-zinc-400">
+                <SelectTrigger className="text-slate-400">
                   <SelectValue placeholder="Select a topic" />
                 </SelectTrigger>
                 <SelectContent>
@@ -300,9 +288,7 @@ export const ContactForm = () => {
             </div>
 
             <div className="col-span-3 flex flex-col gap-2">
-              <Label htmlFor="message" className="text-zinc-300">
-                Message
-              </Label>
+              <Label htmlFor="message">Message</Label>
               <Textarea
                 id="message"
                 name="message"
@@ -319,7 +305,7 @@ export const ContactForm = () => {
             </div>
           </div>
           <div className="mt-16 flex justify-end">
-            <Button type="submit" variant="outline" disabled={isPending}>
+            <Button type="submit" disabled={isPending}>
               {isPending ? "Submitting..." : "Submit"}
             </Button>
           </div>

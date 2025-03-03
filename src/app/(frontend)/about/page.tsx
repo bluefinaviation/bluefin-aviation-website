@@ -3,8 +3,9 @@ import Image from "next/image";
 
 import { PageHero } from "@/components/shared/page-hero";
 import { Container } from "@/components/shared/section-container";
-import { SectionHeading } from "@/components/shared/section-heading";
 import { Timeline } from "@/components/shared/timeline";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { SectionSummary } from "@/components/shared/section-summary";
 
 import { ABOUT_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -75,7 +76,10 @@ export default async function AboutPage() {
       </div>
 
       <Container className="py-16">
-        <SectionHeading>Our Timeline</SectionHeading>
+        <div className="flex flex-col items-center text-center">
+          <SectionHeading>Our History</SectionHeading>
+          <SectionSummary className="mt-4">{`With over 10 years of experience in the aviation industry, we have a proven track record of providing exceptional service to our clients.`}</SectionSummary>
+        </div>
         <Timeline events={companyDetails?.timeline || []} />
       </Container>
 

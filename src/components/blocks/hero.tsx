@@ -35,7 +35,7 @@ export const Hero = ({ title, image, text }: HeroProps) => {
         <h1 className="text-6xl mt-4 font-bold font-serif text-white uppercase">
           {title}
         </h1>
-        <div className="prose-lg max-w-2xl text-zinc-200 mt-4">
+        <div className="prose-lg max-w-2xl text-slate-200 mt-4">
           <PortableText value={text ?? []} />
         </div>
       </div>

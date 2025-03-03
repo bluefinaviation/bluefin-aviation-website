@@ -62,7 +62,7 @@ export const Slider = ({ gallery }: { gallery: GalleryImage[] }) => {
                   alt={mediaByIndex(index).alt || "Gallery image"}
                   width={1600}
                   height={1200}
-                  className="rounded-lg bg-zinc-200 object-cover object-center shadow-sm"
+                  className="rounded-lg bg-slate-200 object-cover object-center shadow-sm"
                 />
               </div>
             ))}

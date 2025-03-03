@@ -46,7 +46,7 @@ export default async function ContactPage() {
               height={1280}
               priority
               sizes="(min-width: 1360px) 604px, (min-width: 640px) 45.71vw, calc(100vw - 24px)"
-              className="relative h-full bg-zinc-200 object-cover object-center shadow-sm"
+              className="relative h-full bg-slate-200 object-cover object-center shadow-sm"
             />
           </div>
 
@@ -55,7 +55,7 @@ export default async function ContactPage() {
               {contact.contactSection?.contacts?.map((contact, idx) => (
                 <FeatureContainer key={idx}>
                   <FeatureLabel>{contact.cta}</FeatureLabel>
-                  <dl className="mt-2 break-words text-base text-zinc-500 lg:text-lg">
+                  <dl className="mt-2 break-words text-base text-slate-500 lg:text-lg">
                     <dd className="tw-transition font-medium hover:text-blue-700">
                       <a
                         href={contact.url}
@@ -94,7 +94,7 @@ export default async function ContactPage() {
 
                     <FeatureLabel>{location.city}</FeatureLabel>
                   </div>
-                  <dl className="mt-2 text-base text-zinc-500 lg:text-lg">
+                  <dl className="mt-2 text-base text-slate-500 lg:text-lg">
                     <dt className="sr-only">Office Locations</dt>
                     <dd className="font-medium">
                       {location.isHq ? "Headquarters" : "Office"}

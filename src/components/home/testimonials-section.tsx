@@ -22,7 +22,7 @@ export const TestimonialsSection = async () => {
     <section
       id="testimonials"
       aria-label="What our customers are saying"
-      className="bg-zinc-100 py-16 sm:py-24"
+      className="bg-slate-100 py-16 sm:py-24"
     >
       <Container className="grid max-w-7xl grid-cols-1 lg:grid-cols-2 lg:gap-x-24">
         <div className="col-span-1">

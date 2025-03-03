@@ -35,7 +35,7 @@ export const StorySection = ({ storySection }: StorySectionProps) => {
             width={1200}
             height={1600}
             priority
-            className="h-96 w-full bg-zinc-200 object-cover shadow-sm lg:absolute lg:h-full lg:rounded-br-full "
+            className="h-96 w-full bg-slate-200 object-cover shadow-sm lg:absolute lg:h-full lg:rounded-br-full "
           />
         </div>
       </div>

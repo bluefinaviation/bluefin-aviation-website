@@ -22,7 +22,7 @@ export const LogoMark = ({
       }}
       className={cn(
         className,
-        darkColor && "fill-zinc-900",
+        darkColor && "fill-slate-900",
         lightColor && "fill-white"
       )}
     >

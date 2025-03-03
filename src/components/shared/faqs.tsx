@@ -65,7 +65,7 @@ const FAQItem = ({
   isOdd: boolean;
 }) => {
   return (
-    <div className={`${isOdd ? "bg-zinc-50" : "bg-white"}`}>
+    <div className={`${isOdd ? "bg-slate-50" : "bg-white"}`}>
       <div className="max-w-3xl mx-auto">
         <motion.button
           className="w-full flex items-center cursor-pointer justify-between py-12 text-xl md:text-3xl font-bold"
@@ -85,7 +85,7 @@ const FAQItem = ({
               variants={itemVariants}
               className="overflow-hidden"
             >
-              <div className="text-zinc-600 text-base pb-12 pr-12">
+              <div className="text-slate-600 text-base pb-12 pr-12">
                 {faq.answer}
               </div>
             </motion.div>

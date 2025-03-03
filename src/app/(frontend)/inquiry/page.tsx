@@ -40,7 +40,7 @@ export default async function InquiryPage() {
           alt={`Plane.`}
           width={1280}
           height={1920}
-          className="h-64 w-full bg-zinc-100 object-cover object-center sm:h-80 lg:absolute lg:h-full"
+          className="h-64 w-full bg-slate-100 object-cover object-center sm:h-80 lg:absolute lg:h-full"
         />
       </div>
 

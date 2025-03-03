@@ -15,7 +15,7 @@ export const Footer = async () => {
   });
 
   return (
-    <footer className="bg-zinc-950" aria-labelledby="footer-heading">
+    <footer className="bg-slate-950" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -38,7 +38,7 @@ export const Footer = async () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="tw-transition text-base text-zinc-50 hover:text-zinc-300 sm:text-lg"
+                  className="tw-transition text-base text-slate-50 hover:text-slate-300 sm:text-lg"
                 >
                   {item.label}
                 </Link>
@@ -52,7 +52,7 @@ export const Footer = async () => {
               {footer.newsletter?.section?.heading ??
                 "Subscribe to our newsletter"}
             </h3>
-            <div className="mt-2 text-sm leading-6 text-zinc-300 sm:text-base">
+            <div className="mt-2 text-sm leading-6 text-slate-300 sm:text-base">
               <PortableText value={footer.newsletter?.section?.summary ?? []} />
             </div>
           </div>
@@ -60,7 +60,7 @@ export const Footer = async () => {
         </div>
 
         <div className="mt-8 flex justify-between border-t border-white/10 pt-8 text-xs">
-          <p className="leading-5 text-zinc-400 md:order-1 md:mt-0">
+          <p className="leading-5 text-slate-400 md:order-1 md:mt-0">
             &copy; {COMPANY_NAME} {new Date().getFullYear()}
           </p>
 
@@ -71,7 +71,7 @@ export const Footer = async () => {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="tw-transition text-zinc-400 hover:text-zinc-300"
+                className="tw-transition text-slate-400 hover:text-slate-300"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon
@@ -86,7 +86,7 @@ export const Footer = async () => {
 
         <ul className="mt-8 flex place-content-center gap-x-3 text-xs">
           {footer.policies.map((policy) => (
-            <li key={policy.id} className="text-zinc-400 hover:text-zinc-300">
+            <li key={policy.id} className="text-slate-400 hover:text-slate-300">
               <Link href={`/policies/${policy.slug}`}>{policy.title}</Link>
             </li>
           ))}

@@ -26,7 +26,7 @@ export const PageHero = ({
         <h1 className="text-7xl mt-4 font-bold font-serif text-white uppercase">
           {heading}
         </h1>
-        <p className="text-zinc-200 mt-2 max-w-2xl text-xl">{summary}</p>
+        <p className="text-slate-200 mt-2 max-w-2xl text-xl">{summary}</p>
       </div>
     </section>
   );

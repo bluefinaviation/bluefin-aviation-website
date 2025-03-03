@@ -26,7 +26,7 @@ export const ServiceCard = ({ service, className }: ServiceCardProps) => {
         alt={service.image?.alt ? service.image.alt : ""}
         width={1200}
         height={1600}
-        className="h-full bg-zinc-800 object-cover object-center"
+        className="h-full bg-slate-800 object-cover object-center"
       />
       <div className="tw-transition absolute inset-0 bg-black opacity-30 group-hover:opacity-0" />
       <div className="absolute bottom-5 left-5 z-10 sm:bottom-10 sm:left-10">

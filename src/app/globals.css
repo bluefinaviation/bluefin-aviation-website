@@ -24,69 +24,65 @@
 
 @layer base {
   :root {
-    /* Zinc-based colors in OKLCH */
-    --background: oklch(98% 0 0); /* zinc-50 */
-    --foreground: oklch(23% 0 0); /* zinc-900 */
+    --background: oklch(0.98 0 248);
+    --foreground: oklch(0.13 0.04 265);
 
-    --card: oklch(98% 0 0); /* zinc-50 */
-    --card-foreground: oklch(23% 0 0); /* zinc-900 */
+    --card: oklch(0.93 0.01 256);
+    --card-foreground: oklch(0.13 0.04 265);
 
-    --popover: oklch(98% 0 0); /* zinc-50 */
-    --popover-foreground: oklch(23% 0 0); /* zinc-900 */
+    --popover: oklch(0.97 0.01 248);
+    --popover-foreground: oklch(0.13 0.04 265);
 
-    /* Keep original primary */
-    --primary: oklch(20% 0.125 220);
-    --primary-foreground: oklch(98% 0 0); /* zinc-50 */
+    --primary: oklch(0.2 0.125 220);
+    --primary-foreground: oklch(0.98 0 248);
 
-    /* Keep original secondary */
-    --secondary: oklch(50% 0.1 40);
-    --secondary-foreground: oklch(98% 0 0); /* zinc-50 */
+    --secondary: oklch(0.55 0.04 257);
+    --secondary-foreground: oklch(0.98 0 248);
 
-    --muted: oklch(95% 0 0); /* zinc-100 */
-    --muted-foreground: oklch(55% 0 0); /* zinc-500 */
+    --muted: oklch(0.87 0.02 253);
+    --muted-foreground: oklch(0.45 0.04 257);
 
-    /* Keep original accent */
-    --accent: oklch(50% 0.1 40);
-    --accent-foreground: oklch(98% 0 0); /* zinc-50 */
+    --accent: oklch(0.488 0.243 264.376);
+    --accent-foreground: oklch(0.98 0 248);
 
-    --destructive: oklch(65% 0.2 25); /* red-500 */
-    --destructive-foreground: oklch(98% 0 0); /* zinc-50 */
+    --destructive: oklch(0.65 0.2 25);
+    --destructive-foreground: oklch(0.98 0 248);
 
-    --border: oklch(90% 0 0); /* zinc-200 */
-    --input: oklch(90% 0 0); /* zinc-200 */
-    --ring: oklch(30% 0 0); /* zinc-800 */
+    --border: oklch(0.71 0.04 257);
+    --input: oklch(0.71 0.04 257);
+    --ring: oklch(0.37 0.04 257);
 
     --radius: 0rem;
   }
 
   .dark {
-    --background: oklch(23% 0 0); /* zinc-900 */
-    --foreground: oklch(98% 0 0); /* zinc-50 */
+    --background: oklch(0.13 0.04 265);
+    --foreground: oklch(0.98 0 248);
 
-    --card: oklch(23% 0 0); /* zinc-900 */
-    --card-foreground: oklch(98% 0 0); /* zinc-50 */
+    --card: oklch(0.13 0.04 265);
+    --card-foreground: oklch(0.98 0 248);
 
-    --popover: oklch(23% 0 0); /* zinc-900 */
-    --popover-foreground: oklch(98% 0 0); /* zinc-50 */
+    --popover: oklch(0.13 0.04 265);
+    --popover-foreground: oklch(0.98 0 248);
 
-    --primary: oklch(20% 0.125 220); /* keep original */
-    --primary-foreground: oklch(98% 0 0); /* zinc-50 */
+    --primary: oklch(0.2 0.125 220);
+    --primary-foreground: oklch(0.98 0 248);
 
-    --secondary: oklch(50% 0.1 40); /* keep original */
-    --secondary-foreground: oklch(98% 0 0); /* zinc-50 */
+    --secondary: oklch(0.28 0.04 260);
+    --secondary-foreground: oklch(0.98 0 248);
 
-    --muted: oklch(30% 0 0); /* zinc-800 */
-    --muted-foreground: oklch(70% 0 0); /* zinc-400 */
+    --muted: oklch(0.21 0.04 266);
+    --muted-foreground: oklch(0.71 0.04 257);
 
-    --accent: oklch(50% 0.1 40); /* keep original */
-    --accent-foreground: oklch(98% 0 0); /* zinc-50 */
+    --accent: oklch(0.488 0.243 264.376);
+    --accent-foreground: oklch(0.98 0 248);
 
-    --destructive: oklch(65% 0.2 25); /* red-500 */
-    --destructive-foreground: oklch(98% 0 0); /* zinc-50 */
+    --destructive: oklch(0.65 0.2 25);
+    --destructive-foreground: oklch(0.98 0 248);
 
-    --border: oklch(40% 0 0); /* zinc-700 */
-    --input: oklch(40% 0 0); /* zinc-700 */
-    --ring: oklch(85% 0 0); /* zinc-300 */
+    --border: oklch(0.21 0.04 266);
+    --input: oklch(0.21 0.04 266);
+    --ring: oklch(0.37 0.04 257);
   }
 }
 
@@ -160,7 +156,8 @@
   }
 
   .animated-underline {
-    background-image: linear-gradient(#111827, #111827),
+    background-image:
+      linear-gradient(#111827, #111827),
       linear-gradient(to right, #7dd3fc, #38bdf8);
     background-size:
       100% 2px,
@@ -179,8 +176,8 @@
   }
 
   .animated-underline-light {
-    background-image: linear-gradient(#ffff, #ffff),
-      linear-gradient(to right, #7dd3fc, #38bdf8);
+    background-image:
+      linear-gradient(#ffff, #ffff), linear-gradient(to right, #7dd3fc, #38bdf8);
     background-size:
       100% 2px,
       0 2px;

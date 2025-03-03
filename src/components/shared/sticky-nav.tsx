@@ -15,7 +15,7 @@ export function StickyNav({ className }: StickyNavProps) {
   const currentTab = searchParams.get("tab") || "fleet";
 
   return (
-    <div className={cn("sticky z-40 w-full bg-zinc-950 shadow-sm", className)}>
+    <div className={cn("sticky z-40 w-full bg-slate-950 shadow-sm", className)}>
       <Container>
         <div className="flex h-14 items-center">
           <div className="flex space-x-4">

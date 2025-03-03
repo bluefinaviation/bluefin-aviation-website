@@ -287,7 +287,7 @@ export const RequestPlaneQuoteForm = ({
             name="plane"
             value={formData.plane}
             readOnly
-            className="capitalize bg-zinc-50"
+            className="capitalize bg-slate-50"
           />
           {validationErrors?.plane && (
             <p className="text-xs text-red-500">{validationErrors.plane}</p>

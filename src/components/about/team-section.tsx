@@ -28,7 +28,7 @@ export const TeamSection = ({ teamSection }: TeamSectionProps) => {
             width={1600}
             height={1200}
             sizes="(min-width: 1360px) 734px, (min-width: 640px) 54.86vw, calc(100vw - 24px)"
-            className="rounded-lg bg-zinc-200 object-cover shadow-sm"
+            className="rounded-lg bg-slate-200 object-cover shadow-sm"
           />
         </div>
       </Container>
