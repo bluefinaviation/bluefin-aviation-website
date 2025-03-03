@@ -10,7 +10,7 @@ A modern, responsive website for Bluefin Aviation built with Next.js, Tailwind C
 - Interactive UI components
 - Newsletter subscription
 - Service showcases
-- Contact forms
+- Contact forms and email marketing automations
 
 ## 🛠️ Tech Stack
 
