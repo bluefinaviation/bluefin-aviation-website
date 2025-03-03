@@ -21,8 +21,6 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
 
   const center = getCenter(coordinates) || { latitude: 0, longitude: 0 };
 
-  console.log(JSON.stringify(locations, null, 2));
-
   const pins = useMemo(
     () =>
       locations.map((location) => (
