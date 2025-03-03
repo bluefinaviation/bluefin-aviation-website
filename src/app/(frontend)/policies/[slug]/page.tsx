@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { format } from "date-fns";
+import dayjs from "dayjs";
 import type { PortableTextBlock } from "@portabletext/types";
 
 import { CustomPortableText } from "@/components/shared/custom-portable-text";
@@ -30,9 +30,8 @@ export default async function PolicyPage({ params }: PolicyPageProps) {
 
   if (!policyPageData) return null;
 
-  const formattedDate = format(
-    new Date(policyPageData.updatedAt as string),
-    "PPP"
+  const formattedDate = dayjs(policyPageData.updatedAt as string).format(
+    "MMMM D, YYYY"
   );
 
   return (
