@@ -10,7 +10,7 @@ import { DisableDraftMode } from "@/components/draft/disable-draft-mode";
 import { Footer } from "@/components/nav/footer";
 import { Navbar } from "@/components/nav/navbar";
 import { Toaster } from "@/components/ui/sonner";
-import { ContactForm } from "@/components/shared/contact-form";
+// import { ContactForm } from "@/components/shared/contact-form";
 
 import { SanityLive } from "@/sanity/lib/live";
 

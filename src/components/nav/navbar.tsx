@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 
@@ -49,6 +50,8 @@ const linkVariants = {
 export const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,8 +77,8 @@ export const Navbar = () => {
         <Link href="/" aria-label="Home">
           <LogoMark
             className="h-8 w-auto sm:h-16 pl-8"
-            darkColor={isScrolled ? "#0f172a" : "#ffffff"}
-            lightColor={isScrolled ? "#64748b" : "#e2e8f0"}
+            darkColor={isHomePage || isScrolled ? "#0f172a" : "#ffffff"}
+            lightColor={isHomePage || isScrolled ? "#64748b" : "#e2e8f0"}
           />
         </Link>
         <NavLinks />
