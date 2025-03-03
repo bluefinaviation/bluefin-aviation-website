@@ -6,21 +6,19 @@ import { NewsletterForm } from "@/components/forms/newsletter-form";
 import { SectionHeading } from "@/components/shared/section-heading";
 
 import { urlFor } from "@/sanity/lib/image";
-import { client } from "@/sanity/lib/client";
 import { NEWSLETTER_PAGE_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Newsletter",
 };
 
 export default async function NewsletterPage() {
-  const data = await client.fetch(
-    NEWSLETTER_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  const { data: newsletter } = await sanityFetch({
+    query: NEWSLETTER_PAGE_QUERY,
+  });
 
-  const { formSection = null } = data ?? {};
+  const { formSection = null } = newsletter ?? {};
 
   if (!formSection || !formSection.section) return null;
 

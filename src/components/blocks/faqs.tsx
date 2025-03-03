@@ -1,4 +1,4 @@
-import { PortableText } from "next-sanity";
+// // import { PortableText } from "next-sanity";
 import { FAQPage, WithContext } from "schema-dts";
 
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -29,7 +29,7 @@ const generateFaqData = (faqs: FAQsProps["faqs"]): WithContext<FAQPage> => ({
   })),
 });
 
-export const FAQs = ({ _key, title, faqs }: FAQsProps) => {
+export const FAQs = ({ title, faqs }: FAQsProps) => {
   const faqData = generateFaqData(faqs);
   return (
     <section className="bg-zinc-100 sm:py-32 py-20">

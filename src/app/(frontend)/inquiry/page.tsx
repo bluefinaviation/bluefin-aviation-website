@@ -4,24 +4,23 @@ import { PortableText } from "@portabletext/react";
 
 import { InquiryForm } from "@/components/forms/inquiry-form";
 import { SectionHeading } from "@/components/shared/section-heading";
+
 import { urlFor } from "@/sanity/lib/image";
-import { client } from "@/sanity/lib/client";
 import { INQUIRY_PAGE_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Inquiry",
 };
 
 export default async function InquiryPage() {
-  const inquiryData = await client.fetch(
-    INQUIRY_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  const { data: inquiry } = await sanityFetch({
+    query: INQUIRY_PAGE_QUERY,
+  });
 
-  if (!inquiryData) return null;
+  if (!inquiry) return null;
 
-  const { formSection = null } = inquiryData ?? {};
+  const { formSection = null } = inquiry ?? {};
 
   if (!formSection || !formSection.section) return null;
 

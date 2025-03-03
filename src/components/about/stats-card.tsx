@@ -7,7 +7,7 @@ export const StatsCard = ({ stat }: { stat: Stat }) => {
         {stat.value}
       </h3>
       <p className="mt-1 text-sm font-medium text-zinc-300 md:mt-1.5 lg:mt-2 lg:text-base">
-        {stat.label}
+        {stat.title}
       </p>
     </li>
   );

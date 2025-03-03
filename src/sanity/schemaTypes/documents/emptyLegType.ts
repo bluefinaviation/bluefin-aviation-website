@@ -53,7 +53,7 @@ export const emptyLegType = defineType({
       departureTime: "departureTime",
     },
     prepare: (selection) => {
-      const { origin, destination, price, departureTime } = selection;
+      const { origin, destination, price } = selection;
       return {
         title: `${origin} - ${destination}`,
         subtitle: `$${price}`,

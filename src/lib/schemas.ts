@@ -33,6 +33,10 @@ export const ContactFormSchema = z.object({
     required_error: "Please select a topic",
   }),
   message: z.string().min(1, "Message must be at least 1 character long."),
+  passengers: z
+    .string()
+    .optional()
+    .or(z.coerce.number().min(1, "Passengers must be at least 1.")),
 });
 
 export const NewsletterSchema = z.object({

@@ -2,12 +2,7 @@ import { StatsCard } from "@/components/about/stats-card";
 import { StatsList } from "@/components/about/stats-list";
 import { Container } from "@/components/shared/section-container";
 
-export interface Stat {
-  _key: string;
-  value: string;
-  _type: "stat";
-  label: string;
-}
+import { Stat } from "@/sanity/types";
 
 interface StatSectionProps {
   stats: Stat[];

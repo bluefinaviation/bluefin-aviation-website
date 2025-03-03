@@ -9,7 +9,27 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export const PlaneFilters = ({ allPlaneFilters }) => {
+// Define interfaces for the component props and data structures
+interface Category {
+  _id: string;
+  name: string;
+  slug: string;
+}
+
+interface Manufacturer {
+  _id: string;
+  name: string;
+  slug: string;
+}
+
+interface PlaneFiltersProps {
+  allPlaneFilters: {
+    categories: Category[];
+    manufacturers: Manufacturer[];
+  };
+}
+
+export const PlaneFilters = ({ allPlaneFilters }: PlaneFiltersProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -40,7 +60,7 @@ export const PlaneFilters = ({ allPlaneFilters }) => {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All Jets</SelectItem>
-          {allPlaneFilters.categories.map((category) => (
+          {allPlaneFilters.categories.map((category: Category) => (
             <SelectItem key={category._id} value={category.slug}>
               {category.name} Jets
             </SelectItem>
@@ -56,7 +76,7 @@ export const PlaneFilters = ({ allPlaneFilters }) => {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All Manufacturers</SelectItem>
-          {allPlaneFilters.manufacturers.map((manufacturer) => (
+          {allPlaneFilters.manufacturers.map((manufacturer: Manufacturer) => (
             <SelectItem key={manufacturer._id} value={manufacturer.slug}>
               {manufacturer.name}
             </SelectItem>

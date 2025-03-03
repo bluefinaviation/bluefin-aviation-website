@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 
 import { BackgroundIllustration } from "@/components/backgrounds/background-illustration";
 import { PageSummary } from "@/components/shared/page-summary";

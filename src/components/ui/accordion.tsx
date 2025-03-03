@@ -2,10 +2,9 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { ChevronDownIcon } from "lucide-react";
+import { Plus } from "@phosphor-icons/react/dist/ssr";
 
 import { cn } from "@/lib/utils";
-import { Plus } from "@phosphor-icons/react/dist/ssr";
 
 function Accordion({
   ...props

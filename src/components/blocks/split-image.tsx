@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { PAGE_QUERYResult } from "@/sanity/types";
+import { SERVICE_QUERYResult } from "@/sanity/types";
 import { stegaClean } from "next-sanity";
 
 type SplitImageProps = Extract<
-  NonNullable<NonNullable<PAGE_QUERYResult>["content"]>[number],
+  NonNullable<NonNullable<SERVICE_QUERYResult>["content"]>[number],
   { _type: "splitImage" }
 >;
 

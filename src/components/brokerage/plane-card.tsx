@@ -6,8 +6,12 @@ import { buttonVariants } from "@/components/ui/button";
 import { urlFor } from "@/sanity/lib/image";
 import { Plane } from "@/sanity/types";
 
-type PlaneCardData = Omit<Plane, "manufacturer"> & {
+type PlaneCardData = Omit<Plane, "manufacturer" | "category"> & {
   manufacturer: string;
+  category?: {
+    name: string;
+    _id: string;
+  };
 };
 
 interface PlaneCardProps {
@@ -45,7 +49,7 @@ export const PlaneCard = ({ plane }: PlaneCardProps) => {
         {/* Text container with transition */}
         <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-all duration-300 group-hover:tranzinc-y-[-20px]">
           <h4 className="text-xs font-mono font-medium tracking-wide uppercase text-zinc-500">
-            {plane.manufacturer.name} • {plane.category.name}
+            {plane.manufacturer} • {plane.category?.name || ""}
           </h4>
           <h3 className="text-2xl mt-1 font-serif font-medium">
             {plane.model}

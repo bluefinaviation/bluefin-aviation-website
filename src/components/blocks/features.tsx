@@ -18,7 +18,7 @@ export const Features = ({ features, title, text }: FeaturesProps) => {
         <SectionHeading>{title}</SectionHeading>
 
         <div className="prose max-w-prose">
-          <PortableText value={text} />
+          {text && <PortableText value={text} />}
         </div>
       </div>
 

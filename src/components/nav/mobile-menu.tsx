@@ -3,133 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  List,
-  Video,
-  X,
-  GraduationCap,
-  Database,
-  Chalkboard,
-  Pencil,
-  SealPercent,
-  WindowsLogo,
-  MagnifyingGlass,
-  Lightbulb,
-  UsersThree,
-  ReadCvLogo,
-  Calendar,
-  SealQuestion,
-  Asterisk,
-  Info,
-} from "@phosphor-icons/react";
+import { motion, AnimatePresence } from "motion/react";
+import { List, X } from "@phosphor-icons/react";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  {
-    title: "Consultancy",
-    links: [
-      {
-        label: "Consultancy",
-        href: "/data-consultancy-services",
-        icon: <Asterisk weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Technologies",
-        href: "/technology-services",
-        icon: <Info weight="fill" className="text-accent size-5" />,
-      },
-    ],
-  },
-  {
-    title: "Training",
-    links: [
-      {
-        label: "Courses",
-        href: "/",
-        icon: <GraduationCap weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Bespoke Training",
-        href: "/",
-        icon: <Database weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Virtual Training",
-        href: "/",
-        icon: <Video weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Blended Training & Consultancy",
-        href: "/blended-learning-consultancy-services-bi-solutions",
-        icon: <Chalkboard weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Microsoft Data Platform Certifications",
-        href: "/",
-        icon: <WindowsLogo weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Offers",
-        href: "/",
-        icon: <SealPercent weight="fill" className="text-accent size-5" />,
-      },
-    ],
-  },
-  {
-    title: "Insights",
-    links: [
-      {
-        label: "Blog",
-        href: "/blog",
-        icon: <Pencil weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Case Studies",
-        href: "/case-studies",
-        icon: <MagnifyingGlass weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Top Tips",
-        href: "/top-tips",
-        icon: <Lightbulb weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Events",
-        href: "/",
-        icon: <Calendar weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "FAQ",
-        href: "/faq",
-        icon: <SealQuestion weight="fill" className="text-accent size-5" />,
-      },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      {
-        label: "About Us",
-        href: "/",
-        icon: <GraduationCap weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Team",
-        href: "/",
-        icon: <UsersThree weight="fill" className="text-accent size-5" />,
-      },
-      {
-        label: "Careers",
-        href: "/",
-        icon: <ReadCvLogo weight="fill" className="text-accent size-5" />,
-      },
-    ],
-  },
-];
 
 const modalVariants = {
   hidden: {
@@ -151,44 +30,6 @@ const modalVariants = {
     },
   },
 };
-
-const linkItemVariants = {
-  hidden: { opacity: 0, y: "50%" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: "50%",
-    transition: {
-      duration: 0.1,
-      ease: "easeOut",
-    },
-  },
-};
-
-const navLinksVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-  exit: {
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
-    },
-  },
-};
-
-const MotionLink = motion.create(Link);
 
 export const MobileMenu = () => {
   const [showModal, setShowModal] = useState(false);

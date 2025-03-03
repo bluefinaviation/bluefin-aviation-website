@@ -4,27 +4,24 @@ import { FeatureContainer } from "@/components/contact/feature-container";
 import { FeatureLabel } from "@/components/contact/feature-label";
 import { FeatureList } from "@/components/contact/feature-list";
 import { ImageCustom } from "@/components/shared/image-custom";
-import { PageContainer } from "@/components/shared/pace-container";
 import { Container } from "@/components/shared/section-container";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { MapContainer } from "@/components/contact/map-container";
 import { PageHero } from "@/components/shared/page-hero";
 
-import { client } from "@/sanity/lib/client";
 import { CONTACT_PAGE_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Contact Us",
 };
 
 export default async function ContactPage() {
-  const contactPageData = await client.fetch(
-    CONTACT_PAGE_QUERY,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  const { data: contact } = await sanityFetch({
+    query: CONTACT_PAGE_QUERY,
+  });
 
-  if (!contactPageData) return null;
+  if (!contact) return null;
 
   return (
     <div>
@@ -40,10 +37,10 @@ export default async function ContactPage() {
         <div className="flex mt-8 flex-col gap-y-6 sm:flex-row sm:gap-x-12 sm:gap-y-0">
           <div className="relative col-span-1 h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
             <ImageCustom
-              image={contactPageData.contactSection?.section?.image}
+              image={contact.contactSection?.section?.image}
               alt={
-                (contactPageData.contactSection?.section?.image
-                  ?.alt as string) ?? "Plane"
+                (contact.contactSection?.section?.image?.alt as string) ??
+                "Plane"
               }
               width={1920}
               height={1280}
@@ -55,7 +52,7 @@ export default async function ContactPage() {
 
           <div className="col-span-1 w-full sm:w-1/2">
             <FeatureList>
-              {contactPageData.contactSection?.contacts?.map((contact, idx) => (
+              {contact.contactSection?.contacts?.map((contact, idx) => (
                 <FeatureContainer key={idx}>
                   <FeatureLabel>{contact.cta}</FeatureLabel>
                   <dl className="mt-2 break-words text-base text-zinc-500 lg:text-lg">
@@ -81,13 +78,13 @@ export default async function ContactPage() {
         <div className="flex mt-8 flex-col gap-y-6 sm:flex-row sm:gap-x-12 sm:gap-y-0">
           <div className="w-full sm:w-1/2">
             <FeatureList>
-              {contactPageData.locationSection?.locations?.map((location) => (
+              {contact.locationSection?.locations?.map((location) => (
                 <FeatureContainer key={location._key}>
                   <div className="flex items-center gap-x-2">
                     <ImageCustom
-                      image={contactPageData.locationSection?.section?.image}
+                      image={contact.locationSection?.section?.image}
                       alt={
-                        (contactPageData.contactSection?.section?.image
+                        (contact.contactSection?.section?.image
                           ?.alt as string) ?? "Plane"
                       }
                       width={96}
@@ -111,7 +108,7 @@ export default async function ContactPage() {
           <div className="h-64 w-full sm:h-72 sm:w-1/2 lg:h-96">
             <div className="bg-primary size-full p-3 shadow-sm">
               <MapContainer
-                locations={(contactPageData.locationSection?.locations ?? [])
+                locations={(contact.locationSection?.locations ?? [])
                   .filter((location) => location.coordinates)
                   .map((location) => ({
                     _key: location._key,

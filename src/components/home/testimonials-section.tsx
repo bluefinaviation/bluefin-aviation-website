@@ -7,15 +7,16 @@ import { TestimonialsCarousel } from "@/components/home/testimonials-carousel";
 
 import { TESTIMONIALS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
-
 import { Testimonial } from "@/sanity/types";
 
 export const TestimonialsSection = async () => {
-  const { data: testimonials } = await sanityFetch<Testimonial[]>({
+  const { data } = await sanityFetch<string>({
     query: TESTIMONIALS_QUERY,
   });
 
-  if (!testimonials) return null;
+  const testimonials = data as unknown as Testimonial[];
+
+  if (!testimonials || testimonials.length === 0) return null;
 
   return (
     <section

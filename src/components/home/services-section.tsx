@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Image as SanityImage } from "sanity";
 
 import { SectionHeading } from "@/components/shared/section-heading";
 import { SectionSummary } from "@/components/shared/section-summary";
@@ -11,7 +12,7 @@ import { ServiceCard } from "@/components/services/service-card";
 import { Service } from "@/sanity/types";
 
 export const ServicesSection = async () => {
-  const { data: services } = await sanityFetch<Service[]>({
+  const { data: services } = await sanityFetch<string>({
     query: SERVICES_QUERY,
   });
 
@@ -34,14 +35,12 @@ export const ServicesSection = async () => {
           </Button>
         </div>
       </div>
-      {services?.map((service) => (
+      {services?.map((service: Service) => (
         <ServiceCard
           key={service._id}
-          title={service.name}
-          image={service.image}
-          tagline={service.tagline}
-          slug={`/services/${service.slug}`}
-          imageClassName="relative col-span-1"
+          title={service.name || ""}
+          slug={`/services/${service.slug?.current || ""}`}
+          image={service.image as SanityImage}
         />
       ))}
     </section>

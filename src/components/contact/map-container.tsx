@@ -2,23 +2,26 @@
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { MapPin } from "@phosphor-icons/react";
-import getCenter from "geolib/es/getCenter";
 import { useMemo, useState } from "react";
 import Map, { Marker, Popup } from "react-map-gl/mapbox";
+import { MapPin } from "@phosphor-icons/react";
+import getCenter from "geolib/es/getCenter";
+
+import { cn } from "@/lib/utils";
 
 import { Location } from "@/types";
-import { cn } from "@/lib/utils";
 
 export const MapContainer = ({ locations }: { locations: Location[] }) => {
   const [popupInfo, setPopupInfo] = useState<Location | undefined>();
 
-  const coordinates = locations.map((stage) => ({
-    latitude: stage.coordinates.lat,
-    longitude: stage.coordinates.lng,
+  const coordinates = locations.map((location) => ({
+    latitude: location.coordinates.lat,
+    longitude: location.coordinates.lng,
   }));
 
   const center = getCenter(coordinates) || { latitude: 0, longitude: 0 };
+
+  console.log(JSON.stringify(locations, null, 2));
 
   const pins = useMemo(
     () =>
@@ -33,57 +36,50 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
             setPopupInfo(location);
           }}
         >
-          <div className="flex cursor-pointer flex-col items-center">
-            <MapPin
-              weight="fill"
-              className="tw-transition size-3 text-zinc-100 hover:text-zinc-300 sm:size-4 lg:size-5"
-            />
-          </div>
+          <MapPin
+            size={32}
+            weight="fill"
+            className={cn("text-primary", location.isHq && "text-secondary")}
+          />
         </Marker>
       )),
     [locations]
   );
 
   return (
-    <Map
-      style={{ width: "100%", height: "100%" }}
-      mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE_URL}
-      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-      initialViewState={{
-        latitude: center.latitude,
-        longitude: center.longitude,
-        zoom: 1.5,
-      }}
-      attributionControl={false}
-    >
-      {pins}
+    <div className="h-[500px] w-full">
+      <Map
+        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+        initialViewState={{
+          latitude: center.latitude,
+          longitude: center.longitude,
+          zoom: 3,
+        }}
+        mapStyle="mapbox://styles/mapbox/light-v11"
+      >
+        {pins}
 
-      {popupInfo && (
-        <Popup
-          anchor="top"
-          latitude={popupInfo?.coordinates.lat}
-          longitude={popupInfo?.coordinates.lng}
-          closeButton={false}
-          onClose={() => setPopupInfo(null!)}
-          offset={[0, 5]}
-        >
-          {popupInfo && (
-            <div>
-              <div className={cn("text-lg font-bold text-blue-900")}>
-                {popupInfo.city}
-              </div>
-              <div className="text-base font-medium text-zinc-700">
-                {popupInfo.isHq ? "Headquarters" : "Office"}
-              </div>
-              {popupInfo.address && (
-                <p className="mt-3 border-t border-zinc-900 pt-3 text-sm">
+        {popupInfo && (
+          <Popup
+            anchor="top"
+            latitude={popupInfo.coordinates.lat}
+            longitude={popupInfo.coordinates.lng}
+            closeButton={false}
+            onClose={() => setPopupInfo(undefined)}
+            offset={[0, 5]}
+            className="z-10"
+          >
+            <div className="flex flex-col gap-1 p-2">
+              <h3 className="text-lg font-semibold">{popupInfo.city}</h3>
+              {popupInfo.isHq && popupInfo.address && (
+                <p className="text-sm text-muted-foreground">
                   {popupInfo.address}
                 </p>
               )}
             </div>
-          )}
-        </Popup>
-      )}
-    </Map>
+          </Popup>
+        )}
+      </Map>
+    </div>
   );
 };

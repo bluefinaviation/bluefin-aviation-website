@@ -7,10 +7,9 @@ import { Timeline } from "@/components/shared/timeline";
 
 import { ABOUT_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
-import { CompanyDetails } from "@/sanity/types";
 
 export default async function AboutPage() {
-  const { data: companyDetails } = await sanityFetch<CompanyDetails>({
+  const { data: companyDetails } = await sanityFetch<typeof ABOUT_QUERY>({
     query: ABOUT_QUERY,
   });
 
@@ -48,16 +47,18 @@ export default async function AboutPage() {
         </div>
       </Container>
 
-      <div className="bg-primary py-16">
+      <div className="bg-primary py-16 text-white">
         <Container>
           <div className="grid grid-cols-1 divide-y divide-white sm:divide-y-0 sm:divide-x sm:grid-cols-4 gap-8">
-            {companyDetails?.stats.map((stat) => (
+            {companyDetails?.stats?.map((stat) => (
               <div key={stat._key} className="text-center">
                 <h3 className="text-white text-5xl sm:text-7xl font-bold">
                   <span>{stat.value}</span>
-                  <span className="text-5xl ml-2.5">{stat.unit}</span>
+                  {stat.hasUnit && (
+                    <span className="text-3xl sm:text-5xl">{stat.unit}</span>
+                  )}
                 </h3>
-                <p className="font-mono uppercase text-zinc-300 text-sm">
+                <p className="text-white/80 text-lg sm:text-xl mt-2">
                   {stat.title}
                 </p>
               </div>
@@ -66,11 +67,9 @@ export default async function AboutPage() {
         </Container>
       </div>
 
-      <Container className="py-16 sm:py-24">
-        <SectionHeading className="mx-auto w-full text-center">
-          Our Timeline
-        </SectionHeading>
-        <Timeline events={companyDetails.timeline} />
+      <Container className="py-16">
+        <SectionHeading>Our Timeline</SectionHeading>
+        <Timeline events={companyDetails?.timeline || []} />
       </Container>
 
       {/* <Container className="py-16">
@@ -79,7 +78,7 @@ export default async function AboutPage() {
             <SectionHeading>The BlueFin Team</SectionHeading>
             <div className="prose">
               <p>
-                {`Our team consists of aviation professionals with lots of expertise in the services that we offer. With more than 10 years of professional experience in the aviation industry, our team members put our customer’s needs first.`}
+                {`Our team consists of aviation professionals with lots of expertise in the services that we offer. With more than 10 years of professional experience in the aviation industry, our team members put our customer's needs first.`}
               </p>
             </div>
           </div>

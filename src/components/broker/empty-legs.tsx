@@ -22,9 +22,44 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { sanityFetch } from "@/sanity/lib/live";
 import { EMPTY_LEGS_QUERY } from "@/sanity/lib/queries";
-import { EmptyLeg } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
 import { formatFlightTimes, formatPrice } from "@/lib/utils";
+
+// Define the EmptyLeg type based on the query result structure
+type EmptyLegResult = {
+  _id: string;
+  origin?: {
+    city?: string;
+    airportCode?: string;
+  } | null;
+  departureTime?: string | null;
+  destination?: {
+    city?: string;
+    airportCode?: string;
+  } | null;
+  arrivalTime?: string | null;
+  price?: number | null;
+  plane?: {
+    _id: string;
+    model?: string;
+    manufacturer?: {
+      _id: string;
+      name?: string;
+      slug?: string | null;
+    } | null;
+    capacity?: number;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: string;
+      };
+      hotspot?: unknown;
+      crop?: unknown;
+      alt?: string;
+      _type: string;
+    };
+  } | null;
+};
 
 const EmptyState = () => {
   return (
@@ -45,11 +80,15 @@ const EmptyState = () => {
 };
 
 export const EmptyLegs = async () => {
-  const { data: emptyLegs } = await sanityFetch<EmptyLeg[]>({
+  // Use a type assertion to avoid type constraints
+  const result = (await sanityFetch({
     query: EMPTY_LEGS_QUERY,
-  });
+  })) as unknown as { data: EmptyLegResult[] };
 
-  if (!emptyLegs?.length) {
+  // Extract the data from the result
+  const emptyLegs: EmptyLegResult[] = result.data || [];
+
+  if (!emptyLegs.length) {
     return <EmptyState />;
   }
 
@@ -57,8 +96,8 @@ export const EmptyLegs = async () => {
     <div className="py-8">
       {emptyLegs.map((emptyLeg) => {
         const times = formatFlightTimes(
-          emptyLeg.departureTime,
-          emptyLeg.arrivalTime
+          emptyLeg.departureTime || "",
+          emptyLeg.arrivalTime || ""
         );
         return (
           <div
@@ -68,26 +107,28 @@ export const EmptyLegs = async () => {
             <div className="flex gap-x-8">
               <div className="flex flex-col gap-y-2">
                 <div className="relative aspect-video w-56">
-                  <Image
-                    src={urlFor(emptyLeg.plane.image).url()}
-                    alt={emptyLeg.plane.model}
-                    fill
-                    className="object-cover"
-                  />
+                  {emptyLeg.plane?.image && (
+                    <Image
+                      src={urlFor(emptyLeg.plane.image).url()}
+                      alt={emptyLeg.plane.model || "Aircraft"}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
                 <h4 className="uppercase font-mono text-xs">
-                  {emptyLeg.plane.manufacturer.name} {emptyLeg.plane.model}
+                  {emptyLeg.plane?.manufacturer?.name} {emptyLeg.plane?.model}
                 </h4>
               </div>
               <div className="flex flex-col gap-y-2 text-primary flex-1">
                 <div className="flex gap-x-4 text-3xl font-serif font-bold items-center">
                   <h3>
-                    {emptyLeg.origin.city} ({emptyLeg.origin.airportCode})
+                    {emptyLeg.origin?.city} ({emptyLeg.origin?.airportCode})
                   </h3>
                   <ArrowRight className="size-6" />
                   <h3>
-                    {emptyLeg.destination.city} (
-                    {emptyLeg.destination.airportCode})
+                    {emptyLeg.destination?.city} (
+                    {emptyLeg.destination?.airportCode})
                   </h3>
                 </div>
 
@@ -107,14 +148,14 @@ export const EmptyLegs = async () => {
                   </div>
                   <div className="flex gap-x-2 items-center">
                     <Seat weight="fill" className="size-6 text-secondary" />
-                    <p>Up to {emptyLeg.plane.capacity} passengers</p>
+                    <p>Up to {emptyLeg.plane?.capacity} passengers</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-y-2">
               <p className="text-3xl font-bold">
-                {formatPrice(emptyLeg.price)}
+                {formatPrice(emptyLeg.price || 0)}
               </p>
               <Sheet>
                 <SheetTrigger asChild>
@@ -124,7 +165,7 @@ export const EmptyLegs = async () => {
                   <SheetHeader>
                     <SheetTitle>Empty Leg Enquiry</SheetTitle>
                     <SheetDescription>
-                      {`Interested in this empty leg flight from ${emptyLeg.origin.city} to ${emptyLeg.destination.city}. Fill out the form below and we'll get back to you as soon as possible.`}
+                      {`Interested in this empty leg flight from ${emptyLeg.origin?.city || ""} to ${emptyLeg.destination?.city || ""}. Fill out the form below and we'll get back to you as soon as possible.`}
                     </SheetDescription>
                   </SheetHeader>
 
@@ -156,7 +197,7 @@ export const EmptyLegs = async () => {
                           id="passengers"
                           type="number"
                           placeholder="Enter number of passengers"
-                          max={emptyLeg.plane.capacity}
+                          max={emptyLeg.plane?.capacity || undefined}
                         />
                       </div>
                     </div>

@@ -11,6 +11,20 @@ type PlaneCardData = Omit<Plane, "manufacturer"> & {
   manufacturer: string;
 };
 
+// Convert PlaneCardData to Plane type for compatibility with PlaneSheet
+const adaptPlaneForSheet = (planeData: PlaneCardData): Plane => {
+  const { manufacturer, ...rest } = planeData;
+  return {
+    ...rest,
+    manufacturer: {
+      _ref: manufacturer,
+      _type: "reference",
+      _weak: false,
+      [Symbol.for("internalGroqTypeReferenceTo")]: "planeManufacturer",
+    },
+  } as Plane;
+};
+
 const MotionPlaneSheet = motion(PlaneSheet);
 
 interface EmptyStateProps {
@@ -50,8 +64,7 @@ export const PlanesGrid = ({ planes, hasFilters }: PlanesGridProps) => {
     <AnimatePresence mode="wait">
       {planes.length > 0 ? (
         <motion.div
-          key="grid"
-          className="grid mt-8 grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -72,7 +85,7 @@ export const PlanesGrid = ({ planes, hasFilters }: PlanesGridProps) => {
                   transition: { duration: 0.2 },
                 }}
                 layout
-                plane={plane}
+                plane={adaptPlaneForSheet(plane)}
               />
             ))}
           </AnimatePresence>

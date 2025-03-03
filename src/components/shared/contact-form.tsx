@@ -11,7 +11,7 @@ import { Container } from "@/components/shared/section-container";
 import { SectionHeading } from "@/components/shared/section-heading";
 
 import { sendContactMessageAction } from "@/lib/actions";
-import { ContactFormSchema, RequestPlaneQuoteSchema } from "@/lib/schemas";
+import { ContactFormSchema } from "@/lib/schemas";
 
 import {
   Select,
@@ -31,6 +31,7 @@ interface ValidationErrors {
   topic: string;
   office: string;
   message: string;
+  passengers: string;
 }
 
 interface FormValues {
@@ -41,6 +42,7 @@ interface FormValues {
   topic: string;
   office: string;
   message: string;
+  passengers: string;
 }
 
 export const ContactForm = () => {
@@ -53,6 +55,7 @@ export const ContactForm = () => {
     topic: "",
     office: "",
     message: "",
+    passengers: "",
   });
 
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({
@@ -63,6 +66,7 @@ export const ContactForm = () => {
     topic: "",
     office: "",
     message: "",
+    passengers: "",
   });
 
   const [state, dispatch, isPending] = useActionState(
@@ -91,6 +95,7 @@ export const ContactForm = () => {
         topic: "",
         office: "",
         message: "",
+        passengers: "",
       });
       setValidationErrors({
         firstName: "",
@@ -100,6 +105,7 @@ export const ContactForm = () => {
         topic: "",
         office: "",
         message: "",
+        passengers: "",
       });
     }
   }, [state.success]);
@@ -159,6 +165,7 @@ export const ContactForm = () => {
         topic: "",
         office: "",
         message: "",
+        passengers: "",
       };
 
       result.error.errors.forEach((error) => {
@@ -264,8 +271,10 @@ export const ContactForm = () => {
                 onChange={validate}
                 className="text-white"
               />
-              {validationErrors?.phone && (
-                <p className="text-xs text-red-500">{validationErrors.phone}</p>
+              {validationErrors?.passengers && (
+                <p className="text-xs text-red-500">
+                  {validationErrors.passengers}
+                </p>
               )}
             </div>
 

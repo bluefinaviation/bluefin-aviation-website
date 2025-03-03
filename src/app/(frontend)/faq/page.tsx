@@ -5,10 +5,33 @@ import { PageContainer } from "@/components/shared/pace-container";
 import { sanityFetch } from "@/sanity/lib/live";
 import { FAQ_QUERY } from "@/sanity/lib/queries";
 
+// Define the interface for the FAQ component
+interface FAQ {
+  _id: string;
+  question: string;
+  answer: string;
+}
+
+// Define the interface for the FAQ query result
+interface FAQ_QUERYResult {
+  _id: string;
+  question: string | null;
+  answer: string | null;
+}
+
 export default async function FAQPage() {
-  const { data: faqs } = await sanityFetch({
+  const { data: faqsData } = await sanityFetch({
     query: FAQ_QUERY,
   });
+
+  // Map the query result to the expected type, filtering out any items with null values
+  const faqs: FAQ[] = faqsData
+    .filter((faq: FAQ_QUERYResult) => faq.question && faq.answer)
+    .map((faq: FAQ_QUERYResult) => ({
+      _id: faq._id,
+      question: faq.question as string,
+      answer: faq.answer as string,
+    }));
 
   return (
     <PageContainer>

@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember } from "sanity";
-import { ImageIcon } from "@sanity/icons";
+import { Image as ImageIcon } from "@phosphor-icons/react/dist/ssr";
 
 /**
  * This is the schema type for block content used in the post document type

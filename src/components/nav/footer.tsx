@@ -10,7 +10,7 @@ import { FOOTER_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 
 export const Footer = async () => {
-  const { data: footer } = await sanityFetch<FooterData>({
+  const { data: footer } = await sanityFetch({
     query: FOOTER_QUERY,
   });
 
