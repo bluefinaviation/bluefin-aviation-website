@@ -54,13 +54,13 @@ export default async function ServicesPage() {
               offering all solutions under the same roof.{" "}
             </p>
           </div>
-          {/* <ServiceCard
+          <ServiceCard
             image="/images/charter-brokerage.webp"
             title="Charter Brokerage"
             slug="/charter-brokerage"
             imageClassName="object-cover object-[5%_90%]"
             isSquare={true}
-          /> */}
+          />
         </div>
 
         <div className="mt-16 grid grid-cols-2 gap-8">
