@@ -6,10 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predev": "pnpm run typegen",
-    "prebuild": "pnpm run typegen",
-    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.2",
