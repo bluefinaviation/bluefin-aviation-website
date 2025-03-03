@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { BackgroundIllustration } from "@/components/backgrounds/background-illustration";
+// // import { BackgroundIllustration } from "@/components/backgrounds/background-illustration";
 import { PageSummary } from "@/components/shared/page-summary";
 import { PageTitle } from "@/components/shared/page-title";
 import { Container } from "@/components/shared/section-container";

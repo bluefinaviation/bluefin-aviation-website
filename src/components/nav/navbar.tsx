@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 
-import { Logo } from "@/components/branding/logo";
 import { NavLinks } from "@/components/nav/nav-links";
 import { LogoMark } from "@/components/branding/logo-mark";
 
