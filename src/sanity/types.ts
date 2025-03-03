@@ -969,19 +969,40 @@ export type HOME_PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: FLEET_QUERY
-// Query: *[_type == "plane" && 		(($category == null) || category->slug.current == $category) &&		(($manufacturer == null) || manufacturer->slug.current == $manufacturer)	]{		_id,		model,		"manufacturer": manufacturer->{			_id,			"slug": slug.current,			name		},		"category": category->{			_id,			"slug": slug.current,			name		},		code,		capacity,		speed,		range,		image	}
+// Query: *[_type == "plane" && 		(($category == null) || category->slug.current == $category) &&		(($manufacturer == null) || manufacturer->slug.current == $manufacturer)	]{		_id,		_type,		_createdAt,		_updatedAt,		_rev,		model,		"manufacturer": manufacturer->{				_id,				name,				"slug": slug.current		},		category->,		code,		capacity,		speed,		range,		image	}
 export type FLEET_QUERYResult = Array<{
   _id: string;
+  _type: "plane";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
   model: string | null;
   manufacturer: {
     _id: string;
-    slug: string | null;
     name: string | null;
+    slug: string | null;
   } | null;
   category: {
     _id: string;
-    slug: string | null;
-    name: string | null;
+    _type: "planeCategory";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    name?: string;
+    slug?: Slug;
+    order?: number;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
   } | null;
   code: string | null;
   capacity: number | null;
@@ -1443,7 +1464,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "\n  *[_type == \"testimonial\"] {\n    ...,\n    \"image\": image.asset->url\n  }\n": TESTIMONIALS_QUERYResult;
     "\n  *[_type == \"home\"][0]{\n    heroSection{\n\t\tsection,\n\t\t\"video\": video.asset->url\n\t},\n\tservicesSection{\n\t\tsection,\n\t\t\"tripService\": *[_type == \"tripService\"][0]{\n\t\t\tcard\n\t\t},\n\t\t\"fuelService\": *[_type == \"fuelService\"][0]{\n\t\t\tcard\n\t\t},\n\t},\n\tbrokerSection,\n\ttestimonialsSection,\n\tpartnersSection,\n\tcontactSection,\n\tnewsletterSection,\n}": HOME_PAGE_QUERYResult;
-    "\n\t*[_type == \"plane\" && \n\t\t(($category == null) || category->slug.current == $category) &&\n\t\t(($manufacturer == null) || manufacturer->slug.current == $manufacturer)\n\t]{\n\t\t_id,\n\t\tmodel,\n\t\t\"manufacturer\": manufacturer->{\n\t\t\t_id,\n\t\t\t\"slug\": slug.current,\n\t\t\tname\n\t\t},\n\t\t\"category\": category->{\n\t\t\t_id,\n\t\t\t\"slug\": slug.current,\n\t\t\tname\n\t\t},\n\t\tcode,\n\t\tcapacity,\n\t\tspeed,\n\t\trange,\n\t\timage\n\t}\n": FLEET_QUERYResult;
+    "\n\t*[_type == \"plane\" && \n\t\t(($category == null) || category->slug.current == $category) &&\n\t\t(($manufacturer == null) || manufacturer->slug.current == $manufacturer)\n\t]{\n\t\t_id,\n\t\t_type,\n\t\t_createdAt,\n\t\t_updatedAt,\n\t\t_rev,\n\t\tmodel,\n\t\t\"manufacturer\": manufacturer->{\n\t\t\t\t_id,\n\t\t\t\tname,\n\t\t\t\t\"slug\": slug.current\n\t\t},\n\t\tcategory->,\n\t\tcode,\n\t\tcapacity,\n\t\tspeed,\n\t\trange,\n\t\timage\n\t}\n": FLEET_QUERYResult;
     "\n\t*[_type == \"contact\"][0]{\n\t\tcontactSection,\n\t\tlocationSection\n}": CONTACT_PAGE_QUERYResult;
     "\n  *[_type == \"policy\" && slug.current == $slug][0] {\n    \"id\": _id,\n    \"updatedAt\": _updatedAt,\n    title,\n    \"slug\": slug.current,\n    content,\n  }\n": POLICY_BY_SLUG_QUERYResult;
     "\n\t*[_type == \"fuelService\"][0]{\n\t\theroSection,\n\t\tfeaturesSection,\n\t\tgallerySection,\n\t}": FUEL_SERVICE_PAGE_QUERYResult;

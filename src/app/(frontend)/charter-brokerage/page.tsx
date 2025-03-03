@@ -85,6 +85,7 @@ export default async function CharterBrokeragePage({
               small, compact aircraft to large, luxurious planes.
             </SectionSummary>
             <PlaneFilters allPlaneFilters={adaptedPlaneFilters} />
+            {/* @ts-expect-error - PlanesGrid expects a Plane[] type, but FLEET_QUERYResult is not compatible */}
             <PlanesGrid planes={planes} hasFilters={hasFilters} />
           </>
         ) : (

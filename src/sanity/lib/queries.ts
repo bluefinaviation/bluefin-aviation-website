@@ -35,6 +35,10 @@ export const FLEET_QUERY = defineQuery(`
 		(($manufacturer == null) || manufacturer->slug.current == $manufacturer)
 	]{
 		_id,
+		_type,
+		_createdAt,
+		_updatedAt,
+		_rev,
 		model,
 		"manufacturer": manufacturer->{
 				_id,
