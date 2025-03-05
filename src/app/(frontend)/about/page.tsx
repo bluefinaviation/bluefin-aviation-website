@@ -43,13 +43,11 @@ export default async function AboutPage() {
             </div>
           </div>
           <div className="relative h-full w-full">
-            {/* <div className="relative aspect-[3/4]"> */}
-
             <Image
-              src="/images/about-hero.webp"
+              src="/images/about.webp"
               alt="About Us"
               fill
-              className="object-cover object-center rounded-br-[12rem] bg-slate-100"
+              className="object-cover object-[5%_90%] rounded-br-[12rem] bg-slate-100"
             />
           </div>
         </div>

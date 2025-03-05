@@ -1,39 +1,49 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// // import { BackgroundIllustration } from "@/components/backgrounds/background-illustration";
 import { PageSummary } from "@/components/shared/page-summary";
 import { PageTitle } from "@/components/shared/page-title";
 import { Container } from "@/components/shared/section-container";
 import { buttonVariants } from "@/components/ui/button";
 
+const heroImages = ["/images/home-hero-1.webp", "/images/home-hero-2.webp"];
+
 export const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 7000); // Change image every 7 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <div className="grid sm:h-screen sm:py-0 py-24 items-center justify-center overflow-hidden relative">
-        <Image
-          src="/images/clouds.webp"
-          alt="Clouds in the sky."
-          width={1920}
-          height={1080}
-          priority
-          quality={100}
-          className="object-center object-cover opacity-50 absolute -right-72 hidden sm:block"
-        />
-        <Image
-          src="/images/home-hero-plane.webp"
-          alt="Private plane."
-          width={1920}
-          height={1080}
-          priority
-          quality={100}
-          className="object-center w-[68rem] object-cover -right-72 absolute animate-float hidden sm:block"
-        />
+        {heroImages.map((src, index) => (
+          <Image
+            key={src}
+            src={src}
+            alt="Private plane."
+            fill
+            priority={index === 0}
+            quality={100}
+            className={`object-cover object-center transition-opacity duration-1000 ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <Container>
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
             <div className="relative z-10 mx-auto mt-6 max-w-2xl sm:mt-0 sm:max-w-none lg:col-span-7 lg:pt-6 xl:col-span-6">
-              <PageTitle>{`The Best Solution for Your Aviation Needs`}</PageTitle>
-              <PageSummary>
+              <PageTitle className="text-white">{`The Best Solution for Your Aviation Needs`}</PageTitle>
+              <PageSummary className="text-slate-200">
                 {`A total concierge-style battery of services awaits you at Bluefin Aviation. We offer our clients top quality services for aircraft needs at all levels.`}
               </PageSummary>
               <div className="mt-12 flex flex-wrap gap-x-3 gap-y-2 lg:gap-x-6 lg:gap-y-4">

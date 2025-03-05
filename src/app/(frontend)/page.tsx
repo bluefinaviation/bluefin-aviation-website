@@ -1,4 +1,3 @@
-import { BrokerSection } from "@/components/broker/broker-section";
 // // import { ContactSection } from "@/components/home/contact-section";
 import { HeroSection } from "@/components/home/hero-section";
 import { ServicesSection } from "@/components/home/services-section";
@@ -12,7 +11,6 @@ export default async function HomePage() {
     <PageContainer>
       <HeroSection />
       <ServicesSection />
-      <BrokerSection />
       <TestimonialsSection />
       <ContactForm />
     </PageContainer>

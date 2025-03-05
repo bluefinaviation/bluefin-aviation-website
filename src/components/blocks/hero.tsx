@@ -29,7 +29,7 @@ export const Hero = ({ title, image, text }: HeroProps) => {
         fill
         className="object-center object-cover absolute inset-0"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
       <div className="z-20 max-w-7xl w-full mx-auto">
         <PageBreadcrumb />
         <h1 className="text-6xl mt-4 font-bold font-serif text-white uppercase">

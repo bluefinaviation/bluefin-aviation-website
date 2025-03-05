@@ -24,13 +24,13 @@ export const navigation = {
     },
     {
       id: 2,
-      name: "Flight Support",
-      href: "/services/flight-support",
+      name: "Trip Support",
+      href: "/services/trip-support",
     },
     {
       id: 3,
       name: "Fuel",
-      href: "/services/fuel-support",
+      href: "/services/fuel",
     },
     {
       id: 4,

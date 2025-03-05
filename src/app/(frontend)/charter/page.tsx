@@ -17,10 +17,10 @@ import {
 import { SectionSummary } from "@/components/shared/section-summary";
 
 export const metadata: Metadata = {
-  title: "Charter Brokerage",
+  title: "Charter",
 };
 
-interface CharterBrokeragePageProps {
+interface CharterPageProps {
   searchParams: Promise<{
     category?: string;
     manufacturer?: string;
@@ -44,9 +44,7 @@ function adaptPlaneFilters(data: ALL_PLANE_FILTERS_QUERYResult) {
   };
 }
 
-export default async function CharterBrokeragePage({
-  searchParams,
-}: CharterBrokeragePageProps) {
+export default async function CharterPage({ searchParams }: CharterPageProps) {
   const { category, manufacturer, tab = "fleet" } = await searchParams;
 
   const { data: planes } = await sanityFetch({
@@ -69,11 +67,11 @@ export default async function CharterBrokeragePage({
   return (
     <div>
       <PageHero
-        heading="Charter Brokerage"
+        heading="Charter"
         summary="Seamless private jet charters, tailored to your needs—with
             cost-efficiency, safety, and luxury at every step."
-        image="/images/charter-brokerage.webp"
-        imageAlt="Charter Brokerage"
+        image="/images/charter.webp"
+        imageAlt="Charter"
       />
       <StickyNav className="top-16 sm:top-20 lg:top-22" />
       <Container className="py-16 sm:py-24">
