@@ -49,7 +49,7 @@ export default async function AboutPage() {
               src="/images/about-hero.webp"
               alt="About Us"
               fill
-              className="object-cover object-center rounded-br-[12rem]"
+              className="object-cover object-center rounded-br-[12rem] bg-slate-100"
             />
           </div>
         </div>

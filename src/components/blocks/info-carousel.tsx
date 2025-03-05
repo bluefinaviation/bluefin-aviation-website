@@ -62,7 +62,7 @@ export const InfoCarousel = ({ title, text, items }: InfoCarouselProps) => {
                     {item.title}
                   </h3>
                 </div>
-                <div className="prose list-disc prose-lg text-white marker:text-white bg-primary rounded-br-[12rem]">
+                <div className="prose p-4 list-disc prose-lg text-white marker:text-white bg-primary rounded-br-[12rem]">
                   {item.text && <PortableText value={item.text} />}
                 </div>
               </div>

@@ -24,16 +24,26 @@ export const navigation = {
     },
     {
       id: 2,
+      name: "Flight Support",
+      href: "/services/flight-support",
+    },
+    {
+      id: 3,
+      name: "Fuel",
+      href: "/services/fuel-support",
+    },
+    {
+      id: 4,
+      name: "Charter",
+      href: "/charter-brokerage",
+    },
+    {
+      id: 5,
       name: "About",
       href: "/about",
     },
     {
-      id: 3,
-      name: "Brokerage",
-      href: "/brokerage",
-    },
-    {
-      id: 4,
+      id: 6,
       name: "Contact",
       href: "/contact",
     },

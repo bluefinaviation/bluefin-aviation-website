@@ -28,7 +28,7 @@ export const PlaneSheet = ({ plane }: { plane: Plane }) => {
           </SheetDescription>
         </SheetHeader>
 
-        <div className="mt-8">
+        <div className="p-8">
           {/* @ts-expect-error - PlaneSheet expects a Plane type, but FLEET_QUERYResult is not compatible */}
           <RequestPlaneQuoteForm plane={plane} />
         </div>

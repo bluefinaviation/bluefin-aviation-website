@@ -4,7 +4,6 @@ import {
   CalendarBlank,
   Clock,
   Seat,
-  AirplaneTilt,
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
@@ -16,81 +15,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { EmptyLegsForm } from "@/components/forms/empty-legs-form";
 
 import { sanityFetch } from "@/sanity/lib/live";
 import { EMPTY_LEGS_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { formatFlightTimes, formatPrice } from "@/lib/utils";
 
-// Define the EmptyLeg type based on the query result structure
-type EmptyLegResult = {
-  _id: string;
-  origin?: {
-    city?: string;
-    airportCode?: string;
-  } | null;
-  departureTime?: string | null;
-  destination?: {
-    city?: string;
-    airportCode?: string;
-  } | null;
-  arrivalTime?: string | null;
-  price?: number | null;
-  plane?: {
-    _id: string;
-    model?: string;
-    manufacturer?: {
-      _id: string;
-      name?: string;
-      slug?: string | null;
-    } | null;
-    capacity?: number;
-    image?: {
-      asset?: {
-        _ref: string;
-        _type: string;
-      };
-      hotspot?: unknown;
-      crop?: unknown;
-      alt?: string;
-      _type: string;
-    };
-  } | null;
-};
-
-const EmptyState = () => {
-  return (
-    <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
-      <AirplaneTilt className="size-16 text-secondary mb-4" weight="fill" />
-      <h3 className="text-2xl font-serif font-bold mb-2">
-        No Empty Legs Available
-      </h3>
-      <p className="text-muted-foreground max-w-md mb-8">
-        There are currently no empty leg flights available. Please check back
-        later or contact us to discuss your charter requirements.
-      </p>
-      <Button asChild>
-        <a href="/contact">Contact Us</a>
-      </Button>
-    </div>
-  );
-};
-
 export const EmptyLegs = async () => {
-  // Use a type assertion to avoid type constraints
-  const result = (await sanityFetch({
+  const { data: emptyLegs } = await sanityFetch({
     query: EMPTY_LEGS_QUERY,
-  })) as unknown as { data: EmptyLegResult[] };
-
-  // Extract the data from the result
-  const emptyLegs: EmptyLegResult[] = result.data || [];
-
-  if (!emptyLegs.length) {
-    return <EmptyState />;
-  }
+  });
 
   return (
     <div className="py-8">
@@ -120,7 +55,7 @@ export const EmptyLegs = async () => {
                   {emptyLeg.plane?.manufacturer?.name} {emptyLeg.plane?.model}
                 </h4>
               </div>
-              <div className="flex flex-col gap-y-2 text-primary flex-1">
+              <div className="flex flex-col gap-y-4 text-primary flex-1">
                 <div className="flex gap-x-4 text-3xl font-serif font-bold items-center">
                   <h3>
                     {emptyLeg.origin?.city} ({emptyLeg.origin?.airportCode})
@@ -136,18 +71,18 @@ export const EmptyLegs = async () => {
                   <div className="flex gap-x-2 items-center">
                     <CalendarBlank
                       weight="fill"
-                      className="size-6 text-secondary"
+                      className="size-6 text-accent"
                     />
                     <p>
                       {times.date || times.departureDate} {times.departureTime}
                     </p>
                   </div>
                   <div className="flex gap-x-2 items-center">
-                    <Clock weight="fill" className="size-6 text-secondary" />
+                    <Clock weight="fill" className="size-6 text-accent" />
                     <p>{times.duration}</p>
                   </div>
                   <div className="flex gap-x-2 items-center">
-                    <Seat weight="fill" className="size-6 text-secondary" />
+                    <Seat weight="fill" className="size-6 text-accent" />
                     <p>Up to {emptyLeg.plane?.capacity} passengers</p>
                   </div>
                 </div>
@@ -169,51 +104,9 @@ export const EmptyLegs = async () => {
                     </SheetDescription>
                   </SheetHeader>
 
-                  <form className="mt-8 space-y-6">
-                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                      <div className="flex flex-col gap-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input id="name" placeholder="Enter your name" />
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="Enter your email"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <Label htmlFor="phone">Phone</Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          placeholder="Enter your phone number"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <Label htmlFor="passengers">Number of Passengers</Label>
-                        <Input
-                          id="passengers"
-                          type="number"
-                          placeholder="Enter number of passengers"
-                          max={emptyLeg.plane?.capacity || undefined}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Enter any additional information or special requirements"
-                      />
-                    </div>
-                    <div className="flex justify-end">
-                      <Button type="submit" size="lg">
-                        Submit Enquiry
-                      </Button>
-                    </div>
-                  </form>
+                  <div className="p-8">
+                    <EmptyLegsForm emptyLeg={emptyLeg} />
+                  </div>
                 </SheetContent>
               </Sheet>
             </div>
