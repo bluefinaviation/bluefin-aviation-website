@@ -9,7 +9,16 @@ import { PageTitle } from "@/components/shared/page-title";
 import { Container } from "@/components/shared/section-container";
 import { buttonVariants } from "@/components/ui/button";
 
-const heroImages = ["/images/home-hero-1.webp", "/images/home-hero-2.webp"];
+type HeroImage = {
+  src: string;
+  alt: string;
+};
+
+const heroImages: HeroImage[] = [
+  { src: "/images/home-hero-1.webp", alt: "Private plane in flight." },
+  { src: "/images/home-hero-2.webp", alt: "Luxury private jet interior." },
+  { src: "/images/home-hero-3.webp", alt: "Plane in the middle of the sky." },
+];
 
 export const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -25,11 +34,11 @@ export const HeroSection = () => {
   return (
     <>
       <div className="grid sm:h-screen sm:py-0 py-24 items-center justify-center overflow-hidden relative">
-        {heroImages.map((src, index) => (
+        {heroImages.map((image, index) => (
           <Image
-            key={src}
-            src={src}
-            alt="Private plane."
+            key={image.src}
+            src={image.src}
+            alt={image.alt}
             fill
             priority={index === 0}
             quality={100}
