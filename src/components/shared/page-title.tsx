@@ -11,7 +11,7 @@ export const PageTitle = ({ children, className }: PageTitleProps) => {
   return (
     <h1
       className={cn(
-        "mb-4 text-4xl uppercase font-black sm:mb-8 sm:text-5xl",
+        "mb-4 text-4xl uppercase font-black sm:text-5xl",
         className
       )}
     >

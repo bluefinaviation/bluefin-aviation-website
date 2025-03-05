@@ -50,12 +50,12 @@ export const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <Container>
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
-            <div className="relative z-10 mx-auto mt-6 max-w-2xl sm:mt-0 sm:max-w-none lg:col-span-7 lg:pt-6 xl:col-span-6">
+                                  <div className="relative z-10  mt-6 max-w-2xl    mx-auto sm:mt-0 sm:max-w-none lg:col-span-7 lg:pt-6 xl:col-span-6">
               <PageTitle className="text-white">{`The Best Solution for Your Aviation Needs`}</PageTitle>
               <PageSummary className="text-slate-200">
                 {`A total concierge-style battery of services awaits you at Bluefin Aviation. We offer our clients top quality services for aircraft needs at all levels.`}
               </PageSummary>
-              <div className="mt-12 flex flex-wrap gap-x-3 gap-y-2 lg:gap-x-6 lg:gap-y-4">
+              <div className="mt-8 flex flex-wrap gap-x-3 gap-y-2 lg:gap-x-6 lg:gap-y-4">
                 <Link
                   href="/services"
                   className={buttonVariants({
