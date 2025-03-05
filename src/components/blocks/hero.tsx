@@ -13,7 +13,7 @@ type HeroProps = Extract<
 
 export const Hero = ({ title, image, text }: HeroProps) => {
   return (
-    <section className="bg-primary relative h-[560px] w-full flex items-end justify-start py-16">
+    <section className="bg-primary px-4 relative h-[560px] w-full flex items-end justify-start py-16">
       <Image
         src={
           image
