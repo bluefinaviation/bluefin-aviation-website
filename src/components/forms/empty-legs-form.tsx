@@ -3,9 +3,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
-import { EmptyLeg } from "@/sanity/types";
+import { EMPTY_LEGS_QUERYResult } from "@/sanity/types";
 
-export const EmptyLegsForm = ({ emptyLeg }: { emptyLeg: EmptyLeg }) => {
+export const EmptyLegsForm = ({
+  emptyLeg,
+}: {
+  emptyLeg: EMPTY_LEGS_QUERYResult[number];
+}) => {
   return (
     <form>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
