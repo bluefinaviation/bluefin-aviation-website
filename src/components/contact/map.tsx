@@ -6420,7 +6420,7 @@ export const Map = ({ selectedOffice, setSelectedOffice }: MapProps) => (
         transform="translate(49.105 113.687)scale(.078)"
         className={cn(
           "hover:fill-accent tw-transition cursor-pointer",
-          selectedOffice?.city === "Mexico" && "fill-accent"
+          selectedOffice?.city === "Cabo San Lucas" && "fill-accent"
         )}
         onClick={() =>
           setSelectedOffice({
