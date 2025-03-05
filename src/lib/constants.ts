@@ -5,6 +5,7 @@ export const NAV_LINKS = [
   { label: "Fuel", href: "/services/fuel-support" },
   { label: "Charter", href: "/charter-brokerage" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const MAIL_FROM = "operations@bluefinaviation.com";

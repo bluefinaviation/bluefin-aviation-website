@@ -35,12 +35,6 @@ export function NavLinks({ className }: NavLinksProps) {
           );
         })}
       </div>
-      <Link
-        href="/contact"
-        className="p-8 h-full text-lg bg-accent tw-transition hover:bg-white hover:text-accent text-white"
-      >
-        Contact
-      </Link>
     </div>
   );
 }
