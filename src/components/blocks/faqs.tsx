@@ -1,52 +1,52 @@
-import { PortableText } from 'next-sanity'
-import { FAQPage, WithContext } from 'schema-dts'
+import { PortableText } from "next-sanity";
+import { FAQPage, WithContext } from "schema-dts";
 
-import { SectionHeading } from '@/components/shared/section-heading'
+import { SectionHeading } from "@/components/shared/section-heading";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger
-} from '@/components/ui/accordion'
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
-import { SERVICE_QUERYResult } from '@/sanity/types'
+import { SERVICE_QUERYResult } from "@/sanity/types";
 
 type FAQsProps = Extract<
-  NonNullable<NonNullable<SERVICE_QUERYResult>['content']>[number],
-  { _type: 'faqs' }
->
+  NonNullable<NonNullable<SERVICE_QUERYResult>["content"]>[number],
+  { _type: "faqs" }
+>;
 
-const generateFaqData = (faqs: FAQsProps['faqs']): WithContext<FAQPage> => ({
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs?.map(faq => ({
-    '@type': 'Question',
+const generateFaqData = (faqs: FAQsProps["faqs"]): WithContext<FAQPage> => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs?.map((faq) => ({
+    "@type": "Question",
     name: faq.question!,
     acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.text!
-    }
-  }))
-})
+      "@type": "Answer",
+      text: faq.text!,
+    },
+  })),
+});
 
 export const FAQs = ({ title, faqs }: FAQsProps) => {
-  const faqData = generateFaqData(faqs)
+  const faqData = generateFaqData(faqs);
 
   return (
-    <section className='bg-slate-100 px-4 py-16 sm:px-0 sm:py-24'>
-      <div className='mx-auto flex max-w-7xl flex-col gap-8'>
+    <section className="bg-slate-100 sm:py-32 py-20">
+      <div className="max-w-7xl mx-auto flex flex-col gap-8">
         <script
-          type='application/ld+json'
+          type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
         />
         {title ? <SectionHeading>{title}</SectionHeading> : null}
         {Array.isArray(faqs) ? (
-          <div className='border-b'>
-            <Accordion type='single' collapsible>
+          <div className="border-b">
+            <Accordion type="single" collapsible>
               {faqs.map((faq, idx) => (
                 <AccordionItem key={idx} value={faq._id}>
                   <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent className='prose max-w-2xl'>
+                  <AccordionContent className="prose max-w-2xl">
                     {faq.answer ? <PortableText value={faq.answer} /> : null}
                   </AccordionContent>
                 </AccordionItem>
@@ -56,5 +56,5 @@ export const FAQs = ({ title, faqs }: FAQsProps) => {
         ) : null}
       </div>
     </section>
-  )
-}
+  );
+};
