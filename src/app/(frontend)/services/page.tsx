@@ -27,7 +27,6 @@ export default async function ServicesPage() {
     query: SERVICES_QUERY
   })
 
-  // Cast services to a more specific type to avoid TypeScript errors
   const servicesData = services as ServiceData[]
 
   return (
@@ -46,12 +45,7 @@ export default async function ServicesPage() {
               A total concierge-style battery of aviation services
             </SectionHeading>
             <p className='prose mt-4'>
-              The world is constantly changing and never fails to present new
-              challenges and opportunities in the way clients consume products
-              and services. The private aviation sector is no exception to this
-              rule. Therefore, SPARFELL continuously strives to adapt to
-              changing market dynamics and client expectations by innovatively
-              offering all solutions under the same roof.{' '}
+              {`The world is constantly evolving, bringing new challenges and opportunities in how clients experience products and services. The private aviation industry is no exception. At Bluefin Aviation, we are committed to staying ahead of changing market dynamics and client expectations. Through innovation and a comprehensive range of services, we ensure that every solution is seamlessly available under one roof.`}
             </p>
           </div>
           <ServiceCard
@@ -64,7 +58,6 @@ export default async function ServicesPage() {
         </div>
 
         <div className='mt-16 grid grid-cols-2 gap-8'>
-          {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
           {servicesData?.map((service, index) => (
             <ServiceCard
               key={service._id}
