@@ -1,80 +1,80 @@
 import {
   InstagramLogo,
   LinkedinLogo,
-  WhatsappLogo,
-} from "@phosphor-icons/react/dist/ssr";
+  WhatsappLogo
+} from '@phosphor-icons/react/dist/ssr'
 
 export const navLinks = [
   {
-    label: "about",
-    slug: "/about",
+    label: 'about',
+    slug: '/about'
   },
   {
-    label: "contact",
-    slug: "/contact",
-  },
-];
+    label: 'contact',
+    slug: '/contact'
+  }
+]
 
 export const navigation = {
   main: [
     {
       id: 1,
-      name: "Services",
-      href: "/services",
+      name: 'Services',
+      href: '/services'
     },
     {
       id: 2,
-      name: "Trip Support",
-      href: "/services/trip-support",
+      name: 'Trip Support',
+      href: '/services/trip-support'
     },
     {
       id: 3,
-      name: "Fuel",
-      href: "/services/fuel",
+      name: 'Fuel',
+      href: '/services/fuel'
     },
     {
       id: 4,
-      name: "Charter",
-      href: "/charter-brokerage",
+      name: 'Charter',
+      href: '/charter'
     },
     {
       id: 5,
-      name: "About",
-      href: "/about",
+      name: 'About',
+      href: '/about'
     },
     {
       id: 6,
-      name: "Contact",
-      href: "/contact",
-    },
+      name: 'Contact',
+      href: '/contact'
+    }
   ],
   social: [
     {
       id: 1,
-      name: "Instagram",
-      href: "https://www.instagram.com/bluefin_aviation/?hl=en",
-      icon: InstagramLogo,
+      name: 'Instagram',
+      href: 'https://www.instagram.com/bluefin_aviation/?hl=en',
+      icon: InstagramLogo
     },
     {
       id: 2,
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/company/bluefin-aviation-services",
-      icon: LinkedinLogo,
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/bluefin-aviation-services',
+      icon: LinkedinLogo
     },
     {
       id: 3,
-      name: "WhatsApp",
-      href: "https://wa.me/+19548812932",
-      icon: WhatsappLogo,
-    },
+      name: 'WhatsApp',
+      href: 'https://wa.me/+19548812932',
+      icon: WhatsappLogo
+    }
   ],
   policies: [
-    { id: 1, name: "Cookie Policy", href: "/policies/cookie-policy" },
-    { id: 2, name: "Privacy Policy", href: "/policies/privacy-policy" },
+    { id: 1, name: 'Cookie Policy', href: '/policies/cookie-policy' },
+    { id: 2, name: 'Privacy Policy', href: '/policies/privacy-policy' },
     {
       id: 3,
-      name: "Terms & Conditions",
-      href: "/policies/terms-and-conditions",
-    },
-  ],
-};
+      name: 'Terms & Conditions',
+      href: '/policies/terms-and-conditions'
+    }
+  ]
+}

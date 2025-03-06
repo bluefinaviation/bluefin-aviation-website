@@ -49,9 +49,9 @@ export default async function ServicesPage() {
             </p>
           </div>
           <ServiceCard
-            image='/images/charter-brokerage.webp'
-            title='Charter Brokerage'
-            slug='/charter-brokerage'
+            image='/images/charter.webp'
+            title='Charter'
+            slug='/charter'
             imageClassName='object-cover object-[5%_90%]'
             isSquare={true}
           />
