@@ -49,9 +49,9 @@ export default async function ServicesPage() {
               The world is constantly changing and never fails to present new
               challenges and opportunities in the way clients consume products
               and services. The private aviation sector is no exception to this
-              rule. Therefore, SPARFELL continuously strives to adapt to
+              rule. Therefore, Bluefin Aviation continuously strives to adapt to
               changing market dynamics and client expectations by innovatively
-              offering all solutions under the same roof.{' '}
+              offering all solutions under the same roof.
             </p>
           </div>
           <ServiceCard
