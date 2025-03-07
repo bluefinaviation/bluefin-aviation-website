@@ -20,8 +20,8 @@ solutions.
 - **Styling:** Tailwind CSS V4
 - **UI Components:** shadcn/ui
 - **Animations:** Motion
-- **Deployment:** Vercel
 - **Marketing:** Sendgrid
+- **Deployment:** Vercel
 
 ## 👥 Contact
 

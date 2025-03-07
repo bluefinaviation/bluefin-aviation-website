@@ -256,7 +256,7 @@ export const ContactForm = () => {
                     id='phone'
                     name='phone'
                     type='tel'
-                    placeholder='Enter your phone'
+                    placeholder='Enter your number'
                     value={formData.phone}
                     onChange={validate}
                   />

@@ -23,7 +23,7 @@ export const EmptyLegsForm = ({
         </div>
         <div className='flex flex-col gap-2'>
           <Label htmlFor='phone'>Phone</Label>
-          <Input id='phone' type='tel' placeholder='Enter your phone' />
+          <Input id='phone' type='tel' placeholder='Enter your number' />
         </div>
         <div className='flex flex-col gap-2'>
           <Label htmlFor='passengers'>Number of Passengers</Label>
