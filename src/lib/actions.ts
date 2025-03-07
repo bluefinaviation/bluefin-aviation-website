@@ -1,7 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { MailService } from '@sendgrid/mail'
+import { MailService, MailDataRequired } from '@sendgrid/mail'
 
 const API_KEY = process.env.SENDGRID_API_KEY
 const MAIL_FROM = process.env.SENDGRID_MAILFROM
@@ -45,28 +45,40 @@ export async function sendRequestPlaneQuoteAction(
       return { error: 'All fields are required!' }
     }
 
+    if (!MAIL_FROM || !MAIL_TO) {
+      throw new Error('Email configuration is missing')
+    }
+
     // Send email notification
-    const msg = {
-      to: MAIL_FROM,
-      from: MAIL_TO,
+    const msg: MailDataRequired = {
+      to: { email: MAIL_FROM },
+      from: { email: MAIL_TO },
       subject: `New Plane Quote Request from ${name}`,
-      text: `Email => ${email}`,
-      html: `
-        <div>
-          <ul>
-            <li><strong>Name:</strong> ${name}</li>
-            <li><strong>Email:</strong> ${email}</li>
-            <li><strong>Origin:</strong> ${origin}</li>
-            <li><strong>Departure:</strong> ${departure}</li>
-            <li><strong>Destination:</strong> ${destination}</li>
-            <li><strong>Arrival:</strong> ${arrival}</li>
-            <li><strong>Plane:</strong> ${plane}</li>
-            <li><strong>Passengers:</strong> ${passengers}</li>
-          </ul>
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
-        </div>
-      `
+      content: [
+        {
+          type: 'text/plain',
+          value: `Email => ${email}`
+        },
+        {
+          type: 'text/html',
+          value: `
+            <div>
+              <ul>
+                <li><strong>Name:</strong> ${name}</li>
+                <li><strong>Email:</strong> ${email}</li>
+                <li><strong>Origin:</strong> ${origin}</li>
+                <li><strong>Departure:</strong> ${departure}</li>
+                <li><strong>Destination:</strong> ${destination}</li>
+                <li><strong>Arrival:</strong> ${arrival}</li>
+                <li><strong>Plane:</strong> ${plane}</li>
+                <li><strong>Passengers:</strong> ${passengers}</li>
+              </ul>
+              <p><strong>Message:</strong></p>
+              <p>${message}</p>
+            </div>
+          `
+        }
+      ]
     }
 
     await sendgridClient.send(msg)
@@ -135,24 +147,36 @@ export async function sendContactMessageAction(
       return { error: 'All fields are required!' }
     }
 
-    const msg = {
-      to: MAIL_FROM,
-      from: MAIL_TO,
+    if (!MAIL_FROM || !MAIL_TO) {
+      throw new Error('Email configuration is missing')
+    }
+
+    const msg: MailDataRequired = {
+      to: { email: MAIL_FROM },
+      from: { email: MAIL_TO },
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      text: `Email => ${email}`,
-      html: `
-        <div>
-          <ul>
-            <li><strong>Name:</strong> ${firstName} ${lastName}</li>
-            <li><strong>Company:</strong> ${company}</li>
-            <li><strong>Email:</strong> ${email}</li>
-            <li><strong>Phone:</strong> ${phone}</li>
-            <li><strong>Topic:</strong> ${topic}</li>
-          </ul>
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
-        </div>
-      `
+      content: [
+        {
+          type: 'text/plain',
+          value: `Email => ${email}`
+        },
+        {
+          type: 'text/html',
+          value: `
+            <div>
+              <ul>
+                <li><strong>Name:</strong> ${firstName} ${lastName}</li>
+                <li><strong>Company:</strong> ${company}</li>
+                <li><strong>Email:</strong> ${email}</li>
+                <li><strong>Phone:</strong> ${phone}</li>
+                <li><strong>Topic:</strong> ${topic}</li>
+              </ul>
+              <p><strong>Message:</strong></p>
+              <p>${message}</p>
+            </div>
+          `
+        }
+      ]
     }
 
     await sendgridClient.send(msg)
