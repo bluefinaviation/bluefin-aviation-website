@@ -256,7 +256,7 @@ export const ContactForm = () => {
                     id='phone'
                     name='phone'
                     type='tel'
-                    placeholder='Enter your phone number'
+                    placeholder='Enter your phone'
                     value={formData.phone}
                     onChange={validate}
                   />
@@ -272,6 +272,7 @@ export const ContactForm = () => {
                   <Select
                     value={formData.topic}
                     onValueChange={handleTopicChange}
+                    name='topic'
                   >
                     <SelectTrigger>
                       <SelectValue placeholder='Select a topic' />
