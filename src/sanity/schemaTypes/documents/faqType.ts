@@ -21,12 +21,14 @@ export const faqType = defineType({
       name: 'category',
       title: 'Category',
       type: 'string',
+      initialValue: 'general',
       options: {
         list: [
           { title: 'General', value: 'general' },
           { title: 'Fuel', value: 'fuel' },
-          { title: 'Trip', value: 'trip' },
-          { title: 'Charter', value: 'charter' }
+          { title: 'Trip Support', value: 'trip-support' },
+          { title: 'Charter', value: 'charter' },
+          { title: 'Empty Legs', value: 'empty-legs' }
         ]
       }
     })
