@@ -21,7 +21,7 @@ export const TestimonialsCarousel = ({
       }}
       plugins={[
         Autoplay({
-          delay: 7000
+          delay: 10000
         })
       ]}
       className='w-full'
@@ -34,7 +34,7 @@ export const TestimonialsCarousel = ({
           >
             <p className='text-base font-medium text-primary italic sm:text-xl'>{`${testimonial.quote}`}</p>
             {testimonial.author && (
-              <p className='mt-4 flex flex-wrap items-center gap-x-2 font-mono text-xs text-slate-600 uppercase sm:text-sm'>
+              <p className='mt-4 flex flex-wrap items-center gap-x-2 font-mono text-xs text-zinc-600 uppercase sm:text-sm'>
                 <span className='font-medium'>{testimonial.author.name}</span>
                 <span> | </span>
                 <span>{testimonial.author.role}</span>

@@ -30,7 +30,7 @@ export const ContactFormSchema = z.object({
   company: z.string().min(1, 'Company must be at least 1 character long.'),
   email: z.string().email('Invalid email address.'),
   phone: z.string().min(1, 'Phone must be at least 1 character long.'),
-  topic: z.enum(['Jet Charter', 'Flight Support', 'Fuel Suppoert', 'Other'], {
+  topic: z.enum(['Charter', 'Flight Support', 'Fuel', 'Other'], {
     required_error: 'Please select a topic'
   }),
   message: z.string().min(1, 'Message must be at least 1 character long.')

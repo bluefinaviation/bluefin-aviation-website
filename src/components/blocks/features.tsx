@@ -39,7 +39,7 @@ export const Features = ({ features, title, text }: FeaturesProps) => {
               <h3 className='mt-4 font-serif text-2xl font-bold text-primary'>
                 {feature.title}
               </h3>
-              <p className='font-mono text-sm text-slate-700 uppercase'>
+              <p className='font-mono text-sm text-zinc-700 uppercase'>
                 {feature.text}
               </p>
             </div>

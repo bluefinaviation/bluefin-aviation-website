@@ -32,14 +32,14 @@
 // //             leaveTo="tranzinc-x-full"
 // //           >
 // //             <Dialog.Panel className="pointer-events-auto w-screen max-w-2xl overflow-y-auto">
-// //               <div className="relative flex flex-col bg-slate-50 px-10 py-10 shadow-sm">
-// //                 <div className="flex items-center justify-between border-b-2 border-slate-900 pb-10 text-5xl font-bold">
+// //               <div className="relative flex flex-col bg-zinc-50 px-10 py-10 shadow-sm">
+// //                 <div className="flex items-center justify-between border-b-2 border-zinc-900 pb-10 text-5xl font-bold">
 // //                   <Dialog.Title>Contact Us</Dialog.Title>
 
 // //                   <button
 // //                     type="button"
 // //                     onClick={closeInquiry}
-// //                     className="tw-transition text-slate-900 hover:text-slate-700"
+// //                     className="tw-transition text-zinc-900 hover:text-zinc-700"
 // //                   >
 // //                     <span className="sr-only">Close panel</span>
 // //                     <TbX aria-hidden="true" />
@@ -58,5 +58,5 @@
 // // };
 
 export const InquirySlideOver = () => {
-  return <div>InquirySlideOver</div>;
-};
+  return <div>InquirySlideOver</div>
+}

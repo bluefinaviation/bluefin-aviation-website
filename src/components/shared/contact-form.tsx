@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/select'
 import { SectionSummary } from './section-summary'
 
-const TOPICS = ['Jet Charter', 'Flight Support', 'Fuel Suppoert', 'Other']
+const TOPICS = ['Charter', 'Flight Support', 'Fuel', 'Other']
 
 interface ValidationErrors {
   firstName: string
@@ -175,7 +175,7 @@ export const ContactForm = () => {
   }
 
   return (
-    <div className='bg-slate-200'>
+    <div className='bg-zinc-300'>
       <Container>
         <div className='grid gap-8 py-16 sm:grid-cols-2 sm:py-24'>
           <div>
@@ -197,7 +197,6 @@ export const ContactForm = () => {
                     placeholder='Enter your first name'
                     value={formData.firstName}
                     onChange={validate}
-                    className='text-white'
                   />
                   {validationErrors?.firstName && (
                     <p className='text-xs text-red-500'>
@@ -213,7 +212,6 @@ export const ContactForm = () => {
                     placeholder='Enter your last name'
                     value={formData.lastName}
                     onChange={validate}
-                    className='text-white'
                   />
                   {validationErrors?.lastName && (
                     <p className='text-xs text-red-500'>
@@ -229,7 +227,6 @@ export const ContactForm = () => {
                     placeholder='Enter your company'
                     value={formData.company}
                     onChange={validate}
-                    className='text-white'
                   />
                   {validationErrors?.lastName && (
                     <p className='text-xs text-red-500'>
@@ -246,7 +243,6 @@ export const ContactForm = () => {
                     placeholder='Enter your email'
                     value={formData.email}
                     onChange={validate}
-                    className='text-white'
                   />
                   {validationErrors?.email && (
                     <p className='text-xs text-red-500'>
@@ -263,7 +259,6 @@ export const ContactForm = () => {
                     placeholder='Enter your phone number'
                     value={formData.phone}
                     onChange={validate}
-                    className='text-white'
                   />
                   {validationErrors?.phone && (
                     <p className='text-xs text-red-500'>
@@ -278,7 +273,7 @@ export const ContactForm = () => {
                     value={formData.topic}
                     onValueChange={handleTopicChange}
                   >
-                    <SelectTrigger className='text-slate-400'>
+                    <SelectTrigger>
                       <SelectValue placeholder='Select a topic' />
                     </SelectTrigger>
                     <SelectContent>
@@ -304,7 +299,6 @@ export const ContactForm = () => {
                     placeholder='Enter your message'
                     value={formData.message}
                     onChange={validate}
-                    className='text-white'
                   />
                   {validationErrors?.message && (
                     <p className='text-xs text-red-500'>

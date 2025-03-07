@@ -1,13 +1,13 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 interface HeroTaglineProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const HeroTagline = ({ children }: HeroTaglineProps) => {
   return (
-    <p className="text-base font-medium uppercase tracking-wider text-slate-200 sm:text-lg lg:text-xl">
+    <p className='text-base font-medium tracking-wider text-zinc-200 uppercase sm:text-lg lg:text-xl'>
       {children}
     </p>
-  );
-};
+  )
+}

@@ -23,7 +23,7 @@ export const BrokerSection = () => {
             href='/charter?category=light'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
-            <LightJetIcon className='group-hover:-tranzinc-y-2 size-16 fill-slate-300 stroke-slate-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
+            <LightJetIcon className='group-hover:-tranzinc-y-2 size-16 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
             <h3 className='font-mono text-xs font-medium tracking-wide uppercase'>
               Light Jets
             </h3>
@@ -32,7 +32,7 @@ export const BrokerSection = () => {
             href='/charter?category=midsize'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
-            <MidsizeJetIcon className='group-hover:-tranzinc-y-2 size-20 fill-slate-300 stroke-slate-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
+            <MidsizeJetIcon className='group-hover:-tranzinc-y-2 size-20 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
             <h3 className='font-mono text-xs font-medium tracking-wide uppercase'>
               Midsize Jets
             </h3>
@@ -41,7 +41,7 @@ export const BrokerSection = () => {
             href='/charter?category=super-midsize'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
-            <SuperMidsizeJetIcon className='group-hover:-tranzinc-y-2 size-24 fill-slate-300 stroke-slate-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
+            <SuperMidsizeJetIcon className='group-hover:-tranzinc-y-2 size-24 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
             <h3 className='font-mono text-xs font-medium tracking-wide uppercase'>
               Super Midsize Jets
             </h3>
@@ -50,7 +50,7 @@ export const BrokerSection = () => {
             href='/charter?category=heavy'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
-            <HeavyJetIcon className='group-hover:-tranzinc-y-2 size-32 fill-slate-300 stroke-slate-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
+            <HeavyJetIcon className='group-hover:-tranzinc-y-2 size-32 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
             <h3 className='font-mono text-xs font-medium tracking-wide uppercase'>
               Heavy Jets
             </h3>

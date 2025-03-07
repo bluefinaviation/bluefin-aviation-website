@@ -1,48 +1,48 @@
-import Image from "next/image";
-import { Gauge, Path, Users } from "@phosphor-icons/react/dist/ssr";
+import Image from 'next/image'
+import { Gauge, Path, Users } from '@phosphor-icons/react/dist/ssr'
 
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from '@/components/ui/button'
 
-import { urlFor } from "@/sanity/lib/image";
-import { Plane } from "@/sanity/types";
+import { urlFor } from '@/sanity/lib/image'
+import { Plane } from '@/sanity/types'
 
-type PlaneWithExpandedRefs = Omit<Plane, "manufacturer" | "category"> & {
+type PlaneWithExpandedRefs = Omit<Plane, 'manufacturer' | 'category'> & {
   manufacturer: {
-    _id: string;
-    name: string;
-    slug: string;
-  };
+    _id: string
+    name: string
+    slug: string
+  }
   category?: {
-    _id: string;
-    name: string;
-    slug: string;
-  };
-};
+    _id: string
+    name: string
+    slug: string
+  }
+}
 
 interface PlaneCardProps {
-  plane: PlaneWithExpandedRefs;
+  plane: PlaneWithExpandedRefs
 }
 
 export const PlaneCard = ({ plane }: PlaneCardProps) => {
   return (
-    <div className="flex cursor-pointer bg-slate-50 hover:bg-white flex-col hover:scale-105 tw-transition group items-center border border-slate-200 overflow-hidden relative">
-      <div className="relative w-full aspect-[3/2] bg-slate-100">
+    <div className='tw-transition group relative flex cursor-pointer flex-col items-center overflow-hidden border border-zinc-200 bg-zinc-50 hover:scale-105 hover:bg-white'>
+      <div className='relative aspect-[3/2] w-full bg-zinc-100'>
         <Image
           src={
             plane.image
               ? urlFor(plane.image).url()
-              : "https://source.unsplash.com/1080x1080/?plane"
+              : 'https://source.unsplash.com/1080x1080/?plane'
           }
-          alt={plane.model || ""}
+          alt={plane.model || ''}
           fill
-          className="object-cover text-center flex flex-col items-center justify-center object-center bg-slate-100"
+          className='flex flex-col items-center justify-center bg-zinc-100 object-cover object-center text-center'
         />
 
         <div
           className={buttonVariants({
             className:
-              "absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity tw-transition",
-            variant: "default",
+              'tw-transition absolute top-4 right-4 opacity-0 transition-opacity group-hover:opacity-100',
+            variant: 'default'
           })}
         >
           Get a Quote
@@ -50,42 +50,42 @@ export const PlaneCard = ({ plane }: PlaneCardProps) => {
       </div>
 
       {/* Content container */}
-      <div className="relative w-full h-[140px]">
+      <div className='relative h-[140px] w-full'>
         {/* Text container with transition */}
-        <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center transition-all duration-300 group-hover:-translate-y-5">
-          <h4 className="text-xs font-mono font-medium tracking-wide uppercase text-slate-500">
-            {plane.manufacturer.name} • {plane.category?.name || ""}
+        <div className='absolute inset-0 flex h-full w-full flex-col items-center justify-center transition-all duration-300 group-hover:-translate-y-5'>
+          <h4 className='font-mono text-xs font-medium tracking-wide text-zinc-500 uppercase'>
+            {plane.manufacturer.name} • {plane.category?.name || ''}
           </h4>
-          <h3 className="text-2xl mt-1 font-serif font-medium">
+          <h3 className='mt-1 font-serif text-2xl font-medium'>
             {plane.model}
           </h3>
         </div>
 
         {/* Details section */}
-        <div className="absolute bottom-3 left-0 right-0 w-full flex justify-between items-center px-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className="flex items-center gap-x-2">
-            <Users className="size-4 text-slate-600" />
-            <p className="text-xs uppercase font-mono text-slate-600">
-              {plane.capacity || "-"}
+        <div className='absolute right-0 bottom-3 left-0 flex w-full items-center justify-between px-6 opacity-0 transition-all duration-300 group-hover:opacity-100'>
+          <div className='flex items-center gap-x-2'>
+            <Users className='size-4 text-zinc-600' />
+            <p className='font-mono text-xs text-zinc-600 uppercase'>
+              {plane.capacity || '-'}
             </p>
           </div>
-          <div className="flex items-center gap-x-2">
-            <Gauge className="size-4 text-slate-600" />
-            <p className="text-xs uppercase font-mono text-slate-600">
-              {plane.speed ? `${plane.speed} km/h` : "-"}
+          <div className='flex items-center gap-x-2'>
+            <Gauge className='size-4 text-zinc-600' />
+            <p className='font-mono text-xs text-zinc-600 uppercase'>
+              {plane.speed ? `${plane.speed} km/h` : '-'}
             </p>
           </div>
-          <div className="flex items-center gap-x-2">
-            <Path className="size-4 text-slate-600" />
-            <p className="text-xs uppercase font-mono text-slate-600">
-              {plane.range ? `${plane.range} km` : "-"}
+          <div className='flex items-center gap-x-2'>
+            <Path className='size-4 text-zinc-600' />
+            <p className='font-mono text-xs text-zinc-600 uppercase'>
+              {plane.range ? `${plane.range} km` : '-'}
             </p>
           </div>
         </div>
       </div>
 
       {/* Blue hover bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+      <div className='absolute right-0 bottom-0 left-0 h-1 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100'></div>
     </div>
-  );
-};
+  )
+}

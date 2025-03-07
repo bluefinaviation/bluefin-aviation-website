@@ -59,7 +59,7 @@ export const HeroSection = () => {
           <div className='lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20'>
             <div className='relative z-10 mx-auto mt-6 max-w-2xl sm:mt-0 sm:max-w-none lg:col-span-7 lg:pt-6 xl:col-span-6'>
               <PageTitle className='text-white'>{`The Best Solution for Your Aviation Needs`}</PageTitle>
-              <PageSummary className='text-slate-200'>
+              <PageSummary className='text-zinc-200'>
                 {`A total concierge-style battery of services awaits you at Bluefin Aviation. We offer our clients top quality services for aircraft needs at all levels.`}
               </PageSummary>
               <div className='mt-8 flex flex-wrap gap-x-3 gap-y-2 lg:gap-x-6 lg:gap-y-4'>
@@ -85,7 +85,7 @@ export const HeroSection = () => {
                 </Link>
               </div>
             </div>
-            {/* <BackgroundIllustration className="absolute left-1/2 top-4 size-[1026px] -tranzinc-x-1/3 stroke-slate-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-tranzinc-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" /> */}
+            {/* <BackgroundIllustration className="absolute left-1/2 top-4 size-[1026px] -tranzinc-x-1/3 stroke-zinc-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-tranzinc-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" /> */}
           </div>
         </Container>
       </div>

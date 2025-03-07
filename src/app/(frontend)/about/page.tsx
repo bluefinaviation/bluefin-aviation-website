@@ -53,7 +53,7 @@ export default async function AboutPage() {
               src='/images/about.webp'
               alt='About Us'
               fill
-              className='rounded-br-[12rem] bg-slate-100 object-cover object-[5%_90%]'
+              className='rounded-br-[12rem] bg-zinc-100 object-cover object-[5%_90%]'
             />
           </div>
         </div>
@@ -79,11 +79,11 @@ export default async function AboutPage() {
         </Container>
       </div>
 
-      <div className='bg-slate-200 py-16 sm:py-24'>
+      <div className='bg-zinc-300 py-16 sm:py-24'>
         <Container className=''>
           <div className='flex flex-col items-center text-center'>
             <SectionHeading>Our History</SectionHeading>
-            <SectionSummary className='mt-4'>{`With over 10 years of experience in the aviation industry, we have a proven track record of providing exceptional service to our clients.`}</SectionSummary>
+            <SectionSummary className='mt-4'>{`With over 100 years of combined experience in the aviation industry, we have a proven track record of providing exceptional service to our clients.`}</SectionSummary>
           </div>
           <Timeline events={companyDetails?.timeline || []} />
         </Container>
