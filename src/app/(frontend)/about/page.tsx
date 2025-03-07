@@ -13,7 +13,7 @@ import { sanityFetch } from '@/sanity/lib/live'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'We are a team of experienced professionals who are dedicated to providing the best possible service to our clients.'
+    'Nothing is too large, too small or to difficult. We’ll take you there!'
 }
 
 export default async function AboutPage() {
@@ -25,7 +25,7 @@ export default async function AboutPage() {
     <div>
       <PageHero
         heading='About Us'
-        summary='We are a team of experienced professionals who are dedicated to providing the best possible service to our clients.'
+        summary='Nothing is too large, too small or to difficult. We’ll take you there!'
         image='/images/empty-legs.webp'
         imageAlt='About Us'
       />
@@ -36,10 +36,16 @@ export default async function AboutPage() {
             <SectionHeading>Our Story</SectionHeading>
             <div className='prose'>
               <p>
-                {`Bluefin Aviation addresses the needs of today's corporate aircraft owners and offers smart, convenient, and economical solutions to aircraft management. We offer top-quality services for aircraft needs at all levels: low fuel prices, flight planning, and handling services are at the core of our safe and professional approach. The cost-effective handling of our client's daily aircraft operations is our top priority.`}
+                {`Bluefin Aviation addresses the needs of our discerning clients. Our company offers smart, convenient, and economical solutions to ensure the best service. We provide low fuel prices, flight planning, handling services, and tailored charters. Bluefin prioritizes safety, efficiency, and swift processes, effectively delivering the best value for money without compromise.`}
               </p>
-              <p>{`Our operations span worldwide, providing services all year round at offices in the United States serving the Americas, and in Spain and Italy serving the rest of the world. All offices manage fuel supply, trip support, handling, and flight planning services. We are constantly communicating among team members to better assist our clients through different time zones.`}</p>
-              <p>{`Our dedicated professionals strive to provide superior services while sharing the same goals and dedication as aircraft operators' own employees. Our top priority is to carefully guard our clients' interests, provide high-class service, and enhance the bottom line. Our commitment is 24/7/365 to make sure operations are always on time and in the most efficient manner. Our team is composed of a group of airline and corporate aviation professionals with vast experience in the industry.`}</p>
+              <p>
+                {`Our global operations team provides year-round services from four strategic locations: the United States, serving North America; Mexico, covering Latin America; and Italy and Spain for Europe. Our management and software systems seamlessly control our services and communications, providing clients with premium care across all time zones.`}
+              </p>
+              <p className='font-bold'>{`Why Bluefin Aviation?`}</p>
+              <p>
+                {`Our service has been designed to enhance our clients' individuality. Hand-picked professionals who are passionate about providing this superior experience are the essence of Bluefin. We understand the fine balance between high quality and delivering an attractive bottom line for commercial services.`}
+              </p>
+              <p>{`We maintain a consistent commitment—24/7/365—ensuring fast, efficient, and always on-time service.`}</p>
             </div>
           </div>
           <div className='relative h-full w-full'>
@@ -53,7 +59,7 @@ export default async function AboutPage() {
         </div>
       </Container>
 
-      <div className='bg-primary py-16 text-white'>
+      <div className='bg-primary py-16 text-white sm:py-24'>
         <Container>
           <div className='grid grid-cols-1 gap-8 divide-y divide-white sm:grid-cols-4 sm:divide-x sm:divide-y-0'>
             {companyDetails?.stats?.map(stat => (
@@ -73,13 +79,15 @@ export default async function AboutPage() {
         </Container>
       </div>
 
-      <Container className='py-16'>
-        <div className='flex flex-col items-center text-center'>
-          <SectionHeading>Our History</SectionHeading>
-          <SectionSummary className='mt-4'>{`With over 10 years of experience in the aviation industry, we have a proven track record of providing exceptional service to our clients.`}</SectionSummary>
-        </div>
-        <Timeline events={companyDetails?.timeline || []} />
-      </Container>
+      <div className='bg-slate-200 py-16 sm:py-24'>
+        <Container className=''>
+          <div className='flex flex-col items-center text-center'>
+            <SectionHeading>Our History</SectionHeading>
+            <SectionSummary className='mt-4'>{`With over 10 years of experience in the aviation industry, we have a proven track record of providing exceptional service to our clients.`}</SectionSummary>
+          </div>
+          <Timeline events={companyDetails?.timeline || []} />
+        </Container>
+      </div>
 
       {/* <Container className="py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

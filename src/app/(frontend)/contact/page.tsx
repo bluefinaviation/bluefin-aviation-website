@@ -4,6 +4,7 @@ import { Container } from '@/components/shared/section-container'
 import { PageHero } from '@/components/shared/page-hero'
 import { Offices } from '@/components/contact/offices'
 import { SectionHeading } from '@/components/shared/section-heading'
+import { ContactForm } from '@/components/shared/contact-form'
 
 import { CONTACT_PAGE_QUERY } from '@/sanity/lib/queries'
 import { sanityFetch } from '@/sanity/lib/live'
@@ -35,6 +36,8 @@ export default async function ContactPage() {
 
         <Offices />
       </Container>
+
+      <ContactForm />
     </div>
   )
 }
