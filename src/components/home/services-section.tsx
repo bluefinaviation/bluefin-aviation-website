@@ -17,7 +17,7 @@ export const ServicesSection = async () => {
 
   return (
     <section id='services' aria-label='BlueFin aviation services'>
-      <div className='flex flex-col items-center justify-center py-16 sm:py-24'>
+      <div className='flex flex-col items-center justify-center px-4 py-16 text-center sm:px-0 sm:py-24'>
         <SectionHeading>Our Services</SectionHeading>
         <SectionSummary className='mt-4'>
           {`We offer a wide range of services to meet your aviation needs. From private jet charters to fuel services, we have you covered.`}

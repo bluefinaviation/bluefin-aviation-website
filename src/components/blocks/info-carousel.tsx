@@ -21,7 +21,7 @@ type InfoCarouselProps = Extract<
 
 export const InfoCarousel = ({ title, text, items }: InfoCarouselProps) => {
   return (
-    <section className='mx-auto grid max-w-7xl grid-cols-2 gap-8 px-3 py-16 sm:px-0 sm:py-24'>
+    <section className='mx-auto grid max-w-7xl grid-cols-1 gap-8 px-3 py-8 sm:px-0 sm:py-16 md:grid-cols-2 md:py-24'>
       <div className='flex flex-col gap-4'>
         <SectionHeading>{title}</SectionHeading>
         <div className='prose max-w-prose'>
@@ -45,10 +45,13 @@ export const InfoCarousel = ({ title, text, items }: InfoCarouselProps) => {
           {items?.map((item, idx) => (
             <CarouselItem
               key={idx}
-              className='mt-8 flex cursor-pointer flex-col justify-center lg:mt-0'
+              className='mt-4 flex cursor-pointer flex-col justify-center sm:mt-8'
             >
-              <div key={`item-${idx}`} className='grid grid-cols-2'>
-                <div className='relative aspect-[3/5]'>
+              <div
+                key={`item-${idx}`}
+                className='grid grid-cols-1 gap-4 md:grid-cols-2'
+              >
+                <div className='relative aspect-[4/3] md:aspect-[3/5]'>
                   {item.image && (
                     <Image
                       src={urlFor(item.image).url()}
@@ -57,11 +60,11 @@ export const InfoCarousel = ({ title, text, items }: InfoCarouselProps) => {
                       className='object-cover object-center'
                     />
                   )}
-                  <h3 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform bg-black/20 p-4 font-serif text-4xl font-bold text-white uppercase backdrop-blur-md'>
+                  <h3 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform bg-black/20 p-2 text-center font-serif text-2xl font-bold text-white uppercase backdrop-blur-md sm:p-4 sm:text-3xl md:text-4xl'>
                     {item.title}
                   </h3>
                 </div>
-                <div className='prose prose-lg list-disc rounded-br-[12rem] bg-primary p-4 text-white marker:text-white'>
+                <div className='prose prose-sm list-disc rounded-br-[4rem] bg-primary p-3 text-white marker:text-white sm:prose-base sm:rounded-br-[8rem] sm:p-4 md:prose-lg md:rounded-br-[12rem]'>
                   {item.text && <PortableText value={item.text} />}
                 </div>
               </div>

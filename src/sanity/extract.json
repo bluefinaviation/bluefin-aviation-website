@@ -2544,10 +2544,32 @@
         },
         "optional": true
       },
-      "order": {
+      "category": {
         "type": "objectAttribute",
         "value": {
-          "type": "number"
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "general"
+            },
+            {
+              "type": "string",
+              "value": "fuel"
+            },
+            {
+              "type": "string",
+              "value": "trip-support"
+            },
+            {
+              "type": "string",
+              "value": "charter"
+            },
+            {
+              "type": "string",
+              "value": "empty-legs"
+            }
+          ]
         },
         "optional": true
       }

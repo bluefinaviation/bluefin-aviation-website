@@ -33,7 +33,7 @@ export const Footer = async () => {
             />
           </Link>
 
-          <ul className='col-start-4 mt-16 flex items-center justify-between gap-x-8 xl:mt-0'>
+          <ul className='col-start-4 mt-16 flex flex-wrap items-center justify-between sm:gap-x-8 xl:mt-0'>
             {NAV_LINKS.map(item => (
               <li key={item.href}>
                 <Link

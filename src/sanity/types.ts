@@ -447,7 +447,7 @@ export type Faq = {
         _key: string
       }
   >
-  order?: number
+  category?: 'general' | 'fuel' | 'trip-support' | 'charter' | 'empty-legs'
 }
 
 export type EmptyLeg = {

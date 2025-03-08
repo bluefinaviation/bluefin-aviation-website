@@ -7,14 +7,19 @@ import { PlanesGrid } from '@/components/broker/planes-grid'
 import { PageHero } from '@/components/shared/page-hero'
 import { StickyNav } from '@/components/shared/sticky-nav'
 import { EmptyLegs } from '@/components/broker/empty-legs'
+import { FAQs } from '@/components/blocks/faqs'
+import { SectionSummary } from '@/components/shared/section-summary'
 
 import { sanityFetch } from '@/sanity/lib/live'
-import { ALL_PLANE_FILTERS_QUERY, FLEET_QUERY } from '@/sanity/lib/queries'
+import {
+  ALL_PLANE_FILTERS_QUERY,
+  FAQ_CHARTER_QUERY,
+  FLEET_QUERY
+} from '@/sanity/lib/queries'
 import {
   // // FLEET_QUERYResult,
   ALL_PLANE_FILTERS_QUERYResult
 } from '@/sanity/types'
-import { SectionSummary } from '@/components/shared/section-summary'
 
 export const metadata: Metadata = {
   title: 'Charter'
@@ -59,6 +64,10 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
     query: ALL_PLANE_FILTERS_QUERY
   })
 
+  const { data: faqs } = await sanityFetch({
+    query: FAQ_CHARTER_QUERY
+  })
+
   const hasFilters = Boolean(category || manufacturer)
 
   // Adapt the plane filters data to match the expected type
@@ -74,9 +83,9 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
         imageAlt='Charter'
       />
       <StickyNav className='top-16 sm:top-20 lg:top-22' />
-      <Container className='py-16 sm:py-24'>
-        {tab === 'fleet' ? (
-          <>
+      {tab === 'fleet' ? (
+        <div className=''>
+          <Container className='py-16 sm:py-24'>
             <SectionHeading>Our Fleet</SectionHeading>
             <SectionSummary className='mt-4'>
               We offer a wide range of private jets to suit your needs, from
@@ -85,11 +94,14 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
             <PlaneFilters allPlaneFilters={adaptedPlaneFilters} />
             {/* @ts-expect-error - PlanesGrid expects a Plane[] type, but FLEET_QUERYResult is not compatible */}
             <PlanesGrid planes={planes} hasFilters={hasFilters} />
-          </>
-        ) : (
-          <EmptyLegs />
-        )}
-      </Container>
+          </Container>
+          <div>
+            <FAQs faqs={faqs} />
+          </div>
+        </div>
+      ) : (
+        <EmptyLegs />
+      )}
     </div>
   )
 }

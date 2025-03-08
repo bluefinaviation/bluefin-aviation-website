@@ -97,7 +97,6 @@ export default async function RootLayout({
 
       <Navbar />
       {children}
-      {/* <ContactForm /> */}
       <Footer />
 
       <Toaster />

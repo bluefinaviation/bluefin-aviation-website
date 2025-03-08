@@ -1,11 +1,11 @@
-import { defineQuery } from "next-sanity";
+import { defineQuery } from 'next-sanity'
 
 export const TESTIMONIALS_QUERY = defineQuery(`
   *[_type == "testimonial"] {
     ...,
     "image": image.asset->url
   }
-`);
+`)
 
 export const HOME_PAGE_QUERY = defineQuery(`
   *[_type == "home"][0]{
@@ -27,7 +27,7 @@ export const HOME_PAGE_QUERY = defineQuery(`
 	partnersSection,
 	contactSection,
 	newsletterSection,
-}`);
+}`)
 
 export const FLEET_QUERY = defineQuery(`
 	*[_type == "plane" && 
@@ -52,13 +52,13 @@ export const FLEET_QUERY = defineQuery(`
 		range,
 		image
 	}
-`);
+`)
 
 export const CONTACT_PAGE_QUERY = defineQuery(`
 	*[_type == "contact"][0]{
 		contactSection,
 		locationSection
-}`);
+}`)
 
 export const POLICY_BY_SLUG_QUERY = defineQuery(`
   *[_type == "policy" && slug.current == $slug][0] {
@@ -68,20 +68,20 @@ export const POLICY_BY_SLUG_QUERY = defineQuery(`
     "slug": slug.current,
     content,
   }
-`);
+`)
 
 export const FUEL_SERVICE_PAGE_QUERY = defineQuery(`
 	*[_type == "fuelService"][0]{
 		heroSection,
 		featuresSection,
 		gallerySection,
-	}`);
+	}`)
 
 export const LINKTREE_PAGE_QUERY = defineQuery(`
 	*[_type == "linktree"][0]{
 		heroSection,
     links
-}`);
+}`)
 
 export const SERVICES_QUERY = defineQuery(`
 	*[_type == "service"]{
@@ -90,14 +90,14 @@ export const SERVICES_QUERY = defineQuery(`
 		image,
 		"slug": slug.current,
 		content,
-	}`);
+	}`)
 
 export const TRIP_SERVICE_PAGE_QUERY = defineQuery(`
 	*[_type == "tripService"][0]{
 		heroSection,
 		featuresSection,
 		gallerySection,
-	}`);
+	}`)
 
 export const FOOTER_QUERY = defineQuery(`
 	{
@@ -111,7 +111,7 @@ export const FOOTER_QUERY = defineQuery(`
 			"section": newsletterSection.section,
 		}
 	}
-	`);
+	`)
 
 export const ALL_PLANE_FILTERS_QUERY = defineQuery(`{
   "categories": *[_type == "planeCategory"] | order(order asc) {
@@ -124,21 +124,21 @@ export const ALL_PLANE_FILTERS_QUERY = defineQuery(`{
     name,
     "slug": slug.current
   }
-}`);
+}`)
 
 export const INQUIRY_PAGE_QUERY = defineQuery(`
 	*[_type == "inquiry"][0]{
 		heroSection,
 		formSection
 	}
-`);
+`)
 
 export const NEWSLETTER_PAGE_QUERY = defineQuery(`
 	*[_type == "newsletter"][0]{
 		heroSection,
 		formSection
 	}
-`);
+`)
 
 export const EMPTY_LEGS_QUERY = defineQuery(`
 	*[_type == "emptyLeg" && departureTime > now()] | order(departureTime asc) {
@@ -157,15 +157,15 @@ export const EMPTY_LEGS_QUERY = defineQuery(`
 			}
 		}
 	}
-`);
+`)
 
-export const FAQ_QUERY = defineQuery(`
-	*[_type == "faq"] {
+export const FAQ_CHARTER_QUERY = defineQuery(`
+	*[_type == "faq" && category == "charter"] {
 		_id,
 		question,
 		answer,
 	}
-`);
+`)
 
 export const SERVICE_QUERY =
   defineQuery(`*[_type == "service" && slug.current == $slug][0]{
@@ -188,7 +188,7 @@ export const SERVICE_QUERY =
       }
     }
   }
-}`);
+}`)
 
 export const ABOUT_QUERY = defineQuery(`
 	*[_type == "companyDetails"][0]{
@@ -196,4 +196,4 @@ export const ABOUT_QUERY = defineQuery(`
 		stats,
 		timeline
 	}
-`);
+`)
