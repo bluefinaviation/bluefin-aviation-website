@@ -41,7 +41,7 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <Plus className='tranzinc-y-0.5 tw-transition pointer-events-none size-7 shrink-0 rounded-full bg-zinc-200 p-1 text-muted-foreground transition-transform duration-200 group-hover:bg-primary group-hover:text-white sm:size-10' />
+        <Plus className='tranzinc-y-0.5 tw-transition pointer-events-none size-7 shrink-0 rounded-full bg-zinc-300 p-1 text-muted-foreground transition-transform duration-200 group-hover:bg-primary group-hover:text-white sm:size-10' />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )

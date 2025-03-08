@@ -1371,9 +1371,9 @@ export type EMPTY_LEGS_QUERYResult = Array<{
     }
   } | null
 }>
-// Variable: FAQ_QUERY
-// Query: *[_type == "faq"] {		_id,		question,		answer,	}
-export type FAQ_QUERYResult = Array<{
+// Variable: FAQ_CHARTER_QUERY
+// Query: *[_type == "faq" && category == "charter"] {		_id,		question,		answer,	}
+export type FAQ_CHARTER_QUERYResult = Array<{
   _id: string
   question: string | null
   answer: Array<
@@ -1599,7 +1599,7 @@ declare module '@sanity/client' {
     '\n\t*[_type == "inquiry"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n': INQUIRY_PAGE_QUERYResult
     '\n\t*[_type == "newsletter"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n': NEWSLETTER_PAGE_QUERYResult
     '\n\t*[_type == "emptyLeg" && departureTime > now()] | order(departureTime asc) {\n\t\t_id,\n\t\torigin,\n\t\tdepartureTime,\n\t\tdestination,\n\t\tarrivalTime,\n\t\tprice,\n\t\tplane->{\n\t\t\t...,\n\t\t\t"manufacturer": manufacturer->{\n\t\t\t\t_id,\n\t\t\t\tname,\n\t\t\t\t"slug": slug.current\n\t\t\t}\n\t\t}\n\t}\n': EMPTY_LEGS_QUERYResult
-    '\n\t*[_type == "faq"] {\n\t\t_id,\n\t\tquestion,\n\t\tanswer,\n\t}\n': FAQ_QUERYResult
+    '\n\t*[_type == "faq" && category == "charter"] {\n\t\t_id,\n\t\tquestion,\n\t\tanswer,\n\t}\n': FAQ_CHARTER_QUERYResult
     '*[_type == "service" && slug.current == $slug][0]{\n  ...,\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  content[]{\n    ...,\n    _type == "faqs" => {\n      ...,\n      faqs[]-> {\n        _id,\n        question,\n\t\t\t\tanswer,\n        "text": pt::text(answer)\n      }\n    }\n  }\n}': SERVICE_QUERYResult
     '\n\t*[_type == "companyDetails"][0]{\n\t\tname, \n\t\tstats,\n\t\ttimeline\n\t}\n': ABOUT_QUERYResult
   }

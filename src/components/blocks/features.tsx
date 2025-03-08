@@ -23,7 +23,7 @@ export const Features = ({ features, title, text }: FeaturesProps) => {
       </div>
 
       {Array.isArray(features) ? (
-        <div className='grid grid-cols-5 gap-8'>
+        <div className='grid gap-8 sm:grid-cols-5'>
           {features.map(feature => (
             <div
               key={feature._key}

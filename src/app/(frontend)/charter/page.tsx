@@ -95,9 +95,8 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
             {/* @ts-expect-error - PlanesGrid expects a Plane[] type, but FLEET_QUERYResult is not compatible */}
             <PlanesGrid planes={planes} hasFilters={hasFilters} />
           </Container>
-          <div>
-            <FAQs faqs={faqs} />
-          </div>
+
+          <FAQs title='Frequently Asked Questions' faqs={faqs} />
         </div>
       ) : (
         <EmptyLegs />
