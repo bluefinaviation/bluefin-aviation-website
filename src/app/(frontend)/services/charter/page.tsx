@@ -70,7 +70,6 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
 
   const hasFilters = Boolean(category || manufacturer)
 
-  // Adapt the plane filters data to match the expected type
   const adaptedPlaneFilters = adaptPlaneFilters(allPlaneFilters)
 
   return (
@@ -80,6 +79,7 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
         text='Seamless private jet charters, tailored to your needs—with
             cost-efficiency, safety, and luxury at every step.'
         image='/images/charter.webp'
+        isBreadcrumb={true}
       />
       <StickyNav className='top-16 sm:top-20 lg:top-22' />
       {tab === 'fleet' ? (

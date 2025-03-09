@@ -7,6 +7,13 @@ export const TESTIMONIALS_QUERY = defineQuery(`
   }
 `)
 
+export const NEWS_QUERY = defineQuery(`
+  *[_type == "article"] {
+    ...,
+    "image": image.asset->url
+  }
+`)
+
 export const HOME_PAGE_QUERY = defineQuery(`
   *[_type == "home"][0]{
     heroSection{
@@ -107,9 +114,6 @@ export const FOOTER_QUERY = defineQuery(`
 			"slug": slug.current,
 			content,
 		},
-		"newsletter": *[_type == "home"][0]{
-			"section": newsletterSection.section,
-		}
 	}
 	`)
 
@@ -128,13 +132,6 @@ export const ALL_PLANE_FILTERS_QUERY = defineQuery(`{
 
 export const INQUIRY_PAGE_QUERY = defineQuery(`
 	*[_type == "inquiry"][0]{
-		heroSection,
-		formSection
-	}
-`)
-
-export const NEWSLETTER_PAGE_QUERY = defineQuery(`
-	*[_type == "newsletter"][0]{
 		heroSection,
 		formSection
 	}

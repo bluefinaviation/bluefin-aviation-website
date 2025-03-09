@@ -39,6 +39,28 @@ export type SanityImageDimensions = {
   aspectRatio?: number
 }
 
+export type SanityFileAsset = {
+  _id: string
+  _type: 'sanity.fileAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
+  uploadId?: string
+  path?: string
+  url?: string
+  source?: SanityAssetSourceData
+}
+
 export type CompanyDetails = {
   _id: string
   _type: 'companyDetails'
@@ -86,256 +108,6 @@ export type Policy = {
   }>
 }
 
-export type Linktree = {
-  _id: string
-  _type: 'linktree'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  links?: Array<
-    {
-      _key: string
-    } & LinktreeLink
-  >
-  socials?: Array<
-    {
-      _key: string
-    } & ContactItem
-  >
-}
-
-export type Inquiry = {
-  _id: string
-  _type: 'inquiry'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  formSection?: {
-    section?: Section
-  }
-}
-
-export type TripService = {
-  _id: string
-  _type: 'tripService'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  card?: Card
-  heroSection?: {
-    section?: Section
-  }
-  featuresSection?: {
-    section?: Section
-    features?: Array<
-      {
-        _key: string
-      } & TripFeature
-    >
-  }
-  gallerySection?: {
-    section?: Section
-    gallery?: Array<{
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-      _key: string
-    }>
-  }
-}
-
-export type FuelService = {
-  _id: string
-  _type: 'fuelService'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  card?: Card
-  heroSection?: {
-    section?: Section
-  }
-  featuresSection?: {
-    section?: Section
-    features?: Array<
-      {
-        _key: string
-      } & FuelFeature
-    >
-  }
-  gallerySection?: {
-    section?: Section
-    gallery?: Array<{
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-      _key: string
-    }>
-  }
-}
-
-export type Newsletter = {
-  _id: string
-  _type: 'newsletter'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  formSection?: {
-    section?: Section
-  }
-}
-
-export type Contact = {
-  _id: string
-  _type: 'contact'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  contactSection?: {
-    section?: Section
-    contacts?: Array<
-      {
-        _key: string
-      } & ContactItem
-    >
-  }
-  locationSection?: {
-    section?: Section
-    locations?: Array<
-      {
-        _key: string
-      } & Location
-    >
-  }
-}
-
-export type About = {
-  _id: string
-  _type: 'about'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  storySection?: {
-    section?: Section
-    bio?: Array<{
-      children?: Array<{
-        marks?: Array<string>
-        text?: string
-        _type: 'span'
-        _key: string
-      }>
-      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-      listItem?: 'bullet' | 'number'
-      markDefs?: Array<{
-        href?: string
-        _type: 'link'
-        _key: string
-      }>
-      level?: number
-      _type: 'block'
-      _key: string
-    }>
-  }
-  statsSection?: {
-    stats?: Array<
-      {
-        _key: string
-      } & Stat
-    >
-  }
-  teamSection?: {
-    section?: Section
-  }
-}
-
-export type Home = {
-  _id: string
-  _type: 'home'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  heroSection?: {
-    section?: Section
-    video?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
-      }
-      _type: 'file'
-    }
-  }
-  servicesSection?: {
-    section?: Section
-  }
-  brokerSection?: {
-    section?: Section
-  }
-  testimonialsSection?: {
-    section?: Section
-    testimonials?: Array<{
-      quote?: string
-      author?: {
-        name?: string
-        role?: string
-        location?: string
-      }
-      _type: 'testimonial'
-      _key: string
-    }>
-  }
-  partnersSection?: {
-    section?: Section
-    partners?: Array<
-      {
-        _key: string
-      } & Partner
-    >
-  }
-  contactSection?: {
-    section?: Section
-  }
-  newsletterSection?: {
-    section?: Section
-  }
-}
-
-export type SanityFileAsset = {
-  _id: string
-  _type: 'sanity.fileAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  source?: SanityAssetSourceData
-}
-
 export type Category = {
   _id: string
   _type: 'category'
@@ -347,9 +119,9 @@ export type Category = {
   description?: string
 }
 
-export type Post = {
+export type Article = {
   _id: string
-  _type: 'post'
+  _type: 'article'
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -414,12 +186,12 @@ export type Post = {
         _key: string
       }
   >
-  relatedPosts?: Array<{
+  relatedNews?: Array<{
     _ref: string
     _type: 'reference'
     _weak?: boolean
     _key: string
-    [internalGroqTypeReferenceTo]?: 'post'
+    [internalGroqTypeReferenceTo]?: 'article'
   }>
 }
 
@@ -731,13 +503,6 @@ export type BlockContent = Array<
     }
 >
 
-export type LinktreeLink = {
-  _type: 'linktreeLink'
-  label?: string
-  description?: string
-  linkUrl?: string
-}
-
 export type TripSubfeature = {
   _type: 'tripSubfeature'
   subfeature?: string
@@ -833,13 +598,6 @@ export type Geopoint = {
   alt?: number
 }
 
-export type ContactItem = {
-  _type: 'contactItem'
-  url?: string
-  cta?: string
-  label?: string
-}
-
 export type Section = {
   _type: 'section'
   heading?: string
@@ -895,20 +653,6 @@ export type PortableText = Array<{
   }>
   level?: number
   _type: 'block'
-  _key: string
-}>
-
-export type Gallery = Array<{
-  asset?: {
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-  }
-  hotspot?: SanityImageHotspot
-  crop?: SanityImageCrop
-  alt?: string
-  _type: 'image'
   _key: string
 }>
 
@@ -1074,19 +818,11 @@ export type AllSanitySchemaTypes =
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
+  | SanityFileAsset
   | CompanyDetails
   | Policy
-  | Linktree
-  | Inquiry
-  | TripService
-  | FuelService
-  | Newsletter
-  | Contact
-  | About
-  | Home
-  | SanityFileAsset
   | Category
-  | Post
+  | Article
   | Author
   | Testimonial
   | Service
@@ -1100,7 +836,6 @@ export type AllSanitySchemaTypes =
   | Flight
   | TimelineEvent
   | BlockContent
-  | LinktreeLink
   | TripSubfeature
   | TripFeature
   | FuelFeature
@@ -1108,10 +843,8 @@ export type AllSanitySchemaTypes =
   | Partner
   | Location
   | Geopoint
-  | ContactItem
   | Section
   | PortableText
-  | Gallery
   | InfoCarousel
   | Faqs
   | Stat
@@ -1141,53 +874,87 @@ export type TESTIMONIALS_QUERYResult = Array<{
   }
   image: null
 }>
+// Variable: NEWS_QUERY
+// Query: *[_type == "article"] {    ...,    "image": image.asset->url  }
+export type NEWS_QUERYResult = Array<{
+  _id: string
+  _type: 'article'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  slug?: Slug
+  author?: {
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    [internalGroqTypeReferenceTo]?: 'author'
+  }
+  mainImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
+  categories?: Array<{
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    _key: string
+    [internalGroqTypeReferenceTo]?: 'category'
+  }>
+  publishedAt?: string
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal'
+        listItem?: 'bullet'
+        markDefs?: Array<{
+          href?: string
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: {
+          _ref: string
+          _type: 'reference'
+          _weak?: boolean
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+        }
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        alt?: string
+        _type: 'image'
+        _key: string
+      }
+  >
+  relatedNews?: Array<{
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    _key: string
+    [internalGroqTypeReferenceTo]?: 'article'
+  }>
+  image: null
+}>
 // Variable: HOME_PAGE_QUERY
 // Query: *[_type == "home"][0]{    heroSection{		section,		"video": video.asset->url	},	servicesSection{		section,		"tripService": *[_type == "tripService"][0]{			card		},		"fuelService": *[_type == "fuelService"][0]{			card		},	},	brokerSection,	testimonialsSection,	partnersSection,	contactSection,	newsletterSection,}
-export type HOME_PAGE_QUERYResult = {
-  heroSection: {
-    section: Section | null
-    video: string | null
-  } | null
-  servicesSection: {
-    section: Section | null
-    tripService: {
-      card: Card | null
-    } | null
-    fuelService: {
-      card: Card | null
-    } | null
-  } | null
-  brokerSection: {
-    section?: Section
-  } | null
-  testimonialsSection: {
-    section?: Section
-    testimonials?: Array<{
-      quote?: string
-      author?: {
-        name?: string
-        role?: string
-        location?: string
-      }
-      _type: 'testimonial'
-      _key: string
-    }>
-  } | null
-  partnersSection: {
-    section?: Section
-    partners?: Array<
-      {
-        _key: string
-      } & Partner
-    >
-  } | null
-  contactSection: {
-    section?: Section
-  } | null
-  newsletterSection: {
-    section?: Section
-  } | null
-} | null
+export type HOME_PAGE_QUERYResult = null
 // Variable: FLEET_QUERY
 // Query: *[_type == "plane" && 		(($category == null) || category->slug.current == $category) &&		(($manufacturer == null) || manufacturer->slug.current == $manufacturer)	]{		_id,		_type,		_createdAt,		_updatedAt,		_rev,		model,		"manufacturer": manufacturer->{				_id,				name,				"slug": slug.current		},		category->,		code,		capacity,		speed,		range,		image	}
 export type FLEET_QUERYResult = Array<{
@@ -1243,24 +1010,7 @@ export type FLEET_QUERYResult = Array<{
 }>
 // Variable: CONTACT_PAGE_QUERY
 // Query: *[_type == "contact"][0]{		contactSection,		locationSection}
-export type CONTACT_PAGE_QUERYResult = {
-  contactSection: {
-    section?: Section
-    contacts?: Array<
-      {
-        _key: string
-      } & ContactItem
-    >
-  } | null
-  locationSection: {
-    section?: Section
-    locations?: Array<
-      {
-        _key: string
-      } & Location
-    >
-  } | null
-} | null
+export type CONTACT_PAGE_QUERYResult = null
 // Variable: POLICY_BY_SLUG_QUERY
 // Query: *[_type == "policy" && slug.current == $slug][0] {    "id": _id,    "updatedAt": _updatedAt,    title,    "slug": slug.current,    content,  }
 export type POLICY_BY_SLUG_QUERYResult = {
@@ -1289,45 +1039,10 @@ export type POLICY_BY_SLUG_QUERYResult = {
 } | null
 // Variable: FUEL_SERVICE_PAGE_QUERY
 // Query: *[_type == "fuelService"][0]{		heroSection,		featuresSection,		gallerySection,	}
-export type FUEL_SERVICE_PAGE_QUERYResult = {
-  heroSection: {
-    section?: Section
-  } | null
-  featuresSection: {
-    section?: Section
-    features?: Array<
-      {
-        _key: string
-      } & FuelFeature
-    >
-  } | null
-  gallerySection: {
-    section?: Section
-    gallery?: Array<{
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-      _key: string
-    }>
-  } | null
-} | null
+export type FUEL_SERVICE_PAGE_QUERYResult = null
 // Variable: LINKTREE_PAGE_QUERY
 // Query: *[_type == "linktree"][0]{		heroSection,    links}
-export type LINKTREE_PAGE_QUERYResult = {
-  heroSection: null
-  links: Array<
-    {
-      _key: string
-    } & LinktreeLink
-  > | null
-} | null
+export type LINKTREE_PAGE_QUERYResult = null
 // Variable: SERVICES_QUERY
 // Query: *[_type == "service"]{		_id,		name,		image,		"slug": slug.current,		content,	}
 export type SERVICES_QUERYResult = Array<{
@@ -1366,37 +1081,9 @@ export type SERVICES_QUERYResult = Array<{
 }>
 // Variable: TRIP_SERVICE_PAGE_QUERY
 // Query: *[_type == "tripService"][0]{		heroSection,		featuresSection,		gallerySection,	}
-export type TRIP_SERVICE_PAGE_QUERYResult = {
-  heroSection: {
-    section?: Section
-  } | null
-  featuresSection: {
-    section?: Section
-    features?: Array<
-      {
-        _key: string
-      } & TripFeature
-    >
-  } | null
-  gallerySection: {
-    section?: Section
-    gallery?: Array<{
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-      _key: string
-    }>
-  } | null
-} | null
+export type TRIP_SERVICE_PAGE_QUERYResult = null
 // Variable: FOOTER_QUERY
-// Query: {		"policies": *[_type == "policy"]{			"id": _id, 			title,			"slug": slug.current,			content,		},		"newsletter": *[_type == "home"][0]{			"section": newsletterSection.section,		}	}
+// Query: {		"policies": *[_type == "policy"]{			"id": _id, 			title,			"slug": slug.current,			content,		},	}
 export type FOOTER_QUERYResult = {
   policies: Array<{
     id: string
@@ -1421,9 +1108,6 @@ export type FOOTER_QUERYResult = {
       _key: string
     }> | null
   }>
-  newsletter: {
-    section: Section | null
-  } | null
 }
 // Variable: ALL_PLANE_FILTERS_QUERY
 // Query: {  "categories": *[_type == "planeCategory"] | order(order asc) {    _id,    name,    "slug": slug.current  },  "manufacturers": *[_type == "planeManufacturer"] | order(name asc) {    _id,    name,    "slug": slug.current  }}
@@ -1441,20 +1125,7 @@ export type ALL_PLANE_FILTERS_QUERYResult = {
 }
 // Variable: INQUIRY_PAGE_QUERY
 // Query: *[_type == "inquiry"][0]{		heroSection,		formSection	}
-export type INQUIRY_PAGE_QUERYResult = {
-  heroSection: null
-  formSection: {
-    section?: Section
-  } | null
-} | null
-// Variable: NEWSLETTER_PAGE_QUERY
-// Query: *[_type == "newsletter"][0]{		heroSection,		formSection	}
-export type NEWSLETTER_PAGE_QUERYResult = {
-  heroSection: null
-  formSection: {
-    section?: Section
-  } | null
-} | null
+export type INQUIRY_PAGE_QUERYResult = null
 // Variable: EMPTY_LEGS_QUERY
 // Query: *[_type == "emptyLeg" && departureTime > now()] | order(departureTime asc) {		_id,		origin,		departureTime,		destination,		arrivalTime,		price,		plane->{			...,			"manufacturer": manufacturer->{				_id,				name,				"slug": slug.current			}		}	}
 export type EMPTY_LEGS_QUERYResult = Array<{
@@ -1715,6 +1386,7 @@ import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
     '\n  *[_type == "testimonial"] {\n    ...,\n    "image": image.asset->url\n  }\n': TESTIMONIALS_QUERYResult
+    '\n  *[_type == "article"] {\n    ...,\n    "image": image.asset->url\n  }\n': NEWS_QUERYResult
     '\n  *[_type == "home"][0]{\n    heroSection{\n\t\tsection,\n\t\t"video": video.asset->url\n\t},\n\tservicesSection{\n\t\tsection,\n\t\t"tripService": *[_type == "tripService"][0]{\n\t\t\tcard\n\t\t},\n\t\t"fuelService": *[_type == "fuelService"][0]{\n\t\t\tcard\n\t\t},\n\t},\n\tbrokerSection,\n\ttestimonialsSection,\n\tpartnersSection,\n\tcontactSection,\n\tnewsletterSection,\n}': HOME_PAGE_QUERYResult
     '\n\t*[_type == "plane" && \n\t\t(($category == null) || category->slug.current == $category) &&\n\t\t(($manufacturer == null) || manufacturer->slug.current == $manufacturer)\n\t]{\n\t\t_id,\n\t\t_type,\n\t\t_createdAt,\n\t\t_updatedAt,\n\t\t_rev,\n\t\tmodel,\n\t\t"manufacturer": manufacturer->{\n\t\t\t\t_id,\n\t\t\t\tname,\n\t\t\t\t"slug": slug.current\n\t\t},\n\t\tcategory->,\n\t\tcode,\n\t\tcapacity,\n\t\tspeed,\n\t\trange,\n\t\timage\n\t}\n': FLEET_QUERYResult
     '\n\t*[_type == "contact"][0]{\n\t\tcontactSection,\n\t\tlocationSection\n}': CONTACT_PAGE_QUERYResult
@@ -1723,10 +1395,9 @@ declare module '@sanity/client' {
     '\n\t*[_type == "linktree"][0]{\n\t\theroSection,\n    links\n}': LINKTREE_PAGE_QUERYResult
     '\n\t*[_type == "service"]{\n\t\t_id,\n\t\tname,\n\t\timage,\n\t\t"slug": slug.current,\n\t\tcontent,\n\t}': SERVICES_QUERYResult
     '\n\t*[_type == "tripService"][0]{\n\t\theroSection,\n\t\tfeaturesSection,\n\t\tgallerySection,\n\t}': TRIP_SERVICE_PAGE_QUERYResult
-    '\n\t{\n\t\t"policies": *[_type == "policy"]{\n\t\t\t"id": _id, \n\t\t\ttitle,\n\t\t\t"slug": slug.current,\n\t\t\tcontent,\n\t\t},\n\t\t"newsletter": *[_type == "home"][0]{\n\t\t\t"section": newsletterSection.section,\n\t\t}\n\t}\n\t': FOOTER_QUERYResult
+    '\n\t{\n\t\t"policies": *[_type == "policy"]{\n\t\t\t"id": _id, \n\t\t\ttitle,\n\t\t\t"slug": slug.current,\n\t\t\tcontent,\n\t\t},\n\t}\n\t': FOOTER_QUERYResult
     '{\n  "categories": *[_type == "planeCategory"] | order(order asc) {\n    _id,\n    name,\n    "slug": slug.current\n  },\n  "manufacturers": *[_type == "planeManufacturer"] | order(name asc) {\n    _id,\n    name,\n    "slug": slug.current\n  }\n}': ALL_PLANE_FILTERS_QUERYResult
     '\n\t*[_type == "inquiry"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n': INQUIRY_PAGE_QUERYResult
-    '\n\t*[_type == "newsletter"][0]{\n\t\theroSection,\n\t\tformSection\n\t}\n': NEWSLETTER_PAGE_QUERYResult
     '\n\t*[_type == "emptyLeg" && departureTime > now()] | order(departureTime asc) {\n\t\t_id,\n\t\torigin,\n\t\tdepartureTime,\n\t\tdestination,\n\t\tarrivalTime,\n\t\tprice,\n\t\tplane->{\n\t\t\t...,\n\t\t\t"manufacturer": manufacturer->{\n\t\t\t\t_id,\n\t\t\t\tname,\n\t\t\t\t"slug": slug.current\n\t\t\t}\n\t\t}\n\t}\n': EMPTY_LEGS_QUERYResult
     '\n\t*[_type == "faq" && category == "charter"] {\n\t\t_id,\n\t\tquestion,\n\t\tanswer,\n\t}\n': FAQ_CHARTER_QUERYResult
     '*[_type == "service" && slug.current == $slug][0]{\n  ...,\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  content[]{\n    ...,\n    _type == "faqs" => {\n      ...,\n      faqs[]-> {\n        _id,\n        question,\n\t\t\t\tanswer,\n        "text": pt::text(answer)\n      }\n    }\n  }\n}': SERVICE_QUERYResult

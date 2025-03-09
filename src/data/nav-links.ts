@@ -35,7 +35,7 @@ export const navigation = {
     {
       id: 4,
       name: 'Charter',
-      href: '/charter'
+      href: '/services/charter'
     },
     {
       id: 5,
@@ -44,6 +44,11 @@ export const navigation = {
     },
     {
       id: 6,
+      name: 'News',
+      href: '/news'
+    },
+    {
+      id: 7,
       name: 'Contact',
       href: '/contact'
     }

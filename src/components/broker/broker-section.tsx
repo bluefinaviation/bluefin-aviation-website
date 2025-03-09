@@ -20,7 +20,7 @@ export const BrokerSection = () => {
         </div>
         <div className='grid grid-cols-2 place-items-end justify-center gap-16 py-10 sm:flex sm:flex-wrap sm:items-end sm:gap-32'>
           <Link
-            href='/charter?category=light'
+            href='/services/charter?category=light'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
             <LightJetIcon className='group-hover:-tranzinc-y-2 size-16 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
@@ -29,7 +29,7 @@ export const BrokerSection = () => {
             </h3>
           </Link>
           <Link
-            href='/charter?category=midsize'
+            href='/services/charter?category=midsize'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
             <MidsizeJetIcon className='group-hover:-tranzinc-y-2 size-20 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
@@ -38,7 +38,7 @@ export const BrokerSection = () => {
             </h3>
           </Link>
           <Link
-            href='/charter?category=super-midsize'
+            href='/services/charter?category=super-midsize'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
             <SuperMidsizeJetIcon className='group-hover:-tranzinc-y-2 size-24 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />
@@ -47,7 +47,7 @@ export const BrokerSection = () => {
             </h3>
           </Link>
           <Link
-            href='/charter?category=heavy'
+            href='/services/charter?category=heavy'
             className='group flex w-full flex-col items-center gap-y-4 sm:w-auto'
           >
             <HeavyJetIcon className='group-hover:-tranzinc-y-2 size-32 fill-zinc-300 stroke-zinc-300 transition-all duration-300 group-hover:fill-primary group-hover:stroke-primary' />

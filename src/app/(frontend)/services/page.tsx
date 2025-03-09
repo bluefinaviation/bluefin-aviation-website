@@ -50,7 +50,7 @@ export default async function ServicesPage() {
           <ServiceCard
             image='/images/charter.webp'
             title='Charter'
-            slug='/charter'
+            slug='/services/charter'
             imageClassName='object-cover object-[5%_90%]'
             isSquare={true}
           />

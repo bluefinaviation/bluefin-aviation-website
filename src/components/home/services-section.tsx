@@ -34,7 +34,7 @@ export const ServicesSection = async () => {
         ))}
         <ServiceCard
           title='Charter'
-          slug='/charter'
+          slug='/services/charter'
           image='/images/service-charter.webp'
         />
       </div>

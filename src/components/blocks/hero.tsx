@@ -17,9 +17,15 @@ type HeroProps = Partial<Pick<BaseHeroProps, '_key' | '_type'>> &
     image?: BaseHeroProps['image'] | string
     // Allow text to be a string
     text?: BaseHeroProps['text'] | string
+    isBreadcrumb?: boolean
   }
 
-export const Hero = ({ title, image, text }: HeroProps) => {
+export const Hero = ({
+  title,
+  image,
+  text,
+  isBreadcrumb = false
+}: HeroProps) => {
   return (
     <section className='relative flex h-[560px] w-full items-end justify-start bg-primary px-4 py-16'>
       <Image
@@ -41,7 +47,7 @@ export const Hero = ({ title, image, text }: HeroProps) => {
       />
       <div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent' />
       <div className='z-20 mx-auto w-full max-w-7xl'>
-        <PageBreadcrumb />
+        {isBreadcrumb && <PageBreadcrumb />}
         <h1 className='mt-8 font-serif text-5xl font-bold text-white uppercase sm:text-7xl'>
           {title}
         </h1>

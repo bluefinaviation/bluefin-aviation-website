@@ -1,6 +1,7 @@
 import '@/app/globals.css'
 
 import { Metadata } from 'next'
+// import Script from 'next/script'
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -92,6 +93,11 @@ export default async function RootLayout({
   return (
     <section>
       <JsonLd data={organizationSchema} />
+
+      {/* <Script
+        src='//unpkg.com/react-scan/dist/auto.global.js'
+        crossOrigin='anonymous'
+      /> */}
 
       <Navbar />
       {children}

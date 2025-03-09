@@ -23,12 +23,12 @@ export const Footer = async () => {
           <Link
             href='/'
             aria-label='Bluefin Aviation Homepage'
-            className='tw-transition group col-span-1 flex place-content-center items-center opacity-80 hover:opacity-100 sm:place-content-start'
+            className='group col-span-1 flex place-content-center items-center opacity-80 tw-transition hover:opacity-100 sm:place-content-start'
           >
             <Logo
               darkColor='#e2e8f0'
               lightColor='#f8fafc'
-              className='tw-transition w-32 sm:w-44'
+              className='w-32 tw-transition sm:w-44'
             />
           </Link>
 
@@ -37,7 +37,7 @@ export const Footer = async () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className='tw-transition text-base text-zinc-50 hover:text-zinc-300 sm:text-lg'
+                  className='text-base text-zinc-50 tw-transition hover:text-zinc-300 sm:text-lg'
                 >
                   {item.label}
                 </Link>
@@ -70,7 +70,7 @@ export const Footer = async () => {
                 href={item.href}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='tw-transition text-zinc-400 hover:text-zinc-300'
+                className='text-zinc-400 tw-transition hover:text-zinc-300'
               >
                 <span className='sr-only'>{item.name}</span>
                 <item.icon

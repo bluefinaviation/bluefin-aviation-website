@@ -24,7 +24,7 @@ const EmptyState = ({ hasFilters }: EmptyStateProps) => {
           : 'There are no planes available at the moment.'}
       </p>
       {hasFilters && (
-        <Link href='/charter'>
+        <Link href='/services/charter'>
           <Button variant='outline'>Clear Filters</Button>
         </Link>
       )}
