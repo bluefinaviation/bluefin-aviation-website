@@ -39,17 +39,14 @@ export const InfoCarousel = ({ title, text, items }: InfoCarouselProps) => {
             delay: 5000
           })
         ]}
-        className='w-full'
+        className='w-full [&_.embla__container]:!gap-0'
       >
-        <CarouselContent>
+        <CarouselContent className='-ml-0'>
           {items?.map((item, idx) => (
-            <CarouselItem
-              key={idx}
-              className='mt-4 flex cursor-pointer flex-col justify-center sm:mt-8'
-            >
+            <CarouselItem key={idx} className='basis-full pl-0'>
               <div
                 key={`item-${idx}`}
-                className='grid grid-cols-1 gap-4 md:grid-cols-2'
+                className='grid grid-cols-1 gap-0 md:grid-cols-2'
               >
                 <div className='relative aspect-[4/3] md:aspect-[3/5]'>
                   {item.image && (
@@ -64,7 +61,7 @@ export const InfoCarousel = ({ title, text, items }: InfoCarouselProps) => {
                     {item.title}
                   </h3>
                 </div>
-                <div className='prose prose-sm list-disc rounded-br-[4rem] bg-primary p-3 text-white marker:text-white sm:prose-base sm:rounded-br-[8rem] sm:p-4 md:prose-lg md:rounded-br-[12rem]'>
+                <div className='prose prose-sm list-disc rounded-br-[4rem] bg-primary p-3 text-white marker:text-white sm:prose-base sm:rounded-br-[8rem] sm:p-4 md:prose-lg md:h-full md:rounded-br-[12rem]'>
                   {item.text && <PortableText value={item.text} />}
                 </div>
               </div>
