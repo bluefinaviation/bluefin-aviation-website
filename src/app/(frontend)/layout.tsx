@@ -12,8 +12,6 @@ import { Navbar } from '@/components/nav/navbar'
 import { Toaster } from '@/components/ui/sonner'
 import { JsonLd } from '@/components/shared/json-ld'
 
-// import { ContactForm } from "@/components/shared/contact-form";
-
 import { SanityLive } from '@/sanity/lib/live'
 
 export const metadata: Metadata = {

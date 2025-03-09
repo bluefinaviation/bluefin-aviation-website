@@ -4,11 +4,11 @@ import { PlaneFilters } from '@/components/broker/planes-filters'
 import { Container } from '@/components/shared/section-container'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { PlanesGrid } from '@/components/broker/planes-grid'
-import { PageHero } from '@/components/shared/page-hero'
 import { StickyNav } from '@/components/shared/sticky-nav'
 import { EmptyLegs } from '@/components/broker/empty-legs'
 import { FAQs } from '@/components/blocks/faqs'
 import { SectionSummary } from '@/components/shared/section-summary'
+import { Hero } from '@/components/blocks/hero'
 
 import { sanityFetch } from '@/sanity/lib/live'
 import {
@@ -75,12 +75,11 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
 
   return (
     <div>
-      <PageHero
-        heading='Charter'
-        summary='Seamless private jet charters, tailored to your needs—with
+      <Hero
+        title='Charter'
+        text='Seamless private jet charters, tailored to your needs—with
             cost-efficiency, safety, and luxury at every step.'
         image='/images/charter.webp'
-        imageAlt='Charter'
       />
       <StickyNav className='top-16 sm:top-20 lg:top-22' />
       {tab === 'fleet' ? (
@@ -96,10 +95,14 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
             <PlanesGrid planes={planes} hasFilters={hasFilters} />
           </Container>
 
+          {/* @ts-expect-error - PlanesGrid expects a Plane[] type, but FLEET_QUERYResult is not compatible */}
           <FAQs title='Frequently Asked Questions' faqs={faqs} />
         </div>
       ) : (
-        <EmptyLegs />
+        <Container className='py-16 sm:py-24'>
+          <SectionHeading>Empty Legs</SectionHeading>
+          <EmptyLegs />
+        </Container>
       )}
     </div>
   )

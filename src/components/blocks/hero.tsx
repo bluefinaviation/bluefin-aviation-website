@@ -6,10 +6,18 @@ import { PageBreadcrumb } from '@/components/shared/page-breadcrumb'
 import { urlFor } from '@/sanity/lib/image'
 import { SERVICE_QUERYResult } from '@/sanity/types'
 
-type HeroProps = Extract<
+type BaseHeroProps = Extract<
   NonNullable<NonNullable<SERVICE_QUERYResult>['content']>[number],
   { _type: 'hero' }
 >
+
+type HeroProps = Partial<Pick<BaseHeroProps, '_key' | '_type'>> &
+  Omit<BaseHeroProps, '_key' | '_type' | 'text' | 'image'> & {
+    // Allow image to be a string or Sanity image
+    image?: BaseHeroProps['image'] | string
+    // Allow text to be a string
+    text?: BaseHeroProps['text'] | string
+  }
 
 export const Hero = ({ title, image, text }: HeroProps) => {
   return (
@@ -17,12 +25,14 @@ export const Hero = ({ title, image, text }: HeroProps) => {
       <Image
         src={
           image
-            ? urlFor(image!)
-                .width(1920)
-                .height(1080)
-                .quality(80)
-                .auto('format')
-                .url()
+            ? typeof image === 'string'
+              ? image
+              : urlFor(image)
+                  .width(1920)
+                  .height(1080)
+                  .quality(80)
+                  .auto('format')
+                  .url()
             : '/images/placeholder-hero.webp'
         }
         alt={title || 'Hero Image'}
@@ -36,7 +46,11 @@ export const Hero = ({ title, image, text }: HeroProps) => {
           {title}
         </h1>
         <div className='prose mt-4 max-w-2xl prose-invert sm:prose-lg'>
-          <PortableText value={text ?? []} />
+          {typeof text === 'string' ? (
+            <div dangerouslySetInnerHTML={{ __html: text }} />
+          ) : (
+            <PortableText value={text ?? []} />
+          )}
         </div>
       </div>
     </section>

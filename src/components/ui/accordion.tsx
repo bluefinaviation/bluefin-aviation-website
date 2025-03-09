@@ -35,13 +35,13 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot='accordion-trigger'
         className={cn(
-          'group flex flex-1 cursor-pointer items-start justify-between gap-4 rounded-md py-8 text-left text-lg font-medium ring-ring/10 outline-ring/50 transition-all focus-visible:ring-4 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 sm:text-2xl dark:ring-ring/20 dark:outline-ring/40 [&[data-state=open]>svg]:rotate-45',
+          'group flex flex-1 cursor-pointer items-start justify-between gap-4 rounded-md py-8 text-left text-2xl font-medium ring-ring/10 outline-ring/50 transition-all focus-visible:ring-4 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 dark:ring-ring/20 dark:outline-ring/40 [&[data-state=open]>svg]:rotate-45',
           className
         )}
         {...props}
       >
         {children}
-        <Plus className='tranzinc-y-0.5 tw-transition pointer-events-none size-7 shrink-0 rounded-full bg-zinc-300 p-1 text-muted-foreground transition-transform duration-200 group-hover:bg-primary group-hover:text-white sm:size-10' />
+        <Plus className='tranzinc-y-0.5 tw-transition pointer-events-none size-10 shrink-0 rounded-full bg-zinc-200 p-1 text-muted-foreground transition-transform duration-200 group-hover:bg-primary group-hover:text-white' />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
@@ -58,7 +58,7 @@ function AccordionContent({
       className='data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm'
       {...props}
     >
-      <div className={cn('max-w-lg pt-0 pb-4 text-sm sm:text-lg', className)}>
+      <div className={cn('max-w-lg pt-0 pb-4 text-lg', className)}>
         {children}
       </div>
     </AccordionPrimitive.Content>

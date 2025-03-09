@@ -28,8 +28,8 @@ export const EmptyLegs = async () => {
   })
 
   return (
-    <div className='py-8'>
-      {emptyLegs.map(emptyLeg => {
+    <div className='mt-8'>
+      {emptyLegs.map((emptyLeg, index) => {
         const times = formatFlightTimes(
           emptyLeg.departureTime || '',
           emptyLeg.arrivalTime || ''
@@ -37,17 +37,21 @@ export const EmptyLegs = async () => {
         return (
           <div
             key={emptyLeg._id}
-            className='mb-4 flex justify-between rounded-br-[12rem] bg-zinc-100 p-16'
+            className={`pb-6 ${
+              index !== emptyLegs.length - 1
+                ? 'mb-6 border-b border-zinc-200'
+                : 'mb-4'
+            } flex flex-col justify-between sm:flex-row`}
           >
-            <div className='flex gap-x-8'>
+            <div className='flex flex-col gap-4 lg:flex-row lg:gap-x-8'>
               <div className='flex flex-col gap-y-2'>
-                <div className='relative aspect-video w-56'>
+                <div className='relative aspect-video w-full lg:w-56'>
                   {emptyLeg.plane?.image && (
                     <Image
                       src={urlFor(emptyLeg.plane.image).url()}
                       alt={emptyLeg.plane.model || 'Aircraft'}
                       fill
-                      className='object-cover'
+                      className='rounded-lg object-cover'
                     />
                   )}
                 </div>
@@ -56,45 +60,55 @@ export const EmptyLegs = async () => {
                 </h4>
               </div>
               <div className='flex flex-1 flex-col gap-y-4 text-primary'>
-                <div className='flex items-center gap-x-4 font-serif text-3xl font-bold'>
+                <div className='flex flex-col items-start gap-y-2 font-serif text-2xl font-bold lg:flex-row lg:items-center lg:gap-x-4 lg:text-3xl'>
                   <h3>
                     {emptyLeg.origin?.city} ({emptyLeg.origin?.airportCode})
                   </h3>
-                  <ArrowRight className='size-6' />
+                  <ArrowRight className='hidden size-6 lg:block' />
                   <h3>
                     {emptyLeg.destination?.city} (
                     {emptyLeg.destination?.airportCode})
                   </h3>
                 </div>
 
-                <div className='flex gap-x-4'>
+                <div className='flex flex-col gap-y-2 lg:flex-row lg:gap-x-4'>
                   <div className='flex items-center gap-x-2'>
                     <CalendarBlank
                       weight='fill'
-                      className='size-6 text-accent'
+                      className='size-5 text-primary lg:size-6'
                     />
-                    <p>
+                    <p className='text-sm lg:text-base'>
                       {times.date || times.departureDate} {times.departureTime}
                     </p>
                   </div>
                   <div className='flex items-center gap-x-2'>
-                    <Clock weight='fill' className='size-6 text-accent' />
-                    <p>{times.duration}</p>
+                    <Clock
+                      weight='fill'
+                      className='size-5 text-primary lg:size-6'
+                    />
+                    <p className='text-sm lg:text-base'>{times.duration}</p>
                   </div>
                   <div className='flex items-center gap-x-2'>
-                    <Seat weight='fill' className='size-6 text-accent' />
-                    <p>Up to {emptyLeg.plane?.capacity} passengers</p>
+                    <Seat
+                      weight='fill'
+                      className='size-5 text-primary lg:size-6'
+                    />
+                    <p className='text-sm lg:text-base'>
+                      Up to {emptyLeg.plane?.capacity} passengers
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold'>
+            <div className='mt-4 flex flex-col gap-y-2 lg:mt-0'>
+              <p className='text-2xl font-bold lg:text-3xl'>
                 {formatPrice(emptyLeg.price || 0)}
               </p>
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button size='lg'>Enquire Now</Button>
+                  <Button size='lg' className='w-full lg:w-auto'>
+                    Enquire Now
+                  </Button>
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader>

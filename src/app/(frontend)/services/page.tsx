@@ -3,8 +3,8 @@ import { Image as SanityImage } from 'sanity'
 
 import { Container } from '@/components/shared/section-container'
 import { SectionHeading } from '@/components/shared/section-heading'
-import { PageHero } from '@/components/shared/page-hero'
 import { ServiceCard } from '@/components/services/service-card'
+import { Hero } from '@/components/blocks/hero'
 
 import { SERVICES_QUERY } from '@/sanity/lib/queries'
 import { sanityFetch } from '@/sanity/lib/live'
@@ -31,11 +31,10 @@ export default async function ServicesPage() {
 
   return (
     <div>
-      <PageHero
-        heading='Our Services'
-        summary='We offer a range of services to support your charter operations. From trip support to fuel services, we have you covered.'
+      <Hero
+        title='Our Services'
+        text='We offer a range of services to support your charter operations. From trip support to fuel services, we have you covered.'
         image='/images/services-hero.webp'
-        imageAlt=''
       />
 
       <Container className='py-16 sm:py-24'>

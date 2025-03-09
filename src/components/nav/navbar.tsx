@@ -89,7 +89,7 @@ export const Navbar = () => {
         <AnimatePresence>
           {showModal && (
             <motion.div
-              className={cn('fixed inset-0 z-50 h-screen bg-zinc-950 px-5')}
+              className={cn('fixed inset-0 z-50 h-screen bg-primary px-4')}
               variants={modalVariants}
               initial='hidden'
               animate='visible'

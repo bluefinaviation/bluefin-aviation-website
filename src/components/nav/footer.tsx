@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { PortableText } from '@portabletext/react'
 
 import { Logo } from '@/components/branding/logo'
 import { NewsletterFooterForm } from '@/components/forms/newsletter-footer-form'
@@ -15,7 +14,7 @@ export const Footer = async () => {
   })
 
   return (
-    <footer className='bg-zinc-950' aria-labelledby='footer-heading'>
+    <footer className='bg-primary' aria-labelledby='footer-heading'>
       <h2 id='footer-heading' className='sr-only'>
         Footer
       </h2>
