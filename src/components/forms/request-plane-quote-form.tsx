@@ -11,6 +11,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { sendRequestPlaneQuoteAction } from '@/lib/actions'
 import { RequestPlaneQuoteSchema } from '@/lib/schemas'
 import { Plane } from '@/sanity/types'
+import { ScrollArea } from '../ui/scroll-area'
 
 interface ValidationErrors {
   name: string
@@ -192,143 +193,147 @@ export const RequestPlaneQuoteForm = ({
   }
 
   return (
-    <form ref={formRef} action={formAction}>
-      <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
-        <div>
-          <Label htmlFor='name'>Name</Label>
-          <Input
-            id='name'
-            name='name'
-            placeholder='Enter your name'
-            value={formData.name}
-            onChange={validate}
-          />
-          {validationErrors?.name && (
-            <p className='text-xs text-red-500'>{validationErrors.name}</p>
-          )}
-        </div>
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='email'>Email</Label>
-          <Input
-            id='email'
-            name='email'
-            type='email'
-            placeholder='Enter your email'
-            value={formData.email}
-            onChange={validate}
-          />
-          {validationErrors?.email && (
-            <p className='text-xs text-red-500'>{validationErrors.email}</p>
-          )}
-        </div>
+    <form ref={formRef} action={formAction} className='flex flex-col'>
+      <ScrollArea className='h-[36rem] overflow-y-auto'>
+        <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='name'>Name</Label>
+            <Input
+              id='name'
+              name='name'
+              placeholder='Enter your name'
+              value={formData.name}
+              onChange={validate}
+            />
+            {validationErrors?.name && (
+              <p className='text-xs text-red-500'>{validationErrors.name}</p>
+            )}
+          </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='email'>Email</Label>
+            <Input
+              id='email'
+              name='email'
+              type='email'
+              placeholder='Enter your email'
+              value={formData.email}
+              onChange={validate}
+            />
+            {validationErrors?.email && (
+              <p className='text-xs text-red-500'>{validationErrors.email}</p>
+            )}
+          </div>
 
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='origin'>Origin</Label>
-          <Input
-            id='origin'
-            name='origin'
-            placeholder='Enter your origin'
-            value={formData.origin}
-            onChange={validate}
-          />
-          {validationErrors?.origin && (
-            <p className='text-xs text-red-500'>{validationErrors.origin}</p>
-          )}
-        </div>
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='departure'>Departure Date</Label>
-          <Input
-            id='departure'
-            name='departure'
-            type='date'
-            placeholder='Enter your departure date'
-            value={formData.departure}
-            onChange={validate}
-          />
-          {validationErrors?.departure && (
-            <p className='text-xs text-red-500'>{validationErrors.departure}</p>
-          )}
-        </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='origin'>Origin</Label>
+            <Input
+              id='origin'
+              name='origin'
+              placeholder='Enter your origin'
+              value={formData.origin}
+              onChange={validate}
+            />
+            {validationErrors?.origin && (
+              <p className='text-xs text-red-500'>{validationErrors.origin}</p>
+            )}
+          </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='departure'>Departure Date</Label>
+            <Input
+              id='departure'
+              name='departure'
+              type='date'
+              placeholder='Enter your departure date'
+              value={formData.departure}
+              onChange={validate}
+            />
+            {validationErrors?.departure && (
+              <p className='text-xs text-red-500'>
+                {validationErrors.departure}
+              </p>
+            )}
+          </div>
 
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='destination'>Destination</Label>
-          <Input
-            id='destination'
-            name='destination'
-            placeholder='Enter your destination'
-            value={formData.destination}
-            onChange={validate}
-          />
-          {validationErrors?.destination && (
-            <p className='text-xs text-red-500'>
-              {validationErrors.destination}
-            </p>
-          )}
-        </div>
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='arrival'>Arrival Date</Label>
-          <Input
-            id='arrival'
-            name='arrival'
-            type='date'
-            placeholder='Enter your arrival date'
-            value={formData.arrival}
-            onChange={validate}
-          />
-          {validationErrors?.arrival && (
-            <p className='text-xs text-red-500'>{validationErrors.arrival}</p>
-          )}
-        </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='destination'>Destination</Label>
+            <Input
+              id='destination'
+              name='destination'
+              placeholder='Enter your destination'
+              value={formData.destination}
+              onChange={validate}
+            />
+            {validationErrors?.destination && (
+              <p className='text-xs text-red-500'>
+                {validationErrors.destination}
+              </p>
+            )}
+          </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='arrival'>Arrival Date</Label>
+            <Input
+              id='arrival'
+              name='arrival'
+              type='date'
+              placeholder='Enter your arrival date'
+              value={formData.arrival}
+              onChange={validate}
+            />
+            {validationErrors?.arrival && (
+              <p className='text-xs text-red-500'>{validationErrors.arrival}</p>
+            )}
+          </div>
 
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='plane'>Plane</Label>
-          <Input
-            id='plane'
-            name='plane'
-            value={formData.plane}
-            readOnly
-            className='bg-zinc-50 capitalize'
-          />
-          {validationErrors?.plane && (
-            <p className='text-xs text-red-500'>{validationErrors.plane}</p>
-          )}
-        </div>
-        <div className='flex flex-col gap-2'>
-          <Label htmlFor='passengers'>Passengers</Label>
-          <Input
-            id='passengers'
-            name='passengers'
-            placeholder='Enter the number of passengers'
-            type='number'
-            value={formData.passengers}
-            onChange={validate}
-          />
-          {validationErrors?.passengers && (
-            <p className='text-xs text-red-500'>
-              {validationErrors.passengers}
-            </p>
-          )}
-        </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='plane'>Plane</Label>
+            <Input
+              id='plane'
+              name='plane'
+              value={formData.plane}
+              readOnly
+              className='bg-zinc-50 capitalize'
+            />
+            {validationErrors?.plane && (
+              <p className='text-xs text-red-500'>{validationErrors.plane}</p>
+            )}
+          </div>
+          <div className='flex flex-col gap-2'>
+            <Label htmlFor='passengers'>Passengers</Label>
+            <Input
+              id='passengers'
+              name='passengers'
+              placeholder='Enter the number of passengers'
+              type='number'
+              value={formData.passengers}
+              onChange={validate}
+            />
+            {validationErrors?.passengers && (
+              <p className='text-xs text-red-500'>
+                {validationErrors.passengers}
+              </p>
+            )}
+          </div>
 
-        <div className='col-span-2 flex flex-col gap-2'>
-          <Label htmlFor='message'>Message</Label>
-          <Textarea
-            id='message'
-            name='message'
-            placeholder='Enter your message'
-            value={formData.message}
-            onChange={validate}
-          />
-          {validationErrors?.message && (
-            <p className='text-xs text-red-500'>{validationErrors.message}</p>
-          )}
+          <div className='col-span-1 flex flex-col gap-2 sm:col-span-2'>
+            <Label htmlFor='message'>Message</Label>
+            <Textarea
+              id='message'
+              name='message'
+              placeholder='Enter your message'
+              value={formData.message}
+              onChange={validate}
+            />
+            {validationErrors?.message && (
+              <p className='text-xs text-red-500'>{validationErrors.message}</p>
+            )}
+          </div>
         </div>
-      </div>
-      <div className='mt-5 flex justify-end'>
-        <Button type='submit' disabled={isPending}>
-          {isPending ? 'Submitting...' : 'Submit'}
-        </Button>
-      </div>
+        <div className='mt-5 flex justify-end'>
+          <Button type='submit' disabled={isPending}>
+            {isPending ? 'Submitting...' : 'Submit'}
+          </Button>
+        </div>
+      </ScrollArea>
     </form>
   )
 }

@@ -28,7 +28,7 @@ export const EmptyLegs = async () => {
   })
 
   return (
-    <div className='mt-8'>
+    <div className='s8'>
       {emptyLegs.map((emptyLeg, index) => {
         const times = formatFlightTimes(
           emptyLeg.departureTime || '',
@@ -118,7 +118,7 @@ export const EmptyLegs = async () => {
                     </SheetDescription>
                   </SheetHeader>
 
-                  <div className='p-8'>
+                  <div className='px-4 py-8'>
                     <EmptyLegsForm emptyLeg={emptyLeg} />
                   </div>
                 </SheetContent>

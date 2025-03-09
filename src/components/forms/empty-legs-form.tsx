@@ -34,7 +34,7 @@ export const EmptyLegsForm = ({
             max={emptyLeg.plane?.capacity || undefined}
           />
         </div>
-        <div className='col-span-2 flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 sm:col-span-2'>
           <Label htmlFor='message'>Message</Label>
           <Textarea
             id='message'
@@ -43,9 +43,9 @@ export const EmptyLegsForm = ({
         </div>
       </div>
 
-      <div className='mt-12 flex justify-end'>
+      <div className='mt-8 flex justify-end'>
         <Button type='submit' size='lg'>
-          Submit Enquiry
+          Submit
         </Button>
       </div>
     </form>

@@ -4,12 +4,12 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { PlaneCard } from "@/components/brokerage/plane-card";
-import { RequestPlaneQuoteForm } from "@/components/forms/request-plane-quote-form";
+  SheetTrigger
+} from '@/components/ui/sheet'
+import { PlaneCard } from '@/components/brokerage/plane-card'
+import { RequestPlaneQuoteForm } from '@/components/forms/request-plane-quote-form'
 
-import { Plane } from "@/sanity/types";
+import { Plane } from '@/sanity/types'
 
 export const PlaneSheet = ({ plane }: { plane: Plane }) => {
   return (
@@ -21,18 +21,18 @@ export const PlaneSheet = ({ plane }: { plane: Plane }) => {
       <SheetContent>
         <SheetHeader>
           {/* @ts-expect-error - PlaneSheet expects a Plane type, but FLEET_QUERYResult is not compatible */}
-          <SheetTitle>{`${plane.model} by ${plane.manufacturer?.name}`}</SheetTitle>
+          <SheetTitle>{`Inquiry: ${plane.manufacturer?.name}'s ${plane.model}`}</SheetTitle>
           <SheetDescription>
             {/* @ts-expect-error - PlaneSheet expects a Plane type, but FLEET_QUERYResult is not compatible */}
-            {`Do you want to book a flight on our ${plane.model} by ${plane.manufacturer?.name}? Fill out the form below and we'll get back to you as soon as possible.`}
+            {`Do you want to get a quote for our ${plane.model} by ${plane.manufacturer?.name}? Fill out the form below and we'll get back to you as soon as possible.`}
           </SheetDescription>
         </SheetHeader>
 
-        <div className="p-8">
+        <div className='px-4 py-8'>
           {/* @ts-expect-error - PlaneSheet expects a Plane type, but FLEET_QUERYResult is not compatible */}
           <RequestPlaneQuoteForm plane={plane} />
         </div>
       </SheetContent>
     </Sheet>
-  );
-};
+  )
+}
