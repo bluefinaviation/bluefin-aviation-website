@@ -20,6 +20,12 @@
   h6 {
     @apply text-balance;
   }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
 }
 
 :root {
@@ -212,7 +218,7 @@
 @utility animate-spin-reverse-slower {
   animation: spin-reverse 6s linear infinite;
 }
-@utilit animate-blob {
+@utility animate-blob {
   animation: blob 7s infinite;
 }
 @utility tw-transition {

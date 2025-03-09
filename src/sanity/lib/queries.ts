@@ -8,8 +8,20 @@ export const TESTIMONIALS_QUERY = defineQuery(`
 `)
 
 export const NEWS_QUERY = defineQuery(`
-  *[_type == "article"] {
+  *[_type == "article"] | order(publishedAt desc) {
+    _id,
+    title,
+		"slug": slug.current,
+    "image": mainImage.asset->url,
+    publishedAt,
+    "excerpt": pt::text(body[0..1])
+  }
+`)
+
+export const NEWS_ARTICLE_QUERY = defineQuery(`
+  *[_type == "article" && slug.current == $slug][0] {
     ...,
+		"slug": slug.current,
     "image": image.asset->url
   }
 `)

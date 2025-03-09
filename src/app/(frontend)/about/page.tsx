@@ -25,7 +25,7 @@ export default async function AboutPage() {
       <Hero
         title='About Us'
         text="Nothing is too large, too small or to difficult. We'll take you there!"
-        image='/images/empty-legs.webp'
+        image='/images/about-hero.webp'
       />
 
       <div className='mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-16 sm:px-0 sm:py-24 md:grid-cols-2'>

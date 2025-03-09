@@ -78,7 +78,7 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
         title='Charter'
         text='Seamless private jet charters, tailored to your needs—with
             cost-efficiency, safety, and luxury at every step.'
-        image='/images/charter.webp'
+        image='/images/charter-hero.webp'
         isBreadcrumb={true}
       />
       <StickyNav className='top-16 sm:top-20 lg:top-22' />
