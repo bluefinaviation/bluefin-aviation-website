@@ -41,7 +41,7 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <Plus className='tranzinc-y-0.5 tw-transition pointer-events-none size-8 shrink-0 rounded-full bg-zinc-200 p-1 text-muted-foreground transition-transform duration-200 group-hover:bg-primary group-hover:text-white sm:size-10' />
+        <Plus className='tranzinc-y-0.5 pointer-events-none size-8 shrink-0 rounded-full bg-zinc-200 p-1 text-muted-foreground tw-transition transition-transform duration-200 group-hover:bg-primary group-hover:text-white sm:size-10' />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
@@ -55,7 +55,7 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot='accordion-content'
-      className='data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm'
+      className='overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down'
       {...props}
     >
       <div className={cn('max-w-lg pt-0 pb-4 text-base sm:text-lg', className)}>
