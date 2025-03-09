@@ -26,15 +26,15 @@ export const Offices = () => {
         setSelectedOffice={setSelectedOffice}
       />
 
-      <div className='mt-8 border-t-2 border-accent pt-8'>
-        <div className='flex flex-col justify-between gap-12 sm:flex-row sm:gap-8'>
+      <div className='mt-8 border-t-2 border-primary pt-8'>
+        <div className='flex flex-col justify-between gap-8 sm:flex-row'>
           <div className='flex flex-col gap-2 text-center sm:text-left'>
-            <h3 className='text-2xl font-medium sm:text-3xl'>
+            <h3 className='font-serif text-2xl font-medium sm:text-3xl'>
               {selectedOffice?.importance
                 ? selectedOffice.importance
                 : `${selectedOffice?.city}, ${selectedOffice?.country}`}
             </h3>
-            <p className='text-base text-gray-500 sm:text-lg'>
+            <p className='font-mono text-base text-gray-500 sm:text-lg'>
               {selectedOffice?.importance &&
                 `${selectedOffice?.city}, ${selectedOffice?.country}`}
             </p>
@@ -47,9 +47,9 @@ export const Offices = () => {
             >
               <Phone
                 weight='fill'
-                className='tw-transition size-8 fill-primary group-hover:fill-accent'
+                className='size-6 fill-primary tw-transition group-hover:fill-accent sm:size-8'
               />
-              <p className='text-lg'>+1 (954) 590-0851</p>
+              <p className='text-base sm:text-lg'>+1 (954) 590-0851</p>
             </Link>
 
             <Link
@@ -60,9 +60,9 @@ export const Offices = () => {
             >
               <WhatsappLogo
                 weight='fill'
-                className='tw-transition size-8 fill-primary group-hover:fill-accent'
+                className='size-6 fill-primary tw-transition group-hover:fill-accent sm:size-8'
               />
-              <p className='text-lg'>+1 (954) 881-2932</p>
+              <p className='text-base sm:text-lg'>+1 (954) 881-2932</p>
             </Link>
 
             <Link
@@ -73,9 +73,11 @@ export const Offices = () => {
             >
               <EnvelopeSimple
                 weight='fill'
-                className='tw-transition size-8 fill-primary group-hover:fill-accent'
+                className='size-6 fill-primary tw-transition group-hover:fill-accent sm:size-8'
               />
-              <p className='text-lg'>operations@bluefinaviation.com</p>
+              <p className='text-base sm:text-lg'>
+                operations@bluefinaviation.com
+              </p>
             </Link>
           </div>
         </div>

@@ -83,7 +83,7 @@ export const Navbar = () => {
           onClick={() => toggleModal()}
           className={cn(
             'block size-7 sm:hidden',
-            isScrolled ? 'text-zinc-900' : 'text-black'
+            isScrolled ? 'text-primary' : 'text-white'
           )}
         />
         <AnimatePresence>
@@ -118,6 +118,7 @@ export const Navbar = () => {
                     initial='hidden'
                     animate='visible'
                     exit='exit'
+                    className='border-b border-white/20 pb-4'
                   >
                     <Link
                       href={link.href}
