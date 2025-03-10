@@ -39,3 +39,17 @@ export const ContactFormSchema = z.object({
 export const NewsletterSchema = z.object({
   email: z.string().email('Invalid email address.')
 })
+
+export const EmptyLegsFormSchema = z.object({
+  name: z
+    .string()
+    .min(1, 'Name must be at least 1 character long.')
+    .max(100, 'Name must be less than 100 characters long.'),
+  email: z.string().email('Invalid email address.'),
+  phone: z.string().min(1, 'Phone must be at least 1 character long.'),
+  passengers: z.coerce.number().min(1, 'Passengers must be at least 1.'),
+  message: z
+    .string()
+    .min(1, 'Message must be at least 1 character long.')
+    .max(1000, 'Message must be less than 1000 characters long.')
+})

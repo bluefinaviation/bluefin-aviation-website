@@ -24,9 +24,9 @@ export function StickyNav({ className }: StickyNavProps) {
               replace
               scroll={false}
               className={cn(
-                'flex h-14 items-center px-4 text-sm font-medium text-white/70 transition-colors hover:text-white',
+                'flex h-14 items-center px-4 text-lg font-medium text-white/70 transition-colors hover:text-white',
                 currentTab === 'fleet'
-                  ? 'border-b-2 border-white text-white'
+                  ? 'border-b-4 border-white text-white'
                   : ''
               )}
             >
@@ -37,9 +37,9 @@ export function StickyNav({ className }: StickyNavProps) {
               replace
               scroll={false}
               className={cn(
-                'flex h-14 items-center px-4 text-sm font-medium text-white/70 transition-colors hover:text-white',
+                'flex h-14 items-center px-4 text-lg font-medium text-white/70 transition-colors hover:text-white',
                 currentTab === 'empty-legs'
-                  ? 'border-b-2 border-white text-white'
+                  ? 'border-b-4 border-white text-white'
                   : ''
               )}
             >

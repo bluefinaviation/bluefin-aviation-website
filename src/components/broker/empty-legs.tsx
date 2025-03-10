@@ -28,7 +28,7 @@ export const EmptyLegs = async () => {
   })
 
   return (
-    <div className='s8'>
+    <div className='mt-8 sm:mt-16'>
       {emptyLegs.map((emptyLeg, index) => {
         const times = formatFlightTimes(
           emptyLeg.departureTime || '',

@@ -85,12 +85,14 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
       {tab === 'fleet' ? (
         <div className=''>
           <Container className='py-16 sm:py-24'>
-            <SectionHeading>Our Fleet</SectionHeading>
-            <SectionSummary className='mt-4'>
-              We offer a wide range of private jets to suit your needs, from
-              small, compact aircraft to large, luxurious planes.
-            </SectionSummary>
-            <PlaneFilters allPlaneFilters={adaptedPlaneFilters} />
+            <div className='mx-auto flex flex-col items-center text-center'>
+              <SectionHeading>Explore Our Fleet</SectionHeading>
+              <SectionSummary className='mt-4'>
+                We offer a wide range of private jets to suit your needs, from
+                small, compact aircraft to large, luxurious planes.
+              </SectionSummary>
+              <PlaneFilters allPlaneFilters={adaptedPlaneFilters} />
+            </div>
             {/* @ts-expect-error - PlanesGrid expects a Plane[] type, but FLEET_QUERYResult is not compatible */}
             <PlanesGrid planes={planes} hasFilters={hasFilters} />
           </Container>
@@ -100,7 +102,7 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
         </div>
       ) : (
         <Container className='py-16 sm:py-24'>
-          <SectionHeading>Empty Legs</SectionHeading>
+          <SectionHeading>Upcoming Last Minute Flights</SectionHeading>
           <EmptyLegs />
         </Container>
       )}
