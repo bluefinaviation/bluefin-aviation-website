@@ -876,17 +876,28 @@ export type TESTIMONIALS_QUERYResult = Array<{
   image: null
 }>
 // Variable: NEWS_QUERY
-// Query: *[_type == "article"] | order(publishedAt desc) {    _id,    title,		"slug": slug.current,    image,    publishedAt,    "excerpt": pt::text(body[0..1])  }
+// Query: *[_type == "article"] | order(publishedAt desc) {    _id,    title,		"slug": slug.current,    mainImage,    publishedAt,    "excerpt": pt::text(body[0..1])  }
 export type NEWS_QUERYResult = Array<{
   _id: string
   title: string | null
   slug: string | null
-  image: null
+  mainImage: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
   publishedAt: string | null
   excerpt: string
 }>
 // Variable: NEWS_ARTICLE_QUERY
-// Query: *[_type == "article" && slug.current == $slug][0] {    ...,		"slug": slug.current,    "image": image.asset->url  }
+// Query: *[_type == "article" && slug.current == $slug][0] {    ...,		"slug": slug.current,    mainImage  }
 export type NEWS_ARTICLE_QUERYResult = {
   _id: string
   _type: 'article'
@@ -901,7 +912,7 @@ export type NEWS_ARTICLE_QUERYResult = {
     _weak?: boolean
     [internalGroqTypeReferenceTo]?: 'author'
   }
-  mainImage?: {
+  mainImage: {
     asset?: {
       _ref: string
       _type: 'reference'
@@ -912,7 +923,7 @@ export type NEWS_ARTICLE_QUERYResult = {
     crop?: SanityImageCrop
     alt?: string
     _type: 'image'
-  }
+  } | null
   categories?: Array<{
     _ref: string
     _type: 'reference'
@@ -962,7 +973,6 @@ export type NEWS_ARTICLE_QUERYResult = {
     _key: string
     [internalGroqTypeReferenceTo]?: 'article'
   }>
-  image: null
 } | null
 // Variable: HOME_PAGE_QUERY
 // Query: *[_type == "home"][0]{    heroSection{		section,		"video": video.asset->url	},	servicesSection{		section,		"tripService": *[_type == "tripService"][0]{			card		},		"fuelService": *[_type == "fuelService"][0]{			card		},	},	brokerSection,	testimonialsSection,	partnersSection,	contactSection,	newsletterSection,}
@@ -1398,8 +1408,8 @@ import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
     '\n  *[_type == "testimonial"] {\n    ...,\n    "image": image.asset->url\n  }\n': TESTIMONIALS_QUERYResult
-    '\n  *[_type == "article"] | order(publishedAt desc) {\n    _id,\n    title,\n\t\t"slug": slug.current,\n    image,\n    publishedAt,\n    "excerpt": pt::text(body[0..1])\n  }\n': NEWS_QUERYResult
-    '\n  *[_type == "article" && slug.current == $slug][0] {\n    ...,\n\t\t"slug": slug.current,\n    "image": image.asset->url\n  }\n': NEWS_ARTICLE_QUERYResult
+    '\n  *[_type == "article"] | order(publishedAt desc) {\n    _id,\n    title,\n\t\t"slug": slug.current,\n    mainImage,\n    publishedAt,\n    "excerpt": pt::text(body[0..1])\n  }\n': NEWS_QUERYResult
+    '\n  *[_type == "article" && slug.current == $slug][0] {\n    ...,\n\t\t"slug": slug.current,\n    mainImage\n  }\n': NEWS_ARTICLE_QUERYResult
     '\n  *[_type == "home"][0]{\n    heroSection{\n\t\tsection,\n\t\t"video": video.asset->url\n\t},\n\tservicesSection{\n\t\tsection,\n\t\t"tripService": *[_type == "tripService"][0]{\n\t\t\tcard\n\t\t},\n\t\t"fuelService": *[_type == "fuelService"][0]{\n\t\t\tcard\n\t\t},\n\t},\n\tbrokerSection,\n\ttestimonialsSection,\n\tpartnersSection,\n\tcontactSection,\n\tnewsletterSection,\n}': HOME_PAGE_QUERYResult
     '\n\t*[_type == "plane" && \n\t\t(($category == null) || category->slug.current == $category) &&\n\t\t(($manufacturer == null) || manufacturer->slug.current == $manufacturer)\n\t]{\n\t\t_id,\n\t\t_type,\n\t\t_createdAt,\n\t\t_updatedAt,\n\t\t_rev,\n\t\tmodel,\n\t\t"manufacturer": manufacturer->{\n\t\t\t\t_id,\n\t\t\t\tname,\n\t\t\t\t"slug": slug.current\n\t\t},\n\t\tcategory->,\n\t\tcode,\n\t\tcapacity,\n\t\tspeed,\n\t\trange,\n\t\timage\n\t}\n': FLEET_QUERYResult
     '\n\t*[_type == "contact"][0]{\n\t\tcontactSection,\n\t\tlocationSection\n}': CONTACT_PAGE_QUERYResult

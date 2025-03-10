@@ -24,7 +24,7 @@ export default async function NewsArticlePage({
       <Hero
         title={article?.title}
         text={article?.excerpt}
-        image={article?.mainImage}
+        image={article?.mainImage!}
         isBreadcrumb={true}
       />
       <Container className='mx-auto prose max-w-5xl list-disc py-16 sm:prose-lg sm:py-24'>
