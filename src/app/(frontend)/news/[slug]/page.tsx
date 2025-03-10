@@ -23,12 +23,12 @@ export default async function NewsArticlePage({
     <div>
       <Hero
         title={article?.title}
-        text={article?.description}
-        image={article?.image}
+        text={article?.excerpt}
+        image={article?.mainImage}
         isBreadcrumb={true}
       />
       <Container className='mx-auto prose max-w-5xl list-disc py-16 sm:prose-lg sm:py-24'>
-        <PortableText value={article?.body} components={components} />
+        <PortableText value={article?.body!} components={components} />
       </Container>
     </div>
   )

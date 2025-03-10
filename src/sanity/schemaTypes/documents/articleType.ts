@@ -55,6 +55,10 @@ export const articleType = defineType({
       type: 'datetime'
     }),
     defineField({
+      name: 'excerpt',
+      type: 'text'
+    }),
+    defineField({
       name: 'body',
       type: 'blockContent'
     }),

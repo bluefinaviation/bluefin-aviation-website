@@ -2,8 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
 
-import { Card, CardContent } from '@/components/ui/card'
-
 interface Article {
   _id: string
   title: string
@@ -19,41 +17,67 @@ interface NewsCardProps {
 
 export function NewsCard({ article }: NewsCardProps) {
   const formattedDate = article.publishedAt
-    ? dayjs(article.publishedAt).format('YYYY-MM-DD')
+    ? formatDate(article.publishedAt)
     : ''
 
+  // Function to format date as "12th Jun 2024"
+  function formatDate(dateString: string) {
+    const date = dayjs(dateString)
+    const day = date.date()
+    const month = date.format('MMM')
+    const year = date.year()
+
+    // Add ordinal suffix to day
+    const suffix = getDaySuffix(day)
+
+    return `${day}${suffix} ${month} ${year}`
+  }
+
+  // Function to get the ordinal suffix for a day (st, nd, rd, th)
+  function getDaySuffix(day: number) {
+    if (day > 3 && day < 21) return 'th'
+    switch (day % 10) {
+      case 1:
+        return 'st'
+      case 2:
+        return 'nd'
+      case 3:
+        return 'rd'
+      default:
+        return 'th'
+    }
+  }
+
   return (
-    <Link href={`/news/${article.slug}`} className='group block'>
-      <Card className='overflow-hidden border-0 transition-all duration-300 hover:shadow-md'>
-        <div className='relative h-48 w-full overflow-hidden'>
+    <Link href={`/news/${article.slug}`}>
+      <div className='group relative flex cursor-pointer flex-col overflow-hidden border border-zinc-200 bg-zinc-50 tw-transition hover:scale-105 hover:bg-white'>
+        <div className='relative aspect-[3/2] w-full bg-zinc-100'>
           {article.image ? (
             <Image
               src={article.image}
               alt={article.title}
               fill
-              className='object-cover transition-transform duration-300 group-hover:scale-105'
+              className='object-cover object-center'
             />
           ) : (
-            <div className='flex h-full w-full items-center justify-center bg-gray-200'>
-              <span className='text-gray-400'>No image</span>
+            <div className='flex h-full w-full items-center justify-center bg-zinc-100'>
+              <span className='text-zinc-400'>No image</span>
             </div>
           )}
         </div>
 
-        <CardContent className='p-6'>
+        <div className='p-6'>
           {formattedDate && (
-            <div className='mb-2 text-sm text-gray-500'>{formattedDate}</div>
+            <div className='mb-2 text-sm text-zinc-500'>{formattedDate}</div>
           )}
-          <h2 className='mb-3 text-xl font-semibold transition-colors group-hover:text-blue-600'>
+          <h2 className='text-xl font-semibold transition-colors group-hover:text-blue-600 sm:text-2xl'>
             {article.title}
           </h2>
-          {article.excerpt && (
-            <p className='line-clamp-2 text-sm text-gray-600'>
-              {article.excerpt}
-            </p>
-          )}
-        </CardContent>
-      </Card>
+        </div>
+
+        {/* Blue hover bar at the top */}
+        <div className='absolute top-0 right-0 left-0 h-1 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100'></div>
+      </div>
     </Link>
   )
 }
