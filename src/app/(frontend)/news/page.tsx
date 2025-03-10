@@ -4,20 +4,12 @@ import { Hero } from '@/components/blocks/hero'
 import { Container } from '@/components/shared/section-container'
 import { NewsCard } from '@/components/news/news-card'
 
-import { NEWS_QUERY } from '@/sanity/lib/queries'
 import { sanityFetch } from '@/sanity/lib/live'
+import { NEWS_QUERY } from '@/sanity/lib/queries'
+import { Article } from '@/sanity/types'
 
 export const metadata: Metadata = {
   title: 'News'
-}
-
-interface Article {
-  _id: string
-  title: string
-  slug: string
-  image?: string
-  publishedAt?: string
-  excerpt?: string
 }
 
 export default async function NewsPage() {
@@ -37,8 +29,11 @@ export default async function NewsPage() {
         <Container>
           {news ? (
             <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
-              {news?.map((article: Article) => (
-                <NewsCard key={article._id} article={article} />
+              {news?.map(article => (
+                <NewsCard
+                  key={article._id}
+                  article={article as unknown as Article}
+                />
               ))}
             </div>
           ) : (

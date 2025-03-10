@@ -2,14 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
 
-interface Article {
-  _id: string
-  title: string
-  slug: string
-  image?: string
-  publishedAt?: string
-  excerpt?: string
-}
+import { Article } from '@/sanity/types'
+import { urlFor } from '@/sanity/lib/image'
 
 interface NewsCardProps {
   article: Article
@@ -52,10 +46,10 @@ export function NewsCard({ article }: NewsCardProps) {
     <Link href={`/news/${article.slug}`}>
       <div className='group relative flex cursor-pointer flex-col overflow-hidden border border-zinc-200 bg-zinc-50 tw-transition hover:scale-105 hover:bg-white'>
         <div className='relative aspect-[3/2] w-full bg-zinc-100'>
-          {article.image ? (
+          {article.mainImage ? (
             <Image
-              src={article.image}
-              alt={article.title}
+              src={urlFor(article.mainImage).url()}
+              alt={article.title ?? ''}
               fill
               className='object-cover object-center'
             />
