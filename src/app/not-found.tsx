@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { PageTitle } from '@/components/shared/page-title'
 import { buttonVariants } from '@/components/ui/button'
-
+import { SectionHeading } from '@/components/shared/section-heading'
 export default function NotFound() {
   return (
     <div className='flex h-screen flex-col items-center justify-center bg-zinc-300'>
@@ -29,7 +28,7 @@ export default function NotFound() {
       </div>
 
       <div className='mt-8'>
-        <PageTitle>Page Not Found</PageTitle>
+        <SectionHeading>Page Not Found</SectionHeading>
       </div>
       <Link href='/' className={buttonVariants({ className: 'mt-4' })}>
         Return Home
