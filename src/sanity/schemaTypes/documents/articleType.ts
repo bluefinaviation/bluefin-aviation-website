@@ -47,15 +47,17 @@ export const articleType = defineType({
     }),
     defineField({
       name: 'categories',
-      type: 'array',
-      of: [defineArrayMember({ type: 'reference', to: { type: 'category' } })]
+      type: 'string',
+      options: {
+        list: ['News', 'Events', 'Press Releases']
+      }
     }),
     defineField({
       name: 'publishedAt',
       type: 'datetime'
     }),
     defineField({
-      name: 'excerpt',
+      name: 'summary',
       type: 'text'
     }),
     defineField({
