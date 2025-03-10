@@ -131,7 +131,7 @@ export const EmptyLegsForm = ({
     )
     formDataWithEmptyLeg.append(
       'emptyLegDate',
-      new Date(emptyLeg.date).toLocaleDateString()
+      new Date(emptyLeg.departureTime || '').toLocaleDateString()
     )
     formDataWithEmptyLeg.append(
       'emptyLegPlane',
