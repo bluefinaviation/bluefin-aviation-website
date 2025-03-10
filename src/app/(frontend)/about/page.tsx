@@ -47,7 +47,7 @@ export default async function AboutPage() {
         </div>
         <div className='relative aspect-square w-full md:aspect-auto md:h-[500px]'>
           <Image
-            src='/images/about.webp'
+            src='/images/about-story.webp'
             alt='About Us'
             fill
             className='rounded-br-[12rem] bg-zinc-100 object-cover object-[5%_90%]'
