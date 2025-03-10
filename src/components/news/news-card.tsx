@@ -42,6 +42,7 @@ export function NewsCard({ article }: NewsCardProps) {
     }
   }
 
+  console.log(article)
   return (
     <Link href={`/news/${article.slug}`}>
       <div className='group relative flex cursor-pointer flex-col overflow-hidden border border-zinc-200 bg-zinc-50 tw-transition hover:scale-105 hover:bg-white'>
