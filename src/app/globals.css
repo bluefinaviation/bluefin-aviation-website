@@ -20,12 +20,6 @@
   h6 {
     @apply text-balance;
   }
-  ul {
-    @apply list-disc;
-  }
-  ol {
-    @apply list-decimal;
-  }
 }
 
 :root {

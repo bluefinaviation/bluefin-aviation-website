@@ -9,6 +9,8 @@ import { EmptyLegs } from '@/components/broker/empty-legs'
 import { FAQs } from '@/components/blocks/faqs'
 import { SectionSummary } from '@/components/shared/section-summary'
 import { Hero } from '@/components/blocks/hero'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 import { sanityFetch } from '@/sanity/lib/live'
 import {
@@ -97,14 +99,69 @@ export default async function CharterPage({ searchParams }: CharterPageProps) {
             <PlanesGrid planes={planes} hasFilters={hasFilters} />
           </Container>
 
+          <section className='bg-primary py-16'>
+            <Container>
+              <div className='mx-auto flex max-w-3xl flex-col items-center text-center'>
+                <SectionHeading className='text-white'>
+                  Looking for Last Minute Deals?
+                </SectionHeading>
+                <SectionSummary className='mt-4 text-zinc-200'>
+                  Check out our empty leg flights for exclusive last-minute
+                  deals on private jet travel.
+                </SectionSummary>
+                <Link
+                  href={{
+                    pathname: '/services/charter',
+                    query: { tab: 'empty-legs' }
+                  }}
+                  className='mt-8'
+                >
+                  <Button variant='outline' size='lg'>
+                    View Empty Leg Flights
+                  </Button>
+                </Link>
+              </div>
+            </Container>
+          </section>
+
           {/* @ts-expect-error - PlanesGrid expects a Plane[] type, but FLEET_QUERYResult is not compatible */}
           <FAQs title='Frequently Asked Questions' faqs={faqs} />
         </div>
       ) : (
-        <Container className='py-16 sm:py-24'>
-          <SectionHeading>Upcoming Last Minute Flights</SectionHeading>
-          <EmptyLegs />
-        </Container>
+        <div>
+          <Container className='py-16 sm:py-24'>
+            <SectionHeading>Upcoming Last Minute Flights</SectionHeading>
+            <EmptyLegs />
+          </Container>
+
+          <section className='bg-primary py-16'>
+            <Container>
+              <div className='mx-auto flex max-w-3xl flex-col items-center text-center'>
+                <SectionHeading className='text-white'>
+                  Explore Our Full Fleet{' '}
+                </SectionHeading>
+                <SectionSummary className='mt-4 text-zinc-200'>
+                  Browse our complete selection of private jets available for
+                  charter to find the perfect aircraft for your next journey.
+                </SectionSummary>
+                <Link
+                  href={{
+                    pathname: '/services/charter',
+                    query: { tab: 'fleet' }
+                  }}
+                  className='mt-8'
+                >
+                  <Button variant='outline' size='lg'>
+                    View Our Fleet
+                  </Button>
+                </Link>
+              </div>
+            </Container>
+          </section>
+
+          {/* @ts-expect-error - PlanesGrid expects a Plane[] type, but FLEET_QUERYResult is not compatible */}
+          <FAQs title='Frequently Asked Questions' faqs={faqs} />
+        </div>
       )}
     </div>
   )

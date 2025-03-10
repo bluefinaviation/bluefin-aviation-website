@@ -15,11 +15,29 @@ type HeroImage = {
 }
 
 const heroImages: HeroImage[] = [
-  { src: '/images/home-hero-1.webp', alt: 'Private plane in flight.' },
-  { src: '/images/home-hero-2.webp', alt: 'Luxury private jet interior.' },
-  { src: '/images/home-hero-3.webp', alt: 'Plane in the middle of the sky.' },
-  { src: '/images/home-hero-4.webp', alt: 'Plane in the middle of the sky.' },
-  { src: '/images/home-hero-5.webp', alt: 'Plane in the middle of the sky.' }
+  {
+    src: '/images/home-hero-1.webp',
+    alt: 'Close up of the turbine of a private plane.'
+  },
+  {
+    src: '/images/home-hero-2.webp',
+    alt: 'Luxury private jet in flight with a background of snowed peaks.'
+  },
+  {
+    src: '/images/home-hero-3.webp',
+    alt: 'Close up of the turbine of a private plane.'
+  },
+  { src: '/images/home-hero-4.webp', alt: 'Private jet in flight.' },
+  { src: '/images/home-hero-5.webp', alt: 'Plane in the middle of the sky.' },
+  {
+    src: '/images/home-hero-6.webp',
+    alt: 'Cockpit controls of a private plane.'
+  },
+  {
+    src: '/images/home-hero-7.webp',
+    alt: 'Private plane getting ready for takeoff.'
+  },
+  { src: '/images/home-hero-8.webp', alt: 'Private jet in flight.' }
 ]
 
 export const HeroSection = () => {
