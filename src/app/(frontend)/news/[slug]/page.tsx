@@ -25,10 +25,10 @@ export default async function NewsArticlePage({
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article?.title,
-    image: [article?.imageUrl],
+    image: [article?.imageUrl!],
     datePublished: article?.publishedAt,
     dateModified: article?._updatedAt,
-    author: article?.author?.name,
+    author: article?.author?.name!,
     publisher: article?.publishedAt,
     description: article?.summary,
     url: `https://www.bluefinaviation.com/news/${article?.slug}`

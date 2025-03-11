@@ -1,5 +1,6 @@
 import '@/app/globals.css'
 
+import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity'
 import { SpeedInsights } from '@vercel/speed-insights/next'
