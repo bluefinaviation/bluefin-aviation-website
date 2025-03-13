@@ -28,7 +28,7 @@ export default async function NewsPage() {
       <div className='py-16 sm:py-24'>
         <Container>
           {news ? (
-            <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+            <div className='grid grid-cols-1 grid-rows-[auto] gap-8 sm:grid-cols-2 lg:grid-cols-3'>
               {news?.map(article => (
                 <NewsCard
                   key={article._id}

@@ -815,7 +815,7 @@
         },
         "optional": true
       },
-      "categories": {
+      "category": {
         "type": "objectAttribute",
         "value": {
           "type": "union",

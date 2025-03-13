@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import { Article } from '@phosphor-icons/react/dist/ssr'
 
 export const articleType = defineType({
@@ -46,15 +46,19 @@ export const articleType = defineType({
       ]
     }),
     defineField({
-      name: 'categories',
+      name: 'category',
       type: 'string',
       options: {
-        list: ['News', 'Events', 'Press Releases']
+        list: ['Company', 'Events', 'News', 'Guides']
       }
     }),
     defineField({
       name: 'publishedAt',
-      type: 'datetime'
+      type: 'datetime',
+      options: {
+        dateFormat: 'DD-MM-YYYY'
+      },
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'summary',

@@ -13,7 +13,8 @@ export const NEWS_QUERY = defineQuery(`
     title,
 		"slug": slug.current,
     mainImage,
-    publishedAt,
+		category,
+		publishedAt,
     "excerpt": pt::text(body[0..1]),
 		summary,
 		"imageUrl": mainImage.asset->url,
@@ -29,6 +30,7 @@ export const NEWS_ARTICLE_QUERY = defineQuery(`
     ...,
 		"slug": slug.current,
     mainImage,
+		category,
 		"author": author->{
 			name,
 			image

@@ -43,8 +43,8 @@ export function NewsCard({ article }: NewsCardProps) {
   }
 
   return (
-    <Link href={`/news/${article.slug}`}>
-      <div className='group relative flex cursor-pointer flex-col overflow-hidden border border-zinc-200 bg-zinc-50 tw-transition hover:scale-105 hover:bg-white'>
+    <Link href={`/news/${article.slug}`} className='h-full'>
+      <div className='group relative flex h-full cursor-pointer flex-col overflow-hidden border border-zinc-200 bg-zinc-50 tw-transition hover:scale-105 hover:bg-white'>
         <div className='relative aspect-[3/2] w-full bg-zinc-100'>
           {article.mainImage ? (
             <Image
@@ -60,10 +60,20 @@ export function NewsCard({ article }: NewsCardProps) {
           )}
         </div>
 
-        <div className='p-6'>
-          {formattedDate && (
-            <div className='mb-2 text-sm text-zinc-500'>{formattedDate}</div>
-          )}
+        <div className='flex flex-grow flex-col p-6'>
+          <div className='mb-2 flex items-center gap-2'>
+            {formattedDate && (
+              <span className='text-sm text-zinc-500'>{formattedDate}</span>
+            )}
+            {article.category && (
+              <>
+                <span className='text-zinc-300'>•</span>
+                <span className='text-sm font-medium text-blue-600'>
+                  {article.category}
+                </span>
+              </>
+            )}
+          </div>
           <h2 className='text-xl font-semibold transition-colors group-hover:text-blue-600 sm:text-2xl'>
             {article.title}
           </h2>
