@@ -42,6 +42,8 @@ export function NewsCard({ article }: NewsCardProps) {
     }
   }
 
+  console.log(article)
+
   return (
     <Link href={`/news/${article.slug}`} className='h-full'>
       <div className='group relative flex h-full cursor-pointer flex-col overflow-hidden border border-zinc-200 bg-zinc-50 tw-transition hover:scale-105 hover:bg-white'>
@@ -74,7 +76,7 @@ export function NewsCard({ article }: NewsCardProps) {
               </>
             )}
           </div>
-          <h2 className='text-xl font-semibold transition-colors group-hover:text-blue-600 sm:text-2xl'>
+          <h2 className='text-xl font-semibold transition-colors sm:text-2xl'>
             {article.title}
           </h2>
         </div>

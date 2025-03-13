@@ -822,7 +822,7 @@
           "of": [
             {
               "type": "string",
-              "value": "News"
+              "value": "Company"
             },
             {
               "type": "string",
@@ -830,7 +830,11 @@
             },
             {
               "type": "string",
-              "value": "Press Releases"
+              "value": "News"
+            },
+            {
+              "type": "string",
+              "value": "Guides"
             }
           ]
         },
