@@ -1,57 +1,57 @@
-"use client";
+'use client'
 
-import "mapbox-gl/dist/mapbox-gl.css";
+import 'mapbox-gl/dist/mapbox-gl.css'
 
-import { useMemo, useState } from "react";
-import Map, { Marker, Popup } from "react-map-gl/mapbox";
-import { MapPin } from "@phosphor-icons/react";
-import getCenter from "geolib/es/getCenter";
+import { useMemo, useState } from 'react'
+import Map, { Marker, Popup } from 'react-map-gl/mapbox'
+import { MapPin } from '@phosphor-icons/react'
+import getCenter from 'geolib/es/getCenter'
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'
 
-import { Location } from "@/types";
+import { Location } from '@/types'
 
 export const MapContainer = ({ locations }: { locations: Location[] }) => {
-  const [popupInfo, setPopupInfo] = useState<Location | undefined>();
+  const [popupInfo, setPopupInfo] = useState<Location | undefined>()
 
-  const coordinates = locations.map((location) => ({
+  const coordinates = locations.map(location => ({
     latitude: location.coordinates.lat,
-    longitude: location.coordinates.lng,
-  }));
+    longitude: location.coordinates.lng
+  }))
 
-  const center = getCenter(coordinates) || { latitude: 0, longitude: 0 };
+  const center = getCenter(coordinates) || { latitude: 0, longitude: 0 }
 
   const pins = useMemo(
     () =>
-      locations.map((location) => (
+      locations.map(location => (
         <Marker
           key={location._key}
           latitude={location.coordinates.lat}
           longitude={location.coordinates.lng}
-          anchor="bottom"
-          onClick={(e) => {
-            e.originalEvent.stopPropagation();
-            setPopupInfo(location);
+          anchor='bottom'
+          onClick={e => {
+            e.originalEvent.stopPropagation()
+            setPopupInfo(location)
           }}
         >
           <MapPin
             size={32}
-            weight="fill"
-            className={cn("text-white", location.isHq && "text-accent")}
+            weight='fill'
+            className={cn('text-white', location.isHq && 'text-accent')}
           />
         </Marker>
       )),
     [locations]
-  );
+  )
 
   return (
-    <div className="w-full">
+    <div className='w-full'>
       <Map
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         initialViewState={{
           latitude: center.latitude,
           longitude: center.longitude,
-          zoom: 2,
+          zoom: 2
         }}
         mapStyle={process.env.NEXT_PUBLIC_MAPBOX_STYLE_URL}
       >
@@ -59,18 +59,18 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
 
         {popupInfo && (
           <Popup
-            anchor="top"
+            anchor='top'
             latitude={popupInfo.coordinates.lat}
             longitude={popupInfo.coordinates.lng}
             closeButton={false}
             onClose={() => setPopupInfo(undefined)}
             offset={[0, 5]}
-            className="z-10"
+            className='z-10'
           >
-            <div className="flex flex-col gap-1 p-2">
-              <h3 className="text-lg font-semibold">{popupInfo.city}</h3>
+            <div className='flex flex-col gap-1 p-2'>
+              <h3 className='text-lg font-semibold'>{popupInfo.city}</h3>
               {popupInfo.isHq && popupInfo.address && (
-                <p className="text-sm text-muted-foreground">
+                <p className='text-sm text-muted-foreground'>
                   {popupInfo.address}
                 </p>
               )}
@@ -79,5 +79,5 @@ export const MapContainer = ({ locations }: { locations: Location[] }) => {
         )}
       </Map>
     </div>
-  );
-};
+  )
+}
